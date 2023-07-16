@@ -50,4 +50,14 @@ MonoBehaviour:
   testMatchData:
     queueName: 
     regionName: 
-  testPlayers: []
+  testPlayers:
+  - userId: 
+    isBot: 0
+    botDifficulty: 0
+    gameEngineData: 
+    matchmakerData: []
+  - userId: 
+    isBot: 0
+    botDifficulty: 0
+    gameEngineData: 
+    matchmakerData: []
