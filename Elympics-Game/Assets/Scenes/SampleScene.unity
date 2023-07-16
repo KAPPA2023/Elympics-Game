@@ -692,7 +692,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard
+  m_DefaultControlScheme: K&M
   m_DefaultActionMap: inGame
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -709,6 +709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInput: {fileID: 1947320673}
+  _shapeInput: {fileID: 1947320677}
 --- !u!114 &1947320675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,6 +738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputHandler: {fileID: 1947320674}
   _movementHandler: {fileID: 1947320675}
+  _spellManager: {fileID: 1947320678}
 --- !u!114 &1947320677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,8 +751,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bcd93ff9d629694a9d6e251fe04069a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _position: {x: 0, y: 0}
-  CubePrefab: {fileID: 3852981549798282850, guid: eca6edc9827399148b2668d6ab08a7d0, type: 3}
 --- !u!114 &1947320678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,7 +763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a03c864fadbf34896e01428c6a53d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireballUse: 0
+  CubePrefab: {fileID: 3852981549798282850, guid: eca6edc9827399148b2668d6ab08a7d0, type: 3}
 --- !u!1001 &2147474033
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,51 +6,58 @@ using WobbrockLib.Extensions;
 
 public class ShapeInput : MonoBehaviour
 {
-    private List<TimePointF> _points;
-    [SerializeField] private Vector2 _position;
-    [SerializeField] private GameObject CubePrefab;
     private Recognizer2 _rec;
     private bool _protractor = false;
-
-    // Start is called before the first frame update
-
+    
+    
     void Start()
     {
         _rec = ScriptableObject.CreateInstance<Recognizer2>();
-        Debug.Log(_rec.LoadGesture("C:/Users/antol/Desktop/Gestures/slope"));
-        Debug.Log(_rec.NumGestures);
-        _points = new List<TimePointF>(255);
+        _rec.LoadGesture();
     }
+    
+    // public void UpdateShape()
+    // {
+    //     if (Input.GetMouseButtonDown(0))
+    //     {
+    //         _points.Clear();
+    //         _position = Input.mousePosition;
+    //         _points.Add(new TimePointF(_position.x, _position.y, TimeEx.NowMs));
+    //     }
+    //     else if (Input.GetMouseButton(0))
+    //              {
+    //                  _position = Input.mousePosition;
+    //                  _points.Add(new TimePointF(_position.x, _position.y, TimeEx.NowMs));
+    //              }
+    //     else if (Input.GetMouseButtonUp(0))
+    //     {
+    //         NBestList result = _rec.Recognize(_points, _protractor);
+    //         Debug.Log(result.Name);
+    //         _points.Clear();
+    //         if (result.Name == "triangle")
+    //         {
+    //             Instantiate(CubePrefab, transform.position, transform.rotation);
+    //             Debug.Log(GetComponent<Inventory>().FireballUse);
+    //             GetComponent<Inventory>().addSpell();
+    //             Debug.Log(GetComponent<Inventory>().FireballUse);
+    //
+    //         }
+    //     }
+    // }
 
-    // Update is called once per frame
-    void Update()
+    public int GetShape(List<TimePointF> points)
     {
-        if (Input.GetMouseButtonDown(0))
+        NBestList result = _rec.Recognize(points, _protractor);
+        if (result.Score < 0.75 )
         {
-            _points.Clear();
-            _position = Input.mousePosition;
-            _points.Add(new TimePointF(_position.x, _position.y, TimeEx.NowMs));
+            return -1;
         }
-        else if (Input.GetMouseButton(0))
-                 {
-                     _position = Input.mousePosition;
-                     _points.Add(new TimePointF(_position.x, _position.y, TimeEx.NowMs));
-                 }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            NBestList result = _rec.Recognize(_points, _protractor);
-            Debug.Log(result.Name);
-            _points.Clear();
-            if (result.Name == "triangle")
-            {
-                Instantiate(CubePrefab, transform.position, transform.rotation);
-                Debug.Log(GetComponent<Inventory>().FireballUse);
-                GetComponent<Inventory>().addSpell();
-                Debug.Log(GetComponent<Inventory>().FireballUse);
-
-            }
-                
-
+        
+        switch (result.Name)
+        { 
+            case "triangle": return 0;
+            case "c": return 1;
+            default: return -1;
         }
-    }
+    } 
 }

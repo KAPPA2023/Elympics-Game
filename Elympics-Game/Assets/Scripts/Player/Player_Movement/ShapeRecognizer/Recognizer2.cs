@@ -306,10 +306,10 @@ public class Recognizer2 : ScriptableObject
         return success; // Xml file successfully written (or not)
     }
 
-    public bool LoadGesture(string filename)
+    public bool LoadGesture()
     {
         bool success = true;
-        string[] filePaths = Directory.GetFiles(Application.dataPath + "/SP", "shape*");
+        string[] filePaths = Directory.GetFiles(Application.dataPath + "/SpellPatterns", "shape*");
 
         foreach (string filePath in filePaths)
         {
