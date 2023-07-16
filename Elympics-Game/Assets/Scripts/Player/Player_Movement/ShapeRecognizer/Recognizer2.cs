@@ -309,7 +309,7 @@ public class Recognizer2 : ScriptableObject
     public bool LoadGesture(string filename)
     {
         bool success = true;
-        string[] filePaths = Directory.GetFiles("", "shape*");
+        string[] filePaths = Directory.GetFiles(Application.dataPath + "/SP", "shape*");
 
         foreach (string filePath in filePaths)
         {
