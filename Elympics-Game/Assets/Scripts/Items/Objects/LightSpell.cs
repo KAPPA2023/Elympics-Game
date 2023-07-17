@@ -8,6 +8,7 @@ public class LightSpell : Items
     void Start()
     {
         this.spellID = 1;
+        max_use = 2;
     }
 
     // Update is called once per frame

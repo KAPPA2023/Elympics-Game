@@ -6,7 +6,6 @@ public class Inventory : MonoBehaviour
 {
     private int fireballamount = 0;
     private int lightamount=0;
-    private int maxSpellamount = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +18,27 @@ public class Inventory : MonoBehaviour
       
     }
 
+    
+    public bool canCastFireball()
+    {
+        if (fireballamount > 0)
+        {
+            fireballamount--;
+            return true;
+        }
+
+        return false;
+    }
+    public bool canCastLightning()
+    {
+        if (fireballamount > 0)
+        {
+            fireballamount--;
+            return true;
+        }
+
+        return false;
+    }
     private bool canAddSpell()
     {
         if (fireballamount + lightamount < 3) return true;
@@ -36,7 +56,7 @@ public class Inventory : MonoBehaviour
                     break;
 
             }
-            Debug.Log(fireballamount);
+            
             return true;
         }
 

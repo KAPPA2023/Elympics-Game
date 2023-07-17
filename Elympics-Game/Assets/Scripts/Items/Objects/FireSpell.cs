@@ -9,7 +9,7 @@ public class FireSpell : Items
     void Start()
     {
         spellID = 0;
-        this.max_use = 3;
+        max_use = 3;
     }
 
     

@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class Items : MonoBehaviour
 {
     protected int spellID = -1;
-    protected int max_use = 0;
+    protected static int max_use;
     private void OnTriggerEnter(Collider other)
     {
         
@@ -19,5 +19,10 @@ public abstract class Items : MonoBehaviour
            
         }
         
+    }
+
+    public static int getMaxUse()
+    {
+        return max_use;
     }
 }

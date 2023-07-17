@@ -19,6 +19,10 @@ public class SpellManager : MonoBehaviour
         
     }
 
+    public void setRemainingUses(int amount)
+    {
+        _remainingUses = amount;
+    }
     public void castSpell()
     {
         if (_selectedSpell != -1 && _remainingUses > 0)
@@ -41,10 +45,27 @@ public class SpellManager : MonoBehaviour
     {
         if (drawn_spell >= 0)
         {
+            
             _selectedSpell = drawn_spell;
-            //TODO: get remaining uses from spell
-            _remainingUses = 1;
+
         }
+    }
+
+    private bool isInInventory(int drawn_spell)
+    {
+        switch (drawn_spell)
+        {
+            case 0:
+                return this.gameObject.GetComponent<Inventory>().canCastFireball();
+                    
+                
+            case 1:
+                 return this.gameObject.GetComponent<Inventory>().canCastLightning();
+                     
+            default: return false;     
+        }
+
+        
     }
 }
 
