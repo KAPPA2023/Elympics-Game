@@ -56,10 +56,8 @@ public class ShapeInput : MonoBehaviour
         switch (result.Name)
         { 
             case "triangle":
-                this.gameObject.GetComponent<SpellManager>().setRemainingUses(FireSpell.getMaxUse());
                 return 0;
-            case "c": 
-                this.gameObject.GetComponent<SpellManager>().setRemainingUses(LightSpell.getMaxUse());
+            case "c":
                 return 1;
             default: 
                 return -1;

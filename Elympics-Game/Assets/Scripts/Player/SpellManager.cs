@@ -27,6 +27,7 @@ public class SpellManager : MonoBehaviour
     {
         if (_selectedSpell != -1 && _remainingUses > 0)
         {
+            
             Instantiate(CubePrefab, transform.position + transform.forward, transform.rotation);
             _remainingUses--;
         }
@@ -47,22 +48,40 @@ public class SpellManager : MonoBehaviour
         {
             
             _selectedSpell = drawn_spell;
-
+            isInInventory(drawn_spell);
         }
     }
 
-    private bool isInInventory(int drawn_spell)
+    private void isInInventory(int drawn_spell)
     {
         switch (drawn_spell)
         {
             case 0:
-                return this.gameObject.GetComponent<Inventory>().canCastFireball();
-                    
-                
+                if (this.gameObject.GetComponent<Inventory>().canCastFireball())
+                {
+                    _remainingUses = 3;
+                }
+                else
+                {
+                    _remainingUses = 0;
+                    _selectedSpell = -1;
+                }
+
+                break;
+
             case 1:
-                 return this.gameObject.GetComponent<Inventory>().canCastLightning();
+                if(this.gameObject.GetComponent<Inventory>().canCastLightning())
+                {_remainingUses = 1;}
+            
+                else
+                {
+                _remainingUses = 0;
+                _selectedSpell = -1;
+                }
+
+                break;
                      
-            default: return false;     
+             
         }
 
         

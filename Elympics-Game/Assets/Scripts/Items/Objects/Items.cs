@@ -21,8 +21,5 @@ public abstract class Items : MonoBehaviour
         
     }
 
-    public static int getMaxUse()
-    {
-        return max_use;
-    }
+   
 }

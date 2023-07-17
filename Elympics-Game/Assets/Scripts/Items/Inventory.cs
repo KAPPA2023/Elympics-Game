@@ -31,9 +31,9 @@ public class Inventory : MonoBehaviour
     }
     public bool canCastLightning()
     {
-        if (fireballamount > 0)
+        if (lightamount > 0)
         {
-            fireballamount--;
+            lightamount--;
             return true;
         }
 
@@ -51,8 +51,10 @@ public class Inventory : MonoBehaviour
             switch (spellID)
             {
                 case 0: fireballamount++;
+                    Debug.Log(fireballamount);
                     break;
-                case 1: fireballamount++;
+                case 1: lightamount++;
+                    Debug.Log(lightamount);
                     break;
 
             }
