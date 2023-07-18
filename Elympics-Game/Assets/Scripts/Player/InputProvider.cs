@@ -8,7 +8,7 @@ using WobbrockLib;
 using WobbrockLib.Extensions;
 using Debug = UnityEngine.Debug;
 
-public class InputHandler : MonoBehaviour
+public class InputProvider : MonoBehaviour
 {
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private ShapeInput _shapeInput;
@@ -26,9 +26,15 @@ public class InputHandler : MonoBehaviour
         Vector2 moveDirections = _playerInput.actions["Move"].ReadValue<Vector2>();
         _gatheredInput.movementInput = moveDirections;
         HandleSpellDrawing();
-        if (_playerInput.actions["CastSpell"].WasPressedThisFrame())
+
+        if (checkIfPressedThisFrame("CastSpell"))
         {
             _gatheredInput.attack_triggered = true;
+        }
+
+        if (checkIfPressedThisFrame("Space"))
+        {
+            _gatheredInput.jumpInput = true;
         }
     }
 
@@ -53,16 +59,22 @@ public class InputHandler : MonoBehaviour
     {
         GatheredInput returnedInput = _gatheredInput;
         _gatheredInput.movementInput = Vector2.zero;
+        _gatheredInput.jumpInput = false;
         _gatheredInput.shape = -1;
         _gatheredInput.attack_triggered = false;
         return returnedInput;
+    }
+
+    private bool checkIfPressedThisFrame(string key)
+    {
+        return _playerInput.actions[key].WasPressedThisFrame();
     }
 }
 
 public struct GatheredInput
 {
     public Vector2 movementInput;
+    public bool jumpInput;
     public int shape;
     public bool attack_triggered;
-    //public Vector3 mousePosition;
 }
