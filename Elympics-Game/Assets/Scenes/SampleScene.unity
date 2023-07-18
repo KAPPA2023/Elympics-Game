@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 405454020}
   - component: {fileID: 405454019}
   - component: {fileID: 405454018}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,23 +572,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 7, y: 0, z: 0}
---- !u!1 &1947320665 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8000537970027709573, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-  m_PrefabInstance: {fileID: 8000537970901190108}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1947320680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1947320665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7abd438b6a617f649a17d321d57f4804, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2147474033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -700,34 +683,6 @@ PrefabInstance:
     - target: {fileID: 8000537970027709573, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000537970027709573, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000537970027709631, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-      propertyPath: boxSize.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000537970027709631, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-      propertyPath: boxSize.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000537970027709631, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-      propertyPath: boxSize.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000537970027709631, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-      propertyPath: _jumpForce
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000537970027709631, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-      propertyPath: maxDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000537970027709631, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-      propertyPath: layerMask.m_Bits
-      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}

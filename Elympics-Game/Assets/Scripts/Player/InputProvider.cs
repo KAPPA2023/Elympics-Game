@@ -11,9 +11,14 @@ using Debug = UnityEngine.Debug;
 public class InputProvider : MonoBehaviour
 {
     [SerializeField] private PlayerInput _playerInput;
+
     [SerializeField] private ShapeInput _shapeInput;
     private List<TimePointF> _points = new List<TimePointF>(255);
     private GatheredInput _gatheredInput;
+    #region Mouse Variables
+    [SerializeField] private float mouseSensivity = 1.5f;
+    [SerializeField] private Vector2 verticalAngleLimits = Vector2.zero;
+    #endregion
 
     public void Start()
     {
@@ -32,10 +37,22 @@ public class InputProvider : MonoBehaviour
             _gatheredInput.attack_triggered = true;
         }
 
+        var mouseX = Input.GetAxis("Mouse X");
+        var mouseY = Input.GetAxis("Mouse Y") * -1;
+        var newMouseAngles = _gatheredInput.mouseAxis + new Vector3(mouseY, mouseX) * mouseSensivity;
+        _gatheredInput.mouseAxis = FixTooLargeMouseAngles(newMouseAngles);
+
         if (checkIfPressedThisFrame("Space"))
         {
             _gatheredInput.jumpInput = true;
         }
+    }
+
+    private Vector3 FixTooLargeMouseAngles(Vector3 mouseAngles)
+    {
+        mouseAngles.x = Mathf.Clamp(mouseAngles.x, verticalAngleLimits.x, verticalAngleLimits.y);
+
+        return mouseAngles;
     }
 
     private void HandleSpellDrawing()
@@ -77,4 +94,5 @@ public struct GatheredInput
     public bool jumpInput;
     public int shape;
     public bool attack_triggered;
+    public Vector3 mouseAxis;
 }

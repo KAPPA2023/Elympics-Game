@@ -84,9 +84,11 @@ GameObject:
   - component: {fileID: 8000537970027709626}
   - component: {fileID: 8000537970027709625}
   - component: {fileID: 8000537970027709627}
+  - component: {fileID: 1947320680}
+  - component: {fileID: 1947320695}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -299,6 +301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerInput: {fileID: 8000537970027709629}
   _shapeInput: {fileID: 8000537970027709625}
+  mouseSensivity: 1.5
+  verticalAngleLimits: {x: -90, y: 90}
 --- !u!114 &8000537970027709624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,6 +319,7 @@ MonoBehaviour:
   _inputHandler: {fileID: 8000537970027709630}
   _movementHandler: {fileID: 8000537970027709631}
   _spellManager: {fileID: 8000537970027709626}
+  _viewController: {fileID: 1947320695}
 --- !u!114 &8000537970027709631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +333,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeed: 30
+  _jumpForce: 5
+  boxSize: {x: 1, y: 0.2, z: 1}
+  maxDistance: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &8000537970027709626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,6 +377,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
+--- !u!114 &1947320680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8000537970027709573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7abd438b6a617f649a17d321d57f4804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1947320695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8000537970027709573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d20d503f50dbb5e488f2b311b158272f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  verticalRotationTarget: {fileID: 8000537969509460963}
+  horizontalRotationTarget: {fileID: 8000537970027709569}
 --- !u!1 &8000537970902114410
 GameObject:
   m_ObjectHideFlags: 0

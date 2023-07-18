@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Elympics;
+using Unity.Profiling.Editor;
 
 public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
 {
@@ -10,6 +11,7 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
     [SerializeField] private InputProvider _inputHandler;
     [SerializeField] private MovementController _movementHandler;
     [SerializeField] private SpellManager _spellManager;
+    [SerializeField] private ViewController _viewController;
 
     private void Update()
     {
@@ -22,6 +24,9 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
         GatheredInput currentInput = _inputHandler.getInput();
         inputSerializer.Write(currentInput.movementInput.x);
         inputSerializer.Write(currentInput.movementInput.y);
+        inputSerializer.Write(currentInput.mouseAxis.x);
+        inputSerializer.Write(currentInput.mouseAxis.y);
+        inputSerializer.Write(currentInput.mouseAxis.z);
         inputSerializer.Write(currentInput.jumpInput);
         inputSerializer.Write(currentInput.attack_triggered);
         inputSerializer.Write(currentInput.shape);
@@ -46,8 +51,12 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
             bool spaceClicked;
             bool attack_triggered;
             int shape;
+            float xRotation, yRotation, zRotation;
             inputReader.Read(out x1);
             inputReader.Read(out y1);
+            inputReader.Read(out xRotation);
+            inputReader.Read(out yRotation);
+            inputReader.Read(out zRotation);
             inputReader.Read(out spaceClicked);
             inputReader.Read(out attack_triggered);
             inputReader.Read(out shape);
@@ -55,10 +64,19 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
             currentInput.jumpInput = spaceClicked;
             currentInput.shape = shape;
             currentInput.attack_triggered = attack_triggered;
+
+            ProcessMouse(Quaternion.Euler(new Vector3(xRotation, yRotation, zRotation)));
         }
         _movementHandler.ProcessMovement(currentInput.movementInput, currentInput.jumpInput);
-        if(currentInput.attack_triggered) _spellManager.castSpell();
-        _spellManager.chooseSpell(currentInput.shape);
         
+
+        if (currentInput.attack_triggered) _spellManager.castSpell();
+        _spellManager.chooseSpell(currentInput.shape);
     }
+
+    private void ProcessMouse(Quaternion mouseRotation)
+    {
+        _viewController.ProcessView(mouseRotation);
+    }
+    
 }
