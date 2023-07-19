@@ -7,12 +7,17 @@ using Unity.Profiling.Editor;
 
 public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
 {
-
+    private PlayerController player = null;
     [SerializeField] private PlayerData _playerData = null;
     [SerializeField] private InputProvider _inputHandler;
     [SerializeField] private MovementController _movementHandler;
     [SerializeField] private ActionHandler _actionHandler;
     [SerializeField] private ViewController _viewController;
+
+    private void Awake()
+    {
+        player = GetComponent<PlayerController>();
+    }
 
     private void Update()
     {
@@ -66,7 +71,9 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
             currentInput.shape = shape;
             currentInput.attack_triggered = attack_triggered;
 
-            ProcessMouse(Quaternion.Euler(new Vector3(xRotation, yRotation, zRotation)));
+            player.mouseRotation = Quaternion.Euler(new Vector3(xRotation, yRotation, zRotation));
+            player.ElympicsUpdate();
+            //ProcessMouse(Quaternion.Euler(new Vector3(xRotation, yRotation, zRotation)));
         }
         _movementHandler.ProcessMovement(currentInput.movementInput, currentInput.jumpInput);
         _actionHandler.HandleActions(currentInput.attack_triggered,false, currentInput.shape, Elympics.Tick);

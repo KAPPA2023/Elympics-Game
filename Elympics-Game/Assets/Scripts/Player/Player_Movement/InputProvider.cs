@@ -11,14 +11,19 @@ using Debug = UnityEngine.Debug;
 public class InputProvider : MonoBehaviour
 {
     [SerializeField] private PlayerInput _playerInput;
-
     [SerializeField] private ShapeInput _shapeInput;
+    private PlayerController player;
     private List<TimePointF> _points = new List<TimePointF>(255);
     private GatheredInput _gatheredInput;
     #region Mouse Variables
     [SerializeField] private float mouseSensivity = 1.5f;
     [SerializeField] private Vector2 verticalAngleLimits = Vector2.zero;
     #endregion
+
+    public void Awake()
+    {
+        player = GetComponent<PlayerController>();
+    }
 
     public void Start()
     {
@@ -30,6 +35,9 @@ public class InputProvider : MonoBehaviour
     {
         Vector2 moveDirections = _playerInput.actions["Move"].ReadValue<Vector2>();
         _gatheredInput.movementInput = moveDirections;
+        //player.isDrawingSpell = _playerInput.actions["DrawShape"].IsPressed();
+        //player.endDrawingSpell = _playerInput.actions["DrawShape"].WasReleasedThisFrame();
+        //player.InputUpdate();
         HandleSpellDrawing();
 
         if (checkIfPressedThisFrame("CastSpell"))
@@ -61,11 +69,13 @@ public class InputProvider : MonoBehaviour
         int returned_shape = -1;
         if (_playerInput.actions["DrawShape"].IsPressed())
         {
+            player.StateMachine.ChangeState(player.CastingSpellState);
             position = Input.mousePosition;
             _points.Add(new TimePointF(position.x, position.y, TimeEx.NowMs));
         }
         else if (_playerInput.actions["DrawShape"].WasReleasedThisFrame())
         {
+            player.StateMachine.ChangeState(player.IdleState);
             returned_shape = _shapeInput.GetShape(_points);
             _gatheredInput.shape = returned_shape;
             _points.Clear();
