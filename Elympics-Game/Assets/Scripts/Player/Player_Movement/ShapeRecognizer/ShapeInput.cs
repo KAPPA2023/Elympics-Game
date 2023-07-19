@@ -55,9 +55,12 @@ public class ShapeInput : MonoBehaviour
         
         switch (result.Name)
         { 
-            case "triangle": return 0;
-            case "c": return 1;
-            default: return -1;
+            case "triangle":
+                return 0;
+            case "c":
+                return 1;
+            default: 
+                return -1;
         }
     } 
 }
