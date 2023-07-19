@@ -5,15 +5,16 @@ using Elympics;
 
 public class SpellSpawner : ElympicsMonoBehaviour
 {
-    [SerializeField] private GameObject spellObject;
+    [SerializeField] private List<GameObject> spellList;
     [SerializeField] private int spellCooldown;
 
-    public void TrySpawningSpell()
+    public void TrySpawningSpell(int selectedSpell)
     {
         if (Elympics.IsServer)
         {
-            TestSpellHandler spawnedSpell =  ElympicsInstantiate(spellObject.name, ElympicsPlayer.World).GetComponent<TestSpellHandler>();
-            spawnedSpell.spawnSpell(transform.position, transform.forward, Elympics.Tick);
+            GameObject spellObject = spellList[selectedSpell];
+            Spell spawnedSpell =  ElympicsInstantiate(spellObject.name, ElympicsPlayer.World ).GetComponent<Spell>();
+            spawnedSpell.spawnSpell(transform.position, Vector3.forward, Elympics.Tick);
         }
     }
 }

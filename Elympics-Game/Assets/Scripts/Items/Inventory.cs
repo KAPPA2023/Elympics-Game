@@ -11,13 +11,6 @@ public class Inventory : MonoBehaviour
     {
         fireballamount = 0;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-      
-    }
-
     
     public bool canCastFireball()
     {

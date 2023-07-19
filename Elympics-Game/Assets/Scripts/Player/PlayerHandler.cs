@@ -9,7 +9,6 @@ public class PlayerHandler : ElympicsMonoBehaviour, IInputHandler, IUpdatable
     [SerializeField] private InputHandler _inputHandler;
     [SerializeField] private MovementHandler _movementHandler;
     [SerializeField] private ActionHandler _actionHandler;
-    [SerializeField] private SpellManager _spellManager;
 
     private void Update()
     {
@@ -52,8 +51,6 @@ public class PlayerHandler : ElympicsMonoBehaviour, IInputHandler, IUpdatable
             currentInput.attack_triggered = attack_triggered;
         }
         _movementHandler.HandleMovement(currentInput.movementInput);
-        _actionHandler.HandleActions(currentInput.attack_triggered, false, Elympics.Tick);
-        if(currentInput.attack_triggered) _spellManager.castSpell();
-        _spellManager.chooseSpell(currentInput.shape);
+        _actionHandler.HandleActions(currentInput.attack_triggered,false, currentInput.shape, Elympics.Tick);
     }
 }

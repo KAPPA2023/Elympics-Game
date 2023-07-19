@@ -11,8 +11,4 @@ public class FireSpell : Items
         spellID = 0;
         max_use = 3;
     }
-
-    
-
-    
 }
