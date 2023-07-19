@@ -31,12 +31,12 @@ MonoBehaviour:
     webRtcOfferMaxRetries: 5
     webRtcOfferRetryDelay: 1
     initialSynchronizeMaxRetries: 3
-  ticksPerSecond: 30
+  ticksPerSecond: 64
   minClientTickRateFactor: 0.8
   maxClientTickRateFactor: 1.25
   snapshotSendingPeriodInTicks: 1
   inputLagTicks: 2
-  maxAllowedLagInTicks: 15
+  maxAllowedLagInTicks: 12
   prediction: 1
   predictionLimitInTicks: 8
   detailedNetworkLog: 0
