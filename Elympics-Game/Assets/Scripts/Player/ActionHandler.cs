@@ -6,13 +6,14 @@ using Elympics;
 public class ActionHandler : MonoBehaviour, IObservable
 {
     [SerializeField] private SpellSpawner spellSpawner;
+    [SerializeField] private GameObject viewController;
 
     [SerializeField] private ElympicsInt currentAction = new ElympicsInt(); //0 - idle, 1- casting spell, 2 - drawing spell
     
     private int _selectedSpell = -1;
     private int _remainingUses = 0;
     
-    public void HandleActions(bool attack, bool draw, int shape , long tick)
+    public void HandleActions(bool attack, bool draw, int shape ,long tick)
     {
         int lastAction = currentAction.Value;
         chooseSpell(shape);
@@ -20,7 +21,7 @@ public class ActionHandler : MonoBehaviour, IObservable
         {
             if (attack)
             {
-                castSpell();
+                castSpell(viewController.transform.forward);
             }
         }
         else if (lastAction == 1)
@@ -29,22 +30,22 @@ public class ActionHandler : MonoBehaviour, IObservable
         }
     }
     
-    public void castSpell()
+    public void castSpell(Vector3 direction)
     {
         if (_selectedSpell != -1 && _remainingUses > 0)
         {
-            spellSpawner.TrySpawningSpell(_selectedSpell + 1);
+            spellSpawner.TrySpawningSpell(_selectedSpell + 1,direction);
             _remainingUses--;
         }
         else
         {
-            castBasicAttack();
+            castBasicAttack(direction);
         }
     }
 
-    public void castBasicAttack()
+    public void castBasicAttack(Vector3 direction)
     {
-        spellSpawner.TrySpawningSpell(0);
+        spellSpawner.TrySpawningSpell(0, direction);
     }
 
     public void chooseSpell(int drawn_spell)

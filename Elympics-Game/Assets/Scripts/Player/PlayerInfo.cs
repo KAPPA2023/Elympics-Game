@@ -6,7 +6,7 @@ using Elympics;
 
 public class PlayerInfo : MonoBehaviour, IObservable, IInitializable
 {
-    [SerializeField] private int playerID;
+    [Header("Parameters:")]
     [SerializeField] private float maxHealth;
     [SerializeField] private ElympicsFloat health = new ElympicsFloat();
     [SerializeField] private ActionHandler ActionHandler;
@@ -20,10 +20,5 @@ public class PlayerInfo : MonoBehaviour, IObservable, IInitializable
     public void Initialize()
     {
         health.Value = maxHealth;
-    }
-
-    public int getID()
-    {
-        return playerID;
     }
 }
