@@ -29,6 +29,7 @@ public class InputProvider : MonoBehaviour
     {
         _gatheredInput.shape = -1;
         _gatheredInput.attack_triggered = false;
+        _gatheredInput.isDrawing = false;
     }
 
     public void UpdateInput()
@@ -69,13 +70,13 @@ public class InputProvider : MonoBehaviour
         int returned_shape = -1;
         if (_playerInput.actions["DrawShape"].IsPressed())
         {
-            player.StateMachine.ChangeState(player.CastingSpellState);
+            _gatheredInput.isDrawing = true;
             position = Input.mousePosition;
             _points.Add(new TimePointF(position.x, position.y, TimeEx.NowMs));
         }
         else if (_playerInput.actions["DrawShape"].WasReleasedThisFrame())
         {
-            player.StateMachine.ChangeState(player.IdleState);
+            _gatheredInput.isDrawingReleased = true;
             returned_shape = _shapeInput.GetShape(_points);
             _gatheredInput.shape = returned_shape;
             _points.Clear();
@@ -89,6 +90,8 @@ public class InputProvider : MonoBehaviour
         _gatheredInput.jumpInput = false;
         _gatheredInput.shape = -1;
         _gatheredInput.attack_triggered = false;
+        _gatheredInput.isDrawing = false;
+        _gatheredInput.isDrawingReleased = false;
         return returnedInput;
     }
 
@@ -102,6 +105,8 @@ public struct GatheredInput
 {
     public Vector2 movementInput;
     public bool jumpInput;
+    public bool isDrawing;
+    public bool isDrawingReleased;
     public int shape;
     public bool attack_triggered;
     public Vector3 mouseAxis;

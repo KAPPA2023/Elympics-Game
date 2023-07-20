@@ -35,6 +35,8 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
         inputSerializer.Write(currentInput.mouseAxis.z);
         inputSerializer.Write(currentInput.jumpInput);
         inputSerializer.Write(currentInput.attack_triggered);
+        inputSerializer.Write(currentInput.isDrawing);
+        inputSerializer.Write(currentInput.isDrawingReleased);
         inputSerializer.Write(currentInput.shape);
     }
 
@@ -50,12 +52,14 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
         currentInput.jumpInput = false;
         currentInput.attack_triggered = false;
         currentInput.shape = -1;
+        currentInput.isDrawing = false;
 
         if (ElympicsBehaviour.TryGetInput(ElympicsPlayer.FromIndex(_playerData.PlayerId), out var inputReader))
         {
             float x1, y1;
             bool spaceClicked;
             bool attack_triggered;
+            bool isDrawing, isDrawingReleased;
             int shape;
             float xRotation, yRotation, zRotation;
             inputReader.Read(out x1);
@@ -65,13 +69,24 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
             inputReader.Read(out zRotation);
             inputReader.Read(out spaceClicked);
             inputReader.Read(out attack_triggered);
+            inputReader.Read(out isDrawing);
+            inputReader.Read(out isDrawingReleased);
             inputReader.Read(out shape);
             currentInput.movementInput = new Vector2(x1, y1);
             currentInput.jumpInput = spaceClicked;
             currentInput.shape = shape;
             currentInput.attack_triggered = attack_triggered;
+            currentInput.isDrawing = isDrawing;
 
             player.mouseRotation = Quaternion.Euler(new Vector3(xRotation, yRotation, zRotation));
+            if (isDrawing)
+            {
+                player.StateMachine.ChangeState(player.CastingSpellState);
+            }
+            if (isDrawingReleased)
+            {
+                player.StateMachine.ChangeState(player.IdleState);
+            }
             player.ElympicsUpdate();
             //ProcessMouse(Quaternion.Euler(new Vector3(xRotation, yRotation, zRotation)));
         }

@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     public void ElympicsUpdate()
     {
+        Debug.Log(StateMachine.CurrentPlayerState.ToString());
         StateMachine.CurrentPlayerState.ElympicsUpdate();
     }
 
