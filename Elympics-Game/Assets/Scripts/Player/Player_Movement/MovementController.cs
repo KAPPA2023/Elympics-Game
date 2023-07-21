@@ -1,22 +1,30 @@
 using Elympics;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MovementController : ElympicsMonoBehaviour
 {
-    [SerializeField] private float _movementSpeed;
-    [SerializeField] private float _jumpForce;
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private float groundDrag;
+    [SerializeField] public float actualMovementSpeed;
 
-    private new Rigidbody _playerRigidbody = null;
+    [SerializeField] private float jumpForce;
+    public float jumpCooldown;
+    public float airMultiplier;
+    private bool readyToJump = true;
+    private new Rigidbody rb = null;
 
+    #region Is Player On Ground Variables
     public Vector3 boxSize;
     public float maxDistance;
     public LayerMask layerMask;
+    #endregion
 
     private void Awake()
     {
-        _playerRigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     public void ProcessMovement(Vector2 inputMovement, bool jump)
@@ -25,23 +33,61 @@ public class MovementController : ElympicsMonoBehaviour
         Vector3 movementDirection = inputVector != Vector3.zero ? this.transform.TransformDirection(inputVector.normalized) : Vector3.zero;
 
         ApplyMovement(movementDirection);
+        SpeedControl();
 
-        if (jump && GroundCheck())
+        if (GroundCheck())
         {
-            ApplyJump();
+            rb.drag = groundDrag;
+            if (jump && readyToJump)
+            {
+                readyToJump = false;
+
+                ApplyJump();
+
+                Invoke(nameof(ResetJump), jumpCooldown);
+            }
+        } else {
+            rb.drag = 1;
         }
+
+
+        
     }
 
     private void ApplyMovement(Vector3 movementDirection)
     {
-        Vector3 defaultVelocity = movementDirection * _movementSpeed * Elympics.TickDuration;
+        Vector3 defaultVelocity = movementDirection * movementSpeed * 10f;
+        if (!GroundCheck())
+        {
+            defaultVelocity *= airMultiplier;
+        }
 
-        _playerRigidbody.velocity = new Vector3(defaultVelocity.x, _playerRigidbody.velocity.y, defaultVelocity.z);
+        rb.AddForce(defaultVelocity, ForceMode.Force);
     }
 
     private void ApplyJump()
     {
-        _playerRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+
+    private void ResetJump()
+    {
+        readyToJump = true;
+    }
+
+    private void SpeedControl()
+    {
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        
+
+        if (flatVel.magnitude > movementSpeed)
+        {
+            Vector3 limitedVel = flatVel.normalized * movementSpeed;
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+        }
+        actualMovementSpeed = flatVel.magnitude;
     }
 
     private bool GroundCheck()

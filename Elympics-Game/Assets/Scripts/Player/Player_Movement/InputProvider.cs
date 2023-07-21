@@ -12,18 +12,12 @@ public class InputProvider : MonoBehaviour
 {
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private ShapeInput _shapeInput;
-    private PlayerController player;
     private List<TimePointF> _points = new List<TimePointF>(255);
     private GatheredInput _gatheredInput;
     #region Mouse Variables
     [SerializeField] private float mouseSensivity = 1.5f;
     [SerializeField] private Vector2 verticalAngleLimits = Vector2.zero;
     #endregion
-
-    public void Awake()
-    {
-        player = GetComponent<PlayerController>();
-    }
 
     public void Start()
     {
