@@ -10,8 +10,8 @@ public class PlayerIdleState : PlayerState
 
     public override void EnterState()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         base.EnterState();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public override void ExitState()
@@ -19,9 +19,14 @@ public class PlayerIdleState : PlayerState
         base.ExitState();
     }
 
-    public override void ElympicsUpdate()
+    public override void PlayerElympicsUpdate()
     {
-        base.ElympicsUpdate();
+        base.PlayerElympicsUpdate();
+        //Debug.Log("Idle state");
+        if (player.isDrawingPressed)
+        {
+            stateMachine.ChangeState(player.CastingSpellState);
+        }
         player._viewController.ProcessView(player.mouseRotation);
     }
 

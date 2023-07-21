@@ -79,24 +79,13 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
             currentInput.isDrawing = isDrawing;
 
             player.mouseRotation = Quaternion.Euler(new Vector3(xRotation, yRotation, zRotation));
-            if (isDrawing)
-            {
-                player.StateMachine.ChangeState(player.CastingSpellState);
-            }
-            if (isDrawingReleased)
-            {
-                player.StateMachine.ChangeState(player.IdleState);
-            }
-            player.ElympicsUpdate();
-            //ProcessMouse(Quaternion.Euler(new Vector3(xRotation, yRotation, zRotation)));
+            player.isDrawingReleased = isDrawingReleased;
+            player.isDrawingPressed = isDrawing;
+            player.PlayerElympicsUpdate();
+            _movementHandler.ProcessMovement(currentInput.movementInput, currentInput.jumpInput);
+            _actionHandler.HandleActions(currentInput.attack_triggered,false, currentInput.shape, Elympics.Tick);
         }
-        _movementHandler.ProcessMovement(currentInput.movementInput, currentInput.jumpInput);
-        _actionHandler.HandleActions(currentInput.attack_triggered,false, currentInput.shape, Elympics.Tick);
-    }
-
-    private void ProcessMouse(Quaternion mouseRotation)
-    {
-        _viewController.ProcessView(mouseRotation);
+        
     }
     
 }

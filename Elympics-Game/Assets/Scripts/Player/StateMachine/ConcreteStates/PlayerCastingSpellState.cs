@@ -12,8 +12,8 @@ public class PlayerCastingSpellState : PlayerState
     public override void EnterState()
     {
         base.EnterState();
-        Debug.Log("Stan CastingSpell");
-        Cursor.lockState = CursorLockMode.None;
+        //Debug.Log("Stan CastingSpell");
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public override void ExitState()
@@ -21,9 +21,14 @@ public class PlayerCastingSpellState : PlayerState
         base.ExitState();
     }
 
-    public override void ElympicsUpdate()
+    public override void PlayerElympicsUpdate()
     {
-        base.ElympicsUpdate();
+        base.PlayerElympicsUpdate();
+
+        if (player.isDrawingReleased)
+        {
+            stateMachine.ChangeState(player.IdleState);
+        }
     }
 
     public override void InputUpdate()

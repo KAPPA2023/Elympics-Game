@@ -16,7 +16,7 @@ public class PlayerState
 
     public virtual void EnterState() { }
     public virtual void ExitState() { }
-    public virtual void ElympicsUpdate() { }
+    public virtual void PlayerElympicsUpdate() { }
     public virtual void InputUpdate() { }
 
 }

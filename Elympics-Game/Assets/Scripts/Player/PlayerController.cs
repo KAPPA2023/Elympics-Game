@@ -14,11 +14,16 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    #region CastingSpell Variables
+
+    public bool isDrawingReleased = false;
+
+    #endregion
+
     #region Idle Variables
 
     public Quaternion mouseRotation;
-    //public float RandomMovementSpeed = 14f;
-    //public int direction = 1;
+    public bool isDrawingPressed = false;
 
     #endregion
 
@@ -35,10 +40,9 @@ public class PlayerController : MonoBehaviour
         StateMachine.Initialize(IdleState);
     }
 
-    public void ElympicsUpdate()
+    public void PlayerElympicsUpdate()
     {
-        Debug.Log(StateMachine.CurrentPlayerState.ToString());
-        StateMachine.CurrentPlayerState.ElympicsUpdate();
+        StateMachine.CurrentPlayerState.PlayerElympicsUpdate();
     }
 
     public void InputUpdate()

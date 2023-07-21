@@ -36,9 +36,6 @@ public class InputProvider : MonoBehaviour
     {
         Vector2 moveDirections = _playerInput.actions["Move"].ReadValue<Vector2>();
         _gatheredInput.movementInput = moveDirections;
-        //player.isDrawingSpell = _playerInput.actions["DrawShape"].IsPressed();
-        //player.endDrawingSpell = _playerInput.actions["DrawShape"].WasReleasedThisFrame();
-        //player.InputUpdate();
         HandleSpellDrawing();
 
         if (checkIfPressedThisFrame("CastSpell"))
@@ -68,9 +65,12 @@ public class InputProvider : MonoBehaviour
     {
         Vector2 position;
         int returned_shape = -1;
-        if (_playerInput.actions["DrawShape"].IsPressed())
+        if (_playerInput.actions["DrawShape"].WasPressedThisFrame())
         {
             _gatheredInput.isDrawing = true;
+        }
+        if (_playerInput.actions["DrawShape"].IsPressed())
+        {
             position = Input.mousePosition;
             _points.Add(new TimePointF(position.x, position.y, TimeEx.NowMs));
         }
