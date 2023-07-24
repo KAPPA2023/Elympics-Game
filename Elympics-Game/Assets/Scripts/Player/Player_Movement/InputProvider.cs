@@ -3,13 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using WobbrockLib;
 using WobbrockLib.Extensions;
 
 public class InputProvider : MonoBehaviour
 {
-    [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private ShapeInput _shapeInput;
     private List<TimePointF> _points = new List<TimePointF>(255);
     private GatheredInput _gatheredInput;
@@ -27,24 +25,23 @@ public class InputProvider : MonoBehaviour
 
     public void UpdateInput()
     {
-        Vector2 moveDirections = _playerInput.actions["Move"].ReadValue<Vector2>();
-        _gatheredInput.movementInput = moveDirections;
-        HandleSpellDrawing();
-
-        if (checkIfPressedThisFrame("CastSpell"))
+        _gatheredInput.movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             _gatheredInput.attack_triggered = true;
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _gatheredInput.jumpInput = true;
+        }
+        HandleSpellDrawing();
+        
         var mouseX = Input.GetAxis("Mouse X");
         var mouseY = Input.GetAxis("Mouse Y") * -1;
         var newMouseAngles = _gatheredInput.mouseAxis + new Vector3(mouseY, mouseX) * mouseSensivity;
         _gatheredInput.mouseAxis = FixTooLargeMouseAngles(newMouseAngles);
-
-        if (checkIfPressedThisFrame("Space"))
-        {
-            _gatheredInput.jumpInput = true;
-        }
+        
     }
 
     private Vector3 FixTooLargeMouseAngles(Vector3 mouseAngles)
@@ -58,16 +55,17 @@ public class InputProvider : MonoBehaviour
     {
         Vector2 position;
         int returned_shape = -1;
-        if (_playerInput.actions["DrawShape"].WasPressedThisFrame())
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             _gatheredInput.isDrawing = true;
         }
-        if (_playerInput.actions["DrawShape"].IsPressed())
+        
+        if (Input.GetKey(KeyCode.Mouse1))
         {
             position = Input.mousePosition;
             _points.Add(new TimePointF(position.x, position.y, TimeEx.NowMs));
         }
-        else if (_playerInput.actions["DrawShape"].WasReleasedThisFrame())
+        else if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             _gatheredInput.isDrawingReleased = true;
             returned_shape = _shapeInput.GetShape(_points);
@@ -86,11 +84,6 @@ public class InputProvider : MonoBehaviour
         _gatheredInput.isDrawing = false;
         _gatheredInput.isDrawingReleased = false;
         return returnedInput;
-    }
-
-    private bool checkIfPressedThisFrame(string key)
-    {
-        return _playerInput.actions[key].WasPressedThisFrame();
     }
 }
 
