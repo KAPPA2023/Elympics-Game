@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 { 
     #region State Machine Variables
     [SerializeField] public ViewController _viewController;
-    [SerializeField] public InputProvider _inputProvider;
     public PlayerStateMachine StateMachine { get; set; }
     public PlayerIdleState IdleState { get; set; }
     public PlayerCastingSpellState CastingSpellState { get; set; }

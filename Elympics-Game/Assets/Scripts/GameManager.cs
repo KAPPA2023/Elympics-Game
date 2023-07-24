@@ -56,7 +56,5 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
         PlayerData[] players = playerProvider.AllPlayersInScene;
 
         int highest_score = players[0].Score;
-
     }
-
 }

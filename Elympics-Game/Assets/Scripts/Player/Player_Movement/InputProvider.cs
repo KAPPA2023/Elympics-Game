@@ -36,11 +36,14 @@ public class InputProvider : MonoBehaviour
             _gatheredInput.jumpInput = true;
         }
         HandleSpellDrawing();
-        
-        var mouseX = Input.GetAxis("Mouse X");
-        var mouseY = Input.GetAxis("Mouse Y") * -1;
-        var newMouseAngles = _gatheredInput.mouseAxis + new Vector3(mouseY, mouseX) * mouseSensivity;
-        _gatheredInput.mouseAxis = FixTooLargeMouseAngles(newMouseAngles);
+
+        if (!Input.GetKey(KeyCode.Mouse1))
+        {
+            var mouseX = Input.GetAxis("Mouse X");
+            var mouseY = Input.GetAxis("Mouse Y") * -1;
+            var newMouseAngles = _gatheredInput.mouseAxis + new Vector3(mouseY, mouseX) * mouseSensivity;
+            _gatheredInput.mouseAxis = FixTooLargeMouseAngles(newMouseAngles);
+        }
         
     }
 
