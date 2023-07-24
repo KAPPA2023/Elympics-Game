@@ -1,36 +1,31 @@
 using System.Collections.Generic;
 using UnityEngine;
-using WobbrockLib;
-using WobbrockLib.Extensions;
 
+using PDollarGestureRecognizer;
 
 public class ShapeInput : MonoBehaviour
 {
-    private Recognizer2 _rec;
-    private bool _protractor = false;
+    private List<Gesture> trainingSet = new List<Gesture>();
     
     void Start()
     {
-        _rec = ScriptableObject.CreateInstance<Recognizer2>();
-        _rec.LoadGesture();
+        //Load pre-made gestures
+        TextAsset[] gesturesXml = Resources.LoadAll<TextAsset>("SpellPatterns/");
+        foreach (TextAsset gestureXml in gesturesXml)
+            trainingSet.Add(GestureIO.ReadGestureFromXML(gestureXml.text));
     }
     
-    public int GetShape(List<TimePointF> points)
+    public int GetShape(List<Point> points)
     {
-        NBestList result = _rec.Recognize(points, _protractor);
-        if (result.Score < 0.75 )
+        Gesture candidate = new Gesture(points.ToArray());
+        Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
+        Debug.Log(gestureResult.GestureClass + " " + gestureResult.Score);
+        //if (gestureResult.Score < 0.85) return -1;
+        switch (gestureResult.GestureClass)
         {
-            return -1;
-        }
-        
-        switch (result.Name)
-        { 
-            case "triangle":
-                return 0;
-            case "c":
-                return 1;
-            default: 
-                return -1;
+            case "triangle": return 0;
+            case "c": return 1;
+            default: return -1;
         }
     } 
 }

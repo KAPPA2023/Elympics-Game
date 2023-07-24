@@ -1,15 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
-using WobbrockLib;
-using WobbrockLib.Extensions;
+using PDollarGestureRecognizer;
 
 public class InputProvider : MonoBehaviour
 {
     [SerializeField] private ShapeInput _shapeInput;
-    private List<TimePointF> _points = new List<TimePointF>(255);
+    private List<Point> _points = new List<Point>();
     private GatheredInput _gatheredInput;
     #region Mouse Variables
     [SerializeField] private float mouseSensivity = 1.5f;
@@ -66,7 +64,7 @@ public class InputProvider : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse1))
         {
             position = Input.mousePosition;
-            _points.Add(new TimePointF(position.x, position.y, TimeEx.NowMs));
+            _points.Add(new Point(position.x, position.y,0));
         }
         else if (Input.GetKeyUp(KeyCode.Mouse1))
         {
