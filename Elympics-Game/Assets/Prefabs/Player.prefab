@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3137473124097492630}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3137473122721184460
 MonoBehaviour:
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 4
+  networkId: 16
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -109,86 +109,8 @@ Transform:
   m_Children:
   - {fileID: 3137473123422059862}
   m_Father: {fileID: 3137473124097492630}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3137473123373597632
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3137473123373597639}
-  - component: {fileID: 3137473123373597637}
-  - component: {fileID: 3137473123373597638}
-  m_Layer: 0
-  m_Name: HealthComponent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3137473123373597639
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3137473123373597632}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.63853663, y: -3.080257, z: -3.4022257}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3137473124097492630}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3137473123373597637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3137473123373597632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 334c2a3facb248ac8c1a599797c52dae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forceNetworkId: 0
-  networkId: 3
-  predictableFor:
-    playerIndex: -2
-  isUpdatableForNonOwners: 0
-  visibleFor:
-    playerIndex: -3
-  stateFrequencyStages:
-  - stageDurationInMiliseconds: 500
-    frequencyInMiliseconds: 30
-    maxStageDurationInMiliseconds: 5000
-  - stageDurationInMiliseconds: 1000
-    frequencyInMiliseconds: 200
-    maxStageDurationInMiliseconds: 5000
-  - stageDurationInMiliseconds: 1000
-    frequencyInMiliseconds: 1000
-    maxStageDurationInMiliseconds: 5000
---- !u!114 &3137473123373597638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3137473123373597632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49634a1ebd2091c408454ca0876eead7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  health:
-    currentValue: 0
-  ActionHandler: {fileID: 3137473124097492642}
 --- !u!1 &3137473123422059863
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,10 +216,10 @@ GameObject:
   - component: {fileID: 3137473124097492648}
   - component: {fileID: 3137473124097492654}
   - component: {fileID: 3137473124097492642}
-  - component: {fileID: 3137473124097492641}
   - component: {fileID: 3137473124097492640}
   - component: {fileID: 3137473124097492646}
   - component: {fileID: 3137473124097492647}
+  - component: {fileID: 1310909851}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -313,11 +235,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3137473124097492626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.21357536, y: 1.34, z: 0.09}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3137473123373597639}
   - {fileID: 3137473122721184461}
   - {fileID: 3137473123270892414}
   m_Father: {fileID: 0}
@@ -416,7 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 2
+  networkId: 17
   predictableFor:
     playerIndex: 0
   isUpdatableForNonOwners: 0
@@ -515,7 +436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerInput: {fileID: 3137473124097492650}
   _shapeInput: {fileID: 3137473124097492654}
-  mouseSensivity: 1.5
+  mouseSensivity: 2.1
   verticalAngleLimits: {x: -90, y: 90}
 --- !u!114 &3137473124097492655
 MonoBehaviour:
@@ -546,8 +467,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0433bc0e7c403144cadb0e02ddbdb86c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 300
-  _jumpForce: 5
+  movementSpeed: 10
+  groundDrag: 6
+  actualMovementSpeed: 0
+  jumpForce: 7
+  jumpCooldown: 0.25
+  airMultiplier: 0.3
   boxSize: {x: 1, y: 0.2, z: 1}
   maxDistance: 1
   layerMask:
@@ -581,18 +506,6 @@ MonoBehaviour:
   viewController: {fileID: 3137473123270892415}
   currentAction:
     currentValue: 0
---- !u!114 &3137473124097492641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3137473124097492626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4c7ae5ed8bd89b4796f22407c179f5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3137473124097492640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,3 +545,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
+  playerProvider: {fileID: 0}
+  maxHealth: 100
+--- !u!114 &1310909851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3137473124097492626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af769530b732cef49b68355f094126d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _viewController: {fileID: 3137473124097492640}
+  _inputProvider: {fileID: 3137473124097492649}
+  isDrawingReleased: 0
+  mouseRotation: {x: 0, y: 0, z: 0, w: 0}
+  isDrawingPressed: 0

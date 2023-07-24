@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellDamage: 5
   spellSpeed: 2
-  drop: 0
+  maxLifetime: 5
 --- !u!54 &2562298034367758845
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -303,4 +303,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellDamage: 0
   spellSpeed: 0
-  drop: 0
+  maxLifetime: 0
