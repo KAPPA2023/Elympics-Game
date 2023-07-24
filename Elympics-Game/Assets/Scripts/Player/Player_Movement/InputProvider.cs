@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using WobbrockLib;
 using WobbrockLib.Extensions;
-using Debug = UnityEngine.Debug;
 
 public class InputProvider : MonoBehaviour
 {

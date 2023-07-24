@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameName: KAPPA-Game
   gameId: 431964a5-45bf-41c2-8bb8-329369aa978a
-  gameVersion: 1
+  gameVersion: 4
   players: 2
-  gameplayScene: Assets/Scenes/SampleScene.unity
-  gameplaySceneAsset: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+  gameplayScene: Assets/Scenes/SampleScene_a3cb.unity
+  gameplaySceneAsset: {fileID: 102900000, guid: d6485461cb076ab43b42c88b76ea0247, type: 3}
   botsInServer: 1
   useWeb: 0
   legacyMatchmakingClient: 0
@@ -51,12 +51,12 @@ MonoBehaviour:
     queueName: 
     regionName: 
   testPlayers:
-  - userId: 
+  - userId: 0
     isBot: 0
     botDifficulty: 0
     gameEngineData: 
     matchmakerData: []
-  - userId: 
+  - userId: 1
     isBot: 0
     botDifficulty: 0
     gameEngineData: 

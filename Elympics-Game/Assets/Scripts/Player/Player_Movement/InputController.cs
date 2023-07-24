@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Elympics;
-using Unity.Profiling.Editor;
 
 public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
 {

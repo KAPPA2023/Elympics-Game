@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,13 @@ public class ActionHandler : MonoBehaviour, IObservable
     
     private int _selectedSpell = -1;
     private int _remainingUses = 0;
-    
+    private int[] _stashedSpells;
+
+    public void Awake()
+    {
+        _stashedSpells = new int[]{-1, -1, -1};
+    }
+
     public void HandleActions(bool attack, bool draw, int shape ,long tick)
     {
         int lastAction = currentAction.Value;
@@ -34,7 +41,7 @@ public class ActionHandler : MonoBehaviour, IObservable
     {
         if (_selectedSpell != -1 && _remainingUses > 0)
         {
-            spellSpawner.TrySpawningSpell(_selectedSpell + 1,direction);
+            spellSpawner.TrySpawningSpell(_selectedSpell + 1,direction, GetComponent<PlayerData>().PlayerId);
             _remainingUses--;
         }
         else
@@ -45,52 +52,37 @@ public class ActionHandler : MonoBehaviour, IObservable
 
     public void castBasicAttack(Vector3 direction)
     {
-        spellSpawner.TrySpawningSpell(0, direction);
+        spellSpawner.TrySpawningSpell(0, direction, GetComponent<PlayerData>().PlayerId);
     }
 
     public void chooseSpell(int drawn_spell)
     {
         if (drawn_spell >= 0)
         {
-            
-            _selectedSpell = drawn_spell;
-            isInInventory(drawn_spell);
-        }
-    }
-
-    private void isInInventory(int drawn_spell)
-    {
-        switch (drawn_spell)
-        {
-            case 0:
-                if (this.gameObject.GetComponent<Inventory>().canCastFireball())
+            for (int i = 0; i < 3; i++)
+            {
+                if (_stashedSpells[i] == drawn_spell)
                 {
+                    
+                    _selectedSpell = drawn_spell;
+                    Debug.Log(_selectedSpell);
+                    _stashedSpells[i] = -1;
                     _remainingUses = 3;
+                    break;
                 }
-                else
-                {
-                    _remainingUses = 0;
-                    _selectedSpell = -1;
-                }
-
-                break;
-
-            case 1:
-                if(this.gameObject.GetComponent<Inventory>().canCastLightning())
-                {_remainingUses = 1;}
-            
-                else
-                {
-                    _remainingUses = 0;
-                    _selectedSpell = -1;
-                }
-
-                break;
+            }
         }
     }
-    
-    public int GetCurrentAction()
+    public bool addSpell(int spellID)
     {
-        return currentAction.Value;
+        for (int i = 0; i < 3; i++)
+        {
+            if (_stashedSpells[i] == -1)
+            {
+                _stashedSpells[i] = spellID;
+                return true;
+            }
+        }
+        return false;
     }
 }
