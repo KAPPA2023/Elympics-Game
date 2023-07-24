@@ -1,21 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Elympics;
 
-public class Spell : MonoBehaviour
+public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
 {
-    private static GameObject Spellprefab;
-    
+    [SerializeField] protected float spellDamage;
+    [SerializeField] protected float spellSpeed;
+    private Vector3 spellVelocity;
+    private int caster;
+    private ElympicsBool shouldBeDestoyed = new ElympicsBool();
+    //if spell exploded on collision or smth
+    //[SerializeField] private float spellRange;
 
-    // Start is called before the first frame update
-    void Start()
+    public void spawnSpell(Vector3 position, Vector3 direction, int casterID, long tick)
     {
-        
+        //we can use tick to setup timers - for example fireball could explode after 2 seconds in air
+        transform.position = position;
+        spellVelocity = direction.normalized * spellSpeed;
+        caster = casterID;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        var playerInfo = other.GetComponent<PlayerData>();
+        if (playerInfo != null)
+        {
+            playerInfo.DealDamage(spellDamage, caster);
+        }
+        shouldBeDestoyed.Value = true;
+    }
+
+    public void ElympicsUpdate()
+    {
+        if(shouldBeDestoyed.Value) ElympicsDestroy(gameObject);
+        transform.position += spellVelocity;
     }
 }
