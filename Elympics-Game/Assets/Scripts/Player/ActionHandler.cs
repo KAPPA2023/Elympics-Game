@@ -20,6 +20,11 @@ public class ActionHandler : MonoBehaviour, IObservable
         _stashedSpells = new int[]{-1, -1, -1};
     }
 
+    public int[] getSpells()
+    {
+        return _stashedSpells;
+    }
+
     public void HandleActions(bool attack, bool draw, int shape ,long tick)
     {
         int lastAction = currentAction.Value;
