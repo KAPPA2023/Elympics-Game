@@ -8,6 +8,7 @@ public class PlayerData : ElympicsMonoBehaviour, IObservable, IInitializable, IU
 {
     [Header("Parameters:")]
     [SerializeField] private int playerId = 0;
+    [SerializeField] public string playerName = "Player";
     [SerializeField] private PlayerProvider playerProvider = null;
     [SerializeField] private StatsController statsController = null;
 
