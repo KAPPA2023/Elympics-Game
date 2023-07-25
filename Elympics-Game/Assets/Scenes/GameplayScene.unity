@@ -4604,7 +4604,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToStartMatch: 3
-  matchLength: 10
+  matchLength: 120
+  gameEnded:
+    currentValue: 0
 --- !u!114 &544778522
 MonoBehaviour:
   m_ObjectHideFlags: 0
