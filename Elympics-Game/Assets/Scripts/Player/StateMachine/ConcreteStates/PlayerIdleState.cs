@@ -22,12 +22,13 @@ public class PlayerIdleState : PlayerState
     public override void PlayerElympicsUpdate()
     {
         base.PlayerElympicsUpdate();
-        //Debug.Log("Idle state");
+
         if (player.isDrawingPressed)
         {
             stateMachine.ChangeState(player.CastingSpellState);
         }
-        player._viewController.ProcessView(player.mouseRotation);
+        player.viewController.ProcessView(player.mouseRotation);
+        player.movementController.ProcessMovement(player.movementInput, player.isJump);
     }
 
     public override void InputUpdate()

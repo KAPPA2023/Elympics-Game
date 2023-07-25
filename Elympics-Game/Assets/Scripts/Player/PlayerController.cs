@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 { 
     #region State Machine Variables
-    [SerializeField] public ViewController _viewController;
+    [SerializeField] public ViewController viewController;
+    [SerializeField] public MovementController movementController;
     public PlayerStateMachine StateMachine { get; set; }
     public PlayerIdleState IdleState { get; set; }
     public PlayerCastingSpellState CastingSpellState { get; set; }
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     public Quaternion mouseRotation;
     public bool isDrawingPressed = false;
+    public Vector2 movementInput;
+    public bool isJump;
 
     #endregion
 

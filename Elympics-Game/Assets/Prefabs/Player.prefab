@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 16
+  networkId: 36
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -210,7 +210,6 @@ GameObject:
   - component: {fileID: 3137473124097492629}
   - component: {fileID: 3137473124097492628}
   - component: {fileID: 3137473124097492651}
-  - component: {fileID: 3137473124097492650}
   - component: {fileID: 3137473124097492649}
   - component: {fileID: 3137473124097492655}
   - component: {fileID: 3137473124097492648}
@@ -220,6 +219,7 @@ GameObject:
   - component: {fileID: 3137473124097492646}
   - component: {fileID: 3137473124097492647}
   - component: {fileID: 1310909851}
+  - component: {fileID: 8666594125141729840}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 17
+  networkId: 37
   predictableFor:
     playerIndex: 0
   isUpdatableForNonOwners: 0
@@ -392,36 +392,6 @@ MonoBehaviour:
   isKinematicConfig:
     synchronizationEnabled: 0
     tolerance: 0
---- !u!114 &3137473124097492650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3137473124097492626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: bc99cd81f4e8a614f8b849147cdcba51, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: K&M
-  m_DefaultActionMap: inGame
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &3137473124097492649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,7 +404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a215576c358fbc643a458090a409111a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInput: {fileID: 3137473124097492650}
   _shapeInput: {fileID: 3137473124097492654}
   mouseSensivity: 2.1
   verticalAngleLimits: {x: -90, y: 90}
@@ -546,7 +515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerId: 0
   playerProvider: {fileID: 0}
-  maxHealth: 100
+  statsController: {fileID: 8666594125141729840}
 --- !u!114 &1310909851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,7 +529,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _viewController: {fileID: 3137473124097492640}
-  _inputProvider: {fileID: 3137473124097492649}
   isDrawingReleased: 0
   mouseRotation: {x: 0, y: 0, z: 0, w: 0}
   isDrawingPressed: 0
+--- !u!114 &8666594125141729840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3137473124097492626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153fb4891bbfc8c46b36340176bb0407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  playerData: {fileID: 3137473124097492647}
