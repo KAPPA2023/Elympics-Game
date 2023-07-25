@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Elympics;
+using UnityEngine.Serialization;
 
 public class MainMenu : MonoBehaviour
 {
-    private bool searchInProgress = false;
-    
+    [SerializeField] private MatchmakingManager matchmakingManager;
     public void PlayGame()
     {
-        searchInProgress = true;
-        if (searchInProgress) return;
-        ElympicsLobbyClient.Instance.PlayOnlineInRegion(null, null,null, "Default");
+        matchmakingManager.PlayOnline();
     }
 
     public void GoToSettingsMenu()

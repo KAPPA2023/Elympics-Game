@@ -9,12 +9,9 @@ public class PlayerData : ElympicsMonoBehaviour, IObservable, IInitializable, IU
     [Header("Parameters:")]
     [SerializeField] private int playerId = 0;
     [SerializeField] private PlayerProvider playerProvider = null;
+    [SerializeField] private StatsController statsController = null;
 
     public int PlayerId => playerId;
-    
-    [Header("Parameters:")]
-    [SerializeField] private float maxHealth = 100;
-    private ElympicsFloat health = new ElympicsFloat();
     
     
     public ElympicsBool IsDead { get; } = new ElympicsBool(false);
@@ -23,17 +20,12 @@ public class PlayerData : ElympicsMonoBehaviour, IObservable, IInitializable, IU
 
     public void Initialize()
     {
-        health.Value = maxHealth;
+
     }
-    
+
     public void DealDamage(float damage, int damageOwner)
     {
-        if (!Elympics.IsServer) return;
-        
-        health.Value -= damage;
-        
-        if (health.Value <= 0.0f) ProcessDeath(damageOwner);
-        
+        statsController.ChangeHealth(damage, damageOwner);
     }
 
     private void AddScore(int points)
@@ -78,7 +70,7 @@ public class PlayerData : ElympicsMonoBehaviour, IObservable, IInitializable, IU
         PlayerSpawner.Instance.SpawnPlayer(this);
         GetComponent<Collider>().enabled = true;
         GetComponent<Rigidbody>().useGravity = true;
-        health.Value = maxHealth;
+        statsController.ResetPlayerStats();
         IsDead.Value = false;
     }
 }
