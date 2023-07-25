@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7819ae34cfdd57c46ae782a16569b136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  matchmakingManager: {fileID: 0}
 --- !u!1 &113294623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,6 +1419,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1400438036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1400438039}
+  - component: {fileID: 1400438038}
+  - component: {fileID: 1400438040}
+  m_Layer: 0
+  m_Name: MatchmakingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1400438038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400438036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cfdb28fef87acf46a5c4daa5fd99f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1400438039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400438036}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 520.1257, y: 243.87062, z: 196.1404}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1400438040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400438036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd55e11dca40e6646982daee3830002a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1547887049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,6 +1528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7819ae34cfdd57c46ae782a16569b136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  matchmakingManager: {fileID: 1400438038}
 --- !u!1 &1586009222
 GameObject:
   m_ObjectHideFlags: 0
