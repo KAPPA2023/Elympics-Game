@@ -1,5 +1,6 @@
 using Elympics;
 using System;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
@@ -7,6 +8,7 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
     [Header("Parameters:")]
     [SerializeField] private float matchLength = 120.0f;
     [SerializeField] private float postGameTime = 5.0f;
+    [SerializeField] private TextMeshProUGUI timer;
 
     public ElympicsBool gameEnded = new ElympicsBool(false);
     public ElympicsFloat CurrentTimeOfMatchRemaining { get; } = new ElympicsFloat(0.0f);
@@ -22,6 +24,7 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
     public void ElympicsUpdate()
     {
             CurrentTimeOfMatchRemaining.Value -= Elympics.TickDuration;
+            timer.text = $"{(int)CurrentTimeOfMatchRemaining.Value}";
             if (!(CurrentTimeOfMatchRemaining.Value < 0.0f)) return;
             gameEnded.Value = true;
             PostGameTime.Value -= Elympics.TickDuration;
