@@ -5,15 +5,14 @@ using Elympics;
 
 public class SpellSpawner : ElympicsMonoBehaviour
 {
-    [SerializeField] private List<GameObject> spellList;
+    [SerializeField] private List<GameObject> spellList;          // TODO zmienic i podstawic gameobjecty spelli
     [SerializeField] private int spellCooldown;
 
-    public void TrySpawningSpell(int selectedSpell, Vector3 forward, int caster_id)
+    public void TrySpawningSpell(string selectedSpell, Vector3 forward, int caster_id)
     {
         if (Elympics.IsServer)
         {
-            GameObject spellObject = spellList[selectedSpell];
-            Spell spawnedSpell =  ElympicsInstantiate(spellObject.name, ElympicsPlayer.World ).GetComponent<Spell>();
+            Spell spawnedSpell =  ElympicsInstantiate(selectedSpell, ElympicsPlayer.World ).GetComponent<Spell>();
             spawnedSpell.spawnSpell(transform.position, forward, caster_id,Elympics.Tick);
         }
     }

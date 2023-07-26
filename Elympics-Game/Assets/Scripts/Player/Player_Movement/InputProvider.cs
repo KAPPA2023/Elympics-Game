@@ -10,13 +10,13 @@ public class InputProvider : MonoBehaviour
     private List<Point> _points = new List<Point>();
     private GatheredInput _gatheredInput;
     #region Mouse Variables
-    [SerializeField] private float mouseSensivity = 1.5f;
-    [SerializeField] private Vector2 verticalAngleLimits = Vector2.zero;
+    [SerializeField] private float mouseSensivity;
+    [SerializeField] private Vector2 verticalAngleLimits;
     #endregion
 
     public void Start()
     {
-        _gatheredInput.shape = -1;
+        _gatheredInput.shape = "empty";
         _gatheredInput.attack_triggered = false;
         _gatheredInput.isDrawing = false;
     }
@@ -55,7 +55,7 @@ public class InputProvider : MonoBehaviour
     private void HandleSpellDrawing()
     {
         Vector2 position;
-        int returned_shape = -1;
+        string returned_shape = "empty";
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             _gatheredInput.isDrawing = true;
@@ -80,7 +80,7 @@ public class InputProvider : MonoBehaviour
         GatheredInput returnedInput = _gatheredInput;
         _gatheredInput.movementInput = Vector2.zero;
         _gatheredInput.jumpInput = false;
-        _gatheredInput.shape = -1;
+        _gatheredInput.shape = "empty";
         _gatheredInput.attack_triggered = false;
         _gatheredInput.isDrawing = false;
         _gatheredInput.isDrawingReleased = false;
@@ -94,7 +94,7 @@ public struct GatheredInput
     public bool jumpInput;
     public bool isDrawing;
     public bool isDrawingReleased;
-    public int shape;
+    public string shape;
     public bool attack_triggered;
     public Vector3 mouseAxis;
 }

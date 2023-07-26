@@ -25,13 +25,13 @@ public class PlayerSpells : MonoBehaviour
         {
             switch (spellsNumbers[i])
             {
-                case -1:
+                case "empty":
                     spells[i].sprite = sprites[0]; 
                     break;
-                case 0:
+                case "fireBall":
                     spells[i].sprite = sprites[1];
                     break;
-                case 1:
+                case "lightningBolt":
                     spells[i].sprite = sprites[2];
                     break;
             }

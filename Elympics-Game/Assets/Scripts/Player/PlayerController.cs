@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     #region State Machine Variables
     [SerializeField] public ViewController viewController;
     [SerializeField] public MovementController movementController;
+    [SerializeField] public ActionHandler actionHandler;
     public PlayerStateMachine StateMachine { get; set; }
     public PlayerIdleState IdleState { get; set; }
     public PlayerCastingSpellState CastingSpellState { get; set; }
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour
     public bool isDrawingPressed = false;
     public Vector2 movementInput;
     public bool isJump;
+    public bool attackTriggered;
+    public string shape;
 
     #endregion
 

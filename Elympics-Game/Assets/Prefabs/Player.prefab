@@ -272,7 +272,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ad67f682abf02f74e9be54177c426d61, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -421,9 +421,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerData: {fileID: 3137473124097492647}
   _inputHandler: {fileID: 3137473124097492649}
-  _movementHandler: {fileID: 3137473124097492648}
+  gameManager: {fileID: 0}
   _actionHandler: {fileID: 3137473124097492642}
-  _viewController: {fileID: 3137473124097492640}
 --- !u!114 &3137473124097492648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,8 +472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellSpawner: {fileID: 3137473122721184460}
   viewController: {fileID: 3137473123270892415}
-  currentAction:
-    currentValue: 0
+  spellCooldown: 0.2
 --- !u!114 &3137473124097492640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,7 +512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
-  playerName: Player
+  playerName: RED
   playerProvider: {fileID: 0}
   statsController: {fileID: 8666594125141729840}
 --- !u!114 &1310909851
@@ -529,13 +527,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af769530b732cef49b68355f094126d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewController: {fileID: 0}
-  movementController: {fileID: 0}
+  viewController: {fileID: 3137473124097492640}
+  movementController: {fileID: 3137473124097492648}
+  actionHandler: {fileID: 3137473124097492642}
   isDrawingReleased: 0
   mouseRotation: {x: 0, y: 0, z: 0, w: 0}
   isDrawingPressed: 0
   movementInput: {x: 0, y: 0}
   isJump: 0
+  attackTriggered: 0
+  shape: 
 --- !u!114 &8666594125141729840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,5 +550,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  isDead: 0
   playerData: {fileID: 3137473124097492647}
+  isDead:
+    currentValue: 0

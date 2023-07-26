@@ -29,6 +29,7 @@ public class PlayerIdleState : PlayerState
         }
         player.viewController.ProcessView(player.mouseRotation);
         player.movementController.ProcessMovement(player.movementInput, player.isJump);
+        player.actionHandler.HandleActions(player.attackTriggered, player.shape);
     }
 
     public override void InputUpdate()

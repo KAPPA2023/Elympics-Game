@@ -29,6 +29,7 @@ public class PlayerCastingSpellState : PlayerState
             stateMachine.ChangeState(player.IdleState);
         }
         player.movementController.ProcessMovement(player.movementInput, player.isJump);
+        player.actionHandler.chooseSpell(player.shape);
     }
 
     public override void InputUpdate()
