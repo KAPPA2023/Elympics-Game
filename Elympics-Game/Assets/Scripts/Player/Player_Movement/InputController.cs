@@ -3,19 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Elympics;
+using UnityEngine.SceneManagement;
 
 public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
 {
     private PlayerController player = null;
     [SerializeField] private PlayerData _playerData = null;
     [SerializeField] private InputProvider _inputHandler;
-    [SerializeField] private MovementController _movementHandler;
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private ActionHandler _actionHandler;
-    [SerializeField] private ViewController _viewController;
 
     private void Awake()
     {
         player = GetComponent<PlayerController>();
+        gameManager.PostGameTime.ValueChanged += BacktoMenu;
     }
 
     private void Update()
@@ -46,6 +47,8 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
 
     public void ElympicsUpdate()
     {
+        if (gameManager.gameEnded.Value) return;
+        
         GatheredInput currentInput;
         currentInput.movementInput = Vector2.zero;
         currentInput.jumpInput = false;
@@ -87,6 +90,16 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
             _actionHandler.HandleActions(currentInput.attack_triggered,false, currentInput.shape, Elympics.Tick);
         }
         
+    }
+    
+    //TODO: remove this
+    private void BacktoMenu(float oldVal, float newValue)
+    {
+        if(Elympics.IsServer) return;
+        if (newValue < 0.1f)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
     }
     
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,12 @@ using UnityEngine.Serialization;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private MatchmakingManager matchmakingManager;
+
+    public void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
     public void PlayGame()
     {
         matchmakingManager.PlayOnline();

@@ -20,7 +20,7 @@ public class ShapeInput : MonoBehaviour
         Gesture candidate = new Gesture(points.ToArray());
         Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
         Debug.Log(gestureResult.GestureClass + " " + gestureResult.Score);
-        //if (gestureResult.Score < 0.85) return -1;
+        //if (gestureResult.Score < 0.70) return -1;
         switch (gestureResult.GestureClass)
         {
             case "triangle": return 0;

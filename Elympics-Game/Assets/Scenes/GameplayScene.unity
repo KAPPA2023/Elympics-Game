@@ -1182,6 +1182,7 @@ GameObject:
   - component: {fileID: 156267956}
   - component: {fileID: 156267958}
   - component: {fileID: 156267957}
+  - component: {fileID: 156267959}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -1306,6 +1307,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156267955}
   m_CullTransparentMesh: 1
+--- !u!114 &156267959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156267955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0464865a141750d43a65ad3e13dc992a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 544778521}
 --- !u!1 &174744020
 GameObject:
   m_ObjectHideFlags: 0
@@ -5004,7 +5018,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matchLength: 120
   postGameTime: 5
-  timer: {fileID: 156267957}
   gameEnded:
     currentValue: 0
 --- !u!114 &544778522
@@ -10359,6 +10372,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3137473124097492655, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 544778521}
     - target: {fileID: 8666594125141729840, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: playerProvider
       value: 
@@ -13880,7 +13897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1936920795336366074, guid: 4213ff791e0692e4f9debe8d3d296327, type: 3}
       propertyPath: spellID
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2441784628701109021, guid: 4213ff791e0692e4f9debe8d3d296327, type: 3}
       propertyPath: networkId
@@ -14111,7 +14128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1936920795336366074, guid: 4213ff791e0692e4f9debe8d3d296327, type: 3}
       propertyPath: spellID
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2441784628701109021, guid: 4213ff791e0692e4f9debe8d3d296327, type: 3}
       propertyPath: networkId
@@ -20923,6 +20940,10 @@ PrefabInstance:
       propertyPath: _uiController
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3137473124097492655, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 544778521}
     - target: {fileID: 8666594125141729840, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: playerProvider
       value: 
