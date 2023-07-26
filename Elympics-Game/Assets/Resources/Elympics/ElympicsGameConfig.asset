@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameName: KAPPA-Game
   gameId: 431964a5-45bf-41c2-8bb8-329369aa978a
-  gameVersion: 6
+  gameVersion: 8
   players: 2
   gameplayScene: Assets/Scenes/GameplayScene.unity
-  gameplaySceneAsset: {fileID: 102900000, guid: d6485461cb076ab43b42c88b76ea0247, type: 3}
+  gameplaySceneAsset: {fileID: 102900000, guid: 96a5c199042c94a4ab41883ae7452d8c, type: 3}
   botsInServer: 1
   useWeb: 0
   legacyMatchmakingClient: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
   prediction: 1
   predictionLimitInTicks: 8
   detailedNetworkLog: 0
-  mode: 1
+  mode: 2
   halfRemoteMode: 0
   useWebInHalfRemote: 0
   ipForHalfRemoteMode: 127.0.0.1

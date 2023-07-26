@@ -5,48 +5,30 @@ using UnityEngine;
 public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
 {
     [Header("Parameters:")]
-    [SerializeField] private float timeToStartMatch = 1.0f;
     [SerializeField] private float matchLength = 120.0f;
+    [SerializeField] private float postGameTime = 5.0f;
 
     public ElympicsBool gameEnded = new ElympicsBool(false);
-    
-    public ElympicsFloat CurrentTimeToStartMatch { get; } = new ElympicsFloat(0.0f);
     public ElympicsFloat CurrentTimeOfMatchRemaining { get; } = new ElympicsFloat(0.0f);
-	
-    private ElympicsBool gameInitializationEnabled = new ElympicsBool(false);
+    public ElympicsFloat PostGameTime { get; } = new ElympicsFloat(0.0f);
     
     public void Initialize()
     {
-        if (Elympics.IsServer)
-        {
-            CurrentTimeToStartMatch.Value = timeToStartMatch;
-            CurrentTimeOfMatchRemaining.Value = matchLength;
-            gameInitializationEnabled.Value = true;
-        }
+        if (!Elympics.IsServer) return;
+        CurrentTimeOfMatchRemaining.Value = matchLength;
+        PostGameTime.Value = postGameTime;
     }
     
     public void ElympicsUpdate()
     {
-        
-        if (gameInitializationEnabled)
-        {
-            CurrentTimeToStartMatch.Value -= Elympics.TickDuration;
-            if (CurrentTimeToStartMatch < 0.0f)
-            {
-                gameInitializationEnabled.Value = false;
-            }
-        }
-        else
-        {
             CurrentTimeOfMatchRemaining.Value -= Elympics.TickDuration;
-            if (CurrentTimeOfMatchRemaining.Value < 0.0f)
+            if (!(CurrentTimeOfMatchRemaining.Value < 0.0f)) return;
+            gameEnded.Value = true;
+            PostGameTime.Value -= Elympics.TickDuration;
+                
+            if (Elympics.IsServer && PostGameTime.Value < 0.0f)
             {
-                gameEnded.Value = true;
-                if (Elympics.IsServer)
-                {
-                    Elympics.EndGame();
-                }
+                Elympics.EndGame();
             }
-        }
     }
 }

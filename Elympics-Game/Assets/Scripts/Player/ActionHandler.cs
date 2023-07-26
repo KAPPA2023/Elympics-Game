@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Elympics;
 
-public class ActionHandler : MonoBehaviour, IObservable
+public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
 {
     [SerializeField] private SpellSpawner spellSpawner;
     [SerializeField] private GameObject viewController;
+    [SerializeField] private float spellCooldown = 0.2f;
 
-    [SerializeField] private ElympicsInt currentAction = new ElympicsInt(); //0 - idle, 1- casting spell, 2 - drawing spell
+    protected ElympicsFloat currentTimeBetweenShoots = new ElympicsFloat();
+    protected bool canCast => currentTimeBetweenShoots >= spellCooldown;
     
     private int _selectedSpell = -1;
     private int _remainingUses = 0;
@@ -27,18 +29,10 @@ public class ActionHandler : MonoBehaviour, IObservable
 
     public void HandleActions(bool attack, bool draw, int shape ,long tick)
     {
-        int lastAction = currentAction.Value;
         chooseSpell(shape);
-        if (lastAction == 0)
+        if (attack && canCast)
         {
-            if (attack)
-            {
-                castSpell(viewController.transform.forward);
-            }
-        }
-        else if (lastAction == 1)
-        {
-            currentAction.Value = 0;
+            castSpell(viewController.transform.forward);
         }
     }
     
@@ -53,6 +47,8 @@ public class ActionHandler : MonoBehaviour, IObservable
         {
             castBasicAttack(direction);
         }
+
+        currentTimeBetweenShoots.Value = 0.0f;
     }
 
     public void castBasicAttack(Vector3 direction)
@@ -89,5 +85,13 @@ public class ActionHandler : MonoBehaviour, IObservable
             }
         }
         return false;
+    }
+
+    public void ElympicsUpdate()
+    {
+        if (!canCast)
+        {
+            currentTimeBetweenShoots.Value += Elympics.TickDuration;
+        }    
     }
 }

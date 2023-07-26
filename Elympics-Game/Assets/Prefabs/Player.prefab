@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 36
+  networkId: 54
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 37
+  networkId: 55
   predictableFor:
     playerIndex: 0
   isUpdatableForNonOwners: 0
@@ -514,6 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
+  playerName: Player
   playerProvider: {fileID: 0}
   statsController: {fileID: 8666594125141729840}
 --- !u!114 &1310909851
@@ -528,10 +529,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af769530b732cef49b68355f094126d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewController: {fileID: 3137473124097492640}
+  viewController: {fileID: 0}
+  movementController: {fileID: 0}
   isDrawingReleased: 0
   mouseRotation: {x: 0, y: 0, z: 0, w: 0}
   isDrawingPressed: 0
+  movementInput: {x: 0, y: 0}
+  isJump: 0
 --- !u!114 &8666594125141729840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,4 +549,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  isDead: 0
   playerData: {fileID: 3137473124097492647}

@@ -104,9 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869681303c06bbe4b8bd4aea52acea1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellDamage: 5
-  spellSpeed: 2
-  maxLifetime: 5
+  spellDamage: 30
+  spellSpeed: 3
 --- !u!54 &2562298034367758845
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -303,4 +302,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellDamage: 0
   spellSpeed: 0
-  maxLifetime: 0

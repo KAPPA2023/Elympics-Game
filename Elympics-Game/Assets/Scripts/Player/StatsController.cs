@@ -6,12 +6,12 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable
 {
     [Header("Parameters:")]
     [SerializeField] private float maxHealth = 100.0f;
-    [SerializeField] private bool isDead = false;
     [SerializeField] private PlayerData playerData;
     //[Header("References:")]
     //[SerializeField] private DeathController deathController = null;
 
     private ElympicsFloat health = new ElympicsFloat(0);
+    public ElympicsBool isDead = new ElympicsBool(false);
     public event Action<float, float> HealthValueChanged = null;
 
     public void Initialize()
@@ -34,8 +34,9 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable
 
         health.Value -= value;
 
-        if (health.Value <= 0.0f)
-            playerData.ProcessDeath(damageOwner);
+        if (!(health.Value <= 0.0f)) return;
+        isDead.Value = true;
+        playerData.ProcessDeath(damageOwner);
     }
 
     private void OnHealthValueChanged(float lastValue, float newValue)

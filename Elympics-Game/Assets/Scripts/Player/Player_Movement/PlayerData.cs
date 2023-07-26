@@ -71,6 +71,7 @@ public class PlayerData : ElympicsMonoBehaviour, IObservable, IInitializable, IU
         PlayerSpawner.Instance.SpawnPlayer(this);
         GetComponent<Collider>().enabled = true;
         GetComponent<Rigidbody>().useGravity = true;
+        statsController.isDead.Value = false;
         statsController.ResetPlayerStats();
         IsDead.Value = false;
     }
