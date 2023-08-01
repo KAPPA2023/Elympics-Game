@@ -30,13 +30,10 @@ public class DeathController : ElympicsMonoBehaviour, IUpdatable
     {
         playerData.ProcessScore(damageOwner);
 
-        GetComponent<Rigidbody>().useGravity = false;
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
-        GetComponent<Collider>().enabled = false;
         CurrentDeathTime.Value = deathTime;
         IsDead.Value = true;
 
-       // Debug.Log(this.gameObject.name + " has been killed!");
+        Debug.Log("dead");
 
         HasBeenKilled?.Invoke((int)PredictableFor, damageOwner);
     }
@@ -58,8 +55,6 @@ public class DeathController : ElympicsMonoBehaviour, IUpdatable
     private void RespawnPlayer()
     {
         PlayerSpawner.Instance.SpawnPlayer(playerData);
-        GetComponent<Collider>().enabled = true;
-        GetComponent<Rigidbody>().useGravity = true;
         IsDead.Value = false;
         ResetPlayerStats();
     }
@@ -67,6 +62,11 @@ public class DeathController : ElympicsMonoBehaviour, IUpdatable
     private void ResetPlayerStats()
     {
         playerStats.ResetPlayerStats();
+    }
+
+    public bool getDead()
+    {
+        return IsDead.Value;
     }
 
 }

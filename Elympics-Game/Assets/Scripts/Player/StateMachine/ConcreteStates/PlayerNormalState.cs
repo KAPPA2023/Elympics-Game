@@ -22,10 +22,12 @@ public class PlayerNormalState : PlayerState
     public override void PlayerElympicsUpdate()
     {
         base.PlayerElympicsUpdate();
-
-        if (player.isDrawingPressed)
+        if (player.isDead())
         {
-            stateMachine.ChangeState(player.CastingSpellState);
+            stateMachine.ChangeState(player.DeadState);
+        } else if (player.isDrawingPressed)
+        {
+            stateMachine.ChangeState(player.DrawingSpellState);
         }
         player.LookAround();
         player.MoveAround();

@@ -8,9 +8,11 @@ public class PlayerController : MonoBehaviour
     private ViewController viewController;
     private MovementController movementController;
     private ActionHandler actionHandler;
+    private PlayerData playerData;
     public PlayerStateMachine StateMachine { get; set; }
-    public PlayerNormalState IdleState { get; set; }
-    public PlayerDrawingSpellState CastingSpellState { get; set; }
+    public PlayerNormalState NormalState { get; set; }
+    public PlayerDrawingSpellState DrawingSpellState { get; set; }
+    public PlayerDeadState DeadState { get; set; }
 
 
     #endregion
@@ -35,17 +37,19 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         StateMachine = new PlayerStateMachine();
-        IdleState = new PlayerNormalState(this, StateMachine);
-        CastingSpellState = new PlayerDrawingSpellState(this, StateMachine);
+        NormalState = new PlayerNormalState(this, StateMachine);
+        DrawingSpellState = new PlayerDrawingSpellState(this, StateMachine);
+        DeadState = new PlayerDeadState(this, StateMachine);
         actionHandler = GetComponent<ActionHandler>();
     }
 
 
     void Start()
     {
-        StateMachine.Initialize(IdleState);
+        StateMachine.Initialize(NormalState);
         viewController = GetComponent<ViewController>();
         movementController = GetComponent<MovementController>();
+        playerData = GetComponent<PlayerData>();
     }
 
     public void PlayerElympicsUpdate()
@@ -88,4 +92,14 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
+    #region Getters
+
+    public bool isDead()
+    {
+        return playerData.isDead();
+    }
+
+    #endregion
+
 }

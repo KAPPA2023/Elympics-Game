@@ -48,4 +48,9 @@ public class PlayerData : ElympicsMonoBehaviour, IObservable, IInitializable, IU
        
     }
 
+
+    public bool isDead()
+    {
+        return statsController.isDead();
+    }
 }

@@ -38,7 +38,7 @@ public class UIDamage : MonoBehaviour
     {
         var clientPlayerData = playerProvider.ClientPlayer;
         var enemyPlayerData = playerProvider.AllPlayersInScene[1 - clientPlayerData.PlayerId];
-        clientPlayerData.GetComponent<StatsController>().isDead.ValueChanged += OnDeath;
+        clientPlayerData.GetComponent<DeathController>().IsDead.ValueChanged += OnDeath;
         enemyPlayerData.GetComponent<StatsController>().HealthValueChanged += OnEnemyDamaged;
     }
     

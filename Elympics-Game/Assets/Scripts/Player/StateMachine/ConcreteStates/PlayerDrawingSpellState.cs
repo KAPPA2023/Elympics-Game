@@ -24,9 +24,14 @@ public class PlayerDrawingSpellState : PlayerState
     {
         base.PlayerElympicsUpdate();
 
+        if (player.isDead())
+        {
+            stateMachine.ChangeState(player.DeadState);
+        }
+
         if (player.isDrawingReleased)
         {
-            stateMachine.ChangeState(player.IdleState);
+            stateMachine.ChangeState(player.NormalState);
         }
 
         player.MoveAround();
