@@ -9,6 +9,7 @@ public class InputProvider : MonoBehaviour
     [SerializeField] private ShapeInput _shapeInput;
     private List<Point> _points = new List<Point>();
     private GatheredInput _gatheredInput;
+    Vector2 _position;
     #region Mouse Variables
     [SerializeField] private float mouseSensivity;
     [SerializeField] private Vector2 verticalAngleLimits;
@@ -19,6 +20,8 @@ public class InputProvider : MonoBehaviour
         _gatheredInput.shape = "empty";
         _gatheredInput.attack_triggered = false;
         _gatheredInput.isDrawing = false;
+        _position = new Vector2(1, 1);
+        ;
     }
 
     public void UpdateInput()
@@ -54,7 +57,6 @@ public class InputProvider : MonoBehaviour
 
     private void HandleSpellDrawing()
     {
-        Vector2 position;
         string returned_shape = "empty";
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
@@ -63,14 +65,25 @@ public class InputProvider : MonoBehaviour
         
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            position = Input.mousePosition;
-            _points.Add(new Point(position.x, position.y,0));
+            int x = (Screen.width * 2/5);
+            int y = Screen.height * 3/10 ;
+
+            if (_position.x != Input.mousePosition.x || _position.y != Input.mousePosition.y)
+            {
+                _position = Input.mousePosition;
+                _points.Add(new Point(_position.x - x, (Screen.height - _position.y) - y,0));
+            }
         }
         else if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             _gatheredInput.isDrawingReleased = true;
             returned_shape = _shapeInput.GetShape(_points);
             _gatheredInput.shape = returned_shape;
+            // foreach (var point in _points)
+            // {
+            //     Debug.Log($"{point.X} {point.Y}");
+            // }
+            // Debug.Log(_points.Count);
             _points.Clear();
         }
     }
