@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 3137473124097492647}
   - component: {fileID: 1310909851}
   - component: {fileID: 8666594125141729840}
+  - component: {fileID: 1321588518}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -422,7 +423,6 @@ MonoBehaviour:
   _playerData: {fileID: 3137473124097492647}
   _inputHandler: {fileID: 3137473124097492649}
   gameManager: {fileID: 0}
-  _actionHandler: {fileID: 3137473124097492642}
 --- !u!114 &3137473124097492648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,16 +527,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af769530b732cef49b68355f094126d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewController: {fileID: 3137473124097492640}
-  movementController: {fileID: 3137473124097492648}
-  actionHandler: {fileID: 3137473124097492642}
   isDrawingReleased: 0
+  shape: 
   mouseRotation: {x: 0, y: 0, z: 0, w: 0}
   isDrawingPressed: 0
   movementInput: {x: 0, y: 0}
   isJump: 0
   attackTriggered: 0
-  shape: 
 --- !u!114 &8666594125141729840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,5 +548,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   playerData: {fileID: 3137473124097492647}
+  deathController: {fileID: 1321588518}
   isDead:
     currentValue: 0
+--- !u!114 &1321588518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3137473124097492626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8de5a40f426ba3429745e096ca29840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathTime: 2

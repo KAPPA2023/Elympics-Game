@@ -35,7 +35,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
         return _stashedSpells;
     }
 
-    public void HandleActions(bool attack, string shape)
+    public void HandleActions(bool attack)
     {
         if (attack && canCast)
         {

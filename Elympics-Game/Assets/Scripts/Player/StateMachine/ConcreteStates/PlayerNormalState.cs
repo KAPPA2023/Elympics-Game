@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdleState : PlayerState
+public class PlayerNormalState : PlayerState
 {
-    public PlayerIdleState(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
+    public PlayerNormalState(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
     }
 
@@ -27,9 +27,9 @@ public class PlayerIdleState : PlayerState
         {
             stateMachine.ChangeState(player.CastingSpellState);
         }
-        player.viewController.ProcessView(player.mouseRotation);
-        player.movementController.ProcessMovement(player.movementInput, player.isJump);
-        player.actionHandler.HandleActions(player.attackTriggered, player.shape);
+        player.LookAround();
+        player.MoveAround();
+        player.Shoot();
     }
 
     public override void InputUpdate()

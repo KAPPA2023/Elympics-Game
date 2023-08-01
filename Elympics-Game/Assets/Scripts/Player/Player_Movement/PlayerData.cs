@@ -14,10 +14,7 @@ public class PlayerData : ElympicsMonoBehaviour, IObservable, IInitializable, IU
 
     public int PlayerId => playerId;
     
-    
-    public ElympicsBool IsDead { get; } = new ElympicsBool(false);
     public ElympicsInt Score { get; } = new ElympicsInt();
-    public ElympicsFloat CurrentDeathTime { get; } = new ElympicsFloat(0.0f);
 
     public void Initialize()
     {
@@ -34,7 +31,7 @@ public class PlayerData : ElympicsMonoBehaviour, IObservable, IInitializable, IU
         Score.Value += points;
     }
 
-    public void ProcessDeath(int damageOwner)
+    public void ProcessScore(int damageOwner)
     {
         if (damageOwner == PlayerId)
         {
@@ -44,35 +41,11 @@ public class PlayerData : ElympicsMonoBehaviour, IObservable, IInitializable, IU
         {
             playerProvider.GetPlayerById(damageOwner).AddScore(1);
         }
-
-        GetComponent<Rigidbody>().useGravity = false;
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
-        GetComponent<Collider>().enabled = false;
-        
-        //TODO: replace this value in new system 
-        CurrentDeathTime.Value = 1.0f;
-        IsDead.Value = true;
     }
     
     public void ElympicsUpdate()
     {
-        if (!IsDead || !Elympics.IsServer)
-            return;
-        
-        CurrentDeathTime.Value -= Elympics.TickDuration;
-        if (CurrentDeathTime.Value <= 0)
-        {
-            RespawnPlayer();
-        }
+       
     }
 
-    private void RespawnPlayer()
-    {
-        PlayerSpawner.Instance.SpawnPlayer(this);
-        GetComponent<Collider>().enabled = true;
-        GetComponent<Rigidbody>().useGravity = true;
-        statsController.isDead.Value = false;
-        statsController.ResetPlayerStats();
-        IsDead.Value = false;
-    }
 }

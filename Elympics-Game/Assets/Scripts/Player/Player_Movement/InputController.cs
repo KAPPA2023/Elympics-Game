@@ -11,7 +11,6 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
     [SerializeField] private PlayerData _playerData = null;
     [SerializeField] private InputProvider _inputHandler;
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private ActionHandler _actionHandler;
 
     private void Awake()
     {
@@ -89,7 +88,6 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
             player.shape = shape;
 
             player.PlayerElympicsUpdate();
-            //_actionHandler.HandleActions(currentInput.attack_triggered, currentInput.shape);
         }
         
     }
