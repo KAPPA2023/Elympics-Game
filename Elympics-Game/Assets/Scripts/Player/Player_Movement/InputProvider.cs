@@ -14,6 +14,7 @@ public class InputProvider : MonoBehaviour
     [SerializeField] private float mouseSensivity;
     [SerializeField] private Vector2 verticalAngleLimits;
     #endregion
+    
 
     public void Start()
     {
@@ -21,7 +22,8 @@ public class InputProvider : MonoBehaviour
         _gatheredInput.attack_triggered = false;
         _gatheredInput.isDrawing = false;
         _position = new Vector2(1, 1);
-        ;
+        
+
     }
 
     public void UpdateInput()
@@ -37,7 +39,7 @@ public class InputProvider : MonoBehaviour
             _gatheredInput.jumpInput = true;
         }
         HandleSpellDrawing();
-
+        
         if (!Input.GetKey(KeyCode.Mouse1))
         {
             var mouseX = Input.GetAxis("Mouse X");
@@ -47,7 +49,7 @@ public class InputProvider : MonoBehaviour
         }
         
     }
-
+   
     private Vector3 FixTooLargeMouseAngles(Vector3 mouseAngles)
     {
         mouseAngles.x = Mathf.Clamp(mouseAngles.x, verticalAngleLimits.x, verticalAngleLimits.y);
@@ -86,6 +88,7 @@ public class InputProvider : MonoBehaviour
             // Debug.Log(_points.Count);
             _points.Clear();
         }
+
     }
 
     public GatheredInput getInput()
