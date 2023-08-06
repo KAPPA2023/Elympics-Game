@@ -8,28 +8,35 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
 {
     [SerializeField] private SpellSpawner spellSpawner;
     [SerializeField] private GameObject viewController;
-    [SerializeField] private float spellCooldown = 0.2f;
+    [SerializeField] private float spellCooldown = 0.8f;
 
     protected ElympicsFloat currentTimeBetweenShoots = new ElympicsFloat();
     protected bool canCast => currentTimeBetweenShoots >= spellCooldown;
     
-    private int _selectedSpell = -1;
+    private string _selectedSpell = "empty";
     private int _remainingUses = 0;
-    private int[] _stashedSpells;
+    private string[] _stashedSpells;
+
+    // ----------------------------------
+    //              SPELLS
+    // empty
+    // fireBall
+    // lightningBolt
+    //
+    // ----------------------------------
 
     public void Awake()
     {
-        _stashedSpells = new int[]{-1, -1, -1};
+        _stashedSpells = new string[]{"empty", "empty", "empty" };
     }
 
-    public int[] getSpells()
+    public string[] getSpells()
     {
         return _stashedSpells;
     }
 
-    public void HandleActions(bool attack, bool draw, int shape ,long tick)
+    public void HandleActions(bool attack)
     {
-        chooseSpell(shape);
         if (attack && canCast)
         {
             castSpell(viewController.transform.forward);
@@ -38,12 +45,12 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     
     public void castSpell(Vector3 direction)
     {
-        if (_selectedSpell != -1 && _remainingUses > 0)
+        if (_selectedSpell != "empty" && _remainingUses > 0)
         {
-            spellSpawner.TrySpawningSpell(_selectedSpell + 1,direction, GetComponent<PlayerData>().PlayerId);
+            spellSpawner.TrySpawningSpell(_selectedSpell,direction, GetComponent<PlayerData>().PlayerId);
             _remainingUses--;
         }
-        else
+        else 
         {
             castBasicAttack(direction);
         }
@@ -53,34 +60,32 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
 
     public void castBasicAttack(Vector3 direction)
     {
-        spellSpawner.TrySpawningSpell(0, direction, GetComponent<PlayerData>().PlayerId);
+        spellSpawner.TrySpawningSpell("BasicAttack", direction, GetComponent<PlayerData>().PlayerId);
     }
 
-    public void chooseSpell(int drawn_spell)
+    public void chooseSpell(string drawnSpell)
     {
-        if (drawn_spell >= 0)
+        if (drawnSpell != "empty")
         {
             for (int i = 0; i < 3; i++)
             {
-                if (_stashedSpells[i] == drawn_spell)
+                if (_stashedSpells[i] == drawnSpell)
                 {
-                    
-                    _selectedSpell = drawn_spell;
-                    Debug.Log(_selectedSpell);
-                    _stashedSpells[i] = -1;
+                    _selectedSpell = drawnSpell;
+                    _stashedSpells[i] = "empty";
                     _remainingUses = 3;
                     break;
                 }
             }
         }
     }
-    public bool addSpell(int spellID)
+    public bool addSpell(string spellType)
     {
         for (int i = 0; i < 3; i++)
         {
-            if (_stashedSpells[i] == -1)
+            if (_stashedSpells[i] == "empty")
             {
-                _stashedSpells[i] = spellID;
+                _stashedSpells[i] = spellType;
                 return true;
             }
         }

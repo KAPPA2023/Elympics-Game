@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdleState : PlayerState
+public class PlayerNormalState : PlayerState
 {
-    public PlayerIdleState(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
+    public PlayerNormalState(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
     }
 
@@ -22,13 +22,16 @@ public class PlayerIdleState : PlayerState
     public override void PlayerElympicsUpdate()
     {
         base.PlayerElympicsUpdate();
-
-        if (player.isDrawingPressed)
+        if (player.isDead())
         {
-            stateMachine.ChangeState(player.CastingSpellState);
+            stateMachine.ChangeState(player.DeadState);
+        } else if (player.isDrawingPressed)
+        {
+            stateMachine.ChangeState(player.DrawingSpellState);
         }
-        player.viewController.ProcessView(player.mouseRotation);
-        player.movementController.ProcessMovement(player.movementInput, player.isJump);
+        player.LookAround();
+        player.MoveAround();
+        player.Shoot();
     }
 
     public override void InputUpdate()

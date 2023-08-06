@@ -9,16 +9,21 @@ public class InputProvider : MonoBehaviour
     [SerializeField] private ShapeInput _shapeInput;
     private List<Point> _points = new List<Point>();
     private GatheredInput _gatheredInput;
+    Vector2 _position;
     #region Mouse Variables
-    [SerializeField] private float mouseSensivity = 1.5f;
-    [SerializeField] private Vector2 verticalAngleLimits = Vector2.zero;
+    [SerializeField] private float mouseSensivity;
+    [SerializeField] private Vector2 verticalAngleLimits;
     #endregion
+    
 
     public void Start()
     {
-        _gatheredInput.shape = -1;
+        _gatheredInput.shape = "empty";
         _gatheredInput.attack_triggered = false;
         _gatheredInput.isDrawing = false;
+        _position = new Vector2(1, 1);
+        
+
     }
 
     public void UpdateInput()
@@ -34,7 +39,7 @@ public class InputProvider : MonoBehaviour
             _gatheredInput.jumpInput = true;
         }
         HandleSpellDrawing();
-
+        
         if (!Input.GetKey(KeyCode.Mouse1))
         {
             var mouseX = Input.GetAxis("Mouse X");
@@ -44,7 +49,7 @@ public class InputProvider : MonoBehaviour
         }
         
     }
-
+   
     private Vector3 FixTooLargeMouseAngles(Vector3 mouseAngles)
     {
         mouseAngles.x = Mathf.Clamp(mouseAngles.x, verticalAngleLimits.x, verticalAngleLimits.y);
@@ -54,8 +59,7 @@ public class InputProvider : MonoBehaviour
 
     private void HandleSpellDrawing()
     {
-        Vector2 position;
-        int returned_shape = -1;
+        string returned_shape = "empty";
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             _gatheredInput.isDrawing = true;
@@ -63,16 +67,28 @@ public class InputProvider : MonoBehaviour
         
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            position = Input.mousePosition;
-            _points.Add(new Point(position.x, position.y,0));
+            int x = (Screen.width * 2/5);
+            int y = Screen.height * 3/10 ;
+
+            if (_position.x != Input.mousePosition.x || _position.y != Input.mousePosition.y)
+            {
+                _position = Input.mousePosition;
+                _points.Add(new Point(_position.x - x, (Screen.height - _position.y) - y,0));
+            }
         }
         else if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             _gatheredInput.isDrawingReleased = true;
             returned_shape = _shapeInput.GetShape(_points);
             _gatheredInput.shape = returned_shape;
+            // foreach (var point in _points)
+            // {
+            //     Debug.Log($"{point.X} {point.Y}");
+            // }
+            // Debug.Log(_points.Count);
             _points.Clear();
         }
+
     }
 
     public GatheredInput getInput()
@@ -80,7 +96,7 @@ public class InputProvider : MonoBehaviour
         GatheredInput returnedInput = _gatheredInput;
         _gatheredInput.movementInput = Vector2.zero;
         _gatheredInput.jumpInput = false;
-        _gatheredInput.shape = -1;
+        _gatheredInput.shape = "empty";
         _gatheredInput.attack_triggered = false;
         _gatheredInput.isDrawing = false;
         _gatheredInput.isDrawingReleased = false;
@@ -94,7 +110,7 @@ public struct GatheredInput
     public bool jumpInput;
     public bool isDrawing;
     public bool isDrawingReleased;
-    public int shape;
+    public string shape;
     public bool attack_triggered;
     public Vector3 mouseAxis;
 }

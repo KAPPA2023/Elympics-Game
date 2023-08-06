@@ -15,7 +15,7 @@ public class ShapeInput : MonoBehaviour
             trainingSet.Add(GestureIO.ReadGestureFromXML(gestureXml.text));
     }
     
-    public int GetShape(List<Point> points)
+    public string GetShape(List<Point> points)
     {
         Gesture candidate = new Gesture(points.ToArray());
         Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
@@ -24,9 +24,9 @@ public class ShapeInput : MonoBehaviour
         //if (gestureResult.Score < 0.70) return -1;
         switch (gestureResult.GestureClass)
         {
-            case "triangle": return 0;
-            case "c": return 1;
-            default: return -1;
+            case "triangle": return "fireBall";
+            case "c": return "lightningBolt";
+            default: return "empty";
         }
     } 
 }
