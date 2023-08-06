@@ -136,7 +136,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Mesh, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":10206,"guid":"0000000000000000e000000000000000","type":0}}'
+      m_SerializableObject: '{"obj":{"fileID":10208,"guid":"0000000000000000e000000000000000","type":0}}'
     m_Space: 2147483647
   m_Property:
     name: mesh
@@ -725,7 +725,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 20
+      m_SerializableObject: 10
     m_Space: 2147483647
   m_Property:
     name: Rate
@@ -2458,7 +2458,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616394}
   - {fileID: 8926484042661616403}
   dataType: 0
-  capacity: 30000
+  capacity: 300
   stripCapacity: 16
   particlePerStripCount: 16
   needsComputeBounds: 0
@@ -7310,7 +7310,7 @@ MonoBehaviour:
   - {fileID: 8926484042661617180}
   - {fileID: 8926484042661617211}
   dataType: 0
-  capacity: 32
+  capacity: 12
   stripCapacity: 16
   particlePerStripCount: 16
   needsComputeBounds: 0
