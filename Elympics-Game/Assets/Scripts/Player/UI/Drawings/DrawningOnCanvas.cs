@@ -11,6 +11,7 @@ public class DrawningOnCanvas : MonoBehaviour
     private Vector3[] linePoints;
     private int pointCount = 0;
     private bool isDrawing = false;
+    public Vector2 mousePadding;
 
     public Image canvasImage;
     public Color drawingBackgroundColor;
@@ -35,6 +36,7 @@ public class DrawningOnCanvas : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
+            Cursor.visible = false;
             isDrawing = true;
             pointCount = 0;
             lineRenderer.positionCount = 0;
@@ -46,18 +48,18 @@ public class DrawningOnCanvas : MonoBehaviour
             if (Input.GetMouseButton(1))
             {
 
-                Vector3 mousePosition = Input.mousePosition;
+                Vector3 mousePosition = Input.mousePosition ;
                 mousePosition.z = canvas.planeDistance;
                 Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
                 pointCount++;
                 System.Array.Resize(ref linePoints, pointCount);
-                linePoints[pointCount - 1] = worldPosition;
+                linePoints[pointCount - 1] = worldPosition + new Vector3(mousePadding.x, mousePadding.y, 0);
 
                 lineRenderer.positionCount = pointCount;
                 lineRenderer.SetPositions(linePoints);
                 canvasImage.color = drawingBackgroundColor;
-                
+
             }
             else if (Input.GetMouseButtonUp(1))
             {
@@ -65,12 +67,9 @@ public class DrawningOnCanvas : MonoBehaviour
                 pointCount = 0;
                 lineRenderer.positionCount = 0;
                 canvasImage.color = originalBackgroundColor;
-                
+
             }
         }
-
-       
-          
         
     }
 
