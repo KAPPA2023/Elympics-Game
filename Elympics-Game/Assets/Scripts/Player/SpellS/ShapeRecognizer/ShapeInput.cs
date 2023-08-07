@@ -6,7 +6,10 @@ using PDollarGestureRecognizer;
 public class ShapeInput : MonoBehaviour
 {
     private List<Gesture> trainingSet = new List<Gesture>();
-    
+    public delegate void MyEventHandler();
+    public static event MyEventHandler OnBadSpell;
+    public static event MyEventHandler OnGoodSpell;
+
     void Start()
     {
         //Load pre-made gestures
@@ -23,9 +26,18 @@ public class ShapeInput : MonoBehaviour
         //if (gestureResult.Score < 0.70) return -1;
         switch (gestureResult.GestureClass)
         {
-            case "triangle": return "fireBall";
-            case "c": return "lightningBolt";
-            default: return "empty";
+            case "Fire": Invoke("GoodSpellInvoke", 0.1f); return "fireBall";
+            case "Light": Invoke("GoodSpellInvoke", 0.1f); return "lightningBolt";
+            default: Invoke("BadSpellInvoke", 0.1f); return "empty";
         }
-    } 
+    }
+
+    private void GoodSpellInvoke()
+    {
+        OnGoodSpell();
+    }
+    private void BadSpellInvoke()
+    {
+        OnBadSpell();
+    }
 }
