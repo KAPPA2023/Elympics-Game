@@ -3,8 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Elympics;
-
-public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
+public enum Spells
+{
+    Empty = -1,
+    Fireball = 0,
+    Lightbolt = 1
+}
+public class ActionHandler : ElympicsMonoBehaviour, IUpdatable, IInitializable
 {
     [SerializeField] private SpellSpawner spellSpawner;
     [SerializeField] private GameObject viewController;
@@ -13,24 +18,16 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     protected ElympicsFloat currentTimeBetweenShoots = new ElympicsFloat();
     protected bool canCast => currentTimeBetweenShoots >= spellCooldown;
     
-    private string _selectedSpell = "empty";
+    private Spells _selectedSpell = Spells.Empty;
     private int _remainingUses = 0;
-    private string[] _stashedSpells;
-
-    // ----------------------------------
-    //              SPELLS
-    // empty
-    // fireBall
-    // lightningBolt
-    //
-    // ----------------------------------
-
-    public void Awake()
+    private Spells[] _stashedSpells;
+    
+    public void Initialize()
     {
-        _stashedSpells = new string[]{"empty", "empty", "empty" };
+        _stashedSpells = new Spells[]{Spells.Empty, Spells.Empty, Spells.Empty};
     }
-
-    public string[] getSpells()
+    
+    public Spells[] getSpells()
     {
         return _stashedSpells;
     }
@@ -45,7 +42,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     
     public void castSpell(Vector3 direction)
     {
-        if (_selectedSpell != "empty" && _remainingUses > 0)
+        if (_selectedSpell != Spells.Empty && _remainingUses > 0)
         {
             spellSpawner.TrySpawningSpell(_selectedSpell,direction, GetComponent<PlayerData>().PlayerId);
             _remainingUses--;
@@ -60,30 +57,30 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
 
     public void castBasicAttack(Vector3 direction)
     {
-        spellSpawner.TrySpawningSpell("BasicAttack", direction, GetComponent<PlayerData>().PlayerId);
+        spellSpawner.TrySpawningSpell(Spells.Empty, direction, GetComponent<PlayerData>().PlayerId);
     }
 
-    public void chooseSpell(string drawnSpell)
+    public void chooseSpell(Spells drawnSpell)
     {
-        if (drawnSpell != "empty")
+        if (drawnSpell != Spells.Empty)
         {
             for (int i = 0; i < 3; i++)
             {
                 if (_stashedSpells[i] == drawnSpell)
                 {
                     _selectedSpell = drawnSpell;
-                    _stashedSpells[i] = "empty";
+                    _stashedSpells[i] = Spells.Empty;
                     _remainingUses = 3;
                     break;
                 }
             }
         }
     }
-    public bool addSpell(string spellType)
+    public bool addSpell(Spells spellType)
     {
         for (int i = 0; i < 3; i++)
         {
-            if (_stashedSpells[i] == "empty")
+            if (_stashedSpells[i] == Spells.Empty)
             {
                 _stashedSpells[i] = spellType;
                 return true;

@@ -7,13 +7,13 @@ using Unity.VisualScripting;
 
 public class SpellPickup : ElympicsMonoBehaviour, IUpdatable
 {
-    [SerializeField] protected string spellType = "empty";
+    [SerializeField] protected int spellType = -1;
     [SerializeField] private float respawnTime = 5.0f;
     public ElympicsFloat timeToSpawn = new ElympicsFloat();
     private ElympicsBool empty = new ElympicsBool(false);
     public void Awake()
     {
-        Color color = (spellType == "fireBall") ? Color.red : Color.yellow;
+        Color color = (spellType == (int)Spells.Fireball) ? Color.red : Color.yellow;
         GetComponentInChildren<Renderer>().material.SetColor("_Color",color);
         empty.ValueChanged += ChangeSpellPickup;
     }
@@ -23,7 +23,7 @@ public class SpellPickup : ElympicsMonoBehaviour, IUpdatable
         //TODO: this should be reworked as well as ActionHandler.addSpell, collected spells should be synchronised and controlled by server
         if (other.GetComponent<ActionHandler>() != null)
         {
-            if (other.GetComponent<ActionHandler>().addSpell(spellType))
+            if (other.GetComponent<ActionHandler>().addSpell((Spells)spellType))
             {
                 timeToSpawn.Value = respawnTime;
                 empty.Value = true;
@@ -51,7 +51,7 @@ public class SpellPickup : ElympicsMonoBehaviour, IUpdatable
         if (!newVal)
         {
             GetComponent<Collider>().enabled = true;
-            Color color = (spellType == "fireBall") ? Color.red : Color.yellow;
+            Color color = (spellType == (int)Spells.Fireball) ? Color.red : Color.yellow;
             GetComponentInChildren<Renderer>().material.SetColor("_Color",color);
         }
     }

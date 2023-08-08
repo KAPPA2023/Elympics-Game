@@ -52,7 +52,7 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
         currentInput.movementInput = Vector2.zero;
         currentInput.jumpInput = false;
         currentInput.attack_triggered = false;
-        currentInput.shape = "empty";
+        currentInput.shape = -1;
         currentInput.isDrawing = false;
 
         if (ElympicsBehaviour.TryGetInput(ElympicsPlayer.FromIndex(_playerData.PlayerId), out var inputReader))
@@ -61,7 +61,7 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
             bool spaceClicked;
             bool attack_triggered;
             bool isDrawing, isDrawingReleased;
-            string shape;
+            int shape;
             float xRotation, yRotation, zRotation;
             inputReader.Read(out x1);
             inputReader.Read(out y1);
@@ -85,7 +85,7 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
             player.movementInput = currentInput.movementInput;
             player.isJump = currentInput.jumpInput;
             player.attackTriggered = attack_triggered;
-            player.shape = shape;
+            player.shape = (Spells)shape;
 
             player.PlayerElympicsUpdate();
         }
