@@ -4487,7 +4487,7 @@ GameObject:
   - component: {fileID: 491412530}
   - component: {fileID: 491412529}
   - component: {fileID: 491412528}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: ruiny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6472,7 +6472,7 @@ GameObject:
   - component: {fileID: 694553917}
   - component: {fileID: 694553916}
   - component: {fileID: 694553915}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: ruiny.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10383,10 +10383,6 @@ PrefabInstance:
       propertyPath: networkId
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 3137473123422059863, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3137473124097492624, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -10463,22 +10459,6 @@ PrefabInstance:
       propertyPath: playerProvider
       value: 
       objectReference: {fileID: 508643193}
-    - target: {fileID: 3137473124097492648, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-      propertyPath: jumpForce
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3137473124097492648, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-      propertyPath: groundDrag
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3137473124097492648, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-      propertyPath: jumpCooldown
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3137473124097492648, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-      propertyPath: airMultiplier
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 3137473124097492648, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: movementSpeed
       value: 10
@@ -20999,6 +20979,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3137473124097492629, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: m_Drag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137473124097492629, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137473124097492629, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3137473124097492630, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -21047,9 +21039,33 @@ PrefabInstance:
       propertyPath: playerProvider
       value: 
       objectReference: {fileID: 508643193}
+    - target: {fileID: 3137473124097492648, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: jumpForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137473124097492648, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: groundDrag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137473124097492648, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: airMultiplier
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137473124097492651, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: dragConfig.synchronizationEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137473124097492651, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: useGravityConfig.synchronizationEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3137473124097492655, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 544778521}
+    - target: {fileID: 4538622832906622208, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: wallRunForce
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
