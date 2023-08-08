@@ -4,20 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using Elympics;
 using Unity.VisualScripting;
+using IInitializable = Elympics.IInitializable;
 
-public class SpellPickup : ElympicsMonoBehaviour, IUpdatable
+public class SpellPickup : ElympicsMonoBehaviour, IUpdatable, IInitializable
 {
-    [SerializeField] protected int spellType = -1;
+    [SerializeField] private List<GameObject> orbs;
+    [SerializeField] private int spellType = 0;
     [SerializeField] private float respawnTime = 5.0f;
+    
     public ElympicsFloat timeToSpawn = new ElympicsFloat();
     private ElympicsBool empty = new ElympicsBool(false);
-    public void Awake()
+    
+    public void Initialize()
     {
-        Color color = (spellType == (int)Spells.Fireball) ? Color.red : Color.yellow;
-        GetComponentInChildren<Renderer>().material.SetColor("_Color",color);
+        orbs[spellType].SetActive(true);
         empty.ValueChanged += ChangeSpellPickup;
     }
-
     private void OnTriggerEnter(Collider other)
     {
         //TODO: this should be reworked as well as ActionHandler.addSpell, collected spells should be synchronised and controlled by server
@@ -27,12 +29,9 @@ public class SpellPickup : ElympicsMonoBehaviour, IUpdatable
             {
                 timeToSpawn.Value = respawnTime;
                 empty.Value = true;
-                GetComponent<Collider>().enabled = false;
-                GetComponentInChildren<Renderer>().material.SetColor("_Color",Color.black);
             }
         }
     }
-
     public void ElympicsUpdate()
     {
         if (!empty.Value) return;
@@ -48,11 +47,7 @@ public class SpellPickup : ElympicsMonoBehaviour, IUpdatable
 
     private void ChangeSpellPickup(bool oldVal, bool newVal)
     {
-        if (!newVal)
-        {
-            GetComponent<Collider>().enabled = true;
-            Color color = (spellType == (int)Spells.Fireball) ? Color.red : Color.yellow;
-            GetComponentInChildren<Renderer>().material.SetColor("_Color",color);
-        }
+        orbs[spellType].SetActive(!newVal);
+        GetComponent<Collider>().enabled = !newVal;
     }
 }

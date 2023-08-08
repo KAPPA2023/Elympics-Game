@@ -84,6 +84,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8385766fedf05eb44b494e3914f5d542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orbs:
+  - {fileID: 2462716239658747647}
+  - {fileID: 1138630632360283439}
+  - {fileID: 2612539374676267951}
+  - {fileID: 1446977874433154649}
   spellType: -1
   respawnTime: 5
   timeToSpawn:
