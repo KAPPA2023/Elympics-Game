@@ -18,17 +18,17 @@ public class ShapeInput : MonoBehaviour
             trainingSet.Add(GestureIO.ReadGestureFromXML(gestureXml.text));
     }
     
-    public string GetShape(List<Point> points)
+    public Spells GetShape(List<Point> points)
     {
         Gesture candidate = new Gesture(points.ToArray());
         Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
         Debug.Log(gestureResult.GestureClass + " " + gestureResult.Score);
-        //if (gestureResult.Score < 0.70) return -1;
+        if (gestureResult.Score < 0.70) return Spells.Empty;
         switch (gestureResult.GestureClass)
         {
-            case "Fire": Invoke("GoodSpellInvoke", 0.1f); return "fireBall";
-            case "Light": Invoke("GoodSpellInvoke", 0.1f); return "lightningBolt";
-            default: Invoke("BadSpellInvoke", 0.1f); return "empty";
+            case "Fire": Invoke("GoodSpellInvoke", 0.1f); return Spells.Fireball;
+            case "Light": Invoke("GoodSpellInvoke", 0.1f); return Spells.Lightbolt;
+            default: Invoke("BadSpellInvoke", 0.1f); return Spells.Empty;
         }
     }
 
