@@ -62,10 +62,10 @@ Transform:
   m_GameObject: {fileID: 1147697997951085874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1577040658275404532}
+  - {fileID: 7089436911578447612}
   - {fileID: 7926647156883929170}
   - {fileID: 3221306736082610369}
   - {fileID: 3827053182917594953}
@@ -87,7 +87,7 @@ MonoBehaviour:
   orbs:
   - {fileID: 2462716239658747647}
   - {fileID: 1138630632360283439}
-  - {fileID: 2612539374676267951}
+  - {fileID: 2263347012668066586}
   - {fileID: 1446977874433154649}
   spellType: -1
   respawnTime: 5
@@ -180,6 +180,39 @@ Transform:
   m_Father: {fileID: 5233677631982295607}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2263347012668066586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7089436911578447612}
+  m_Layer: 0
+  m_Name: Water
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7089436911578447612
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2263347012668066586}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5769451479979217548}
+  - {fileID: 3454643505643253822}
+  m_Father: {fileID: 5233677631982295607}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2462716239658747647
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,91 +247,6 @@ Transform:
   m_Father: {fileID: 5233677631982295607}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2612539374676267951
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1577040658275404532}
-  - component: {fileID: 2370675769983380245}
-  - component: {fileID: 7542907443986849936}
-  m_Layer: 0
-  m_Name: Water
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1577040658275404532
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2612539374676267951}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5769451479979217548}
-  - {fileID: 3454643505643253822}
-  m_Father: {fileID: 5233677631982295607}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2370675769983380245
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2612539374676267951}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7542907443986849936
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2612539374676267951}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 23d5a82bebb567b4996d70d367e06d84, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2651160586782806559
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,12 +355,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5906859936533595306}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.181, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.8, z: 0.7}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1577040658275404532}
+  m_Father: {fileID: 7089436911578447612}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!2083052967 &8055156395466170905
@@ -423,7 +371,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5906859936533595306}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 8c8cb0b870b2944488208712ce99e607, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: ea686bda2acc5e3449d675c4601e54e1, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -444,7 +392,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 198.03773, y: 6.5389857, z: 6.5389857, w: 0}
+      - m_Value: {x: 92.28914, y: 9.180594, z: 9.180594, w: 0}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
@@ -461,6 +409,9 @@ VisualEffect:
       m_Array:
       - m_Value: {fileID: 2800000, guid: 6964d9a4f065fc74290dc8e3bf841275, type: 3}
         m_Name: Texture
+        m_Overridden: 1
+      - m_Value: {fileID: 2800000, guid: 0b0cf24ae5ecffa4ea3963f0e898414c, type: 3}
+        m_Name: New Texture2D
         m_Overridden: 1
     m_Bool:
       m_Array: []
@@ -628,7 +579,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7218442695728679744}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 8c8cb0b870b2944488208712ce99e607, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: ea686bda2acc5e3449d675c4601e54e1, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -660,6 +611,9 @@ VisualEffect:
       m_Array:
       - m_Value: {fileID: 2800000, guid: 6964d9a4f065fc74290dc8e3bf841275, type: 3}
         m_Name: Texture
+        m_Overridden: 1
+      - m_Value: {fileID: 2800000, guid: 33ee20e1a80d6cb489c03be9a57cdfd5, type: 3}
+        m_Name: New Texture2D
         m_Overridden: 1
     m_Bool:
       m_Array: []
@@ -716,7 +670,7 @@ GameObject:
   - component: {fileID: 8304930500595786143}
   - component: {fileID: 1998092589179660706}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -729,12 +683,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7583851095510396649}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1577040658275404532}
+  m_Father: {fileID: 7089436911578447612}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1057260793955217357
@@ -826,8 +780,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7828475692027650647}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7926647156883929170}
@@ -841,7 +795,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7828475692027650647}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: ebc535be7f687064aa5f471cab153d49, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: ea686bda2acc5e3449d675c4601e54e1, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -862,6 +816,9 @@ VisualEffect:
       - m_Value: {x: 1024, y: 1024, z: 1024, w: 0}
         m_Name: Color 1
         m_Overridden: 1
+      - m_Value: {x: 0.16099393, y: 0.16099393, z: 2.79544, w: 1}
+        m_Name: Color
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -873,7 +830,10 @@ VisualEffect:
     m_Gradient:
       m_Array: []
     m_NamedObject:
-      m_Array: []
+      m_Array:
+      - m_Value: {fileID: 2800000, guid: 2fc03e91c75caf445a26091cb059121d, type: 3}
+        m_Name: New Texture2D
+        m_Overridden: 1
     m_Bool:
       m_Array: []
 --- !u!73398921 &2380494306822045903
@@ -1108,8 +1068,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9136666856808851041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.21, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.8, z: 0.7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3221306736082610369}
@@ -1123,7 +1083,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9136666856808851041}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 8c8cb0b870b2944488208712ce99e607, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: ea686bda2acc5e3449d675c4601e54e1, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -1158,6 +1118,9 @@ VisualEffect:
       m_Array:
       - m_Value: {fileID: 2800000, guid: 6964d9a4f065fc74290dc8e3bf841275, type: 3}
         m_Name: Texture
+        m_Overridden: 1
+      - m_Value: {fileID: 2800000, guid: ad0d688341450dd40acbafe513e610e0, type: 3}
+        m_Name: New Texture2D
         m_Overridden: 1
     m_Bool:
       m_Array: []
