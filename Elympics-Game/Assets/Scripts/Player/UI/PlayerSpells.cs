@@ -12,31 +12,24 @@ public class PlayerSpells : MonoBehaviour
     private void Start()
     {
         spells[0].sprite = sprites[0];
-        spells[1].sprite = sprites[1];
-        spells[2].sprite = sprites[2];
-    }
-
-    private void Update()
-    {
+        spells[1].sprite = sprites[0];
+        spells[2].sprite = sprites[0];
         var clientPlayerData = playersProvider.ClientPlayer;
-        var spellsNumbers = clientPlayerData.GetComponent<ActionHandler>().getSpells();
-
-        for (int i = 0; i < spells.Length; i++)
+        clientPlayerData.GetComponent<ActionHandler>().stashedSpellChanged += changeSlot;
+    }
+    private void changeSlot(int index, int newVal)
+    {
+        switch ((Spells)newVal)
         {
-            switch (spellsNumbers[i])
-            {
-                case Spells.Empty:
-                    spells[i].sprite = sprites[0]; 
-                    break;
-                case Spells.Fireball:
-                    spells[i].sprite = sprites[1];
-                    break;
-                case Spells.Lightbolt:
-                    spells[i].sprite = sprites[2];
-                    break;
-            }
+            case Spells.Empty:
+                spells[index].sprite = sprites[0]; 
+                break;
+            case Spells.Fireball:
+                spells[index].sprite = sprites[1];
+                break;
+            case Spells.Lightbolt:
+                spells[index].sprite = sprites[2];
+                break;
         }
     }
-
-
 }

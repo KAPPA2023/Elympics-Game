@@ -22,7 +22,8 @@ public class SpellPickup : ElympicsMonoBehaviour, IUpdatable, IInitializable
     }
     private void OnTriggerEnter(Collider other)
     {
-        //TODO: this should be reworked as well as ActionHandler.addSpell, collected spells should be synchronised and controlled by server
+        if(!Elympics.IsServer) return;
+
         if (other.GetComponent<ActionHandler>() != null)
         {
             if (other.GetComponent<ActionHandler>().addSpell((Spells)spellType))

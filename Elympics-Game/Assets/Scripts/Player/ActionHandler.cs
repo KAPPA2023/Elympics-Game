@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Elympics;
+using UnityEngine.Serialization;
+
 public enum Spells
 {
     Empty = -1,
@@ -20,17 +22,8 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable, IInitializable
     
     private Spells _selectedSpell = Spells.Empty;
     private int _remainingUses = 0;
-    private Spells[] _stashedSpells;
-    
-    public void Initialize()
-    {
-        _stashedSpells = new Spells[]{Spells.Empty, Spells.Empty, Spells.Empty};
-    }
-    
-    public Spells[] getSpells()
-    {
-        return _stashedSpells;
-    }
+    public ElympicsArray<ElympicsInt> stashedSpells = new ElympicsArray<ElympicsInt>(3, () => new ElympicsInt(-1));
+    public event Action<int, int> stashedSpellChanged = null;
 
     public void HandleActions(bool attack)
     {
@@ -66,11 +59,11 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable, IInitializable
         {
             for (int i = 0; i < 3; i++)
             {
-                if (_stashedSpells[i] == drawnSpell)
+                if (stashedSpells.Values[i].Value == (int)drawnSpell)
                 {
                     _selectedSpell = drawnSpell;
-                    _stashedSpells[i] = Spells.Empty;
-                    _remainingUses = 3;
+                    stashedSpells.Values[i].Value = (int)Spells.Empty;
+                    _remainingUses = GetSpellUses(drawnSpell);
                     break;
                 }
             }
@@ -80,9 +73,9 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable, IInitializable
     {
         for (int i = 0; i < 3; i++)
         {
-            if (_stashedSpells[i] == Spells.Empty)
+            if (stashedSpells.Values[i].Value == (int)Spells.Empty)
             {
-                _stashedSpells[i] = spellType;
+                stashedSpells.Values[i].Value = (int)spellType;
                 return true;
             }
         }
@@ -95,5 +88,32 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable, IInitializable
         {
             currentTimeBetweenShoots.Value += Elympics.TickDuration;
         }    
+    }
+    private int GetSpellUses(Spells spell)
+    {
+        switch (spell)
+        {
+            case Spells.Empty: return 0;
+            case Spells.Fireball: return 3;
+            case Spells.Lightbolt: return 2;
+            default: return 0;
+        }
+    }
+    
+    public void Initialize()
+    {
+        //Tried for(i = 0; i <3; i++) but it didn't work lul if you know why fix it ;)
+        stashedSpells.Values[0].ValueChanged += delegate(int value, int newValue)
+        {
+            stashedSpellChanged.Invoke(0, stashedSpells.Values[0].Value);
+        };
+        stashedSpells.Values[1].ValueChanged += delegate(int value, int newValue)
+        {
+            stashedSpellChanged.Invoke(1, stashedSpells.Values[1].Value);
+        };
+        stashedSpells.Values[2].ValueChanged += delegate(int value, int newValue)
+        {
+            stashedSpellChanged.Invoke(2, stashedSpells.Values[2].Value);
+        };
     }
 }
