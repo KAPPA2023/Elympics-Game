@@ -1119,7 +1119,7 @@ VisualEffect:
       - m_Value: {fileID: 2800000, guid: 6964d9a4f065fc74290dc8e3bf841275, type: 3}
         m_Name: Texture
         m_Overridden: 1
-      - m_Value: {fileID: 2800000, guid: ad0d688341450dd40acbafe513e610e0, type: 3}
+      - m_Value: {fileID: 2800000, guid: a2d48089dd345ce488954e724a3bca42, type: 3}
         m_Name: New Texture2D
         m_Overridden: 1
     m_Bool:
