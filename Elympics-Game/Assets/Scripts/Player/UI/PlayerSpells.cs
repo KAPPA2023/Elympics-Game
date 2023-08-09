@@ -15,9 +15,18 @@ public class PlayerSpells : MonoBehaviour
         spells[1].sprite = sprites[0];
         spells[2].sprite = sprites[0];
         var clientPlayerData = playersProvider.ClientPlayer;
-        clientPlayerData.GetComponent<ActionHandler>().stashedSpellChanged += changeSlot;
+        
+        clientPlayerData.GetComponent<ActionHandler>().stashedSpells.Values[0].ValueChanged += ChangeSlot0;
+        clientPlayerData.GetComponent<ActionHandler>().stashedSpells.Values[1].ValueChanged += ChangeSlot1;
+        clientPlayerData.GetComponent<ActionHandler>().stashedSpells.Values[2].ValueChanged += ChangeSlot2;
+        
     }
-    private void changeSlot(int index, int newVal)
+    
+    private void ChangeSlot0(int oldVal, int newVal) { ChangeSlot(0, newVal); }
+    private void ChangeSlot1(int oldVal, int newVal) { ChangeSlot(1, newVal); }
+    private void ChangeSlot2(int oldVal, int newVal) { ChangeSlot(2, newVal); }
+
+    private void ChangeSlot(int index, int newVal)
     {
         switch ((Spells)newVal)
         {

@@ -11,7 +11,7 @@ public enum Spells
     Fireball = 0,
     Lightbolt = 1
 }
-public class ActionHandler : ElympicsMonoBehaviour, IUpdatable, IInitializable
+public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
 {
     [SerializeField] private SpellSpawner spellSpawner;
     [SerializeField] private GameObject viewController;
@@ -23,8 +23,6 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable, IInitializable
     private Spells _selectedSpell = Spells.Empty;
     private int _remainingUses = 0;
     public ElympicsArray<ElympicsInt> stashedSpells = new ElympicsArray<ElympicsInt>(3, () => new ElympicsInt(-1));
-    public event Action<int, int> stashedSpellChanged = null;
-
     public void HandleActions(bool attack)
     {
         if (attack && canCast)
@@ -98,22 +96,5 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable, IInitializable
             case Spells.Lightbolt: return 2;
             default: return 0;
         }
-    }
-    
-    public void Initialize()
-    {
-        //Tried for(i = 0; i <3; i++) but it didn't work lul if you know why fix it ;)
-        stashedSpells.Values[0].ValueChanged += delegate(int value, int newValue)
-        {
-            stashedSpellChanged.Invoke(0, stashedSpells.Values[0].Value);
-        };
-        stashedSpells.Values[1].ValueChanged += delegate(int value, int newValue)
-        {
-            stashedSpellChanged.Invoke(1, stashedSpells.Values[1].Value);
-        };
-        stashedSpells.Values[2].ValueChanged += delegate(int value, int newValue)
-        {
-            stashedSpellChanged.Invoke(2, stashedSpells.Values[2].Value);
-        };
     }
 }
