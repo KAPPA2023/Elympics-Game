@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Elympics;
-using Unity.VisualScripting;
-using IInitializable = Elympics.IInitializable;
 
 public class SpellPickup : ElympicsMonoBehaviour, IUpdatable, IInitializable
 {
