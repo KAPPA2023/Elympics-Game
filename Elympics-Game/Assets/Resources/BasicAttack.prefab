@@ -161,6 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellDamage: 20
   spellSpeed: 1
+  lifeTime: 3
 --- !u!1 &8916941836228933865
 GameObject:
   m_ObjectHideFlags: 0

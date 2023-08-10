@@ -8,6 +8,9 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
 {
     [SerializeField] protected float spellDamage;
     [SerializeField] protected float spellSpeed;
+    [SerializeField] protected float lifeTime;
+
+    private ElympicsFloat deathTimer = new ElympicsFloat(0.0f);
     private Vector3 spellVelocity;
     private int caster;
     private ElympicsBool shouldBeDestoyed = new ElympicsBool();
@@ -36,12 +39,24 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
             SpellHit?.Invoke();
             playerInfo.DealDamage(spellDamage, caster);
         }
-        shouldBeDestoyed.Value = true;
+        DetonateProjectile();
     }
 
     public void ElympicsUpdate()
     {
         if(shouldBeDestoyed.Value) ElympicsDestroy(gameObject);
         transform.position += spellVelocity;
+        
+        deathTimer.Value += Elympics.TickDuration;
+        if (deathTimer >= lifeTime)
+        {
+            DetonateProjectile();
+        }
     }
+    
+    private void DetonateProjectile()
+    {
+        shouldBeDestoyed.Value = true;
+    }
+    
 }
