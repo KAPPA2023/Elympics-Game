@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 7575047413114315203}
   - component: {fileID: 4332305748809658774}
   - component: {fileID: -876479793495803039}
+  - component: {fileID: -6838865732400143714}
   m_Layer: 0
   m_Name: SandGranate
   m_TagString: Untagged
@@ -370,4 +371,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a5aa310dc225404ebeb0cdc359677e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 3
+  lifeTime: 4.05
+--- !u!114 &-6838865732400143714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8437392693171119185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d19f924b9c2cd9848b89815f7baca4fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
