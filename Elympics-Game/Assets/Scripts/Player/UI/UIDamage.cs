@@ -41,8 +41,11 @@ public class UIDamage : MonoBehaviour
         clientPlayerData.GetComponent<DeathController>().IsDead.ValueChanged += OnDeath;
         clientPlayerData.GetComponentInChildren<SpellSpawner>().SpellHit += OnEnemyDamaged;
         clientPlayerData.GetComponent<StatsController>().BlindPower.ValueChanged += OnBlind;
+        clientPlayerData.GetComponent<StatsController>().isBlind.ValueChanged += WaterBlind;
     }
+
     
+
     private void OnEnemyDamaged()
     {
         hitmark.SetActive(true); 
@@ -72,7 +75,20 @@ public class UIDamage : MonoBehaviour
       
     }
     
-
+    private void WaterBlind(bool lastvalue, bool newvalue)
+    {
+        Color overlay;
+        if (newvalue == true)
+        {
+              overlay = new Color(0f,0.6f,0.8f, 0.8f);
+        }
+        else
+        {
+            overlay = new Color(0f,0f,0f, 0f);
+        }
+        
+        smokeEffectsOverlay.color = overlay;
+    }
     
     
 }

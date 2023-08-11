@@ -10,6 +10,8 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable
     [SerializeField] private PlayerData playerData;
     [SerializeField] private DeathController deathController;
     public ElympicsFloat BlindPower= new ElympicsFloat(0.0f);
+    public ElympicsBool isBlind = new ElympicsBool(false);
+    private ElympicsFloat blindTimer = new ElympicsFloat(0.0f);
     //[Header("References:")]
     //[SerializeField] private DeathController deathController = null;
 
@@ -54,5 +56,18 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable
     {
         maxHealth = value;
         health.Value = maxHealth;
+    }
+
+    //Possible dlug technologiczny
+    public void ElympicsUpdate()
+    {
+        if (isBlind)
+        {
+            blindTimer.Value += Elympics.TickDuration;
+            if (blindTimer >= 2f)
+            {
+                isBlind.Value = false;
+            }
+        }
     }
 }
