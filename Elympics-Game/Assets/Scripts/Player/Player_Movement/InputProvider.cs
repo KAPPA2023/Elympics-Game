@@ -76,7 +76,8 @@ public class InputProvider : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             _gatheredInput.isDrawingReleased = true;
-            _gatheredInput.shape = (int)_shapeInput.GetShape(_points);
+            if(_points.Count > 1)
+                _gatheredInput.shape = (int)_shapeInput.GetShape(_points);
             _points.Clear();
         }
 
