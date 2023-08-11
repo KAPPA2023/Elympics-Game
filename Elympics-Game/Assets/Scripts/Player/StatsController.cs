@@ -1,6 +1,7 @@
 using Elympics;
 using System;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
 
 public class StatsController : ElympicsMonoBehaviour, IInitializable
 {
@@ -8,12 +9,13 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable
     [SerializeField] private float maxHealth = 100.0f;
     [SerializeField] private PlayerData playerData;
     [SerializeField] private DeathController deathController;
+    public ElympicsFloat BlindPower= new ElympicsFloat(0.0f);
     //[Header("References:")]
     //[SerializeField] private DeathController deathController = null;
 
     private ElympicsFloat health = new ElympicsFloat(0);
     public event Action<float, float> HealthValueChanged = null;
-
+   
     public void Initialize()
     {
         health.Value = maxHealth;
