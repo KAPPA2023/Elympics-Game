@@ -15,7 +15,7 @@ public class MovementController : ElympicsMonoBehaviour
     #region Speeds and Drags
     [SerializeField] private float GroundSpeed;
     [SerializeField] private float WallRunSpeed;
-    private float desiredMovementSpeed;
+    public float desiredMovementSpeed;
     [SerializeField] public float actualMovementSpeed;
     [SerializeField] private float groundDrag;
     #endregion
@@ -34,12 +34,12 @@ public class MovementController : ElympicsMonoBehaviour
     #endregion
 
     public bool isWallRunning = false;
-    private WallRunning wallRunning;
+    private Climbing wallRunning;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        wallRunning = GetComponent<WallRunning>();
+        wallRunning = GetComponent<Climbing>();
         desiredMovementSpeed = GroundSpeed;
     }
 
@@ -79,7 +79,7 @@ public class MovementController : ElympicsMonoBehaviour
             }
         } else
         {
-            rb.drag = 0;
+            rb.drag = 1;
         }
         
     }
@@ -111,7 +111,15 @@ public class MovementController : ElympicsMonoBehaviour
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        if (flatVel.magnitude > desiredMovementSpeed)
+        /*if (isWallRunning)
+        {
+            if (rb.velocity.y > desiredMovementSpeed)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, desiredMovementSpeed, rb.velocity.z);
+            }
+            actualMovementSpeed = rb.velocity.y;
+        }
+        else */if (flatVel.magnitude > desiredMovementSpeed)
         {
             Vector3 limitedVel = flatVel.normalized * desiredMovementSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);

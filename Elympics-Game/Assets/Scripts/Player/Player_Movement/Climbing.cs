@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallRunning : ElympicsMonoBehaviour
+public class Climbing : ElympicsMonoBehaviour
 {
-    [Header("Wallrunning")]
+    [Header("Climbing")]
     public LayerMask whatIsWall;
     public LayerMask whatIsGround;
     public float wallRunForce;
@@ -44,7 +44,10 @@ public class WallRunning : ElympicsMonoBehaviour
 
     private void CheckForWall()
     {
-        wallForward = Physics.Raycast(transform.position, orientation.forward, out forwardWallHit, wallCheckDistance, whatIsWall);
+        Vector3 rayPos = transform.position;
+        rayPos.y -= 0.9f;
+
+        wallForward = Physics.Raycast(rayPos, orientation.forward, out forwardWallHit, wallCheckDistance, whatIsWall);
     }
 
     private bool AboveGround()
@@ -81,9 +84,7 @@ public class WallRunning : ElympicsMonoBehaviour
 
     public void WallRunningMovement()
     {
-        Vector3 wallUp = Vector3.up;
-
-        rb.AddForce(wallUp * wallRunForce, ForceMode.Force);
+        rb.velocity = new Vector3(rb.velocity.x, movementController.desiredMovementSpeed, rb.velocity.z);
     }
 
     private void StopWallRun()
