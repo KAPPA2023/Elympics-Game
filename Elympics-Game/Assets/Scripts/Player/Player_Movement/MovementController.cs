@@ -6,15 +6,26 @@ using UnityEngine;
 
 public class MovementController : ElympicsMonoBehaviour
 {
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private float groundDrag;
-    [SerializeField] public float actualMovementSpeed;
+    private new Rigidbody rb = null;
 
+    public float horizontalInput;
+    public float verticalInput;
+
+
+    #region Speeds and Drags
+    [SerializeField] private float GroundSpeed;
+    [SerializeField] private float WallRunSpeed;
+    public float desiredMovementSpeed;
+    [SerializeField] public float actualMovementSpeed;
+    [SerializeField] private float groundDrag;
+    #endregion
+    
+    #region Jumping Variables
     [SerializeField] private float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
     private bool readyToJump = true;
-    private new Rigidbody rb = null;
+    #endregion
 
     #region Is Player On Ground Variables
     public Vector3 boxSize;
@@ -22,22 +33,42 @@ public class MovementController : ElympicsMonoBehaviour
     public LayerMask layerMask;
     #endregion
 
+    public bool isWallRunning = false;
+    private Climbing wallRunning;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        wallRunning = GetComponent<Climbing>();
+        desiredMovementSpeed = GroundSpeed;
     }
 
     public void ProcessMovement(Vector2 inputMovement, bool jump)
     {
+        horizontalInput = inputMovement.x;
+        verticalInput = inputMovement.y;
+        desiredMovementSpeed = GroundSpeed;
+
         Vector3 inputVector = new Vector3(inputMovement.x, 0, inputMovement.y);
         Vector3 movementDirection = inputVector != Vector3.zero ? this.transform.TransformDirection(inputVector.normalized) : Vector3.zero;
 
-        ApplyMovement(movementDirection);
-        SpeedControl();
+        wallRunning.WallRunningElympicsUpdate();
+        if (!isWallRunning)
+        {
+            ApplyMovement(movementDirection);
+        }
+        
+        SpeedControl();      
 
-        if (GroundCheck())
+        if (isWallRunning)
+        {
+            desiredMovementSpeed = WallRunSpeed;
+            wallRunning.WallRunningMovement();
+        }
+        else if (GroundCheck())
         {
             rb.drag = groundDrag;
+            desiredMovementSpeed = GroundSpeed;
             if (jump && readyToJump)
             {
                 readyToJump = false;
@@ -46,17 +77,16 @@ public class MovementController : ElympicsMonoBehaviour
 
                 Invoke(nameof(ResetJump), jumpCooldown);
             }
-        } else {
+        } else
+        {
             rb.drag = 1;
         }
-
-
         
     }
 
     private void ApplyMovement(Vector3 movementDirection)
     {
-        Vector3 defaultVelocity = movementDirection * movementSpeed * 10f;
+        Vector3 defaultVelocity = movementDirection * desiredMovementSpeed * 15f * rb.mass;
         if (!GroundCheck())
         {
             defaultVelocity *= airMultiplier;
@@ -80,13 +110,21 @@ public class MovementController : ElympicsMonoBehaviour
     private void SpeedControl()
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        
 
-        if (flatVel.magnitude > movementSpeed)
+        /*if (isWallRunning)
         {
-            Vector3 limitedVel = flatVel.normalized * movementSpeed;
+            if (rb.velocity.y > desiredMovementSpeed)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, desiredMovementSpeed, rb.velocity.z);
+            }
+            actualMovementSpeed = rb.velocity.y;
+        }
+        else */if (flatVel.magnitude > desiredMovementSpeed)
+        {
+            Vector3 limitedVel = flatVel.normalized * desiredMovementSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
+        flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         actualMovementSpeed = flatVel.magnitude;
     }
 
