@@ -14,14 +14,13 @@ public class InputProvider : MonoBehaviour
     [SerializeField] private float mouseSensivity;
     [SerializeField] private Vector2 verticalAngleLimits;
     #endregion
-
+    
     public void Start()
     {
-        _gatheredInput.shape = "empty";
+        _gatheredInput.shape = (int)Spells.Empty;
         _gatheredInput.attack_triggered = false;
         _gatheredInput.isDrawing = false;
         _position = new Vector2(1, 1);
-        ;
     }
 
     public void UpdateInput()
@@ -37,7 +36,7 @@ public class InputProvider : MonoBehaviour
             _gatheredInput.jumpInput = true;
         }
         HandleSpellDrawing();
-
+        
         if (!Input.GetKey(KeyCode.Mouse1))
         {
             var mouseX = Input.GetAxis("Mouse X");
@@ -47,7 +46,7 @@ public class InputProvider : MonoBehaviour
         }
         
     }
-
+   
     private Vector3 FixTooLargeMouseAngles(Vector3 mouseAngles)
     {
         mouseAngles.x = Mathf.Clamp(mouseAngles.x, verticalAngleLimits.x, verticalAngleLimits.y);
@@ -77,15 +76,10 @@ public class InputProvider : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             _gatheredInput.isDrawingReleased = true;
-            returned_shape = _shapeInput.GetShape(_points);
-            _gatheredInput.shape = returned_shape;
-            // foreach (var point in _points)
-            // {
-            //     Debug.Log($"{point.X} {point.Y}");
-            // }
-            // Debug.Log(_points.Count);
+            _gatheredInput.shape = (int)_shapeInput.GetShape(_points);
             _points.Clear();
         }
+
     }
 
     public GatheredInput getInput()
@@ -93,7 +87,7 @@ public class InputProvider : MonoBehaviour
         GatheredInput returnedInput = _gatheredInput;
         _gatheredInput.movementInput = Vector2.zero;
         _gatheredInput.jumpInput = false;
-        _gatheredInput.shape = "empty";
+        _gatheredInput.shape = (int)Spells.Empty;
         _gatheredInput.attack_triggered = false;
         _gatheredInput.isDrawing = false;
         _gatheredInput.isDrawingReleased = false;
@@ -107,7 +101,7 @@ public struct GatheredInput
     public bool jumpInput;
     public bool isDrawing;
     public bool isDrawingReleased;
-    public string shape;
+    public int shape;
     public bool attack_triggered;
     public Vector3 mouseAxis;
 }

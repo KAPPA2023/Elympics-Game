@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     #region DrawingSpell Variables
 
     public bool isDrawingReleased = false;
-    public string shape;
+    public Spells shape;
 
     #endregion
 

@@ -3,7 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Elympics;
+using UnityEngine.Serialization;
 
+public enum Spells
+{
+    Empty = -1,
+    Fireball = 0,
+    Lightbolt = 1
+}
 public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
 {
     [SerializeField] private SpellSpawner spellSpawner;
@@ -13,28 +20,9 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     protected ElympicsFloat currentTimeBetweenShoots = new ElympicsFloat();
     protected bool canCast => currentTimeBetweenShoots >= spellCooldown;
     
-    private string _selectedSpell = "empty";
+    private Spells _selectedSpell = Spells.Empty;
     private int _remainingUses = 0;
-    private string[] _stashedSpells;
-
-    // ----------------------------------
-    //              SPELLS
-    // empty
-    // fireBall
-    // lightningBolt
-    //
-    // ----------------------------------
-
-    public void Awake()
-    {
-        _stashedSpells = new string[]{"empty", "empty", "empty" };
-    }
-
-    public string[] getSpells()
-    {
-        return _stashedSpells;
-    }
-
+    public ElympicsArray<ElympicsInt> stashedSpells = new ElympicsArray<ElympicsInt>(3, () => new ElympicsInt(-1));
     public void HandleActions(bool attack)
     {
         if (attack && canCast)
@@ -45,7 +33,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     
     public void castSpell(Vector3 direction)
     {
-        if (_selectedSpell != "empty" && _remainingUses > 0)
+        if (_selectedSpell != Spells.Empty && _remainingUses > 0)
         {
             spellSpawner.TrySpawningSpell(_selectedSpell,direction, GetComponent<PlayerData>().PlayerId);
             _remainingUses--;
@@ -60,32 +48,32 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
 
     public void castBasicAttack(Vector3 direction)
     {
-        spellSpawner.TrySpawningSpell("BasicAttack", direction, GetComponent<PlayerData>().PlayerId);
+        spellSpawner.TrySpawningSpell(Spells.Empty, direction, GetComponent<PlayerData>().PlayerId);
     }
 
-    public void chooseSpell(string drawnSpell)
+    public void chooseSpell(Spells drawnSpell)
     {
-        if (drawnSpell != "empty")
+        if (drawnSpell != Spells.Empty)
         {
             for (int i = 0; i < 3; i++)
             {
-                if (_stashedSpells[i] == drawnSpell)
+                if (stashedSpells.Values[i].Value == (int)drawnSpell)
                 {
                     _selectedSpell = drawnSpell;
-                    _stashedSpells[i] = "empty";
-                    _remainingUses = 3;
+                    stashedSpells.Values[i].Value = (int)Spells.Empty;
+                    _remainingUses = GetSpellUses(drawnSpell);
                     break;
                 }
             }
         }
     }
-    public bool addSpell(string spellType)
+    public bool addSpell(Spells spellType)
     {
         for (int i = 0; i < 3; i++)
         {
-            if (_stashedSpells[i] == "empty")
+            if (stashedSpells.Values[i].Value == (int)Spells.Empty)
             {
-                _stashedSpells[i] = spellType;
+                stashedSpells.Values[i].Value = (int)spellType;
                 return true;
             }
         }
@@ -98,5 +86,15 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
         {
             currentTimeBetweenShoots.Value += Elympics.TickDuration;
         }    
+    }
+    private int GetSpellUses(Spells spell)
+    {
+        switch (spell)
+        {
+            case Spells.Empty: return 0;
+            case Spells.Fireball: return 3;
+            case Spells.Lightbolt: return 2;
+            default: return 0;
+        }
     }
 }

@@ -12,31 +12,33 @@ public class PlayerSpells : MonoBehaviour
     private void Start()
     {
         spells[0].sprite = sprites[0];
-        spells[1].sprite = sprites[1];
-        spells[2].sprite = sprites[2];
-    }
-
-    private void Update()
-    {
+        spells[1].sprite = sprites[0];
+        spells[2].sprite = sprites[0];
         var clientPlayerData = playersProvider.ClientPlayer;
-        var spellsNumbers = clientPlayerData.GetComponent<ActionHandler>().getSpells();
+        
+        clientPlayerData.GetComponent<ActionHandler>().stashedSpells.Values[0].ValueChanged += ChangeSlot0;
+        clientPlayerData.GetComponent<ActionHandler>().stashedSpells.Values[1].ValueChanged += ChangeSlot1;
+        clientPlayerData.GetComponent<ActionHandler>().stashedSpells.Values[2].ValueChanged += ChangeSlot2;
+        
+    }
+    
+    private void ChangeSlot0(int oldVal, int newVal) { ChangeSlot(0, newVal); }
+    private void ChangeSlot1(int oldVal, int newVal) { ChangeSlot(1, newVal); }
+    private void ChangeSlot2(int oldVal, int newVal) { ChangeSlot(2, newVal); }
 
-        for (int i = 0; i < spells.Length; i++)
+    private void ChangeSlot(int index, int newVal)
+    {
+        switch ((Spells)newVal)
         {
-            switch (spellsNumbers[i])
-            {
-                case "empty":
-                    spells[i].sprite = sprites[0]; 
-                    break;
-                case "fireBall":
-                    spells[i].sprite = sprites[1];
-                    break;
-                case "lightningBolt":
-                    spells[i].sprite = sprites[2];
-                    break;
-            }
+            case Spells.Empty:
+                spells[index].sprite = sprites[0]; 
+                break;
+            case Spells.Fireball:
+                spells[index].sprite = sprites[1];
+                break;
+            case Spells.Lightbolt:
+                spells[index].sprite = sprites[2];
+                break;
         }
     }
-
-
 }
