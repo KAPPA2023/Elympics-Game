@@ -47,4 +47,10 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable
     {
         return deathController.getDead();
     }
+
+    public void setMaxHealth(float value)
+    {
+        maxHealth = value;
+        health.Value = maxHealth;
+    }
 }

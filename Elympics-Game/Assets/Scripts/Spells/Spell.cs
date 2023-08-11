@@ -20,12 +20,18 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
     //if spell exploded on collision or smth
     //[SerializeField] private float spellRange;
 
-    public virtual void SpawnSpell(Vector3 position, Vector3 direction, int casterID)
+
+    public virtual void SpawnSpell(Vector3 position, Vector3 direction, int casterID, bool modified)
     {
         //we can use tick to setup timers - for example fireball could explode after 2 seconds in air
         transform.position = position;
         spellVelocity = direction.normalized * spellSpeed;
         caster = casterID;
+
+        if (modified)
+        {
+            applyModifier();
+        }
     }
 
     public void SetSpellHitCallback(Action spellHit)
@@ -57,8 +63,12 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
             DetonateProjectile();
         }
     }
-    
-    
+
+    public virtual void applyModifier()
+    {
+        Debug.Log("spell modified");
+    }
+
     protected void DetonateProjectile()
     {
         shouldBeDestoyed.Value = true;
