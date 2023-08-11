@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Elympics;
+using TMPro;
+using UnityEditor.Experimental.GraphView;
 
 public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
 {
@@ -11,14 +13,14 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
     [SerializeField] protected float lifeTime;
 
     private ElympicsFloat deathTimer = new ElympicsFloat(0.0f);
-    private Vector3 spellVelocity;
-    private int caster;
+    protected Vector3 spellVelocity;
+    protected int caster;
     private ElympicsBool shouldBeDestoyed = new ElympicsBool();
     public Action SpellHit = null;
     //if spell exploded on collision or smth
     //[SerializeField] private float spellRange;
 
-    public void SpawnSpell(Vector3 position, Vector3 direction, int casterID)
+    public virtual void SpawnSpell(Vector3 position, Vector3 direction, int casterID)
     {
         //we can use tick to setup timers - for example fireball could explode after 2 seconds in air
         transform.position = position;
@@ -31,8 +33,10 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
         SpellHit = spellHit;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
+        
+        
         var playerInfo = other.GetComponent<PlayerData>();
         if (playerInfo != null)
         {
@@ -45,7 +49,7 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
     public void ElympicsUpdate()
     {
         if(shouldBeDestoyed.Value) ElympicsDestroy(gameObject);
-        transform.position += spellVelocity;
+        move();
         
         deathTimer.Value += Elympics.TickDuration;
         if (deathTimer >= lifeTime)
@@ -54,9 +58,15 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
         }
     }
     
-    private void DetonateProjectile()
+    
+    protected void DetonateProjectile()
     {
         shouldBeDestoyed.Value = true;
+    }
+
+    protected virtual void move()
+    {
+        transform.position += spellVelocity;
     }
     
 }

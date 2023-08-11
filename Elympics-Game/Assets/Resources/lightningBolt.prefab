@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6309136655753956528}
   - component: {fileID: 2112768139627387283}
   - component: {fileID: 6802379047268963380}
-  - component: {fileID: 7956724360270659026}
   - component: {fileID: 2562298034367758845}
   - component: {fileID: 2884881444969025028}
+  - component: {fileID: 6419675407260241769}
   m_Layer: 0
   m_Name: lightningBolt
   m_TagString: Untagged
@@ -92,21 +92,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7956724360270659026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8641383612146418019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 869681303c06bbe4b8bd4aea52acea1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spellDamage: 30
-  spellSpeed: 3
-  lifeTime: 3
 --- !u!54 &2562298034367758845
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -162,6 +147,21 @@ MonoBehaviour:
   isKinematicConfig:
     synchronizationEnabled: 0
     tolerance: 0
+--- !u!114 &6419675407260241769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8641383612146418019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa72747f6690f4041b07137951054d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellDamage: 30
+  spellSpeed: 20
+  lifeTime: 5
 --- !u!1 &8916941836228933865
 GameObject:
   m_ObjectHideFlags: 0
