@@ -16,6 +16,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     [SerializeField] private SpellSpawner spellSpawner;
     [SerializeField] private GameObject viewController;
     [SerializeField] private float spellCooldown = 0.8f;
+    public bool modified = false;
 
     protected ElympicsFloat currentTimeBetweenShoots = new ElympicsFloat();
     protected bool canCast => currentTimeBetweenShoots >= spellCooldown;
@@ -35,7 +36,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     {
         if (_selectedSpell != Spells.Empty && _remainingUses > 0)
         {
-            spellSpawner.TrySpawningSpell(_selectedSpell,direction, GetComponent<PlayerData>().PlayerId);
+            spellSpawner.TrySpawningSpell(_selectedSpell,direction, GetComponent<PlayerData>().PlayerId, modified);
             _remainingUses--;
         }
         else 
@@ -48,7 +49,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
 
     public void castBasicAttack(Vector3 direction)
     {
-        spellSpawner.TrySpawningSpell(Spells.Empty, direction, GetComponent<PlayerData>().PlayerId);
+        spellSpawner.TrySpawningSpell(Spells.Empty, direction, GetComponent<PlayerData>().PlayerId, false);
     }
 
     public void chooseSpell(Spells drawnSpell)

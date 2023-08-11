@@ -21,7 +21,7 @@ public class MovementController : ElympicsMonoBehaviour
     #endregion
     
     #region Jumping Variables
-    [SerializeField] private float jumpForce;
+    public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
     private bool readyToJump = true;
@@ -79,7 +79,7 @@ public class MovementController : ElympicsMonoBehaviour
             }
         } else
         {
-            rb.drag = 1;
+            rb.drag = 0;
         }
         
     }

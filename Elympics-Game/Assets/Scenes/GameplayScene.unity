@@ -5291,6 +5291,7 @@ GameObject:
   - component: {fileID: 544778519}
   - component: {fileID: 544778521}
   - component: {fileID: 544778522}
+  - component: {fileID: 544778523}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -5356,6 +5357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matchLength: 120
   postGameTime: 5
+  preGameTime: 5
   gameEnded:
     currentValue: 0
 --- !u!114 &544778522
@@ -5373,6 +5375,19 @@ MonoBehaviour:
   playerProvider: {fileID: 508643193}
   gameManager: {fileID: 544778521}
   screen: {fileID: 242119240}
+--- !u!114 &544778523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544778518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7fb601325c64949afb86dcb97f61a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerProvider: {fileID: 508643193}
 --- !u!1 &550300138
 GameObject:
   m_ObjectHideFlags: 0
@@ -6938,7 +6953,7 @@ PrefabInstance:
       objectReference: {fileID: 508643193}
     - target: {fileID: 3137473124097492648, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: jumpForce
-      value: 40
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3137473124097492648, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: movementSpeed

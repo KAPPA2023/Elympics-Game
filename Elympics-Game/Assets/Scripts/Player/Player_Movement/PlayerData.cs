@@ -17,11 +17,32 @@ public class PlayerData : ElympicsMonoBehaviour, IInitializable, IUpdatable
 
     }
 
-    public void DealDamage(float damage, int damageOwner)
+    public void ElympicsUpdate()
     {
-        statsController.ChangeHealth(damage, damageOwner);
     }
 
+    public void ApplyModifier(int id)
+    {
+        switch (id)
+        {
+            case 0:
+                statsController.setMaxHealth(1);
+                break;
+
+            case 1:
+                GetComponent<MovementController>().jumpForce = 40; 
+                break;
+
+            case 2:
+                GetComponent<ActionHandler>().modified = true;
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    #region ScoreLogic
     private void AddScore(int points)
     {
         Score.Value += points;
@@ -38,11 +59,12 @@ public class PlayerData : ElympicsMonoBehaviour, IInitializable, IUpdatable
             playerProvider.GetPlayerById(damageOwner).AddScore(1);
         }
     }
-    
-    public void ElympicsUpdate()
-    {
-    }
+    #endregion
 
+    public void DealDamage(float damage, int damageOwner)
+    {
+        statsController.ChangeHealth(damage, damageOwner);
+    }
 
     public bool isDead()
     {
