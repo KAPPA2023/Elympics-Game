@@ -5,7 +5,7 @@ using UnityEngine;
 public class TornadoSpell : Spell
 {
     public float bulletSpeed = 10f;
-    public float knockbackForce = 5f;
+    public float knockbackForce = 20f;
 
     private Rigidbody rb;
 
@@ -17,10 +17,11 @@ public class TornadoSpell : Spell
         if (playerRigidbody != null)
         {
             // Oblicz wektor odrzutu
-            Vector3 knockbackDirection = -transform.forward;
+            Vector3 knockbackDirection = spellVelocity;
+            knockbackDirection.y = 0.1f;
 
             // Dodaj siłę odrzutu do gracza
-            playerRigidbody.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
+            playerRigidbody.AddForce(knockbackDirection * 25, ForceMode.Impulse);
         }
 
     }
