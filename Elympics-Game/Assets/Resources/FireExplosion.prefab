@@ -226,7 +226,6 @@ GameObject:
   - component: {fileID: 7777808137474915554}
   - component: {fileID: 2838023422718773770}
   - component: {fileID: 7575047413114315203}
-  - component: {fileID: 4332305748809658774}
   - component: {fileID: -2026681242118464597}
   m_Layer: 0
   m_Name: FireExplosion
@@ -337,27 +336,6 @@ MonoBehaviour:
   isKinematicConfig:
     synchronizationEnabled: 0
     tolerance: 0
---- !u!114 &4332305748809658774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8437392693171119185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7b382d63b93bdf4bbeda8299ce4a906, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  localPositionConfig:
-    synchronizationEnabled: 1
-    tolerance: 0.01
-  localScaleConfig:
-    synchronizationEnabled: 1
-    tolerance: 0.01
-  localRotationConfig:
-    synchronizationEnabled: 1
-    tolerance: 1
 --- !u!114 &-2026681242118464597
 MonoBehaviour:
   m_ObjectHideFlags: 0

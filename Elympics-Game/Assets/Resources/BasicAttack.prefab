@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6802379047268963380}
   - component: {fileID: 2562298034367758845}
   - component: {fileID: 2884881444969025028}
-  - component: {fileID: -3909214131150364773}
+  - component: {fileID: 6123086950198693545}
   m_Layer: 0
   m_Name: BasicAttack
   m_TagString: Untagged
@@ -147,7 +147,7 @@ MonoBehaviour:
   isKinematicConfig:
     synchronizationEnabled: 0
     tolerance: 0
---- !u!114 &-3909214131150364773
+--- !u!114 &6123086950198693545
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,14 +156,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8641383612146418019}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f754df5323297c64da21d473c1b1bba8, type: 3}
+  m_Script: {fileID: 11500000, guid: 869681303c06bbe4b8bd4aea52acea1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellDamage: 10
-  spellSpeed: 2
-  lifeTime: 3
-  bulletSpeed: 2
-  knockbackForce: 5
+  spellDamage: 5
+  spellSpeed: 1
+  lifeTime: 5
 --- !u!1 &8916941836228933865
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,12 +19,13 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
     public Action SpellHit = null;
     //if spell exploded on collision or smth
     //[SerializeField] private float spellRange;
-
+    protected Rigidbody rb;
 
     public virtual void SpawnSpell(Vector3 position, Vector3 direction, int casterID, bool modified)
     {
         //we can use tick to setup timers - for example fireball could explode after 2 seconds in air
-        transform.position = position;
+        rb = GetComponent<Rigidbody>();
+        rb.position = position;
         spellVelocity = direction.normalized * spellSpeed;
         caster = casterID;
 
@@ -32,6 +33,7 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
         {
             applyModifier();
         }
+        
     }
 
     public void SetSpellHitCallback(Action spellHit)
@@ -76,7 +78,8 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
 
     protected virtual void move()
     {
-        transform.position += spellVelocity;
+        rb = GetComponent<Rigidbody>();
+        rb.velocity += spellVelocity * Elympics.TickDuration;
     }
     
 }

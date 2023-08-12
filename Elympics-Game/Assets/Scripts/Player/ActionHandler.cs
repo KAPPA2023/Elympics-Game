@@ -9,7 +9,12 @@ public enum Spells
 {
     Empty = -1,
     Fireball = 0,
-    Lightbolt = 1
+    Lightbolt = 1,
+    WaterBlast =2,
+    SandGranade =3,
+    Tornado =4,
+    IceSpike =5
+    
 }
 public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
 {
@@ -34,6 +39,8 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     
     public void castSpell(Vector3 direction)
     {
+        Debug.Log(_selectedSpell);
+        Debug.Log(_remainingUses);
         if (_selectedSpell != Spells.Empty && _remainingUses > 0)
         {
             spellSpawner.TrySpawningSpell(_selectedSpell,direction, GetComponent<PlayerData>().PlayerId, modified);
@@ -70,8 +77,10 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     }
     public bool addSpell(Spells spellType)
     {
+        Debug.Log(spellType);
         for (int i = 0; i < 3; i++)
         {
+            Debug.Log(stashedSpells.Values[i].Value);
             if (stashedSpells.Values[i].Value == (int)Spells.Empty)
             {
                 stashedSpells.Values[i].Value = (int)spellType;
@@ -95,6 +104,10 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
             case Spells.Empty: return 0;
             case Spells.Fireball: return 3;
             case Spells.Lightbolt: return 2;
+            case Spells.SandGranade: return 2;
+            case Spells.WaterBlast: return 2;
+            case Spells.Tornado: return 2;
+            case Spells.IceSpike: return 2;
             default: return 0;
         }
     }

@@ -58,7 +58,7 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable
         health.Value = maxHealth;
     }
 
-    //Possible dlug technologiczny
+
     public void ElympicsUpdate()
     {
         if (isBlind)

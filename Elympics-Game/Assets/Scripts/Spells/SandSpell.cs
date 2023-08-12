@@ -8,7 +8,7 @@ public class SandSpell : Spell
 {
     private float bounciness = 0.5f;
     private GameObject Sandstorm;
-    private Rigidbody rb;
+    
     // Start is called before the first frame update
     void Start()
     {
