@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerDrawingSpellState : PlayerState
 {
-    public PlayerDrawingSpellState(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
+    public PlayerDrawingSpellState(PlayerController player, PlayerStateMachine stateMachine, DeathController deathController) : base(player, stateMachine, deathController)
     {
     }
 
@@ -23,11 +23,6 @@ public class PlayerDrawingSpellState : PlayerState
     public override void PlayerElympicsUpdate()
     {
         base.PlayerElympicsUpdate();
-
-        if (player.isDead())
-        {
-            stateMachine.ChangeState(player.DeadState);
-        }
 
         if (player.isDrawingReleased)
         {

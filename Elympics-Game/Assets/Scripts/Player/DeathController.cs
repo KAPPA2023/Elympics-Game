@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class DeathController : ElympicsMonoBehaviour, IUpdatable
+public class DeathController : ElympicsMonoBehaviour, IUpdatable, IInitializable
 {
     [Header("Parameters:")]
     [SerializeField] private float deathTime = 2.0f;
@@ -15,15 +15,19 @@ public class DeathController : ElympicsMonoBehaviour, IUpdatable
 
     public event Action PlayerRespawned = null;
     public event Action<int, int> HasBeenKilled = null;
-
-
+    
     private PlayerData playerData = null;
     private StatsController playerStats = null;
-
-    private void Awake()
+    
+    public bool IsReady { get; private set; } = false;
+    public event Action IsReadyChanged = null;
+    
+    public void Initialize()
     {
         playerData = GetComponent<PlayerData>();
         playerStats = GetComponent<StatsController>();
+        IsReady = true;
+        IsReadyChanged?.Invoke();
     }
 
     public void ProcessPlayersDeath(int damageOwner)
@@ -32,9 +36,6 @@ public class DeathController : ElympicsMonoBehaviour, IUpdatable
 
         CurrentDeathTime.Value = deathTime;
         IsDead.Value = true;
-
-        Debug.Log("dead");
-
         HasBeenKilled?.Invoke((int)PredictableFor, damageOwner);
     }
 

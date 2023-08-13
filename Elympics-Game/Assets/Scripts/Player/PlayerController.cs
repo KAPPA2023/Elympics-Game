@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     #region State Machine Variables
     private ViewController viewController;
     private MovementController movementController;
+    private DeathController deathController;
     private ActionHandler actionHandler;
     private PlayerData playerData;
     public PlayerStateMachine StateMachine { get; set; }
@@ -36,10 +37,11 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        deathController = GetComponent<DeathController>();
         StateMachine = new PlayerStateMachine();
-        NormalState = new PlayerNormalState(this, StateMachine);
-        DrawingSpellState = new PlayerDrawingSpellState(this, StateMachine);
-        DeadState = new PlayerDeadState(this, StateMachine);
+        NormalState = new PlayerNormalState(this, StateMachine, deathController);
+        DrawingSpellState = new PlayerDrawingSpellState(this, StateMachine, deathController);
+        DeadState = new PlayerDeadState(this, StateMachine, deathController);
         actionHandler = GetComponent<ActionHandler>();
     }
 
