@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6309136655753956528}
   - component: {fileID: 2112768139627387283}
   - component: {fileID: 6802379047268963380}
-  - component: {fileID: 5794615184864677354}
   - component: {fileID: 2562298034367758845}
   - component: {fileID: 2884881444969025028}
+  - component: {fileID: 3362328038425734522}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -92,21 +92,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5794615184864677354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8641383612146418019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55a4706a874606840bddf5b96c075923, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spellDamage: 50
-  spellSpeed: 1
-  lifeTime: 3
 --- !u!54 &2562298034367758845
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -162,6 +147,22 @@ MonoBehaviour:
   isKinematicConfig:
     synchronizationEnabled: 0
     tolerance: 0
+--- !u!114 &3362328038425734522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8641383612146418019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 523f6a79454d2b04595c8f6409b67b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellDamage: 20
+  spellSpeed: 40
+  lifeTime: 4
+  fireExplosion: {fileID: 8437392693171119185, guid: 97196b88b0df3bb478c4edb490225646, type: 3}
 --- !u!1 &8916941836228933865
 GameObject:
   m_ObjectHideFlags: 0

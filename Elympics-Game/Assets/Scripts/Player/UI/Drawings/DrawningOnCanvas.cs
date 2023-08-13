@@ -28,8 +28,9 @@ public class DrawningOnCanvas : MonoBehaviour
         lineRenderer.endWidth = 0.01f;
         lineRenderer.useWorldSpace = false;
         linePoints = new Vector3[0];
+        ActionHandler.OnBadSpell += BadSpell;
+        ActionHandler.OnGoodSpell += GoodSpell;
         ShapeInput.OnBadSpell += BadSpell;
-        ShapeInput.OnGoodSpell += GoodSpell;
     }
 
     void Update()

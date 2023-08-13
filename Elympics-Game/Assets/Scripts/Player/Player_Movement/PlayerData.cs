@@ -26,7 +26,7 @@ public class PlayerData : ElympicsMonoBehaviour, IInitializable, IUpdatable
         switch (id)
         {
             case 0:
-                statsController.setMaxHealth(1);
+                statsController.SetMaxHealth(1);
                 break;
 
             case 1:
@@ -68,6 +68,6 @@ public class PlayerData : ElympicsMonoBehaviour, IInitializable, IUpdatable
 
     public bool isDead()
     {
-        return statsController.isDead();
+        return statsController.IsDead();
     }
 }

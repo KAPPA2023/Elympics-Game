@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Elympics;
+using TMPro;
+using UnityEditor.Experimental.GraphView;
 
 public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
 {
@@ -11,20 +13,19 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
     [SerializeField] protected float lifeTime;
 
     private ElympicsFloat deathTimer = new ElympicsFloat(0.0f);
-    private Vector3 spellVelocity;
-    private int caster;
+    protected Vector3 spellVelocity;
+    protected int caster;
     private ElympicsBool shouldBeDestoyed = new ElympicsBool();
     public Action SpellHit = null;
-    //if spell exploded on collision or smth
-    //[SerializeField] private float spellRange;
+    protected Rigidbody rb;
 
-    public void SpawnSpell(Vector3 position, Vector3 direction, int casterID, bool modified)
+    public virtual void SpawnSpell(Vector3 position, Vector3 direction, int casterID, bool modified)
     {
-        //we can use tick to setup timers - for example fireball could explode after 2 seconds in air
-        transform.position = position;
+        rb = GetComponent<Rigidbody>();
+        rb.position = position;
         spellVelocity = direction.normalized * spellSpeed;
         caster = casterID;
-
+        rb.velocity = spellVelocity;
         if (modified)
         {
             applyModifier();
@@ -36,7 +37,7 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
         SpellHit = spellHit;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         var playerInfo = other.GetComponent<PlayerData>();
         if (playerInfo != null)
@@ -50,7 +51,7 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
     public void ElympicsUpdate()
     {
         if(shouldBeDestoyed.Value) ElympicsDestroy(gameObject);
-        transform.position += spellVelocity;
+        
         
         deathTimer.Value += Elympics.TickDuration;
         if (deathTimer >= lifeTime)
@@ -62,11 +63,16 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
     public virtual void applyModifier()
     {
         Debug.Log("spell modified");
-    } 
+    }
 
-    private void DetonateProjectile()
+    protected void DetonateProjectile()
     {
+        SpawnChild();
         shouldBeDestoyed.Value = true;
     }
-    
+
+    protected virtual void SpawnChild()
+    {
+        
+    }
 }

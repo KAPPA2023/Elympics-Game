@@ -9,7 +9,11 @@ public enum Spells
 {
     Empty = -1,
     Fireball = 0,
-    Lightbolt = 1
+    Lightbolt = 1,
+    WaterBlast = 2,
+    SandGranade = 3,
+    Tornado = 4,
+    IceSpike = 5
 }
 public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
 {
@@ -17,6 +21,10 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     [SerializeField] private GameObject viewController;
     [SerializeField] private float spellCooldown = 0.8f;
     public bool modified = false;
+    public delegate void MyEventHandler();
+    public static event MyEventHandler OnBadSpell;
+    public static event MyEventHandler OnGoodSpell;
+
 
     protected ElympicsFloat currentTimeBetweenShoots = new ElympicsFloat();
     protected bool canCast => currentTimeBetweenShoots >= spellCooldown;
@@ -60,18 +68,26 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
             {
                 if (stashedSpells.Values[i].Value == (int)drawnSpell)
                 {
+                    Invoke("GoodSpellInvoke", 0.1f);
                     _selectedSpell = drawnSpell;
                     stashedSpells.Values[i].Value = (int)Spells.Empty;
                     _remainingUses = GetSpellUses(drawnSpell);
                     break;
                 }
+                else
+                {
+                    Invoke("BadSpellInvoke", 0.1f);
+                }
             }
         }
+
     }
     public bool addSpell(Spells spellType)
     {
+        Debug.Log(spellType);
         for (int i = 0; i < 3; i++)
         {
+            Debug.Log(stashedSpells.Values[i].Value);
             if (stashedSpells.Values[i].Value == (int)Spells.Empty)
             {
                 stashedSpells.Values[i].Value = (int)spellType;
@@ -95,7 +111,20 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
             case Spells.Empty: return 0;
             case Spells.Fireball: return 3;
             case Spells.Lightbolt: return 2;
+            case Spells.SandGranade: return 2;
+            case Spells.WaterBlast: return 2;
+            case Spells.Tornado: return 2;
+            case Spells.IceSpike: return 2;
             default: return 0;
         }
+    }
+
+    private void GoodSpellInvoke()
+    {
+        OnGoodSpell();
+    }
+    private void BadSpellInvoke()
+    {
+        OnBadSpell();
     }
 }

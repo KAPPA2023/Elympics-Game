@@ -8,7 +8,6 @@ public class ShapeInput : MonoBehaviour
     private List<Gesture> trainingSet = new List<Gesture>();
     public delegate void MyEventHandler();
     public static event MyEventHandler OnBadSpell;
-    public static event MyEventHandler OnGoodSpell;
 
     void Start()
     {
@@ -23,19 +22,24 @@ public class ShapeInput : MonoBehaviour
         Gesture candidate = new Gesture(points.ToArray());
         Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
         Debug.Log(gestureResult.GestureClass + " " + gestureResult.Score);
-        if (gestureResult.Score < 0.70) return Spells.Empty;
+        if (gestureResult.Score < 0.70)
+        {
+            Invoke("BadSpellInvoke", 0.1f);
+            return Spells.Empty;
+        }
+
         switch (gestureResult.GestureClass)
         {
-            case "Fire": Invoke("GoodSpellInvoke", 0.1f); return Spells.Fireball;
-            case "Light": Invoke("GoodSpellInvoke", 0.1f); return Spells.Lightbolt;
+            case "Fire": return Spells.Fireball;
+            case "Light": return Spells.Lightbolt;
+            case "Water": return Spells.WaterBlast;
+            case "Ground": return Spells.SandGranade;
+            case "Wind": return Spells.Tornado;
+            case "Ice": return Spells.IceSpike;
             default: Invoke("BadSpellInvoke", 0.1f); return Spells.Empty;
         }
     }
 
-    private void GoodSpellInvoke()
-    {
-        OnGoodSpell();
-    }
     private void BadSpellInvoke()
     {
         OnBadSpell();
