@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Elympics;
@@ -19,5 +20,13 @@ public class FireExplosion : ElympicsMonoBehaviour, IUpdatable
         sphere.GetComponent<SphereCollider>().radius += sphere.GetComponent<SphereCollider>().radius*Elympics.TickDuration;
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        var playerInfo = other.GetComponent<PlayerData>();
+        if (playerInfo != null)
+        {
+            
+        }
+    }
 }
 
