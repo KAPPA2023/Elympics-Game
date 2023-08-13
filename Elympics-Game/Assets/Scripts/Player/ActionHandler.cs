@@ -10,11 +10,10 @@ public enum Spells
     Empty = -1,
     Fireball = 0,
     Lightbolt = 1,
-    WaterBlast =2,
-    SandGranade =3,
-    Tornado =4,
-    IceSpike =5
-    
+    WaterBlast = 2,
+    SandGranade = 3,
+    Tornado = 4,
+    IceSpike = 5
 }
 public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
 {
@@ -39,8 +38,6 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     
     public void castSpell(Vector3 direction)
     {
-        Debug.Log(_selectedSpell);
-        Debug.Log(_remainingUses);
         if (_selectedSpell != Spells.Empty && _remainingUses > 0)
         {
             spellSpawner.TrySpawningSpell(_selectedSpell,direction, GetComponent<PlayerData>().PlayerId, modified);

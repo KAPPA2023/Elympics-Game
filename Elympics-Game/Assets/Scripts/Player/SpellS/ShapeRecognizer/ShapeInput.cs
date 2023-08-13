@@ -29,7 +29,7 @@ public class ShapeInput : MonoBehaviour
             case "Fire": Invoke("GoodSpellInvoke", 0.1f); return Spells.Fireball;
             case "Light": Invoke("GoodSpellInvoke", 0.1f); return Spells.Lightbolt;
             case "Water": Invoke("GoodSpellInvoke", 0.1f); return Spells.WaterBlast;
-            case "Sand": Invoke("GoodSpellInvoke", 0.1f); return Spells.SandGranade;
+            case "Ground": Invoke("GoodSpellInvoke", 0.1f); return Spells.SandGranade;
             case "Wind": Invoke("GoodSpellInvoke", 0.1f); return Spells.Tornado;
             case "Ice": Invoke("GoodSpellInvoke", 0.1f); return Spells.IceSpike;
             default: Invoke("BadSpellInvoke", 0.1f); return Spells.Empty;

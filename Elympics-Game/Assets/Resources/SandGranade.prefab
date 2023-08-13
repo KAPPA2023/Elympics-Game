@@ -87,7 +87,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8641383612146418019}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -100,10 +100,10 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8641383612146418019}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.0000001
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -162,6 +162,7 @@ MonoBehaviour:
   spellDamage: 30
   spellSpeed: 30
   lifeTime: 5
+  sandstorm: {fileID: 8437392693171119185, guid: c98cab512bd98f047aee61bce6a03cc7, type: 3}
 --- !u!1 &8916941836228933865
 GameObject:
   m_ObjectHideFlags: 0

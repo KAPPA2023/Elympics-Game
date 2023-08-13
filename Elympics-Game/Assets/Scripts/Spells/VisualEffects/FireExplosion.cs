@@ -13,7 +13,6 @@ public class FireExplosion : ElympicsMonoBehaviour, IUpdatable
 
     public void ElympicsUpdate()
     {
-        
         //sphere.GetComponent<SphereCollider>();
         deathTimer.Value += Elympics.TickDuration;
         if (deathTimer.Value >= 1.0f)
@@ -33,7 +32,6 @@ public class FireExplosion : ElympicsMonoBehaviour, IUpdatable
     }
     public virtual void SpawnSpell(Vector3 position,int client)
     {
-        //we can use tick to setup timers - for example fireball could explode after 2 seconds in air
         transform.position = position;
         owner = client;
     }

@@ -17,8 +17,6 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
     protected int caster;
     private ElympicsBool shouldBeDestoyed = new ElympicsBool();
     public Action SpellHit = null;
-    //if spell exploded on collision or smth
-    //[SerializeField] private float spellRange;
     protected Rigidbody rb;
 
     public virtual void SpawnSpell(Vector3 position, Vector3 direction, int casterID, bool modified)
@@ -32,7 +30,6 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
         {
             applyModifier();
         }
-        
     }
 
     public void SetSpellHitCallback(Action spellHit)
@@ -42,8 +39,6 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        
-        
         var playerInfo = other.GetComponent<PlayerData>();
         if (playerInfo != null)
         {
@@ -56,7 +51,7 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
     public void ElympicsUpdate()
     {
         if(shouldBeDestoyed.Value) ElympicsDestroy(gameObject);
-        move();
+        
         
         deathTimer.Value += Elympics.TickDuration;
         if (deathTimer >= lifeTime)
@@ -80,8 +75,4 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
     {
         
     }
-    protected virtual void move()
-    {
-    }
-    
 }

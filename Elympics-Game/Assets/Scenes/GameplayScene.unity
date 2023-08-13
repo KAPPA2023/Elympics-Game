@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 4
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 262.05304, g: 324.6715, b: 429.7248, a: 1}
+  m_IndirectSpecularColor: {r: 262.1853, g: 324.85815, b: 429.9668, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -528,7 +528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1936920795336366074, guid: 4213ff791e0692e4f9debe8d3d296327, type: 3}
       propertyPath: spellType
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2441784628701109021, guid: 4213ff791e0692e4f9debe8d3d296327, type: 3}
       propertyPath: networkId
@@ -3704,7 +3704,7 @@ GameObject:
   - component: {fileID: 358225290}
   - component: {fileID: 358225289}
   - component: {fileID: 358225288}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube.016 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3802,7 +3802,7 @@ GameObject:
   - component: {fileID: 361825327}
   - component: {fileID: 361825326}
   - component: {fileID: 361825325}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube.016
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9448,7 +9448,7 @@ GameObject:
   - component: {fileID: 1254247922}
   - component: {fileID: 1254247921}
   - component: {fileID: 1254247920}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube.016 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9622,7 +9622,7 @@ GameObject:
   - component: {fileID: 1259934762}
   - component: {fileID: 1259934761}
   - component: {fileID: 1259934760}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube.016 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11675,7 +11675,7 @@ GameObject:
   - component: {fileID: 1396642260}
   - component: {fileID: 1396642259}
   - component: {fileID: 1396642258}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube.016 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

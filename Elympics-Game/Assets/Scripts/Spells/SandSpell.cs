@@ -6,67 +6,38 @@ using UnityEngine;
 
 public class SandSpell : Spell
 {
-    private float bounciness = 0.5f;
-    private GameObject Sandstorm;
+    [SerializeField] private GameObject sandstorm;
+    private ElympicsBool spawned = new ElympicsBool(false);
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     protected override void OnTriggerEnter(Collider other)
     {
-        Sandstorm = new GameObject("SandGranate");
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
+        
+    }
 
-            if (Elympics.IsServer)
-            {
-                SandStorm ss =  ElympicsInstantiate(Sandstorm.name,ElympicsPlayer.World).GetComponent<SandStorm>();
-                ss.SpawnSpell(this.transform.position+ new Vector3(0,0.1f,0),caster);
-            }
-            DetonateProjectile();
-           
-        }
-        var playerInfo = other.GetComponent<PlayerData>();
+    private void OnCollisionEnter(Collision collision)
+    {
+        var playerInfo = collision.gameObject.GetComponent<PlayerData>();
         if (playerInfo != null)
         {
             SpellHit?.Invoke();
             playerInfo.DealDamage(spellDamage, caster);
             DetonateProjectile();
+        } else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            DetonateProjectile();
         }
-        
     }
 
-    protected override void move()
+    protected override void SpawnChild()
     {
-        rb = GetComponent<Rigidbody>();
-        Vector3 gravity = Physics.gravity;
-        float drag = 0.1f;
-        spellVelocity *= (1 - drag * Elympics.TickDuration);
-        spellVelocity += gravity * Elympics.TickDuration;
-    
-        Ray ray = new Ray(rb.position, spellVelocity.normalized);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, spellVelocity.magnitude * Elympics.TickDuration))
+        if (!spawned.Value)
         {
-            Vector3 reflectDirection = Vector3.Reflect(spellVelocity.normalized, hit.normal);
-            spellVelocity = reflectDirection * spellVelocity.magnitude * bounciness;
-
-            rb.position = hit.point + hit.normal * 0.05f;
-            rb.velocity = spellVelocity;
-        }
-        else
-        {
-            rb.velocity += spellVelocity * Elympics.TickDuration;
+            if (Elympics.IsServer)
+            {
+                SandStorm ss = ElympicsInstantiate(sandstorm.name, ElympicsPlayer.All).GetComponent<SandStorm>();
+                ss.SpawnSpell(this.transform.position + new Vector3(0, 0.1f, 0), caster);
+                spawned.Value = true;
+            }
         }
     }
 }
