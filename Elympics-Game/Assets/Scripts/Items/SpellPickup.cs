@@ -10,7 +10,7 @@ public class SpellPickup : ElympicsMonoBehaviour, IUpdatable, IInitializable
     [SerializeField] private int spellType = 0;
     [SerializeField] private float respawnTime = 5.0f;
     
-    public ElympicsFloat timeToSpawn = new ElympicsFloat();
+    private ElympicsFloat timeToSpawn = new ElympicsFloat();
     private ElympicsBool empty = new ElympicsBool(false);
     
     public void Initialize()
