@@ -40,7 +40,7 @@ public class UIDamage : MonoBehaviour
         var clientPlayerData = playerProvider.ClientPlayer;
         clientPlayerData.GetComponent<DeathController>().IsDead.ValueChanged += OnDeath;
         clientPlayerData.GetComponentInChildren<SpellSpawner>().SpellHit += OnEnemyDamaged;
-        clientPlayerData.GetComponent<StatsController>().BlindPower.ValueChanged += OnBlind;
+        clientPlayerData.GetComponent<StatsController>().blindPower.ValueChanged += OnBlind;
         clientPlayerData.GetComponent<StatsController>().isBlind.ValueChanged += WaterBlind;
     }
 

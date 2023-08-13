@@ -2519,7 +2519,7 @@ GameObject:
   - component: {fileID: 249618945}
   - component: {fileID: 249618944}
   - component: {fileID: 249618943}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArenaBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3704,7 +3704,7 @@ GameObject:
   - component: {fileID: 358225290}
   - component: {fileID: 358225289}
   - component: {fileID: 358225288}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Cube.016 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6243,7 +6243,7 @@ GameObject:
   - component: {fileID: 720912329}
   - component: {fileID: 720912331}
   - component: {fileID: 720912330}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: KillPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8553,7 +8553,7 @@ GameObject:
   - component: {fileID: 1094975845}
   - component: {fileID: 1094975844}
   - component: {fileID: 1094975843}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Cube.064 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9444,7 +9444,7 @@ GameObject:
   - component: {fileID: 1254247922}
   - component: {fileID: 1254247921}
   - component: {fileID: 1254247920}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Cube.016 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9618,7 +9618,7 @@ GameObject:
   - component: {fileID: 1259934762}
   - component: {fileID: 1259934761}
   - component: {fileID: 1259934760}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Cube.016 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11671,7 +11671,7 @@ GameObject:
   - component: {fileID: 1396642260}
   - component: {fileID: 1396642259}
   - component: {fileID: 1396642258}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Cube.016 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

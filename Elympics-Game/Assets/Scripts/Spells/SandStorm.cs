@@ -49,10 +49,10 @@ public class SandStorm : ElympicsMonoBehaviour, IUpdatable
                 float xDistance = Mathf.Abs(distancetoCenter.x);
                 float zDistance = Mathf.Abs(distancetoCenter.z);
                 float accDistance = xDistance > zDistance ? xDistance : zDistance;
-                data.GetComponent<StatsController>().BlindPower.Value = accDistance;
+                data.GetComponent<StatsController>().blindPower.Value = accDistance;
                 if (deathTimer >= lifeTime)
                 {
-                    data.GetComponent<StatsController>().BlindPower.Value = 300;
+                    data.GetComponent<StatsController>().blindPower.Value = 300;
                 }
             }
 
@@ -69,7 +69,7 @@ public class SandStorm : ElympicsMonoBehaviour, IUpdatable
             Debug.Log(players.Count);
             foreach (var v in players)
             {
-                v.GetComponent<StatsController>().BlindPower.Value = 0;
+                v.GetComponent<StatsController>().blindPower.Value = 0;
             }
             
         }

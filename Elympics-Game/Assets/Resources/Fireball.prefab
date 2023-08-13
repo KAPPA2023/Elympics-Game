@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellDamage: 50
-  spellSpeed: 1
+  spellSpeed: 30
   lifeTime: 3
 --- !u!54 &2562298034367758845
 Rigidbody:

@@ -24,9 +24,12 @@ public class HealingStation : ElympicsMonoBehaviour, IUpdatable, IInitializable
         var player = other.GetComponent<StatsController>();
         if (player != null)
         {
-             player.ChangeHealth(-healingValue,player.GetComponent<PlayerData>().PlayerId);
-             timeToSpawn.Value = respawnTime; 
-             _empty.Value = true;
+            if (!player.IsFullHp())
+            {
+                player.ChangeHealth(-healingValue,player.GetComponent<PlayerData>().PlayerId);
+                timeToSpawn.Value = respawnTime; 
+                _empty.Value = true;
+            }
         }
     }
     public void ElympicsUpdate()

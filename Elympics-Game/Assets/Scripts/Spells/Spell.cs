@@ -23,7 +23,6 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
 
     public virtual void SpawnSpell(Vector3 position, Vector3 direction, int casterID, bool modified)
     {
-        //we can use tick to setup timers - for example fireball could explode after 2 seconds in air
         rb = GetComponent<Rigidbody>();
         rb.position = position;
         spellVelocity = direction.normalized * spellSpeed;
