@@ -28,7 +28,7 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
         rb.position = position;
         spellVelocity = direction.normalized * spellSpeed;
         caster = casterID;
-
+        rb.velocity = spellVelocity;
         if (modified)
         {
             applyModifier();
@@ -78,8 +78,6 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
 
     protected virtual void move()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.velocity += spellVelocity * Elympics.TickDuration;
     }
     
 }
