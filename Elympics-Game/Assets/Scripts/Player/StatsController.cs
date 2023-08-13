@@ -37,6 +37,7 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable
             return;
 
         health.Value -= value;
+        if (health.Value > maxHealth) health.Value = maxHealth;
 
         if (!(health.Value <= 0.0f)) return;
         deathController.ProcessPlayersDeath(damageOwner);
