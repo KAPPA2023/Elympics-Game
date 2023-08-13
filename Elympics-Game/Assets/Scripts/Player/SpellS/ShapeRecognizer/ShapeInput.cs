@@ -6,7 +6,10 @@ using PDollarGestureRecognizer;
 public class ShapeInput : MonoBehaviour
 {
     private List<Gesture> trainingSet = new List<Gesture>();
-    
+    public delegate void MyEventHandler();
+    public static event MyEventHandler OnBadSpell;
+    public static event MyEventHandler OnGoodSpell;
+
     void Start()
     {
         //Load pre-made gestures
@@ -15,17 +18,26 @@ public class ShapeInput : MonoBehaviour
             trainingSet.Add(GestureIO.ReadGestureFromXML(gestureXml.text));
     }
     
-    public string GetShape(List<Point> points)
+    public Spells GetShape(List<Point> points)
     {
         Gesture candidate = new Gesture(points.ToArray());
         Result gestureResult = PointCloudRecognizer.Classify(candidate, trainingSet.ToArray());
         Debug.Log(gestureResult.GestureClass + " " + gestureResult.Score);
-        //if (gestureResult.Score < 0.70) return -1;
+        if (gestureResult.Score < 0.70) return Spells.Empty;
         switch (gestureResult.GestureClass)
         {
-            case "triangle": return "fireBall";
-            case "c": return "lightningBolt";
-            default: return "empty";
+            case "Fire": Invoke("GoodSpellInvoke", 0.1f); return Spells.Fireball;
+            case "Light": Invoke("GoodSpellInvoke", 0.1f); return Spells.Lightbolt;
+            default: Invoke("BadSpellInvoke", 0.1f); return Spells.Empty;
         }
-    } 
+    }
+
+    private void GoodSpellInvoke()
+    {
+        OnGoodSpell();
+    }
+    private void BadSpellInvoke()
+    {
+        OnBadSpell();
+    }
 }

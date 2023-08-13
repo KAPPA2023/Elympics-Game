@@ -1,279 +1,297 @@
-﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<Gesture Name="c" NumPts="276" Millseconds="774" AppName="Recognizer.Dollar" AppVer="5.0.2.0" Date="niedziela, 16 lipca 2023" TimeOfDay="23:19:40">
-  <Point X="520" Y="132" T="63825146374431" />
-  <Point X="520" Y="131" T="63825146374433" />
-  <Point X="519" Y="131" T="63825146374439" />
-  <Point X="518" Y="131" T="63825146374479" />
-  <Point X="517" Y="131" T="63825146374503" />
-  <Point X="517" Y="130" T="63825146374505" />
-  <Point X="516" Y="130" T="63825146374518" />
-  <Point X="515" Y="130" T="63825146374523" />
-  <Point X="514" Y="130" T="63825146374531" />
-  <Point X="513" Y="130" T="63825146374537" />
-  <Point X="512" Y="130" T="63825146374542" />
-  <Point X="511" Y="130" T="63825146374544" />
-  <Point X="510" Y="130" T="63825146374549" />
-  <Point X="509" Y="130" T="63825146374553" />
-  <Point X="508" Y="130" T="63825146374557" />
-  <Point X="507" Y="130" T="63825146374559" />
-  <Point X="506" Y="130" T="63825146374562" />
-  <Point X="505" Y="130" T="63825146374565" />
-  <Point X="504" Y="130" T="63825146374568" />
-  <Point X="503" Y="130" T="63825146374570" />
-  <Point X="502" Y="130" T="63825146374573" />
-  <Point X="501" Y="130" T="63825146374576" />
-  <Point X="500" Y="130" T="63825146374579" />
-  <Point X="499" Y="130" T="63825146374581" />
-  <Point X="498" Y="130" T="63825146374584" />
-  <Point X="497" Y="130" T="63825146374587" />
-  <Point X="496" Y="130" T="63825146374590" />
-  <Point X="495" Y="130" T="63825146374592" />
-  <Point X="495" Y="131" T="63825146374594" />
-  <Point X="494" Y="131" T="63825146374595" />
-  <Point X="493" Y="131" T="63825146374598" />
-  <Point X="492" Y="131" T="63825146374602" />
-  <Point X="491" Y="132" T="63825146374603" />
-  <Point X="490" Y="132" T="63825146374607" />
-  <Point X="489" Y="132" T="63825146374611" />
-  <Point X="488" Y="132" T="63825146374614" />
-  <Point X="488" Y="133" T="63825146374615" />
-  <Point X="487" Y="133" T="63825146374618" />
-  <Point X="486" Y="133" T="63825146374620" />
-  <Point X="485" Y="133" T="63825146374624" />
-  <Point X="485" Y="134" T="63825146374628" />
-  <Point X="484" Y="134" T="63825146374629" />
-  <Point X="483" Y="134" T="63825146374633" />
-  <Point X="482" Y="134" T="63825146374635" />
-  <Point X="482" Y="135" T="63825146374638" />
-  <Point X="481" Y="135" T="63825146374639" />
-  <Point X="481" Y="136" T="63825146374642" />
-  <Point X="480" Y="136" T="63825146374643" />
-  <Point X="479" Y="136" T="63825146374647" />
-  <Point X="478" Y="136" T="63825146374649" />
-  <Point X="478" Y="137" T="63825146374651" />
-  <Point X="477" Y="137" T="63825146374654" />
-  <Point X="476" Y="138" T="63825146374658" />
-  <Point X="475" Y="138" T="63825146374662" />
-  <Point X="474" Y="138" T="63825146374664" />
-  <Point X="474" Y="139" T="63825146374665" />
-  <Point X="474" Y="140" T="63825146374669" />
-  <Point X="473" Y="140" T="63825146374670" />
-  <Point X="472" Y="140" T="63825146374675" />
-  <Point X="472" Y="141" T="63825146374678" />
-  <Point X="471" Y="141" T="63825146374680" />
-  <Point X="470" Y="141" T="63825146374684" />
-  <Point X="470" Y="142" T="63825146374688" />
-  <Point X="469" Y="142" T="63825146374691" />
-  <Point X="469" Y="143" T="63825146374699" />
-  <Point X="468" Y="143" T="63825146374701" />
-  <Point X="468" Y="144" T="63825146374708" />
-  <Point X="467" Y="144" T="63825146374715" />
-  <Point X="466" Y="145" T="63825146374725" />
-  <Point X="466" Y="146" T="63825146374741" />
-  <Point X="465" Y="146" T="63825146374745" />
-  <Point X="465" Y="147" T="63825146374752" />
-  <Point X="465" Y="148" T="63825146374758" />
-  <Point X="464" Y="148" T="63825146374765" />
-  <Point X="464" Y="149" T="63825146374766" />
-  <Point X="464" Y="150" T="63825146374774" />
-  <Point X="463" Y="151" T="63825146374781" />
-  <Point X="463" Y="152" T="63825146374783" />
-  <Point X="462" Y="152" T="63825146374785" />
-  <Point X="462" Y="153" T="63825146374789" />
-  <Point X="462" Y="154" T="63825146374793" />
-  <Point X="461" Y="154" T="63825146374795" />
-  <Point X="461" Y="155" T="63825146374798" />
-  <Point X="461" Y="156" T="63825146374802" />
-  <Point X="460" Y="156" T="63825146374803" />
-  <Point X="460" Y="157" T="63825146374804" />
-  <Point X="460" Y="158" T="63825146374808" />
-  <Point X="459" Y="158" T="63825146374810" />
-  <Point X="459" Y="159" T="63825146374811" />
-  <Point X="459" Y="160" T="63825146374816" />
-  <Point X="459" Y="161" T="63825146374817" />
-  <Point X="458" Y="161" T="63825146374818" />
-  <Point X="458" Y="162" T="63825146374821" />
-  <Point X="457" Y="162" T="63825146374822" />
-  <Point X="457" Y="163" T="63825146374825" />
-  <Point X="457" Y="164" T="63825146374828" />
-  <Point X="457" Y="165" T="63825146374830" />
-  <Point X="456" Y="165" T="63825146374832" />
-  <Point X="456" Y="166" T="63825146374833" />
-  <Point X="456" Y="167" T="63825146374837" />
-  <Point X="456" Y="168" T="63825146374840" />
-  <Point X="456" Y="169" T="63825146374842" />
-  <Point X="456" Y="170" T="63825146374845" />
-  <Point X="455" Y="170" T="63825146374846" />
-  <Point X="455" Y="171" T="63825146374848" />
-  <Point X="455" Y="172" T="63825146374851" />
-  <Point X="455" Y="173" T="63825146374853" />
-  <Point X="455" Y="174" T="63825146374857" />
-  <Point X="455" Y="175" T="63825146374860" />
-  <Point X="455" Y="176" T="63825146374863" />
-  <Point X="455" Y="177" T="63825146374865" />
-  <Point X="455" Y="178" T="63825146374868" />
-  <Point X="455" Y="179" T="63825146374871" />
-  <Point X="455" Y="180" T="63825146374874" />
-  <Point X="455" Y="181" T="63825146374876" />
-  <Point X="455" Y="182" T="63825146374879" />
-  <Point X="455" Y="183" T="63825146374882" />
-  <Point X="455" Y="184" T="63825146374886" />
-  <Point X="455" Y="185" T="63825146374889" />
-  <Point X="455" Y="186" T="63825146374891" />
-  <Point X="455" Y="187" T="63825146374894" />
-  <Point X="455" Y="188" T="63825146374898" />
-  <Point X="455" Y="189" T="63825146374901" />
-  <Point X="455" Y="190" T="63825146374903" />
-  <Point X="455" Y="191" T="63825146374906" />
-  <Point X="455" Y="192" T="63825146374910" />
-  <Point X="455" Y="193" T="63825146374912" />
-  <Point X="455" Y="194" T="63825146374915" />
-  <Point X="455" Y="195" T="63825146374919" />
-  <Point X="455" Y="196" T="63825146374922" />
-  <Point X="455" Y="197" T="63825146374926" />
-  <Point X="455" Y="198" T="63825146374927" />
-  <Point X="455" Y="199" T="63825146374931" />
-  <Point X="455" Y="200" T="63825146374935" />
-  <Point X="455" Y="201" T="63825146374939" />
-  <Point X="455" Y="202" T="63825146374940" />
-  <Point X="455" Y="203" T="63825146374944" />
-  <Point X="455" Y="204" T="63825146374948" />
-  <Point X="456" Y="204" T="63825146374950" />
-  <Point X="456" Y="205" T="63825146374951" />
-  <Point X="456" Y="206" T="63825146374953" />
-  <Point X="456" Y="207" T="63825146374957" />
-  <Point X="457" Y="208" T="63825146374960" />
-  <Point X="457" Y="209" T="63825146374964" />
-  <Point X="458" Y="209" T="63825146374965" />
-  <Point X="458" Y="210" T="63825146374966" />
-  <Point X="458" Y="211" T="63825146374969" />
-  <Point X="459" Y="212" T="63825146374973" />
-  <Point X="459" Y="213" T="63825146374976" />
-  <Point X="459" Y="214" T="63825146374978" />
-  <Point X="460" Y="215" T="63825146374981" />
-  <Point X="460" Y="216" T="63825146374985" />
-  <Point X="461" Y="217" T="63825146374988" />
-  <Point X="461" Y="218" T="63825146374991" />
-  <Point X="461" Y="219" T="63825146374993" />
-  <Point X="462" Y="219" T="63825146374994" />
-  <Point X="462" Y="220" T="63825146374996" />
-  <Point X="463" Y="220" T="63825146374997" />
-  <Point X="463" Y="221" T="63825146375000" />
-  <Point X="464" Y="222" T="63825146375003" />
-  <Point X="464" Y="223" T="63825146375005" />
-  <Point X="465" Y="224" T="63825146375008" />
-  <Point X="465" Y="225" T="63825146375012" />
-  <Point X="466" Y="225" T="63825146375014" />
-  <Point X="466" Y="226" T="63825146375015" />
-  <Point X="467" Y="226" T="63825146375016" />
-  <Point X="467" Y="227" T="63825146375017" />
-  <Point X="467" Y="228" T="63825146375020" />
-  <Point X="468" Y="228" T="63825146375021" />
-  <Point X="468" Y="229" T="63825146375024" />
-  <Point X="469" Y="229" T="63825146375026" />
-  <Point X="469" Y="230" T="63825146375027" />
-  <Point X="469" Y="231" T="63825146375029" />
-  <Point X="470" Y="231" T="63825146375031" />
-  <Point X="471" Y="232" T="63825146375033" />
-  <Point X="471" Y="233" T="63825146375036" />
-  <Point X="472" Y="233" T="63825146375038" />
-  <Point X="472" Y="234" T="63825146375041" />
-  <Point X="473" Y="235" T="63825146375043" />
-  <Point X="473" Y="236" T="63825146375047" />
-  <Point X="474" Y="236" T="63825146375048" />
-  <Point X="475" Y="236" T="63825146375050" />
-  <Point X="475" Y="237" T="63825146375052" />
-  <Point X="476" Y="237" T="63825146375055" />
-  <Point X="476" Y="238" T="63825146375057" />
-  <Point X="477" Y="239" T="63825146375059" />
-  <Point X="478" Y="240" T="63825146375063" />
-  <Point X="479" Y="240" T="63825146375065" />
-  <Point X="480" Y="240" T="63825146375068" />
-  <Point X="480" Y="241" T="63825146375069" />
-  <Point X="481" Y="241" T="63825146375071" />
-  <Point X="481" Y="242" T="63825146375073" />
-  <Point X="482" Y="242" T="63825146375075" />
-  <Point X="483" Y="242" T="63825146375076" />
-  <Point X="483" Y="243" T="63825146375077" />
-  <Point X="484" Y="243" T="63825146375079" />
-  <Point X="485" Y="244" T="63825146375082" />
-  <Point X="486" Y="244" T="63825146375084" />
-  <Point X="487" Y="244" T="63825146375085" />
-  <Point X="488" Y="245" T="63825146375089" />
-  <Point X="489" Y="245" T="63825146375091" />
-  <Point X="490" Y="245" T="63825146375093" />
-  <Point X="490" Y="246" T="63825146375094" />
-  <Point X="491" Y="246" T="63825146375095" />
-  <Point X="492" Y="246" T="63825146375096" />
-  <Point X="492" Y="247" T="63825146375097" />
-  <Point X="493" Y="247" T="63825146375097" />
-  <Point X="494" Y="247" T="63825146375099" />
-  <Point X="495" Y="248" T="63825146375102" />
-  <Point X="496" Y="248" T="63825146375102" />
-  <Point X="497" Y="248" T="63825146375104" />
-  <Point X="499" Y="248" T="63825146375107" />
-  <Point X="499" Y="249" T="63825146375108" />
-  <Point X="500" Y="249" T="63825146375109" />
-  <Point X="501" Y="249" T="63825146375110" />
-  <Point X="502" Y="249" T="63825146375113" />
-  <Point X="503" Y="249" T="63825146375113" />
-  <Point X="503" Y="250" T="63825146375114" />
-  <Point X="504" Y="250" T="63825146375115" />
-  <Point X="505" Y="250" T="63825146375117" />
-  <Point X="506" Y="250" T="63825146375118" />
-  <Point X="507" Y="250" T="63825146375119" />
-  <Point X="508" Y="250" T="63825146375121" />
-  <Point X="509" Y="250" T="63825146375123" />
-  <Point X="510" Y="251" T="63825146375124" />
-  <Point X="511" Y="251" T="63825146375125" />
-  <Point X="512" Y="251" T="63825146375127" />
-  <Point X="514" Y="251" T="63825146375130" />
-  <Point X="515" Y="252" T="63825146375131" />
-  <Point X="516" Y="252" T="63825146375133" />
-  <Point X="517" Y="252" T="63825146375135" />
-  <Point X="518" Y="252" T="63825146375136" />
-  <Point X="519" Y="252" T="63825146375139" />
-  <Point X="521" Y="252" T="63825146375141" />
-  <Point X="522" Y="252" T="63825146375142" />
-  <Point X="523" Y="252" T="63825146375145" />
-  <Point X="524" Y="252" T="63825146375146" />
-  <Point X="525" Y="252" T="63825146375147" />
-  <Point X="526" Y="252" T="63825146375149" />
-  <Point X="527" Y="252" T="63825146375151" />
-  <Point X="528" Y="252" T="63825146375153" />
-  <Point X="529" Y="252" T="63825146375155" />
-  <Point X="530" Y="252" T="63825146375156" />
-  <Point X="531" Y="252" T="63825146375159" />
-  <Point X="532" Y="252" T="63825146375160" />
-  <Point X="532" Y="251" T="63825146375162" />
-  <Point X="533" Y="251" T="63825146375163" />
-  <Point X="534" Y="251" T="63825146375165" />
-  <Point X="535" Y="251" T="63825146375166" />
-  <Point X="536" Y="251" T="63825146375167" />
-  <Point X="537" Y="250" T="63825146375170" />
-  <Point X="538" Y="250" T="63825146375172" />
-  <Point X="539" Y="250" T="63825146375175" />
-  <Point X="540" Y="249" T="63825146375175" />
-  <Point X="541" Y="249" T="63825146375177" />
-  <Point X="542" Y="249" T="63825146375180" />
-  <Point X="542" Y="248" T="63825146375181" />
-  <Point X="543" Y="248" T="63825146375183" />
-  <Point X="544" Y="248" T="63825146375184" />
-  <Point X="544" Y="247" T="63825146375186" />
-  <Point X="545" Y="247" T="63825146375187" />
-  <Point X="545" Y="246" T="63825146375188" />
-  <Point X="546" Y="246" T="63825146375189" />
-  <Point X="546" Y="245" T="63825146375191" />
-  <Point X="547" Y="245" T="63825146375192" />
-  <Point X="548" Y="245" T="63825146375193" />
-  <Point X="548" Y="244" T="63825146375194" />
-  <Point X="549" Y="244" T="63825146375196" />
-  <Point X="549" Y="243" T="63825146375197" />
-  <Point X="549" Y="242" T="63825146375198" />
-  <Point X="550" Y="242" T="63825146375199" />
-  <Point X="550" Y="241" T="63825146375200" />
-  <Point X="551" Y="241" T="63825146375201" />
-  <Point X="552" Y="240" T="63825146375202" />
-  <Point X="552" Y="239" T="63825146375204" />
-  <Point X="553" Y="238" T="63825146375205" />
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Gesture Name = "Light">
+	<Stroke>
+		<Point X = "235" Y = "14" T = "0" Pressure = "0" />
+		<Point X = "236" Y = "14" T = "0" Pressure = "0" />
+		<Point X = "237" Y = "14" T = "0" Pressure = "0" />
+		<Point X = "238" Y = "14" T = "0" Pressure = "0" />
+		<Point X = "237" Y = "14" T = "0" Pressure = "0" />
+		<Point X = "237" Y = "15" T = "0" Pressure = "0" />
+		<Point X = "236" Y = "15" T = "0" Pressure = "0" />
+		<Point X = "236" Y = "16" T = "0" Pressure = "0" />
+		<Point X = "235" Y = "16" T = "0" Pressure = "0" />
+		<Point X = "235" Y = "17" T = "0" Pressure = "0" />
+		<Point X = "234" Y = "17" T = "0" Pressure = "0" />
+		<Point X = "233" Y = "18" T = "0" Pressure = "0" />
+		<Point X = "232" Y = "18" T = "0" Pressure = "0" />
+		<Point X = "232" Y = "19" T = "0" Pressure = "0" />
+		<Point X = "231" Y = "19" T = "0" Pressure = "0" />
+		<Point X = "231" Y = "20" T = "0" Pressure = "0" />
+		<Point X = "231" Y = "21" T = "0" Pressure = "0" />
+		<Point X = "230" Y = "21" T = "0" Pressure = "0" />
+		<Point X = "229" Y = "22" T = "0" Pressure = "0" />
+		<Point X = "228" Y = "22" T = "0" Pressure = "0" />
+		<Point X = "228" Y = "23" T = "0" Pressure = "0" />
+		<Point X = "227" Y = "23" T = "0" Pressure = "0" />
+		<Point X = "226" Y = "25" T = "0" Pressure = "0" />
+		<Point X = "225" Y = "25" T = "0" Pressure = "0" />
+		<Point X = "224" Y = "26" T = "0" Pressure = "0" />
+		<Point X = "224" Y = "27" T = "0" Pressure = "0" />
+		<Point X = "223" Y = "28" T = "0" Pressure = "0" />
+		<Point X = "222" Y = "28" T = "0" Pressure = "0" />
+		<Point X = "220" Y = "30" T = "0" Pressure = "0" />
+		<Point X = "219" Y = "31" T = "0" Pressure = "0" />
+		<Point X = "218" Y = "33" T = "0" Pressure = "0" />
+		<Point X = "217" Y = "33" T = "0" Pressure = "0" />
+		<Point X = "215" Y = "35" T = "0" Pressure = "0" />
+		<Point X = "214" Y = "36" T = "0" Pressure = "0" />
+		<Point X = "213" Y = "37" T = "0" Pressure = "0" />
+		<Point X = "211" Y = "40" T = "0" Pressure = "0" />
+		<Point X = "210" Y = "41" T = "0" Pressure = "0" />
+		<Point X = "207" Y = "43" T = "0" Pressure = "0" />
+		<Point X = "206" Y = "45" T = "0" Pressure = "0" />
+		<Point X = "205" Y = "45" T = "0" Pressure = "0" />
+		<Point X = "202" Y = "48" T = "0" Pressure = "0" />
+		<Point X = "201" Y = "49" T = "0" Pressure = "0" />
+		<Point X = "198" Y = "52" T = "0" Pressure = "0" />
+		<Point X = "197" Y = "53" T = "0" Pressure = "0" />
+		<Point X = "194" Y = "56" T = "0" Pressure = "0" />
+		<Point X = "192" Y = "58" T = "0" Pressure = "0" />
+		<Point X = "190" Y = "59" T = "0" Pressure = "0" />
+		<Point X = "187" Y = "63" T = "0" Pressure = "0" />
+		<Point X = "184" Y = "66" T = "0" Pressure = "0" />
+		<Point X = "181" Y = "69" T = "0" Pressure = "0" />
+		<Point X = "177" Y = "72" T = "0" Pressure = "0" />
+		<Point X = "173" Y = "76" T = "0" Pressure = "0" />
+		<Point X = "170" Y = "80" T = "0" Pressure = "0" />
+		<Point X = "168" Y = "81" T = "0" Pressure = "0" />
+		<Point X = "164" Y = "86" T = "0" Pressure = "0" />
+		<Point X = "162" Y = "87" T = "0" Pressure = "0" />
+		<Point X = "158" Y = "91" T = "0" Pressure = "0" />
+		<Point X = "156" Y = "93" T = "0" Pressure = "0" />
+		<Point X = "152" Y = "97" T = "0" Pressure = "0" />
+		<Point X = "151" Y = "98" T = "0" Pressure = "0" />
+		<Point X = "147" Y = "103" T = "0" Pressure = "0" />
+		<Point X = "144" Y = "106" T = "0" Pressure = "0" />
+		<Point X = "142" Y = "108" T = "0" Pressure = "0" />
+		<Point X = "138" Y = "112" T = "0" Pressure = "0" />
+		<Point X = "136" Y = "114" T = "0" Pressure = "0" />
+		<Point X = "133" Y = "117" T = "0" Pressure = "0" />
+		<Point X = "129" Y = "121" T = "0" Pressure = "0" />
+		<Point X = "127" Y = "124" T = "0" Pressure = "0" />
+		<Point X = "123" Y = "128" T = "0" Pressure = "0" />
+		<Point X = "120" Y = "132" T = "0" Pressure = "0" />
+		<Point X = "118" Y = "134" T = "0" Pressure = "0" />
+		<Point X = "114" Y = "138" T = "0" Pressure = "0" />
+		<Point X = "112" Y = "141" T = "0" Pressure = "0" />
+		<Point X = "109" Y = "145" T = "0" Pressure = "0" />
+		<Point X = "108" Y = "145" T = "0" Pressure = "0" />
+		<Point X = "106" Y = "148" T = "0" Pressure = "0" />
+		<Point X = "103" Y = "152" T = "0" Pressure = "0" />
+		<Point X = "102" Y = "152" T = "0" Pressure = "0" />
+		<Point X = "100" Y = "155" T = "0" Pressure = "0" />
+		<Point X = "100" Y = "156" T = "0" Pressure = "0" />
+		<Point X = "97" Y = "159" T = "0" Pressure = "0" />
+		<Point X = "95" Y = "161" T = "0" Pressure = "0" />
+		<Point X = "95" Y = "162" T = "0" Pressure = "0" />
+		<Point X = "93" Y = "164" T = "0" Pressure = "0" />
+		<Point X = "92" Y = "166" T = "0" Pressure = "0" />
+		<Point X = "91" Y = "167" T = "0" Pressure = "0" />
+		<Point X = "89" Y = "169" T = "0" Pressure = "0" />
+		<Point X = "88" Y = "170" T = "0" Pressure = "0" />
+		<Point X = "86" Y = "174" T = "0" Pressure = "0" />
+		<Point X = "85" Y = "175" T = "0" Pressure = "0" />
+		<Point X = "84" Y = "177" T = "0" Pressure = "0" />
+		<Point X = "83" Y = "178" T = "0" Pressure = "0" />
+		<Point X = "82" Y = "180" T = "0" Pressure = "0" />
+		<Point X = "81" Y = "181" T = "0" Pressure = "0" />
+		<Point X = "80" Y = "182" T = "0" Pressure = "0" />
+		<Point X = "80" Y = "183" T = "0" Pressure = "0" />
+		<Point X = "79" Y = "185" T = "0" Pressure = "0" />
+		<Point X = "78" Y = "185" T = "0" Pressure = "0" />
+		<Point X = "77" Y = "187" T = "0" Pressure = "0" />
+		<Point X = "76" Y = "188" T = "0" Pressure = "0" />
+		<Point X = "76" Y = "189" T = "0" Pressure = "0" />
+		<Point X = "75" Y = "190" T = "0" Pressure = "0" />
+		<Point X = "74" Y = "191" T = "0" Pressure = "0" />
+		<Point X = "73" Y = "193" T = "0" Pressure = "0" />
+		<Point X = "73" Y = "194" T = "0" Pressure = "0" />
+		<Point X = "72" Y = "195" T = "0" Pressure = "0" />
+		<Point X = "71" Y = "197" T = "0" Pressure = "0" />
+		<Point X = "70" Y = "197" T = "0" Pressure = "0" />
+		<Point X = "70" Y = "198" T = "0" Pressure = "0" />
+		<Point X = "70" Y = "199" T = "0" Pressure = "0" />
+		<Point X = "69" Y = "199" T = "0" Pressure = "0" />
+		<Point X = "69" Y = "200" T = "0" Pressure = "0" />
+		<Point X = "69" Y = "201" T = "0" Pressure = "0" />
+		<Point X = "69" Y = "202" T = "0" Pressure = "0" />
+		<Point X = "68" Y = "202" T = "0" Pressure = "0" />
+		<Point X = "68" Y = "203" T = "0" Pressure = "0" />
+		<Point X = "68" Y = "204" T = "0" Pressure = "0" />
+		<Point X = "68" Y = "205" T = "0" Pressure = "0" />
+		<Point X = "68" Y = "206" T = "0" Pressure = "0" />
+		<Point X = "67" Y = "207" T = "0" Pressure = "0" />
+		<Point X = "67" Y = "208" T = "0" Pressure = "0" />
+		<Point X = "67" Y = "209" T = "0" Pressure = "0" />
+		<Point X = "67" Y = "210" T = "0" Pressure = "0" />
+		<Point X = "67" Y = "211" T = "0" Pressure = "0" />
+		<Point X = "67" Y = "212" T = "0" Pressure = "0" />
+		<Point X = "67" Y = "213" T = "0" Pressure = "0" />
+		<Point X = "67" Y = "214" T = "0" Pressure = "0" />
+		<Point X = "67" Y = "215" T = "0" Pressure = "0" />
+		<Point X = "67" Y = "216" T = "0" Pressure = "0" />
+		<Point X = "67" Y = "217" T = "0" Pressure = "0" />
+		<Point X = "67" Y = "218" T = "0" Pressure = "0" />
+		<Point X = "67" Y = "219" T = "0" Pressure = "0" />
+		<Point X = "67" Y = "220" T = "0" Pressure = "0" />
+		<Point X = "68" Y = "220" T = "0" Pressure = "0" />
+		<Point X = "68" Y = "221" T = "0" Pressure = "0" />
+		<Point X = "68" Y = "222" T = "0" Pressure = "0" />
+		<Point X = "68" Y = "223" T = "0" Pressure = "0" />
+		<Point X = "68" Y = "224" T = "0" Pressure = "0" />
+		<Point X = "69" Y = "224" T = "0" Pressure = "0" />
+		<Point X = "69" Y = "225" T = "0" Pressure = "0" />
+		<Point X = "69" Y = "226" T = "0" Pressure = "0" />
+		<Point X = "70" Y = "226" T = "0" Pressure = "0" />
+		<Point X = "71" Y = "227" T = "0" Pressure = "0" />
+		<Point X = "72" Y = "227" T = "0" Pressure = "0" />
+		<Point X = "72" Y = "228" T = "0" Pressure = "0" />
+		<Point X = "73" Y = "228" T = "0" Pressure = "0" />
+		<Point X = "74" Y = "228" T = "0" Pressure = "0" />
+		<Point X = "75" Y = "228" T = "0" Pressure = "0" />
+		<Point X = "76" Y = "228" T = "0" Pressure = "0" />
+		<Point X = "76" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "77" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "78" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "80" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "81" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "83" Y = "230" T = "0" Pressure = "0" />
+		<Point X = "84" Y = "230" T = "0" Pressure = "0" />
+		<Point X = "85" Y = "230" T = "0" Pressure = "0" />
+		<Point X = "87" Y = "230" T = "0" Pressure = "0" />
+		<Point X = "89" Y = "230" T = "0" Pressure = "0" />
+		<Point X = "90" Y = "230" T = "0" Pressure = "0" />
+		<Point X = "92" Y = "230" T = "0" Pressure = "0" />
+		<Point X = "94" Y = "230" T = "0" Pressure = "0" />
+		<Point X = "95" Y = "230" T = "0" Pressure = "0" />
+		<Point X = "97" Y = "230" T = "0" Pressure = "0" />
+		<Point X = "99" Y = "230" T = "0" Pressure = "0" />
+		<Point X = "102" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "104" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "106" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "108" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "110" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "112" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "114" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "117" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "119" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "123" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "125" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "127" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "130" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "132" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "135" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "139" Y = "229" T = "0" Pressure = "0" />
+		<Point X = "143" Y = "230" T = "0" Pressure = "0" />
+		<Point X = "146" Y = "230" T = "0" Pressure = "0" />
+		<Point X = "150" Y = "231" T = "0" Pressure = "0" />
+		<Point X = "152" Y = "232" T = "0" Pressure = "0" />
+		<Point X = "158" Y = "233" T = "0" Pressure = "0" />
+		<Point X = "161" Y = "233" T = "0" Pressure = "0" />
+		<Point X = "168" Y = "235" T = "0" Pressure = "0" />
+		<Point X = "173" Y = "236" T = "0" Pressure = "0" />
+		<Point X = "175" Y = "237" T = "0" Pressure = "0" />
+		<Point X = "180" Y = "238" T = "0" Pressure = "0" />
+		<Point X = "185" Y = "239" T = "0" Pressure = "0" />
+		<Point X = "189" Y = "240" T = "0" Pressure = "0" />
+		<Point X = "197" Y = "242" T = "0" Pressure = "0" />
+		<Point X = "204" Y = "243" T = "0" Pressure = "0" />
+		<Point X = "213" Y = "246" T = "0" Pressure = "0" />
+		<Point X = "218" Y = "246" T = "0" Pressure = "0" />
+		<Point X = "226" Y = "249" T = "0" Pressure = "0" />
+		<Point X = "231" Y = "250" T = "0" Pressure = "0" />
+		<Point X = "237" Y = "251" T = "0" Pressure = "0" />
+		<Point X = "242" Y = "252" T = "0" Pressure = "0" />
+		<Point X = "248" Y = "254" T = "0" Pressure = "0" />
+		<Point X = "255" Y = "256" T = "0" Pressure = "0" />
+		<Point X = "261" Y = "257" T = "0" Pressure = "0" />
+		<Point X = "266" Y = "258" T = "0" Pressure = "0" />
+		<Point X = "274" Y = "259" T = "0" Pressure = "0" />
+		<Point X = "281" Y = "261" T = "0" Pressure = "0" />
+		<Point X = "288" Y = "263" T = "0" Pressure = "0" />
+		<Point X = "295" Y = "264" T = "0" Pressure = "0" />
+		<Point X = "300" Y = "265" T = "0" Pressure = "0" />
+		<Point X = "306" Y = "267" T = "0" Pressure = "0" />
+		<Point X = "311" Y = "268" T = "0" Pressure = "0" />
+		<Point X = "316" Y = "270" T = "0" Pressure = "0" />
+		<Point X = "322" Y = "271" T = "0" Pressure = "0" />
+		<Point X = "327" Y = "272" T = "0" Pressure = "0" />
+		<Point X = "331" Y = "273" T = "0" Pressure = "0" />
+		<Point X = "334" Y = "274" T = "0" Pressure = "0" />
+		<Point X = "339" Y = "275" T = "0" Pressure = "0" />
+		<Point X = "342" Y = "276" T = "0" Pressure = "0" />
+		<Point X = "344" Y = "277" T = "0" Pressure = "0" />
+		<Point X = "346" Y = "277" T = "0" Pressure = "0" />
+		<Point X = "347" Y = "278" T = "0" Pressure = "0" />
+		<Point X = "349" Y = "279" T = "0" Pressure = "0" />
+		<Point X = "351" Y = "279" T = "0" Pressure = "0" />
+		<Point X = "352" Y = "279" T = "0" Pressure = "0" />
+		<Point X = "352" Y = "280" T = "0" Pressure = "0" />
+		<Point X = "353" Y = "280" T = "0" Pressure = "0" />
+		<Point X = "354" Y = "280" T = "0" Pressure = "0" />
+		<Point X = "353" Y = "280" T = "0" Pressure = "0" />
+		<Point X = "353" Y = "281" T = "0" Pressure = "0" />
+		<Point X = "352" Y = "281" T = "0" Pressure = "0" />
+		<Point X = "351" Y = "281" T = "0" Pressure = "0" />
+		<Point X = "350" Y = "282" T = "0" Pressure = "0" />
+		<Point X = "349" Y = "283" T = "0" Pressure = "0" />
+		<Point X = "348" Y = "283" T = "0" Pressure = "0" />
+		<Point X = "346" Y = "284" T = "0" Pressure = "0" />
+		<Point X = "345" Y = "284" T = "0" Pressure = "0" />
+		<Point X = "344" Y = "285" T = "0" Pressure = "0" />
+		<Point X = "342" Y = "286" T = "0" Pressure = "0" />
+		<Point X = "340" Y = "287" T = "0" Pressure = "0" />
+		<Point X = "339" Y = "288" T = "0" Pressure = "0" />
+		<Point X = "337" Y = "289" T = "0" Pressure = "0" />
+		<Point X = "335" Y = "290" T = "0" Pressure = "0" />
+		<Point X = "330" Y = "293" T = "0" Pressure = "0" />
+		<Point X = "328" Y = "294" T = "0" Pressure = "0" />
+		<Point X = "325" Y = "296" T = "0" Pressure = "0" />
+		<Point X = "322" Y = "299" T = "0" Pressure = "0" />
+		<Point X = "319" Y = "301" T = "0" Pressure = "0" />
+		<Point X = "317" Y = "303" T = "0" Pressure = "0" />
+		<Point X = "312" Y = "306" T = "0" Pressure = "0" />
+		<Point X = "310" Y = "308" T = "0" Pressure = "0" />
+		<Point X = "305" Y = "312" T = "0" Pressure = "0" />
+		<Point X = "302" Y = "314" T = "0" Pressure = "0" />
+		<Point X = "299" Y = "317" T = "0" Pressure = "0" />
+		<Point X = "294" Y = "321" T = "0" Pressure = "0" />
+		<Point X = "290" Y = "324" T = "0" Pressure = "0" />
+		<Point X = "284" Y = "328" T = "0" Pressure = "0" />
+		<Point X = "280" Y = "331" T = "0" Pressure = "0" />
+		<Point X = "276" Y = "334" T = "0" Pressure = "0" />
+		<Point X = "274" Y = "336" T = "0" Pressure = "0" />
+		<Point X = "270" Y = "339" T = "0" Pressure = "0" />
+		<Point X = "266" Y = "342" T = "0" Pressure = "0" />
+		<Point X = "262" Y = "345" T = "0" Pressure = "0" />
+		<Point X = "256" Y = "350" T = "0" Pressure = "0" />
+		<Point X = "250" Y = "355" T = "0" Pressure = "0" />
+		<Point X = "247" Y = "357" T = "0" Pressure = "0" />
+		<Point X = "242" Y = "363" T = "0" Pressure = "0" />
+		<Point X = "236" Y = "367" T = "0" Pressure = "0" />
+		<Point X = "231" Y = "371" T = "0" Pressure = "0" />
+		<Point X = "226" Y = "376" T = "0" Pressure = "0" />
+		<Point X = "220" Y = "381" T = "0" Pressure = "0" />
+		<Point X = "215" Y = "386" T = "0" Pressure = "0" />
+		<Point X = "211" Y = "390" T = "0" Pressure = "0" />
+		<Point X = "206" Y = "395" T = "0" Pressure = "0" />
+		<Point X = "203" Y = "397" T = "0" Pressure = "0" />
+		<Point X = "199" Y = "402" T = "0" Pressure = "0" />
+		<Point X = "196" Y = "405" T = "0" Pressure = "0" />
+		<Point X = "190" Y = "409" T = "0" Pressure = "0" />
+		<Point X = "186" Y = "412" T = "0" Pressure = "0" />
+		<Point X = "183" Y = "415" T = "0" Pressure = "0" />
+		<Point X = "180" Y = "418" T = "0" Pressure = "0" />
+		<Point X = "177" Y = "419" T = "0" Pressure = "0" />
+		<Point X = "174" Y = "421" T = "0" Pressure = "0" />
+		<Point X = "172" Y = "422" T = "0" Pressure = "0" />
+		<Point X = "170" Y = "424" T = "0" Pressure = "0" />
+		<Point X = "168" Y = "425" T = "0" Pressure = "0" />
+		<Point X = "167" Y = "425" T = "0" Pressure = "0" />
+		<Point X = "165" Y = "426" T = "0" Pressure = "0" />
+		<Point X = "164" Y = "427" T = "0" Pressure = "0" />
+		<Point X = "162" Y = "427" T = "0" Pressure = "0" />
+		<Point X = "161" Y = "428" T = "0" Pressure = "0" />
+		<Point X = "160" Y = "428" T = "0" Pressure = "0" />
+	</Stroke>
 </Gesture>

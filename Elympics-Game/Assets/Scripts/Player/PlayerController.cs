@@ -3,21 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
-{ 
+{
     #region State Machine Variables
-    [SerializeField] public ViewController viewController;
-    [SerializeField] public MovementController movementController;
-    [SerializeField] public ActionHandler actionHandler;
+    private ViewController viewController;
+    private MovementController movementController;
+    private DeathController deathController;
+    private ActionHandler actionHandler;
+    private PlayerData playerData;
     public PlayerStateMachine StateMachine { get; set; }
-    public PlayerIdleState IdleState { get; set; }
-    public PlayerCastingSpellState CastingSpellState { get; set; }
+    public PlayerNormalState NormalState { get; set; }
+    public PlayerDrawingSpellState DrawingSpellState { get; set; }
+    public PlayerDeadState DeadState { get; set; }
 
 
     #endregion
 
-    #region CastingSpell Variables
+    #region DrawingSpell Variables
 
     public bool isDrawingReleased = false;
+    public Spells shape;
 
     #endregion
 
@@ -28,21 +32,26 @@ public class PlayerController : MonoBehaviour
     public Vector2 movementInput;
     public bool isJump;
     public bool attackTriggered;
-    public string shape;
 
     #endregion
 
     private void Awake()
     {
+        deathController = GetComponent<DeathController>();
         StateMachine = new PlayerStateMachine();
-        IdleState = new PlayerIdleState(this, StateMachine);
-        CastingSpellState = new PlayerCastingSpellState(this, StateMachine);
+        NormalState = new PlayerNormalState(this, StateMachine, deathController);
+        DrawingSpellState = new PlayerDrawingSpellState(this, StateMachine, deathController);
+        DeadState = new PlayerDeadState(this, StateMachine, deathController);
+        actionHandler = GetComponent<ActionHandler>();
     }
 
 
     void Start()
     {
-        StateMachine.Initialize(IdleState);
+        StateMachine.Initialize(NormalState);
+        viewController = GetComponent<ViewController>();
+        movementController = GetComponent<MovementController>();
+        playerData = GetComponent<PlayerData>();
     }
 
     public void PlayerElympicsUpdate()
@@ -54,5 +63,45 @@ public class PlayerController : MonoBehaviour
     {
         StateMachine.CurrentPlayerState.InputUpdate();
     }
+
+    #region View Controller Functions
+    public void LookAround()
+    {
+        viewController.ProcessView(this.mouseRotation);
+    }
+
+    #endregion
+
+    #region Movement Controller Functions
+
+    public void MoveAround()
+    {
+        movementController.ProcessMovement(movementInput, isJump);
+    }
+
+    #endregion
+
+    #region Action Controller Functions
+
+    public void Shoot()
+    {
+        actionHandler.HandleActions(attackTriggered);
+    }
+
+    public void CheckDrawedSpell()
+    {
+        actionHandler.chooseSpell(shape);
+    }
+
+    #endregion
+
+    #region Getters
+
+    public bool isDead()
+    {
+        return playerData.isDead();
+    }
+
+    #endregion
 
 }

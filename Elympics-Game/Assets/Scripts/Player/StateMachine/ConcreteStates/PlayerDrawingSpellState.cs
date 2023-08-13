@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCastingSpellState : PlayerState
+public class PlayerDrawingSpellState : PlayerState
 {
-    public PlayerCastingSpellState(PlayerController player, PlayerStateMachine stateMachine) : base(player, stateMachine)
+    public PlayerDrawingSpellState(PlayerController player, PlayerStateMachine stateMachine, DeathController deathController) : base(player, stateMachine, deathController)
     {
     }
 
@@ -26,10 +26,12 @@ public class PlayerCastingSpellState : PlayerState
 
         if (player.isDrawingReleased)
         {
-            stateMachine.ChangeState(player.IdleState);
+            stateMachine.ChangeState(player.NormalState);
         }
-        player.movementController.ProcessMovement(player.movementInput, player.isJump);
-        player.actionHandler.chooseSpell(player.shape);
+
+        player.MoveAround();
+        player.Shoot();
+        player.CheckDrawedSpell();
     }
 
     public override void InputUpdate()
