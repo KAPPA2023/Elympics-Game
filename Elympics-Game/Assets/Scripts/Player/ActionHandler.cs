@@ -21,6 +21,10 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     [SerializeField] private GameObject viewController;
     [SerializeField] private float spellCooldown = 0.8f;
     public bool modified = false;
+    public delegate void MyEventHandler();
+    public static event MyEventHandler OnBadSpell;
+    public static event MyEventHandler OnGoodSpell;
+
 
     protected ElympicsFloat currentTimeBetweenShoots = new ElympicsFloat();
     protected bool canCast => currentTimeBetweenShoots >= spellCooldown;
@@ -64,13 +68,19 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
             {
                 if (stashedSpells.Values[i].Value == (int)drawnSpell)
                 {
+                    Invoke("GoodSpellInvoke", 0.1f);
                     _selectedSpell = drawnSpell;
                     stashedSpells.Values[i].Value = (int)Spells.Empty;
                     _remainingUses = GetSpellUses(drawnSpell);
                     break;
                 }
+                else
+                {
+                    Invoke("BadSpellInvoke", 0.1f);
+                }
             }
         }
+
     }
     public bool addSpell(Spells spellType)
     {
@@ -107,5 +117,14 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
             case Spells.IceSpike: return 2;
             default: return 0;
         }
+    }
+
+    private void GoodSpellInvoke()
+    {
+        OnGoodSpell();
+    }
+    private void BadSpellInvoke()
+    {
+        OnBadSpell();
     }
 }
