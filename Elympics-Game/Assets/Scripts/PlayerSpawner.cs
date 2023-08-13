@@ -4,9 +4,11 @@ using UnityEngine;
 using System.Linq;
 using Elympics;
 
-public class PlayerSpawner : ElympicsMonoBehaviour
+public class PlayerSpawner : ElympicsMonoBehaviour, IInitializable
 {
     [SerializeField] private Transform[] spawnPoints;
+    
+    private System.Random random = null;
     
     public static PlayerSpawner Instance = null;
     
@@ -18,11 +20,39 @@ public class PlayerSpawner : ElympicsMonoBehaviour
             Destroy(this);
     }
     
+    public void Initialize()
+    {
+        if (!Elympics.IsServer)
+            return;
+        random = new System.Random();
+    }
+    
     public void SpawnPlayer(PlayerData player)
     {
-        //TODO: add spawning logic so player can't spawn next to other player
-        Vector3 spawnPoint = spawnPoints[Random.Range(0,spawnPoints.Length)].position;
-
+        Vector3 spawnPoint = GetSpawnPointWithoutPlayersInRange().position;
         player.transform.position = spawnPoint;
+    }
+    
+    private Transform GetSpawnPointWithoutPlayersInRange()
+    {
+        var randomizedSpawnPoints = GetRandomizedSpawnPoints();
+        Transform chosenSpawnPoint = null;
+
+        foreach (Transform spawnPoint in randomizedSpawnPoints)
+        {
+            chosenSpawnPoint = spawnPoint;
+
+            Collider[] objectsInRange = Physics.OverlapSphere(chosenSpawnPoint.position, 3.0f);
+
+            if (!objectsInRange.Any(x => x.transform.root.gameObject.TryGetComponent<PlayerData>(out _)))
+                break;
+        }
+
+        return chosenSpawnPoint;
+    }
+    
+    private IOrderedEnumerable<Transform> GetRandomizedSpawnPoints()
+    {
+        return spawnPoints.OrderBy(x => random.Next());
     }
 }

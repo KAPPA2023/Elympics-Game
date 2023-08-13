@@ -16,7 +16,6 @@ public class PlayerVisibilityController : ElympicsMonoBehaviour, IInitializable
     public void Initialize()
     {
         var playerData = GetComponent<PlayerData>();
-
         if (playerData.PlayerId != (int)Elympics.Player)
         {
             ProcessRootsOfRenderersToSetGivenLayer(firstPersonRendererRoots, "Invisible");
@@ -25,6 +24,14 @@ public class PlayerVisibilityController : ElympicsMonoBehaviour, IInitializable
         else
         {
             ProcessRootsOfRenderersToSetGivenLayer(thirdPersonRendererRoots, "Invisible");
+        }
+
+        if (Elympics.IsServer)
+        {
+            if (playerData.PlayerId == 0)
+            {
+                ProcessRootsOfRenderersToSetGivenLayer(thirdPersonRendererRoots, "Invisible");
+            }
         }
     }
     
