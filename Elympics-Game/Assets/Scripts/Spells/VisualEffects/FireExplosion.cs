@@ -8,16 +8,19 @@ public class FireExplosion : ElympicsMonoBehaviour, IUpdatable
 {
     private SphereCollider sphere;
     private ElympicsFloat deathTimer = new ElympicsFloat(0.0f);
+    private int owner;
+    
 
     public void ElympicsUpdate()
     {
-        sphere.GetComponent<SphereCollider>();
+        
+        //sphere.GetComponent<SphereCollider>();
         deathTimer.Value += Elympics.TickDuration;
-        if (deathTimer >= 1)
+        if (deathTimer.Value >= 1.0f)
         {
             ElympicsDestroy(gameObject);
         }
-        sphere.GetComponent<SphereCollider>().radius += sphere.GetComponent<SphereCollider>().radius*Elympics.TickDuration;
+        //sphere.GetComponent<SphereCollider>().radius += sphere.GetComponent<SphereCollider>().radius*Elympics.TickDuration;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -25,8 +28,14 @@ public class FireExplosion : ElympicsMonoBehaviour, IUpdatable
         var playerInfo = other.GetComponent<PlayerData>();
         if (playerInfo != null)
         {
-            
+            playerInfo.GetComponent<StatsController>().InitializeFire();
         }
+    }
+    public virtual void SpawnSpell(Vector3 position,int client)
+    {
+        //we can use tick to setup timers - for example fireball could explode after 2 seconds in air
+        transform.position = position;
+        owner = client;
     }
 }
 

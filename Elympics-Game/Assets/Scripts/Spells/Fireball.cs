@@ -1,18 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using Elympics;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class Fireball : Spell, IUpdatable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject fireExplosion;
+    private ElympicsBool spawned = new ElympicsBool(false);
+    private int counter = 0;
 
-    // Update is called once per frame
-    void Update()
+    protected override void SpawnChild()
     {
-        
+        if (!spawned.Value)
+        {
+            if (Elympics.IsServer)
+            {
+                FireExplosion ss = ElympicsInstantiate(fireExplosion.name, ElympicsPlayer.World).GetComponent<FireExplosion>();
+                ss.SpawnSpell(this.transform.position + new Vector3(0, 0.1f, 0), caster);
+            }
+
+            spawned.Value = true;
+        }
+
     }
+    
+   
 }

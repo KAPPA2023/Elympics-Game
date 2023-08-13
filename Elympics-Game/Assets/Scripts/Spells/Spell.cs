@@ -64,7 +64,7 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
             DetonateProjectile();
         }
     }
-
+    
     public virtual void applyModifier()
     {
         Debug.Log("spell modified");
@@ -72,9 +72,14 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
 
     protected void DetonateProjectile()
     {
+        SpawnChild();
         shouldBeDestoyed.Value = true;
     }
 
+    protected virtual void SpawnChild()
+    {
+        
+    }
     protected virtual void move()
     {
     }

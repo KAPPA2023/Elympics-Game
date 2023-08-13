@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.Serialization;
 
-public class StatsController : ElympicsMonoBehaviour, IInitializable
+public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
 {
     [Header("Parameters:")]
     [SerializeField] private float maxHealth = 100.0f;
@@ -13,6 +13,9 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable
     public ElympicsFloat blindPower= new ElympicsFloat(0.0f);
     public ElympicsBool isBlind = new ElympicsBool(false);
     private ElympicsFloat _blindTimer = new ElympicsFloat(0.0f);
+
+    public ElympicsBool isFire = new ElympicsBool(false);
+    public ElympicsFloat _fireTimer = new ElympicsFloat(0.0f);
     //[Header("References:")]
     //[SerializeField] private DeathController deathController = null;
 
@@ -64,15 +67,34 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable
     {
         return Math.Abs(_health.Value - maxHealth) < 0.1;
     }
+
+    public void InitializeFire()
+    {
+        isFire.Value = true;
+        _fireTimer.Value = 0f;
+    }
     
     public void ElympicsUpdate()
     {
+
+        if (isFire)
+        {
+            _health.Value -= 5 * Elympics.TickDuration;
+            _fireTimer.Value += Elympics.TickDuration;
+            if (_fireTimer >= 5)
+            {
+                isFire.Value = false;
+                _fireTimer.Value = 0.0f;
+            }
+        }
+        
         if (isBlind)
         {
             _blindTimer.Value += Elympics.TickDuration;
             if (_blindTimer >= 2f)
             {
                 isBlind.Value = false;
+                _blindTimer.Value = 0.0f;
             }
         }
     }
