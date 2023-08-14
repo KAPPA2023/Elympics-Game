@@ -14,20 +14,17 @@ public class TornadoSpell : Spell
     {
         var playerData = other.GetComponent<PlayerData>();
         if(playerData == null) return;
-        if (playerData.PlayerId != caster)
+        if (playerData.PlayerId == caster) return;
+        base.OnTriggerEnter(other);
+        var playerRigidbody = other.GetComponent<Rigidbody>();
+        if (playerRigidbody != null)
         {
-            base.OnTriggerEnter(other);
-            var playerRigidbody = other.GetComponent<Rigidbody>();
-            if (playerRigidbody != null)
-            {
 
-                Vector3 knockbackDirection = spellVelocity;
-                knockbackDirection.y = 0.1f;
+            Vector3 knockbackDirection = spellVelocity;
+            knockbackDirection.y = 0.1f;
 
 
-                playerRigidbody.AddForce(knockbackDirection * 15, ForceMode.Impulse);
-            }
-
+            playerRigidbody.AddForce(knockbackDirection * 15, ForceMode.Impulse);
         }
     }
 }

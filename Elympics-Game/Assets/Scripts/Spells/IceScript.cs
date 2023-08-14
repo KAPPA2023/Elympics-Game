@@ -7,9 +7,9 @@ public class IceScript : Spell
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-        if (other.GetComponent<MovementController>() != null)
-        {
-            other.GetComponent<MovementController>().Slow(6);
-        }
+        var playerData = other.GetComponent<PlayerData>();
+        if (playerData == null) return;
+        if (playerData.PlayerId == caster) return;
+        playerData.GetComponent<MovementController>().Slow();
     }
 }

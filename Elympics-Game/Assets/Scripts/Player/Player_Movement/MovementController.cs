@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Experimental.XR.Interaction;
 
 public class MovementController : ElympicsMonoBehaviour, IUpdatable
 {
@@ -18,9 +19,9 @@ public class MovementController : ElympicsMonoBehaviour, IUpdatable
     public ElympicsFloat desiredMovementSpeed;
     [SerializeField] public float actualMovementSpeed;
     [SerializeField] private float groundDrag;
-    private ElympicsFloat SlowTimer =new ElympicsFloat(0.0f);
-    private ElympicsFloat SlowTime = new ElympicsFloat(10);
-    private bool isSlow=false;
+    [SerializeField] private float slowDuration = 4.0f;
+    private float slowTimer;
+    public ElympicsBool isSlowed = new ElympicsBool(false);
     #endregion
     
     #region Jumping Variables
@@ -44,6 +45,7 @@ public class MovementController : ElympicsMonoBehaviour, IUpdatable
         rb = GetComponent<Rigidbody>();
         climbing = GetComponent<Climbing>();
         desiredMovementSpeed.Value = GroundSpeed;
+        isSlowed.ValueChanged += OnSlow;
     }
 
     public void ProcessMovement(Vector2 inputMovement, bool jump)
@@ -140,28 +142,34 @@ public class MovementController : ElympicsMonoBehaviour, IUpdatable
         Gizmos.DrawCube(transform.position - transform.up * maxDistance, boxSize);
     }
 
-    public void Slow(float newvalue)
+    public void Slow()
     {
-        desiredMovementSpeed.Value -= newvalue;
-        if (desiredMovementSpeed.Value != GroundSpeed)
-        {
-            isSlow = true;
-            SlowTime.Value = 0.0f;
-        }
-       
+        isSlowed.Value = true;
     }
     
     public void ElympicsUpdate()
     {
-        if(isSlow)
+        if(isSlowed.Value)
         {
-            SlowTime.Value += Elympics.TickDuration;
-            if (SlowTime.Value >= 4f)
+            slowTimer += Elympics.TickDuration;
+            if (slowTimer >= slowDuration)
             {
-                isSlow = false;
-                desiredMovementSpeed.Value = GroundSpeed;
-                SlowTime.Value = 0f;
+                isSlowed.Value = false;
             }
+        }
+    }
+
+    private void OnSlow(bool oldVal, bool newVal)
+    {
+        if (newVal)
+        {
+            desiredMovementSpeed.Value -= 6;
+            slowTimer = 0.0f;
+        }
+        else
+        {
+            desiredMovementSpeed.Value = GroundSpeed;
+            slowTimer = 0f;
         }
     }
 }

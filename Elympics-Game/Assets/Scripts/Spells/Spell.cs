@@ -28,7 +28,7 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
         rb.velocity = spellVelocity;
         if (modified)
         {
-            applyModifier();
+            ApplyModifier();
         }
     }
 
@@ -42,6 +42,7 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
         var playerInfo = other.GetComponent<PlayerData>();
         if (playerInfo != null)
         {
+            if (playerInfo.PlayerId == caster) return;
             SpellHit?.Invoke();
             playerInfo.DealDamage(spellDamage, caster);
         }
@@ -60,7 +61,7 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
         }
     }
     
-    public virtual void applyModifier()
+    public virtual void ApplyModifier()
     {
         Debug.Log("spell modified");
     }

@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 92
+  networkId: 99
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -1377,7 +1377,6 @@ GameObject:
   - component: {fileID: 5769451479979217548}
   - component: {fileID: 1057260793955217357}
   - component: {fileID: 8304930500595786143}
-  - component: {fileID: 1998092589179660706}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -1450,19 +1449,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1998092589179660706
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7583851095510396649}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7828475692027650647
 GameObject:
   m_ObjectHideFlags: 0
