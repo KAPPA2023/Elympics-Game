@@ -1,10 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Elympics;
-using TMPro;
-using UnityEditor.Experimental.GraphView;
 
 public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
 {
