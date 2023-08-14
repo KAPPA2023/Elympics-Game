@@ -27,18 +27,44 @@ public class EndgameController : MonoBehaviour
         if (newState)
         {
             screen.SetActive(true);
-            PlayerData[] players = playerProvider.AllPlayersInScene;
+
             TextMeshProUGUI text = screen.GetComponentInChildren<TextMeshProUGUI>();
-        
-            if (players[0].Score.Value == players[1].Score.Value)
+            var winners = GetWinner();
+            if (winners.Count == 1)
             {
-                text.SetText($"DRAW \n {players[0].Score.Value}:{players[1].Score.Value}");
+                text.SetText($"Player {winners[0].playerName} won \n Points: {winners[0].Score.Value}");
             }
             else
             {
-                int winnerID = (players[0].Score.Value > players[1].Score.Value) ? 0 : 1;
-                text.SetText($"Player {players[winnerID].playerName} won \n {players[winnerID].Score.Value}:{players[1 - winnerID].Score.Value}");
+                String players = " ";
+                foreach (var player in winners)
+                {
+                    players += player.playerName + " ";
+                }
+                text.SetText($"DRAW \n {players} \n SCORE: {winners[0].Score.Value}");
             }
         }
+    }
+
+    private List<PlayerData> GetWinner()
+    {
+        PlayerData[] players = playerProvider.AllPlayersInScene;
+        List<PlayerData> winners = new List<PlayerData>();
+        int max_score = -100;
+        foreach (var player in players)
+        {
+            if (player.Score > max_score)
+            {
+                max_score = player.Score;
+            }
+        }
+        foreach (var player in players)
+        {
+            if (player.Score == max_score)
+            {
+                winners.Add(player);
+            }
+        }
+        return winners;
     }
 }
