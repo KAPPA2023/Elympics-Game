@@ -33,13 +33,13 @@ public class MovementController : ElympicsMonoBehaviour
     public LayerMask layerMask;
     #endregion
 
-    public bool isWallRunning = false;
-    private Climbing wallRunning;
+    public bool isClimbing = false;
+    private Climbing climbing;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        wallRunning = GetComponent<Climbing>();
+        climbing = GetComponent<Climbing>();
         desiredMovementSpeed = GroundSpeed;
     }
 
@@ -52,18 +52,18 @@ public class MovementController : ElympicsMonoBehaviour
         Vector3 inputVector = new Vector3(inputMovement.x, 0, inputMovement.y);
         Vector3 movementDirection = inputVector != Vector3.zero ? this.transform.TransformDirection(inputVector.normalized) : Vector3.zero;
 
-        wallRunning.WallRunningElympicsUpdate();
-        if (!isWallRunning)
+        climbing.WallRunningElympicsUpdate();
+        if (!isClimbing)
         {
             ApplyMovement(movementDirection);
         }
         
         SpeedControl();      
 
-        if (isWallRunning)
+        if (isClimbing)
         {
             desiredMovementSpeed = WallRunSpeed;
-            wallRunning.WallRunningMovement();
+            climbing.WallRunningMovement();
         }
         else if (GroundCheck())
         {
@@ -111,15 +111,7 @@ public class MovementController : ElympicsMonoBehaviour
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        /*if (isWallRunning)
-        {
-            if (rb.velocity.y > desiredMovementSpeed)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, desiredMovementSpeed, rb.velocity.z);
-            }
-            actualMovementSpeed = rb.velocity.y;
-        }
-        else */if (flatVel.magnitude > desiredMovementSpeed)
+        if (flatVel.magnitude > desiredMovementSpeed)
         {
             Vector3 limitedVel = flatVel.normalized * desiredMovementSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
