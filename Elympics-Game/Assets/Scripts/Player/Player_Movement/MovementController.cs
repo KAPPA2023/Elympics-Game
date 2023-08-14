@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Experimental.XR.Interaction;
 
-public class MovementController : ElympicsMonoBehaviour
+public class MovementController : ElympicsMonoBehaviour, IUpdatable
 {
     private new Rigidbody rb = null;
 
@@ -15,9 +16,12 @@ public class MovementController : ElympicsMonoBehaviour
     #region Speeds and Drags
     [SerializeField] private float GroundSpeed;
     [SerializeField] private float WallRunSpeed;
-    public float desiredMovementSpeed;
+    public ElympicsFloat desiredMovementSpeed;
     [SerializeField] public float actualMovementSpeed;
     [SerializeField] private float groundDrag;
+    [SerializeField] private float slowDuration = 4.0f;
+    private float slowTimer;
+    public ElympicsBool isSlowed = new ElympicsBool(false);
     #endregion
     
     #region Jumping Variables
@@ -40,14 +44,15 @@ public class MovementController : ElympicsMonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         climbing = GetComponent<Climbing>();
-        desiredMovementSpeed = GroundSpeed;
+        desiredMovementSpeed.Value = GroundSpeed;
+        isSlowed.ValueChanged += OnSlow;
     }
 
     public void ProcessMovement(Vector2 inputMovement, bool jump)
     {
         horizontalInput = inputMovement.x;
         verticalInput = inputMovement.y;
-        desiredMovementSpeed = GroundSpeed;
+        
 
         Vector3 inputVector = new Vector3(inputMovement.x, 0, inputMovement.y);
         Vector3 movementDirection = inputVector != Vector3.zero ? this.transform.TransformDirection(inputVector.normalized) : Vector3.zero;
@@ -62,13 +67,13 @@ public class MovementController : ElympicsMonoBehaviour
 
         if (isClimbing)
         {
-            desiredMovementSpeed = WallRunSpeed;
+            
             climbing.WallRunningMovement();
         }
         else if (GroundCheck())
         {
             rb.drag = groundDrag;
-            desiredMovementSpeed = GroundSpeed;
+            
             if (jump && readyToJump)
             {
                 readyToJump = false;
@@ -137,4 +142,34 @@ public class MovementController : ElympicsMonoBehaviour
         Gizmos.DrawCube(transform.position - transform.up * maxDistance, boxSize);
     }
 
+    public void Slow()
+    {
+        isSlowed.Value = true;
+    }
+    
+    public void ElympicsUpdate()
+    {
+        if(isSlowed.Value)
+        {
+            slowTimer += Elympics.TickDuration;
+            if (slowTimer >= slowDuration)
+            {
+                isSlowed.Value = false;
+            }
+        }
+    }
+
+    private void OnSlow(bool oldVal, bool newVal)
+    {
+        if (newVal)
+        {
+            desiredMovementSpeed.Value -= 6;
+            slowTimer = 0.0f;
+        }
+        else
+        {
+            desiredMovementSpeed.Value = GroundSpeed;
+            slowTimer = 0f;
+        }
+    }
 }

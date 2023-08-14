@@ -479,7 +479,7 @@ MonoBehaviour:
   - {fileID: 8437392693171119185, guid: 1612ca42d4df80b4e8e0d7e2dac59b92, type: 3}
   - {fileID: 8641383612146418019, guid: 4d6f7a76a934ff74aa0c3c855cc7b510, type: 3}
   - {fileID: 6518260732727185738, guid: 5e3ad43db101335428413fe04910ccda, type: 3}
-  - {fileID: 8641383612146418019, guid: 9e82c45da61373d4da251471d4d7a857, type: 3}
+  - {fileID: 8641383612146418019, guid: 3bd95db394331b240a2c1c35d7ef363f, type: 3}
 --- !u!114 &3137473122721184451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 72
+  networkId: 93
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -846,7 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 73
+  networkId: 94
   predictableFor:
     playerIndex: 0
   isUpdatableForNonOwners: 0
@@ -947,7 +947,8 @@ MonoBehaviour:
   verticalInput: 0
   GroundSpeed: 10
   WallRunSpeed: 5
-  desiredMovementSpeed: 0
+  desiredMovementSpeed:
+    currentValue: 0
   actualMovementSpeed: 0
   groundDrag: 10
   jumpForce: 30
@@ -958,7 +959,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
-  isWallRunning: 0
+  isClimbing: 0
 --- !u!114 &3137473124097492654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -987,6 +988,8 @@ MonoBehaviour:
   viewController: {fileID: 3137473123270892415}
   spellCooldown: 0.2
   modified: 0
+  _remainingUses:
+    currentValue: 0
   stashedSpells:
     values:
     - currentValue: -1
@@ -1071,6 +1074,10 @@ MonoBehaviour:
   blindPower:
     currentValue: 0
   isBlind:
+    currentValue: 0
+  isFire:
+    currentValue: 0
+  _fireTimer:
     currentValue: 0
 --- !u!114 &1321588518
 MonoBehaviour:

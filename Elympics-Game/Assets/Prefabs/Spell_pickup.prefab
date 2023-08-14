@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 76
+  networkId: 99
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -291,7 +291,7 @@ VisualEffect:
       - m_Value: {fileID: 2800000, guid: 6964d9a4f065fc74290dc8e3bf841275, type: 3}
         m_Name: Texture
         m_Overridden: 1
-      - m_Value: {fileID: 2800000, guid: 33ee20e1a80d6cb489c03be9a57cdfd5, type: 3}
+      - m_Value: {fileID: 2800000, guid: 951df834f30d0e54b9685bc8f40a108d, type: 3}
         m_Name: New Texture2D
         m_Overridden: 1
     m_Bool:
@@ -631,7 +631,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3178682149978424027}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.121, z: 0}
+  m_LocalPosition: {x: 0, y: 0.029, z: 0}
   m_LocalScale: {x: 0.7, y: 0.8, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -661,7 +661,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 0, y: 0, z: 0, w: 0}
+      - m_Value: {x: 1.4588236, y: 0.17254902, z: 0.16470589, w: 0}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
@@ -679,7 +679,7 @@ VisualEffect:
       - m_Value: {fileID: 2800000, guid: 6964d9a4f065fc74290dc8e3bf841275, type: 3}
         m_Name: Texture
         m_Overridden: 1
-      - m_Value: {fileID: 2800000, guid: 33ee20e1a80d6cb489c03be9a57cdfd5, type: 3}
+      - m_Value: {fileID: 2800000, guid: 45d39b235faa08948a51bc03b0aab143, type: 3}
         m_Name: New Texture2D
         m_Overridden: 1
     m_Bool:
@@ -1018,7 +1018,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 92.28914, y: 9.180594, z: 9.180594, w: 0}
+      - m_Value: {x: 5.884594, y: 5.884594, z: 5.884594, w: 0}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
@@ -1225,7 +1225,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d2f03629cf6dba64a84245c716ee3b06, type: 2}
+  - {fileID: 2100000, guid: dbb5eff133d0692439d6969c3ad2c951, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1303,7 +1303,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 0, y: 0, z: 0, w: 0}
+      - m_Value: {x: 1.9058824, y: 1.7019608, z: 0.8392157, w: 0}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
@@ -1377,7 +1377,6 @@ GameObject:
   - component: {fileID: 5769451479979217548}
   - component: {fileID: 1057260793955217357}
   - component: {fileID: 8304930500595786143}
-  - component: {fileID: 1998092589179660706}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -1450,19 +1449,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1998092589179660706
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7583851095510396649}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7828475692027650647
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,7 +1796,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 3.890196, y: 3.545098, z: 0, w: 0}
+      - m_Value: {x: 5.992157, y: 5.992157, z: 5.709804, w: 0}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
@@ -1828,7 +1814,7 @@ VisualEffect:
       - m_Value: {fileID: 2800000, guid: 6964d9a4f065fc74290dc8e3bf841275, type: 3}
         m_Name: Texture
         m_Overridden: 1
-      - m_Value: {fileID: 2800000, guid: a2d48089dd345ce488954e724a3bca42, type: 3}
+      - m_Value: {fileID: 2800000, guid: e65ed4c58b8e46c4d8e3e8b733e2b271, type: 3}
         m_Name: New Texture2D
         m_Overridden: 1
     m_Bool:
