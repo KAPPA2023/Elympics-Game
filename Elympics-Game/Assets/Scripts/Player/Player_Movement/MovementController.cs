@@ -4,19 +4,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MovementController : ElympicsMonoBehaviour, IUpdatable
+public class MovementController : ElympicsMonoBehaviour
 {
     private new Rigidbody rb = null;
 
     public float horizontalInput;
     public float verticalInput;
-    private ElympicsFloat SlowTimer =new ElympicsFloat(0.0f);
-    private ElympicsFloat SlowTime = new ElympicsFloat(10);
-    private bool isSlow=false;
+
+
     #region Speeds and Drags
     [SerializeField] private float GroundSpeed;
     [SerializeField] private float WallRunSpeed;
-    public ElympicsFloat desiredMovementSpeed;
+    public float desiredMovementSpeed;
     [SerializeField] public float actualMovementSpeed;
     [SerializeField] private float groundDrag;
     #endregion
@@ -34,42 +33,42 @@ public class MovementController : ElympicsMonoBehaviour, IUpdatable
     public LayerMask layerMask;
     #endregion
 
-    public bool isWallRunning = false;
-    private Climbing wallRunning;
+    public bool isClimbing = false;
+    private Climbing climbing;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        wallRunning = GetComponent<Climbing>();
-        desiredMovementSpeed.Value = GroundSpeed;
+        climbing = GetComponent<Climbing>();
+        desiredMovementSpeed = GroundSpeed;
     }
 
     public void ProcessMovement(Vector2 inputMovement, bool jump)
     {
         horizontalInput = inputMovement.x;
         verticalInput = inputMovement.y;
-        
+        desiredMovementSpeed = GroundSpeed;
 
         Vector3 inputVector = new Vector3(inputMovement.x, 0, inputMovement.y);
         Vector3 movementDirection = inputVector != Vector3.zero ? this.transform.TransformDirection(inputVector.normalized) : Vector3.zero;
 
-        wallRunning.WallRunningElympicsUpdate();
-        if (!isWallRunning)
+        climbing.WallRunningElympicsUpdate();
+        if (!isClimbing)
         {
             ApplyMovement(movementDirection);
         }
         
         SpeedControl();      
 
-        if (isWallRunning)
+        if (isClimbing)
         {
-            
-            wallRunning.WallRunningMovement();
+            desiredMovementSpeed = WallRunSpeed;
+            climbing.WallRunningMovement();
         }
         else if (GroundCheck())
         {
             rb.drag = groundDrag;
-            
+            desiredMovementSpeed = GroundSpeed;
             if (jump && readyToJump)
             {
                 readyToJump = false;
@@ -112,15 +111,7 @@ public class MovementController : ElympicsMonoBehaviour, IUpdatable
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        /*if (isWallRunning)
-        {
-            if (rb.velocity.y > desiredMovementSpeed)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, desiredMovementSpeed, rb.velocity.z);
-            }
-            actualMovementSpeed = rb.velocity.y;
-        }
-        else */if (flatVel.magnitude > desiredMovementSpeed)
+        if (flatVel.magnitude > desiredMovementSpeed)
         {
             Vector3 limitedVel = flatVel.normalized * desiredMovementSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
@@ -145,38 +136,5 @@ public class MovementController : ElympicsMonoBehaviour, IUpdatable
         Gizmos.color = Color.red;
         Gizmos.DrawCube(transform.position - transform.up * maxDistance, boxSize);
     }
-    
-    public void ElympicsStart()
-    {
-        
-        desiredMovementSpeed.Value = GroundSpeed;
 
-    }
-
-   
-
-    public void Slow(float newvalue)
-    {
-        desiredMovementSpeed.Value -= newvalue;
-        if (desiredMovementSpeed.Value != GroundSpeed)
-        {
-            isSlow = true;
-            SlowTime.Value = 0.0f;
-        }
-       
-    }
-    
-    public void ElympicsUpdate()
-    {
-        if(isSlow)
-        {
-            SlowTime.Value += Elympics.TickDuration;
-            if (SlowTime.Value >= 4f)
-            {
-                isSlow = false;
-                desiredMovementSpeed.Value = GroundSpeed;
-                SlowTime.Value = 0f;
-            }
-        }
-    }
 }

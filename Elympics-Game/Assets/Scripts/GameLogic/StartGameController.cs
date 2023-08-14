@@ -19,7 +19,6 @@ public class StartGameController : ElympicsMonoBehaviour
         staticGameModifier.Value = UnityEngine.Random.Range(0, 3);
         dynamicGameModifier.Value = UnityEngine.Random.Range(0, 3);
         playerModifier.Value = UnityEngine.Random.Range(0, 3);
-        playerModifier.Value = 1;
 
         IsReady = true;
         IsReadyChanged?.Invoke();

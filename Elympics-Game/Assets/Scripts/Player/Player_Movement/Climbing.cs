@@ -59,14 +59,14 @@ public class Climbing : ElympicsMonoBehaviour
     {
         if (wallForward && verticalInput > 0 && AboveGround())
         {
-            if (!movementController.isWallRunning)
+            if (!movementController.isClimbing)
             {
                 StartWallRun();
             } 
         }
         else if (!wallForward || !AboveGround() || verticalInput <= 0)
         {
-            if (movementController.isWallRunning)
+            if (movementController.isClimbing)
             {
                 StopWallRun();
             }
@@ -77,7 +77,7 @@ public class Climbing : ElympicsMonoBehaviour
 
     private void StartWallRun()
     {
-        movementController.isWallRunning = true;
+        movementController.isClimbing = true;
         rb.useGravity = false;
         rb.velocity = new Vector3(0f, 0f, 0f);
     }
@@ -89,7 +89,7 @@ public class Climbing : ElympicsMonoBehaviour
 
     private void StopWallRun()
     {
-        movementController.isWallRunning = false;
+        movementController.isClimbing = false;
         rb.useGravity = true;
     }
 

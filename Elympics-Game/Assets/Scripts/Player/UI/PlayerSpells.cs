@@ -28,17 +28,31 @@ public class PlayerSpells : MonoBehaviour
 
     private void ChangeSlot(int index, int newVal)
     {
-        switch ((Spells)newVal)
-        {
-            case Spells.Empty:
-                spells[index].sprite = sprites[0]; 
-                break;
-            case Spells.Fireball:
-                spells[index].sprite = sprites[1];
-                break;
-            case Spells.Lightbolt:
-                spells[index].sprite = sprites[2];
-                break;
-        }
+        //This will work as long as you setup sprites in order of spells in enum
+        spells[index].sprite = sprites[newVal + 1]; 
+        // switch ((Spells)newVal)
+        // {
+        //     case Spells.Empty:
+        //         spells[index].sprite = sprites[0]; 
+        //         break;
+        //     case Spells.Fireball:
+        //         spells[index].sprite = sprites[1];
+        //         break;
+        //     case Spells.Lightbolt:
+        //         spells[index].sprite = sprites[2];
+        //         break;
+        //     case Spells.WaterBlast:
+        //         spells[index].sprite = sprites[3];
+        //         break;
+        //     case Spells.SandGranade:
+        //         spells[index].sprite = sprites[4];
+        //         break;
+        //     case Spells.Tornado:
+        //         spells[index].sprite = sprites[5];
+        //         break;
+        //     case Spells.IceSpike:
+        //         spells[index].sprite = sprites[6];
+        //         break;
+        // }
     }
 }

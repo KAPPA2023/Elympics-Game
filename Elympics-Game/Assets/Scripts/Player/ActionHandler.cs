@@ -30,7 +30,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     protected bool canCast => currentTimeBetweenShoots >= spellCooldown;
     
     private Spells _selectedSpell = Spells.Empty;
-    private int _remainingUses = 0;
+    public ElympicsInt _remainingUses = new ElympicsInt(0);
     public ElympicsArray<ElympicsInt> stashedSpells = new ElympicsArray<ElympicsInt>(3, () => new ElympicsInt(-1));
     public void HandleActions(bool attack)
     {
@@ -45,7 +45,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
         if (_selectedSpell != Spells.Empty && _remainingUses > 0)
         {
             spellSpawner.TrySpawningSpell(_selectedSpell,direction, GetComponent<PlayerData>().PlayerId, modified);
-            _remainingUses--;
+            _remainingUses.Value--;
         }
         else 
         {
@@ -71,7 +71,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
                     Invoke("GoodSpellInvoke", 0.1f);
                     _selectedSpell = drawnSpell;
                     stashedSpells.Values[i].Value = (int)Spells.Empty;
-                    _remainingUses = GetSpellUses(drawnSpell);
+                    _remainingUses.Value = GetSpellUses(drawnSpell);
                     break;
                 }
                 else
@@ -117,6 +117,11 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
             case Spells.IceSpike: return 2;
             default: return 0;
         }
+    }
+
+    public int getRemainingUses()
+    {
+        return _remainingUses;
     }
 
     private void GoodSpellInvoke()
