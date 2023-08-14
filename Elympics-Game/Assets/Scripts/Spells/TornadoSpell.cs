@@ -7,22 +7,27 @@ public class TornadoSpell : Spell
     public float bulletSpeed = 10f;
     public float knockbackForce = 20f;
 
-    
+
 
     // Start is called before the first frame update
     protected override void OnTriggerEnter(Collider other)
     {
-        base.OnTriggerEnter(other);
-        var playerRigidbody = other.GetComponent<Rigidbody>();
-        if (playerRigidbody != null)
+        var playerData = other.GetComponent<PlayerData>();
+        if(playerData == null) return;
+        if (playerData.PlayerId != caster)
         {
-           
-            Vector3 knockbackDirection = spellVelocity;
-            knockbackDirection.y = 0.1f;
+            base.OnTriggerEnter(other);
+            var playerRigidbody = other.GetComponent<Rigidbody>();
+            if (playerRigidbody != null)
+            {
 
-           
-            playerRigidbody.AddForce(knockbackDirection * 25, ForceMode.Impulse);
+                Vector3 knockbackDirection = spellVelocity;
+                knockbackDirection.y = 0.1f;
+
+
+                playerRigidbody.AddForce(knockbackDirection * 15, ForceMode.Impulse);
+            }
+
         }
-
     }
 }

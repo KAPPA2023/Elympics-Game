@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 81
+  networkId: 92
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -631,7 +631,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3178682149978424027}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.121, z: 0}
+  m_LocalPosition: {x: 0, y: 0.029, z: 0}
   m_LocalScale: {x: 0.7, y: 0.8, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -661,7 +661,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 0, y: 0, z: 0, w: 0}
+      - m_Value: {x: 1.4588236, y: 0.17254902, z: 0.16470589, w: 0}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
@@ -1018,7 +1018,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 92.28914, y: 9.180594, z: 9.180594, w: 0}
+      - m_Value: {x: 5.884594, y: 5.884594, z: 5.884594, w: 0}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
@@ -1225,7 +1225,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d2f03629cf6dba64a84245c716ee3b06, type: 2}
+  - {fileID: 2100000, guid: dbb5eff133d0692439d6969c3ad2c951, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1303,7 +1303,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 0, y: 0, z: 0, w: 0}
+      - m_Value: {x: 1.9058824, y: 1.7019608, z: 0.8392157, w: 0}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
@@ -1810,7 +1810,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 3.890196, y: 3.545098, z: 0, w: 0}
+      - m_Value: {x: 5.992157, y: 5.992157, z: 5.709804, w: 0}
         m_Name: Color
         m_Overridden: 1
     m_Uint:

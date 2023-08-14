@@ -9,12 +9,16 @@ public class WaterSpell : Spell
    
    protected override void OnTriggerEnter(Collider other)
    {
-      base.OnTriggerEnter(other);
       var playerInfo = other.GetComponent<PlayerData>();
-      if (playerInfo != null)
+      if (playerInfo.PlayerId != caster)
       {
-         playerInfo.GetComponent<StatsController>().isBlind.Value = true;
+         base.OnTriggerEnter(other);
+         if (playerInfo != null)
+         {
+            playerInfo.GetComponent<StatsController>().isBlind.Value = true;
+         } 
       }
+      
       
    }
    

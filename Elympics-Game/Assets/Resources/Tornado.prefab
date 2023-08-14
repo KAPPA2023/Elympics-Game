@@ -238,7 +238,7 @@ MonoBehaviour:
   spellSpeed: 50
   lifeTime: 4
   bulletSpeed: 10
-  knockbackForce: 20
+  knockbackForce: 10
 --- !u!54 &2683178127520379314
 Rigidbody:
   m_ObjectHideFlags: 0
