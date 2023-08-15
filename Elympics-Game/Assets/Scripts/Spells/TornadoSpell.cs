@@ -7,8 +7,6 @@ public class TornadoSpell : Spell
     public float bulletSpeed = 10f;
     public float knockbackForce = 20f;
 
-
-
     // Start is called before the first frame update
     protected override void OnTriggerEnter(Collider other)
     {
