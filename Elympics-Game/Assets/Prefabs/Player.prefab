@@ -780,7 +780,7 @@ GameObject:
   - component: {fileID: 4240076674685522278}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -951,6 +951,9 @@ MonoBehaviour:
     currentValue: 0
   actualMovementSpeed: 0
   groundDrag: 10
+  slowDuration: 4
+  isSlowed:
+    currentValue: 0
   jumpForce: 30
   jumpCooldown: 0.25
   airMultiplier: 0.2

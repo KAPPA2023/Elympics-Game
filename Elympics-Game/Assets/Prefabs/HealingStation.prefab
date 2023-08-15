@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 760934028187314446}
   - component: {fileID: 5817258005279387753}
   - component: {fileID: 5187015058260248334}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HealingStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 67
+  networkId: 104
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0

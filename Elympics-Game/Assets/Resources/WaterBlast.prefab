@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8098956389089463035}
   - component: {fileID: 170531874175409114}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Colider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 2838023422718773770}
   - component: {fileID: 7575047413114315203}
   - component: {fileID: 8242874914952308246}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WaterBlast
   m_TagString: Untagged
   m_Icon: {fileID: 0}

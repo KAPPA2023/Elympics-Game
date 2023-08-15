@@ -22,6 +22,7 @@ public class StartGameController : ElympicsMonoBehaviour
     public void drawTarotCards()
     {
         staticGameModifier.Value = UnityEngine.Random.Range(0, 3);
+        staticGameModifier.Value = 2;
         dynamicGameModifier.Value = UnityEngine.Random.Range(0, 3);
         playerModifier.Value = UnityEngine.Random.Range(0, 3);
 

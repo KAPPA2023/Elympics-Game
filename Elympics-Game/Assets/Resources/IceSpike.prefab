@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 2562298034367758845}
   - component: {fileID: 2884881444969025028}
   - component: {fileID: -7764831913702918450}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IceSpike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
