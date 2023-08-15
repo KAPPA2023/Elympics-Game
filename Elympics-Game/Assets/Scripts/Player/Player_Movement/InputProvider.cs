@@ -56,7 +56,6 @@ public class InputProvider : MonoBehaviour
 
     private void HandleSpellDrawing()
     {
-        string returned_shape = "empty";
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             _gatheredInput.isDrawing = true;

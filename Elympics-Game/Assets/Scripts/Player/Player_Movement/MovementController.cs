@@ -7,7 +7,7 @@ using UnityEngine.Experimental.XR.Interaction;
 
 public class MovementController : ElympicsMonoBehaviour, IUpdatable
 {
-    private new Rigidbody rb = null;
+    private Rigidbody rb = null;
 
     public float horizontalInput;
     public float verticalInput;
@@ -90,7 +90,7 @@ public class MovementController : ElympicsMonoBehaviour, IUpdatable
 
     private void ApplyMovement(Vector3 movementDirection)
     {
-        Vector3 defaultVelocity = movementDirection * desiredMovementSpeed * 15f * rb.mass;
+        Vector3 defaultVelocity = movementDirection * desiredMovementSpeed.Value * 15f * rb.mass;
         if (!GroundCheck())
         {
             defaultVelocity *= airMultiplier;
@@ -115,9 +115,9 @@ public class MovementController : ElympicsMonoBehaviour, IUpdatable
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        if (flatVel.magnitude > desiredMovementSpeed)
+        if (flatVel.magnitude > desiredMovementSpeed.Value)
         {
-            Vector3 limitedVel = flatVel.normalized * desiredMovementSpeed;
+            Vector3 limitedVel = flatVel.normalized * desiredMovementSpeed.Value;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
         flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
@@ -175,6 +175,11 @@ public class MovementController : ElympicsMonoBehaviour, IUpdatable
     public void Move(Vector3 direction)
     {
         rb.position += direction; //* Elympics.TickDuration;
+    }
+
+    public void ResetMovement()
+    {
+        isSlowed.Value = false;
     }
 
 }

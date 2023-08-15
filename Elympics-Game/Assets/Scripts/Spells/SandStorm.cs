@@ -46,7 +46,7 @@ public class SandStorm : ElympicsMonoBehaviour, IUpdatable
     {
         HandlePlayersInSandstorm();
         deathTimer.Value += Elympics.TickDuration;
-        if (deathTimer >= lifeTime)
+        if (deathTimer.Value >= lifeTime)
         {
             foreach (var v in players)
             {
@@ -61,7 +61,7 @@ public class SandStorm : ElympicsMonoBehaviour, IUpdatable
         foreach (var data in players)
         {
             damageTimer.Value += Elympics.TickDuration;
-            if (damageTimer >= 1f)
+            if (damageTimer.Value >= 1f)
             {
                 data.DealDamage(damage,owner);
                 damageTimer.Value = 0f;
@@ -69,7 +69,7 @@ public class SandStorm : ElympicsMonoBehaviour, IUpdatable
             Vector3 distancetoCenter = transform.position - data.GetComponent<Rigidbody>().position;
             float accDistance = new Vector3(distancetoCenter.x, 0.0f, distancetoCenter.z).magnitude;
             data.GetComponent<StatsController>().blindPower.Value = accDistance;
-            if (deathTimer >= lifeTime)
+            if (deathTimer.Value >= lifeTime)
             {
                 data.GetComponent<StatsController>().blindPower.Value = 300;
             }

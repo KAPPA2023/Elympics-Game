@@ -48,10 +48,8 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
     public void ElympicsUpdate()
     {
         if(shouldBeDestoyed.Value) ElympicsDestroy(gameObject);
-        
-        
         deathTimer.Value += Elympics.TickDuration;
-        if (deathTimer >= lifeTime)
+        if (deathTimer.Value >= lifeTime)
         {
             DetonateProjectile();
         }

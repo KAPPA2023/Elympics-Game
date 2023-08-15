@@ -9,6 +9,7 @@ public class FireExplosion : ElympicsMonoBehaviour, IUpdatable
     private SphereCollider sphere;
     private ElympicsFloat deathTimer = new ElympicsFloat(0.0f);
     private int owner;
+    [SerializeField] private float burnDuration = 3f;
     
 
     public void ElympicsUpdate()
@@ -27,7 +28,7 @@ public class FireExplosion : ElympicsMonoBehaviour, IUpdatable
         var playerInfo = other.GetComponent<PlayerData>();
         if (playerInfo != null)
         {
-            playerInfo.GetComponent<StatsController>().InitializeFire();
+            playerInfo.GetComponent<StatsController>().InitializeFire(owner, burnDuration);
         }
     }
     public virtual void SpawnSpell(Vector3 position,int client)

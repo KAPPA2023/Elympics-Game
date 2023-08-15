@@ -15,21 +15,16 @@ public class StartGameController : ElympicsMonoBehaviour
     public ElympicsInt dynamicGameModifier = new ElympicsInt(-1);
     public ElympicsInt playerModifier = new ElympicsInt(-1);
     public ElympicsBool IsReady = new ElympicsBool(false);
-    public event Action IsReadyChanged = null;
     [SerializeField] private PlayerProvider playerProvider;
 
 
     public void drawTarotCards()
     {
         staticGameModifier.Value = UnityEngine.Random.Range(0, 3);
-        staticGameModifier.Value = 2;
         dynamicGameModifier.Value = UnityEngine.Random.Range(0, 3);
         playerModifier.Value = UnityEngine.Random.Range(0, 3);
 
         IsReady.Value = true;
-        Debug.Log("player " + playerModifier.Value);
-        Debug.Log("dynamic " + dynamicGameModifier.Value);
-        Debug.Log("static " + staticGameModifier.Value);
     }
 
     public void ApplyModifiers()

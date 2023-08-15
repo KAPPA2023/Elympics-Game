@@ -90,18 +90,8 @@ public class PlayerController : MonoBehaviour
 
     public void CheckDrawedSpell()
     {
-        actionHandler.chooseSpell(shape);
+        actionHandler.ChooseSpell(shape);
     }
 
     #endregion
-
-    #region Getters
-
-    public bool isDead()
-    {
-        return playerData.isDead();
-    }
-
-    #endregion
-
 }

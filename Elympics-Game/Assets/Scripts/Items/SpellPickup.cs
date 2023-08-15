@@ -24,7 +24,7 @@ public class SpellPickup : ElympicsMonoBehaviour, IUpdatable, IInitializable
 
         if (other.GetComponent<ActionHandler>() != null)
         {
-            if (other.GetComponent<ActionHandler>().addSpell((Spells)spellType))
+            if (other.GetComponent<ActionHandler>().AddSpell((Spells)spellType))
             {
                 timeToSpawn.Value = respawnTime;
                 empty.Value = true;

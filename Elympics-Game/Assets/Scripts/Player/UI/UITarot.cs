@@ -14,7 +14,7 @@ public class UITarot : MonoBehaviour
 
     private void Start()
     {
-        if (startGameController.IsReady)
+        if (startGameController.IsReady.Value)
         {
             DisplayCards(false, true);
         }

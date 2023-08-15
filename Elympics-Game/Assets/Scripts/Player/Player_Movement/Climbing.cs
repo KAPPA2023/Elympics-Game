@@ -84,7 +84,7 @@ public class Climbing : ElympicsMonoBehaviour
 
     public void WallRunningMovement()
     {
-        rb.velocity = new Vector3(rb.velocity.x, movementController.desiredMovementSpeed, rb.velocity.z);
+        rb.velocity = new Vector3(rb.velocity.x, movementController.desiredMovementSpeed.Value, rb.velocity.z);
     }
 
     private void StopWallRun()

@@ -19,6 +19,7 @@ public class SandSpell : Spell
         var playerInfo = collision.gameObject.GetComponent<PlayerData>();
         if (playerInfo != null)
         {
+            if (playerInfo.PlayerId == caster) return;
             SpellHit?.Invoke();
             playerInfo.DealDamage(spellDamage, caster);
             DetonateProjectile();

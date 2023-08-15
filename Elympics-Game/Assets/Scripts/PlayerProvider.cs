@@ -43,7 +43,6 @@ public class PlayerProvider : ElympicsMonoBehaviour, IInitializable
 
     public PlayerData GetPlayerById(int id)
     {
-        Debug.Log(AllPlayersInScene.Length);
         return AllPlayersInScene.FirstOrDefault(x => x.PlayerId == id);
     }
 }

@@ -53,14 +53,14 @@ public class EndgameController : MonoBehaviour
         int max_score = -100;
         foreach (var player in players)
         {
-            if (player.Score > max_score)
+            if (player.Score.Value > max_score)
             {
-                max_score = player.Score;
+                max_score = player.Score.Value;
             }
         }
         foreach (var player in players)
         {
-            if (player.Score == max_score)
+            if (player.Score.Value == max_score)
             {
                 winners.Add(player);
             }

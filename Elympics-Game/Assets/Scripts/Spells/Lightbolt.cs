@@ -9,7 +9,6 @@ public class Lightbolt : Spell
     [SerializeField] private float Radius;
     private void OnCollisionEnter(Collision other)
     {
-        
         bounces--;
         if (bounces <= 0)
         {
@@ -19,6 +18,7 @@ public class Lightbolt : Spell
         {
             var playerInfo = other.gameObject.GetComponent<PlayerData>();
             if (playerInfo != null) {
+                if (playerInfo.PlayerId == caster) return;
                 SpellHit?.Invoke();
                 playerInfo.DealDamage(spellDamage, caster); 
                 DetonateProjectile();
@@ -51,10 +51,5 @@ public class Lightbolt : Spell
                
             }
         }
-            
-            
-       
-        
-        
     }
 }

@@ -1,6 +1,8 @@
 using Elympics;
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
 {
@@ -11,31 +13,28 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
     public ElympicsFloat blindPower= new ElympicsFloat(0.0f);
     public ElympicsBool isBlind = new ElympicsBool(false);
     private ElympicsFloat _blindTimer = new ElympicsFloat(0.0f);
+    private ElympicsFloat _burningTimer = new ElympicsFloat(0.0f);
 
-    public ElympicsBool isFire = new ElympicsBool(false);
-    public ElympicsFloat _fireTimer = new ElympicsFloat(0.0f);
-    //[Header("References:")]
-    //[SerializeField] private DeathController deathController = null;
-
-    private ElympicsFloat _health = new ElympicsFloat(0);
+    public ElympicsFloat _health = new ElympicsFloat(0);
     public event Action<float, float> HealthValueChanged = null;
    
     public void Initialize()
     {
         _health.Value = maxHealth;
         _health.ValueChanged += OnHealthValueChanged;
-
-        //deathController.PlayerRespawned += ResetPlayerStats;
     }
 
     public void ResetPlayerStats()
     {
+        StopAllCoroutines();
+        _blindTimer.Value = 0f;
+        isBlind.Value = false;
         _health.Value = maxHealth;
     }
 
     public void ChangeHealth(float value, int damageOwner)
     {
-        if (!Elympics.IsServer)
+        if (!Elympics.IsServer || deathController.IsDead.Value)
             return;
 
         _health.Value -= value;
@@ -50,11 +49,6 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
         HealthValueChanged?.Invoke(newValue, maxHealth);
     }
 
-    public bool IsDead()
-    {
-        return deathController.getDead();
-    }
-
     public void SetMaxHealth(float value)
     {
         maxHealth = value;
@@ -66,34 +60,50 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
         return Math.Abs(_health.Value - maxHealth) < 0.1;
     }
 
-    public void InitializeFire()
+    public void InitializeFire(int caster, float duration)
     {
-        isFire.Value = true;
-        _fireTimer.Value = 0f;
+        if (_burningTimer.Value <= 0f)
+        {
+            _burningTimer.Value = duration;
+            StartCoroutine(PlayerBurning(caster));
+        }
+        else
+        {
+            StopAllCoroutines();
+            _burningTimer.Value = duration;
+            StartCoroutine(PlayerBurning(caster));
+        }
     }
     
     public void ElympicsUpdate()
     {
 
-        if (isFire)
+        if (_burningTimer.Value > 0f)
         {
-            _health.Value -= 5 * Elympics.TickDuration;
-            _fireTimer.Value += Elympics.TickDuration;
-            if (_fireTimer >= 5)
+            _burningTimer.Value -= Elympics.TickDuration;
+            if (_burningTimer.Value <= 0f)
             {
-                isFire.Value = false;
-                _fireTimer.Value = 0.0f;
+                StopAllCoroutines();
             }
         }
         
-        if (isBlind)
+        if (isBlind.Value)
         {
             _blindTimer.Value += Elympics.TickDuration;
-            if (_blindTimer >= 2f)
+            if (_blindTimer.Value >= 2f)
             {
                 isBlind.Value = false;
                 _blindTimer.Value = 0.0f;
             }
+        }
+    }
+
+    IEnumerator PlayerBurning(int caster)
+    {
+        for (;;)
+        {
+            ChangeHealth(3f, caster);
+            yield return new WaitForSeconds(0.2f);
         }
     }
 }

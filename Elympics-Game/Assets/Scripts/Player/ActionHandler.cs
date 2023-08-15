@@ -24,7 +24,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
 
 
     protected ElympicsFloat currentTimeBetweenShoots = new ElympicsFloat();
-    protected bool canCast => currentTimeBetweenShoots >= spellCooldown;
+    protected bool canCast => currentTimeBetweenShoots.Value >= spellCooldown;
     
     private Spells _selectedSpell = Spells.Empty;
     public ElympicsInt _remainingUses = new ElympicsInt(0);
@@ -33,31 +33,31 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     {
         if (attack && canCast)
         {
-            castSpell(viewController.transform.forward);
+            CastSpell(viewController.transform.forward);
         }
     }
     
-    public void castSpell(Vector3 direction)
+    private void CastSpell(Vector3 direction)
     {
-        if (_selectedSpell != Spells.Empty && _remainingUses > 0)
+        if (_selectedSpell != Spells.Empty && _remainingUses.Value > 0)
         {
             spellSpawner.TrySpawningSpell(_selectedSpell,direction, GetComponent<PlayerData>().PlayerId, modified);
             _remainingUses.Value--;
         }
         else 
         {
-            castBasicAttack(direction);
+            CastBasicAttack(direction);
         }
 
         currentTimeBetweenShoots.Value = 0.0f;
     }
 
-    public void castBasicAttack(Vector3 direction)
+    public void CastBasicAttack(Vector3 direction)
     {
         spellSpawner.TrySpawningSpell(Spells.Empty, direction, GetComponent<PlayerData>().PlayerId, false);
     }
 
-    public void chooseSpell(Spells drawnSpell)
+    public void ChooseSpell(Spells drawnSpell)
     {
         if (drawnSpell != Spells.Empty)
         {
@@ -79,7 +79,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
         }
 
     }
-    public bool addSpell(Spells spellType)
+    public bool AddSpell(Spells spellType)
     {
         Debug.Log(spellType);
         for (int i = 0; i < 3; i++)
@@ -113,6 +113,15 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
             case Spells.Tornado: return 2;
             case Spells.IceSpike: return 2;
             default: return 0;
+        }
+    }
+
+    public void ResetActionHandler()
+    {
+        _remainingUses.Value = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            stashedSpells.Values[i].Value = (int)Spells.Empty;
         }
     }
 }

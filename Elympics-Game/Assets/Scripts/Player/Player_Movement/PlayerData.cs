@@ -36,9 +36,6 @@ public class PlayerData : ElympicsMonoBehaviour, IInitializable, IUpdatable
             case 2:
                 GetComponent<ActionHandler>().modified = true;
                 break;
-
-            default:
-                break;
         }
     }
 
@@ -64,10 +61,5 @@ public class PlayerData : ElympicsMonoBehaviour, IInitializable, IUpdatable
     public void DealDamage(float damage, int damageOwner)
     {
         statsController.ChangeHealth(damage, damageOwner);
-    }
-
-    public bool isDead()
-    {
-        return statsController.IsDead();
     }
 }
