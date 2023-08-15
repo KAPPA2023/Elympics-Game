@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ using UnityEngine.UI;
 public class UITarot : MonoBehaviour
 {
     [SerializeField] private Image[] slots;
+    [SerializeField] private TextMeshProUGUI[] texts;
     [SerializeField] private Sprite[] sprites;
     [SerializeField] private StartGameController startGameController;
     [SerializeField] private GameManager gameManager;
@@ -39,13 +41,16 @@ public class UITarot : MonoBehaviour
         switch (modifier)
         {
             case 0:
-                sprite = GetSprite("The_Death"); 
+                sprite = GetSprite("The_Death");
+                texts[0].text = "Cats ran out of lives \n 1KOT1KILL";
                 break;
             case 1:
-                sprite = GetSprite("The_Moon"); 
+                sprite = GetSprite("The_Moon");
+                texts[0].text = "Jump higher";
                 break;
             case 2:
-                sprite = GetSprite("The_Justice"); 
+                sprite = GetSprite("The_Justice");
+                texts[0].text = "Spells are balanced";
                 break;
         }
         slots[0].sprite = sprite;
@@ -56,13 +61,16 @@ public class UITarot : MonoBehaviour
         switch (modifier)
         {
             case 0:
-                sprite = GetSprite("The_Tower"); 
+                sprite = GetSprite("The_Tower");
+                texts[1].text = "More platforms to jump on :3";
                 break;
             case 1:
-                sprite = GetSprite("The_Fool"); 
+                sprite = GetSprite("The_Fool");
+                texts[1].text = "Better don't fall :3";
                 break;
             case 2:
-                sprite = GetSprite("The_Chariot"); 
+                sprite = GetSprite("The_Chariot");
+                texts[1].text = "Wild MOVING PLATFORM appeared!";
                 break;
         }
         slots[1].sprite = sprite;
@@ -73,13 +81,16 @@ public class UITarot : MonoBehaviour
         switch (modifier)
         {
             case 0:
-                sprite = GetSprite("The_Wheel_of_Fortune"); 
+                sprite = GetSprite("The_Wheel_of_Fortune");
+                texts[2].text = "Gambling (TBA)";
                 break;
             case 1:
-                sprite = GetSprite("The_Ace_of_Wands"); 
+                sprite = GetSprite("The_Ace_of_Wands");
+                texts[2].text = "More spells pickups";
                 break;
             case 2:
-                sprite = GetSprite("The_Magician"); 
+                sprite = GetSprite("The_Magician");
+                texts[2].text = "(TBA)";
                 break;
         }
         slots[2].sprite = sprite;
