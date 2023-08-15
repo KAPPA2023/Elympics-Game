@@ -28,17 +28,18 @@ public class Lightbolt : Spell
                 Collider[] objectsInRange = Physics.OverlapSphere(transform.position, Radius);
                 foreach (var obj in objectsInRange)
                 {
-                    var data = obj.GetComponent<PlayerData>();
-                    if (data != null)
+                    var playerData = obj.GetComponent<PlayerData>();
+                    if (playerData != null)
                     {
-                        if (data.PlayerId != caster)
-                        { 
+                        if (playerData.PlayerId != caster)
+                        {
+                            if(rb == null) return;
                             float speed = rb.velocity.magnitude;
-                            Vector3 direction = (data.GetComponent<Rigidbody>().position-transform.position).normalized;
+                            Vector3 direction = (playerData.GetComponent<Rigidbody>().position-transform.position).normalized;
                             RaycastHit hit;
                             if(Physics.Raycast(transform.position,direction,out hit,Radius))
                             {
-                                if (hit.collider.gameObject == data.gameObject)
+                                if (hit.collider.gameObject == playerData.gameObject)
                                 {
                                     rb.velocity = direction * speed; 
                                 }

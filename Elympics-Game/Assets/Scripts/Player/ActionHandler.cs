@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Elympics;
-using UnityEngine.Serialization;
+
 
 public enum Spells
 {
@@ -21,9 +19,8 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     [SerializeField] private GameObject viewController;
     [SerializeField] private float spellCooldown = 0.8f;
     public bool modified = false;
-    public delegate void MyEventHandler();
-    public static event MyEventHandler OnBadSpell;
-    public static event MyEventHandler OnGoodSpell;
+    public static event Action OnBadSpell = null;
+    public static event Action OnGoodSpell = null;
 
 
     protected ElympicsFloat currentTimeBetweenShoots = new ElympicsFloat();
@@ -68,7 +65,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
             {
                 if (stashedSpells.Values[i].Value == (int)drawnSpell)
                 {
-                    Invoke("GoodSpellInvoke", 0.1f);
+                    OnGoodSpell?.Invoke();
                     _selectedSpell = drawnSpell;
                     stashedSpells.Values[i].Value = (int)Spells.Empty;
                     _remainingUses.Value = GetSpellUses(drawnSpell);
@@ -76,7 +73,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
                 }
                 else
                 {
-                    Invoke("BadSpellInvoke", 0.1f);
+                    OnBadSpell?.Invoke();
                 }
             }
         }
@@ -117,19 +114,5 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
             case Spells.IceSpike: return 2;
             default: return 0;
         }
-    }
-
-    public int getRemainingUses()
-    {
-        return _remainingUses;
-    }
-
-    private void GoodSpellInvoke()
-    {
-        OnGoodSpell();
-    }
-    private void BadSpellInvoke()
-    {
-        OnBadSpell();
     }
 }

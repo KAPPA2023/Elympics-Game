@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Elympics;
-using Elympics.Models.Matchmaking;
+using System;
 using TMPro;
 
 public class MatchmakingManager : MonoBehaviour
@@ -13,25 +13,20 @@ public class MatchmakingManager : MonoBehaviour
     private void Start()
     {
         ElympicsLobbyClient.Instance.Matchmaker.MatchmakingStarted += DisplayMatchmakingStarted;
-        ElympicsLobbyClient.Instance.Matchmaker.MatchmakingMatchFound += _ => DisplayMatchFound();
-        ElympicsLobbyClient.Instance.Matchmaker.MatchmakingFailed += _ => DisplayMatchmakingError();
+        ElympicsLobbyClient.Instance.Matchmaker.MatchmakingMatchFound += DisplayMatchFound;
+        ElympicsLobbyClient.Instance.Matchmaker.MatchmakingFailed += DisplayMatchmakingError;
     }
 
     private void OnDestroy()
     {
         ElympicsLobbyClient.Instance.Matchmaker.MatchmakingStarted -= DisplayMatchmakingStarted;
-        ElympicsLobbyClient.Instance.Matchmaker.MatchmakingMatchFound -= _ => DisplayMatchFound();
-        ElympicsLobbyClient.Instance.Matchmaker.MatchmakingFailed -= _ => DisplayMatchmakingError();
+        ElympicsLobbyClient.Instance.Matchmaker.MatchmakingMatchFound -= DisplayMatchFound;
+        ElympicsLobbyClient.Instance.Matchmaker.MatchmakingFailed -= DisplayMatchmakingError;
     }
     
     public void PlayOnline()
     {
         ElympicsLobbyClient.Instance.PlayOnlineInRegion(null, null,null, "Default");
-        
-        ElympicsLobbyClient.Instance.Matchmaker.MatchmakingStarted += DisplayMatchmakingStarted;
-        ElympicsLobbyClient.Instance.Matchmaker.MatchmakingMatchFound += _ => DisplayMatchFound();
-        ElympicsLobbyClient.Instance.Matchmaker.MatchmakingFailed += _ => DisplayMatchmakingError();
-        
     }
     
     private void DisplayMatchmakingStarted()
@@ -44,12 +39,12 @@ public class MatchmakingManager : MonoBehaviour
         }
     }
 
-    private void DisplayMatchFound()
+    private void DisplayMatchFound(Guid guid)
     {
         matchStatus.text  = "game found POG";
     }
     
-    private void DisplayMatchmakingError()
+    private void DisplayMatchmakingError((String error,Guid guid)info)
     {
         matchStatus.text = "unlucky ... maybe try again?";
         
