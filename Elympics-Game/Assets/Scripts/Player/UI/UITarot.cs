@@ -16,17 +16,17 @@ public class UITarot : MonoBehaviour
     {
         if (startGameController.IsReady)
         {
-            DisplayCards();
+            DisplayCards(false, true);
         }
         else
         {
-            startGameController.IsReadyChanged += DisplayCards;
+            startGameController.IsReady.ValueChanged += DisplayCards;
         }
 
         gameManager.CurrentTimeToStartMatch.ValueChanged += OnMatchStart;
     }
     
-    private void DisplayCards()
+    private void DisplayCards(bool oldVal, bool newVal)
     {
         SetupPlayerCard(startGameController.playerModifier.Value);
         SetupStaticCard(startGameController.staticGameModifier.Value);

@@ -14,7 +14,7 @@ public class StartGameController : ElympicsMonoBehaviour
     public ElympicsInt staticGameModifier = new ElympicsInt(-1);
     public ElympicsInt dynamicGameModifier = new ElympicsInt(-1);
     public ElympicsInt playerModifier = new ElympicsInt(-1);
-    public bool IsReady { get; private set; } = false;
+    public ElympicsBool IsReady = new ElympicsBool(false);
     public event Action IsReadyChanged = null;
     [SerializeField] private PlayerProvider playerProvider;
 
@@ -25,8 +25,7 @@ public class StartGameController : ElympicsMonoBehaviour
         dynamicGameModifier.Value = UnityEngine.Random.Range(0, 3);
         playerModifier.Value = UnityEngine.Random.Range(0, 3);
 
-        IsReady = true;
-        IsReadyChanged?.Invoke();
+        IsReady.Value = true;
         Debug.Log("player " + playerModifier.Value);
         Debug.Log("dynamic " + dynamicGameModifier.Value);
         Debug.Log("static " + staticGameModifier.Value);
