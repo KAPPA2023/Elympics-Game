@@ -7313,13 +7313,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 886096858}
     m_Modifications:
+    - target: {fileID: 2946853781364444815, guid: 201285f0c5c872e46b451c63f5483b8c, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028070291713672892, guid: 201285f0c5c872e46b451c63f5483b8c, type: 3}
+      propertyPath: speed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8307291460682650057, guid: 201285f0c5c872e46b451c63f5483b8c, type: 3}
       propertyPath: m_Name
       value: Platform_Moving
-      objectReference: {fileID: 0}
-    - target: {fileID: 8307291460682650057, guid: 201285f0c5c872e46b451c63f5483b8c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8307291460682650058, guid: 201285f0c5c872e46b451c63f5483b8c, type: 3}
       propertyPath: m_RootOrder
@@ -7365,7 +7369,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3811534398726796342, guid: 201285f0c5c872e46b451c63f5483b8c, type: 3}
+    - {fileID: 2946853781364444815, guid: 201285f0c5c872e46b451c63f5483b8c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 201285f0c5c872e46b451c63f5483b8c, type: 3}
 --- !u!4 &1248315504 stripped
 Transform:

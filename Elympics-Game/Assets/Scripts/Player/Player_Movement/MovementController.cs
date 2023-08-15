@@ -52,7 +52,6 @@ public class MovementController : ElympicsMonoBehaviour, IUpdatable
     {
         horizontalInput = inputMovement.x;
         verticalInput = inputMovement.y;
-        
 
         Vector3 inputVector = new Vector3(inputMovement.x, 0, inputMovement.y);
         Vector3 movementDirection = inputVector != Vector3.zero ? this.transform.TransformDirection(inputVector.normalized) : Vector3.zero;
@@ -172,4 +171,10 @@ public class MovementController : ElympicsMonoBehaviour, IUpdatable
             slowTimer = 0f;
         }
     }
+
+    public void Move(Vector3 direction)
+    {
+        rb.position += direction; //* Elympics.TickDuration;
+    }
+
 }

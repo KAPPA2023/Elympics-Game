@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 2838023422718773770}
   - component: {fileID: 7575047413114315203}
   - component: {fileID: -2026681242118464597}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

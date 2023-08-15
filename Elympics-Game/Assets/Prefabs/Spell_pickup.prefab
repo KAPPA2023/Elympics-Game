@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 8110003858564773868}
   - component: {fileID: 2441784628701109021}
   - component: {fileID: 7532239987612240922}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spell_pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 99
+  networkId: 103
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
