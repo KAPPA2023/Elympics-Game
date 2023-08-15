@@ -6,9 +6,14 @@ using UnityEngine;
 
 public class StartGameController : ElympicsMonoBehaviour
 {
-    private ElympicsInt staticGameModifier = new ElympicsInt(-1);
-    private ElympicsInt dynamicGameModifier = new ElympicsInt(-1);
-    private ElympicsInt playerModifier = new ElympicsInt(-1);
+    [SerializeField] private GameObject basicAreaRoot;
+    [SerializeField] private GameObject additionalPlatformsRoot;
+    [SerializeField] private GameObject movingPlatformsRoot;
+    [SerializeField] private GameObject areaWithHolesRoot;
+    [SerializeField] private GameObject additionalSpellPickupsRoot;
+    public ElympicsInt staticGameModifier = new ElympicsInt(-1);
+    public ElympicsInt dynamicGameModifier = new ElympicsInt(-1);
+    public ElympicsInt playerModifier = new ElympicsInt(-1);
     public bool IsReady { get; private set; } = false;
     public event Action IsReadyChanged = null;
     [SerializeField] private PlayerProvider playerProvider;
@@ -27,25 +32,44 @@ public class StartGameController : ElympicsMonoBehaviour
         Debug.Log("static " + staticGameModifier.Value);
     }
 
-    public void applyModifiers()
+    public void ApplyModifiers()
     {
         if (playerProvider.IsReady)
         {
-            applyPlayerModifiers();
+            ApplyPlayerModifiers();
         }
         else
         {
-            playerProvider.IsReadyChanged += applyPlayerModifiers;
+            playerProvider.IsReadyChanged += ApplyPlayerModifiers;
         }
+
+        ApplyArenaModifiers();
     }
 
-    private void applyPlayerModifiers()
+    private void ApplyPlayerModifiers()
     {
         var players = playerProvider.AllPlayersInScene;
 
         foreach (var player in players)
         {
             player.ApplyModifier(playerModifier.Value);
+        }
+    }
+
+    private void ApplyArenaModifiers()
+    {
+        switch (staticGameModifier.Value)
+        {
+            case 0:
+                additionalPlatformsRoot.SetActive(true); 
+                break;
+            case 1:
+                basicAreaRoot.SetActive(false);
+                areaWithHolesRoot.SetActive(true);
+                break;
+            case 2:
+                movingPlatformsRoot.SetActive(true);
+                break;
         }
     }
 

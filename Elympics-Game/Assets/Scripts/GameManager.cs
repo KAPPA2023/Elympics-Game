@@ -51,7 +51,7 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
     {
         if (newVal)
         {
-            GetComponent<StartGameController>().applyModifiers();
+            GetComponent<StartGameController>().ApplyModifiers();
         }
     }
 }
