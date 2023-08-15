@@ -12,22 +12,13 @@ public class MainMenu : MonoBehaviour
 
     public void Awake()
     {
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void PlayGame()
     {
         matchmakingManager.PlayOnline();
-    }
-
-    public void GoToSettingsMenu()
-    {
-        SceneManager.LoadScene("SettingsMenu");
-    }
-
-    public void GoToMainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitGame()

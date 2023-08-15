@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,14 +7,14 @@ using UnityEngine.UI;
 public class DrawningOnCanvas : MonoBehaviour
 {
     
-    public Canvas canvas;
-    public LineRenderer lineRenderer;
+    [SerializeField] private Canvas canvas;
+    [SerializeField] private LineRenderer lineRenderer;
     private Vector3[] linePoints;
     private int pointCount = 0;
     private bool isDrawing = false;
     public Vector2 mousePadding;
 
-    public Image canvasImage;
+    [SerializeField] private Image canvasImage;
     public Color drawingBackgroundColor;
     public Color originalBackgroundColor;
 
@@ -31,6 +32,13 @@ public class DrawningOnCanvas : MonoBehaviour
         ActionHandler.OnBadSpell += BadSpell;
         ActionHandler.OnGoodSpell += GoodSpell;
         ShapeInput.OnBadSpell += BadSpell;
+    }
+
+    private void OnDestroy()
+    {
+        ActionHandler.OnBadSpell -= BadSpell;
+        ActionHandler.OnGoodSpell -= GoodSpell;
+        ShapeInput.OnBadSpell -= BadSpell;
     }
 
     void Update()
@@ -71,7 +79,6 @@ public class DrawningOnCanvas : MonoBehaviour
 
             }
         }
-        
     }
 
     private void ResetCanvasColor()

@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 using PDollarGestureRecognizer;
 
 public class ShapeInput : MonoBehaviour
 {
     private List<Gesture> trainingSet = new List<Gesture>();
-    public delegate void MyEventHandler();
-    public static event MyEventHandler OnBadSpell;
+    public static event Action OnBadSpell = null;
 
     void Start()
     {
@@ -24,7 +23,7 @@ public class ShapeInput : MonoBehaviour
         Debug.Log(gestureResult.GestureClass + " " + gestureResult.Score);
         if (gestureResult.Score < 0.70)
         {
-            Invoke("BadSpellInvoke", 0.1f);
+            OnBadSpell?.Invoke();
             return Spells.Empty;
         }
 
@@ -36,12 +35,9 @@ public class ShapeInput : MonoBehaviour
             case "Ground": return Spells.SandGranade;
             case "Wind": return Spells.Tornado;
             case "Ice": return Spells.IceSpike;
-            default: Invoke("BadSpellInvoke", 0.1f); return Spells.Empty;
+            default: OnBadSpell?.Invoke(); return Spells.Empty;
         }
     }
 
-    private void BadSpellInvoke()
-    {
-        OnBadSpell();
-    }
+
 }

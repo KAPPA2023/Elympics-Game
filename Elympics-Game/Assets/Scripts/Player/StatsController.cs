@@ -1,8 +1,6 @@
 using Elympics;
 using System;
 using UnityEngine;
-using UnityEngine.Rendering.HighDefinition;
-using UnityEngine.Serialization;
 
 public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
 {
