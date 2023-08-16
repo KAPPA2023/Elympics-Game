@@ -17,7 +17,7 @@ Material:
   - _DISABLE_SSR_TRANSPARENT
   - _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 0
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3050
   stringTagMap:
@@ -191,6 +191,8 @@ Material:
     - _Metallic: 0
     - _MetallicRemapMax: 1
     - _MetallicRemapMin: 0
+    - _Multiply: 4
+    - _NoiseScale: 3
     - _NoiseScale2: 10
     - _Noise_Scale: 20
     - _NormalMapSpace: 0
@@ -247,9 +249,11 @@ Material:
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
     - _ZWrite: 0
+    - _scale: 2
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
+    - _CEnterTwirl: {r: 1, g: 1, b: 0, a: 0}
     - _Center_Radial_Shear: {r: 0, g: 0.5, b: 0, a: 0}
     - _Center_radial: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -261,6 +265,7 @@ Material:
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _MainTexColor: {r: 0.03398515, g: 1.8, b: 1.44097, a: 1}
+    - _RadialCenter: {r: 1, g: 2, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _Strenght_Radial_Shear: {r: 5, g: 5, b: 0, a: 0}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
@@ -270,6 +275,8 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+    - _Velocity: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Velocity2: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7606513914874178073
 MonoBehaviour:

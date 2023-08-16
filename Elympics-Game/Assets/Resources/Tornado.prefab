@@ -63,7 +63,220 @@ VisualEffect:
     m_Matrix4x4f:
       m_Array: []
     m_AnimationCurve:
-      m_Array: []
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: -0.007798373
+            value: 1.0111902
+            inSlope: 0.30239847
+            outSlope: 0.30239847
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.103143305
+            value: 1.0447388
+            inSlope: 0.9230198
+            outSlope: 0.9230198
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.11489062
+            value: 1.0628724
+            inSlope: 0.6483689
+            outSlope: 0.6483689
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.3902917
+            value: 0.99487495
+            inSlope: -0.16188425
+            outSlope: -0.16188425
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.56329805
+            value: 0.9815768
+            inSlope: -0.021155458
+            outSlope: -0.021155458
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.7282664
+            value: 0.98727715
+            inSlope: -0.51132363
+            outSlope: -0.51132363
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 1
+            value: 0.7
+            inSlope: -1.0572015
+            outSlope: -1.0572015
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: ScaleOverLifeX
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: -0.009170532
+            value: 0.98915863
+            inSlope: 0.49486458
+            outSlope: 0.49486458
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.103143305
+            value: 1.0447388
+            inSlope: 1.0192529
+            outSlope: 1.0192529
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.11489062
+            value: 1.0628724
+            inSlope: 0.5396012
+            outSlope: 0.5396012
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.36035395
+            value: 0.9488697
+            inSlope: -0.15163788
+            outSlope: -0.15163788
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.56329805
+            value: 0.9815768
+            inSlope: 0.09785864
+            outSlope: 0.09785864
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.7282664
+            value: 0.98727715
+            inSlope: -0.51132363
+            outSlope: -0.51132363
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 1
+            value: 0.7
+            inSlope: -1.0572015
+            outSlope: -1.0572015
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: ScaleOverLifeY
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0.00002670288
+            value: 1.0229874
+            inSlope: 0.33718333
+            outSlope: 0.33718333
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.07949218
+            value: 1.0497818
+            inSlope: 0.35349545
+            outSlope: 0.35349545
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.11489062
+            value: 1.0628724
+            inSlope: -0.047315642
+            outSlope: -0.047315642
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.36035395
+            value: 0.9488697
+            inSlope: -0.15163788
+            outSlope: -0.15163788
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.56329805
+            value: 0.9815768
+            inSlope: 0.09785864
+            outSlope: 0.09785864
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.7282664
+            value: 0.98727715
+            inSlope: -0.51132363
+            outSlope: -0.51132363
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 1
+            value: 0.7
+            inSlope: -1.0572015
+            outSlope: -1.0572015
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: ScaleOverLifeZ
+        m_Overridden: 1
     m_Gradient:
       m_Array: []
     m_NamedObject:
