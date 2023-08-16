@@ -50,7 +50,7 @@ public class UITarot : MonoBehaviour
                 break;
             case 2:
                 sprite = GetSprite("The_Justice");
-                texts[0].text = "Spells are balanced";
+                texts[0].text = "{} spell is enhanced (TBA)";
                 break;
         }
         slots[0].sprite = sprite;

@@ -31,7 +31,7 @@ public class MatchmakingManager : MonoBehaviour
     
     private void DisplayMatchmakingStarted()
     {
-        matchStatus.text = "looking for game :)";
+        matchStatus.text = "looking for game...";
 
         foreach (var button in buttons)
         {
@@ -41,7 +41,7 @@ public class MatchmakingManager : MonoBehaviour
 
     private void DisplayMatchFound(Guid guid)
     {
-        matchStatus.text  = "game found POG";
+        matchStatus.text  = "game found";
     }
     
     private void DisplayMatchmakingError((String error,Guid guid)info)
