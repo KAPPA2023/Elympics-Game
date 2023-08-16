@@ -23,7 +23,6 @@ public class StartGameController : ElympicsMonoBehaviour
         staticGameModifier.Value = UnityEngine.Random.Range(0, 3);
         dynamicGameModifier.Value = UnityEngine.Random.Range(0, 3);
         playerModifier.Value = UnityEngine.Random.Range(0, 3);
-
         IsReady.Value = true;
     }
 
@@ -63,7 +62,8 @@ public class StartGameController : ElympicsMonoBehaviour
                 areaWithHolesRoot.SetActive(true);
                 break;
             case 2:
-                movingPlatformsRoot.SetActive(true);
+                //TODO: fix it xdd
+                //movingPlatformsRoot.SetActive(true);
                 break;
         }
     }

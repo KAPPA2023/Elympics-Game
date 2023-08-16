@@ -48,8 +48,16 @@ public class MovingPlatform : ElympicsMonoBehaviour, IUpdatable
     {
         if (other.tag == "Player")
         {
-            movementController = other.GetComponent<MovementController>();
             shift = Vector3.zero;
+            movementController = other.GetComponent<MovementController>();
+        }
+    }
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            movementController = null;
         }
     }
 
@@ -57,6 +65,7 @@ public class MovingPlatform : ElympicsMonoBehaviour, IUpdatable
     {
         if (other.tag == "Player")
         {
+            if(movementController == null) return;
             movementController.Move(shift);
             shift = Vector3.zero;
         }

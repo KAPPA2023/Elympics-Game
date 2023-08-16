@@ -43,9 +43,7 @@ public class UIDamage : MonoBehaviour
         clientPlayerData.GetComponent<StatsController>().blindPower.ValueChanged += OnBlind;
         clientPlayerData.GetComponent<StatsController>().isBlind.ValueChanged += WaterBlind;
     }
-
     
-
     private void OnEnemyDamaged()
     {
         hitmark.SetActive(true); 

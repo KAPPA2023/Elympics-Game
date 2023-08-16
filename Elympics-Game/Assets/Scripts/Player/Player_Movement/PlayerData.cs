@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Elympics;
 
-public class PlayerData : ElympicsMonoBehaviour, IInitializable, IUpdatable
+public class PlayerData : ElympicsMonoBehaviour
 {
     [Header("Parameters:")]
     [SerializeField] private int playerId = 0;
@@ -12,15 +12,6 @@ public class PlayerData : ElympicsMonoBehaviour, IInitializable, IUpdatable
     
     public int PlayerId => playerId;
     public ElympicsInt Score { get; } = new ElympicsInt();
-    public void Initialize()
-    {
-
-    }
-
-    public void ElympicsUpdate()
-    {
-    }
-
     public void ApplyModifier(int id)
     {
         switch (id)

@@ -70,7 +70,7 @@ public class UITarot : MonoBehaviour
                 break;
             case 2:
                 sprite = GetSprite("The_Chariot");
-                texts[1].text = "Wild MOVING PLATFORM appeared!";
+                texts[1].text = "Wild MOVING PLATFORM appeared! (Broken rn)";
                 break;
         }
         slots[1].sprite = sprite;
