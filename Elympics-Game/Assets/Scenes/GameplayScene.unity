@@ -3766,6 +3766,8 @@ MonoBehaviour:
   matchLength: 120
   postGameTime: 5
   preGameTime: 5
+  matchTime:
+    currentValue: 0
   gameEnded:
     currentValue: 0
 --- !u!114 &544778522
