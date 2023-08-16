@@ -9,6 +9,7 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
     [SerializeField] private float preGameTime = 5.0f;
     private ElympicsBool appliedModifiers = new ElympicsBool(false);
 
+    public ElympicsBool matchTime = new ElympicsBool(false);
     public ElympicsBool gameEnded = new ElympicsBool(false);
     public ElympicsFloat CurrentTimeOfMatchRemaining { get; } = new ElympicsFloat(0.0f);
     public ElympicsFloat CurrentTimeToStartMatch { get; } = new ElympicsFloat(0.0f);
@@ -32,10 +33,9 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
     {
         CurrentTimeToStartMatch.Value -= Elympics.TickDuration;
         if (!(CurrentTimeToStartMatch.Value < 0.0f)) return;
-
         CurrentTimeOfMatchRemaining.Value -= Elympics.TickDuration;
-        if (!(CurrentTimeOfMatchRemaining.Value < 0.0f)) return;
-
+        matchTime.Value = CurrentTimeOfMatchRemaining.Value > 0.0f;
+        if (matchTime.Value) return;
         gameEnded.Value = true;
         PostGameTime.Value -= Elympics.TickDuration;
         if (PostGameTime.Value < 0.0f)

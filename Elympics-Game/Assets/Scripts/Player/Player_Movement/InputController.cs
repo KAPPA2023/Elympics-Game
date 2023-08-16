@@ -46,7 +46,7 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
 
     public void ElympicsUpdate()
     {
-        if (gameManager.gameEnded.Value) return;
+        if (!gameManager.matchTime.Value) return;
         
         GatheredInput currentInput;
         currentInput.movementInput = Vector2.zero;
