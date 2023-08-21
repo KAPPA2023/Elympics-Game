@@ -8,9 +8,8 @@ public class Climbing : ElympicsMonoBehaviour
     [Header("Climbing")]
     public LayerMask whatIsWall;
     public LayerMask whatIsGround;
-    public float wallRunForce;
-    public float maxWallRunTime;
-    private float wallRunTimer;
+    //public float maxWallRunTime;
+    //private float wallRunTimer;
 
     [Header("Input")]
     private float horizontalInput;
@@ -33,7 +32,7 @@ public class Climbing : ElympicsMonoBehaviour
         movementController = GetComponent<MovementController>();
     }
 
-    public void WallRunningElympicsUpdate()
+    public void ClimbingElympicsUpdate()
     {
         horizontalInput = movementController.horizontalInput; 
         verticalInput = movementController.verticalInput;
@@ -84,7 +83,7 @@ public class Climbing : ElympicsMonoBehaviour
 
     public void WallRunningMovement()
     {
-        rb.velocity = new Vector3(rb.velocity.x, movementController.desiredMovementSpeed.Value, rb.velocity.z);
+        rb.velocity = new Vector3(rb.velocity.x, movementController.getDesiredMovementSpeed(), rb.velocity.z);
     }
 
     private void StopWallRun()
