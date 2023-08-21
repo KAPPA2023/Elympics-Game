@@ -506,6 +506,9 @@
     "m_ActiveTargets": [
         {
             "m_Id": "3178556ccef4499c81b8c76f9298f861"
+        },
+        {
+            "m_Id": "1d78b5fc049b41b097f49d6883e63b7f"
         }
     ]
 }
@@ -908,6 +911,14 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.VFXTarget",
+    "m_ObjectId": "1d78b5fc049b41b097f49d6883e63b7f",
+    "m_Lit": false,
+    "m_AlphaTest": true
 }
 
 {
