@@ -3119,7 +3119,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.18
+      m_SerializableObject: 0
     m_Space: 2147483647
   m_Property:
     name: _Alpha
@@ -6008,7 +6008,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 11.08
+      m_SerializableObject: 8.28
     m_Space: 2147483647
   m_Property:
     name: _DistortNoisePeriod
@@ -6654,7 +6654,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 6.53
+      m_SerializableObject: 5.3
     m_Space: 2147483647
   m_Property:
     name: _GranityColorBlend
@@ -7561,7 +7561,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1.73
+      m_SerializableObject: 1.21
     m_Space: 2147483647
   m_Property:
     name: _sineFrequency
@@ -7629,7 +7629,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 6
+      m_SerializableObject: 3.88
     m_Space: 2147483647
   m_Property:
     name: _DistortNoisePeriod
@@ -7663,7 +7663,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1
+      m_SerializableObject: 1.61
     m_Space: 2147483647
   m_Property:
     name: _DisortAmplitude
@@ -7697,7 +7697,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1
+      m_SerializableObject: 1.45
     m_Space: 2147483647
   m_Property:
     name: _SineAmplitude
@@ -7731,7 +7731,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 7.32
+      m_SerializableObject: 6.12
     m_Space: 2147483647
   m_Property:
     name: _Polygonsides

@@ -1955,7 +1955,7 @@ VisualEffect:
       - m_Value: {x: 1024, y: 1024, z: 1024, w: 0}
         m_Name: Color 1
         m_Overridden: 1
-      - m_Value: {x: 0.16099393, y: 0.16099393, z: 2.79544, w: 1}
+      - m_Value: {x: 11.181759, y: 0.9366919, z: 0.76106215, w: 1}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
