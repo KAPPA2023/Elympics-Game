@@ -174,7 +174,7 @@ public class MovementController : ElympicsMonoBehaviour, IUpdatable
 
     public void Move(Vector3 direction)
     {
-        rb.position += direction; //* Elympics.TickDuration;
+        rb.position += direction;
     }
 
     public void ResetMovement()
