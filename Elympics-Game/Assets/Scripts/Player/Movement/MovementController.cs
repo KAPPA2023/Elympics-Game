@@ -119,11 +119,11 @@ public class MovementController : ElympicsMonoBehaviour
     #region Moving Functions
     private void ApplyMovement(Vector3 movementDirection)
     {
-        Vector3 defaultVelocity = movementDirection * desiredMovementSpeed.Value * 15f * rb.mass;
+        Vector3 defaultVelocity = movementDirection * desiredMovementSpeed.Value * 25f;
 
         if (OnSlope() && !exitingSlope)
         {
-            rb.AddForce(GetSlopeMoveDirection() * desiredMovementSpeed.Value * 15f * rb.mass, ForceMode.Force);
+            rb.AddForce(GetSlopeMoveDirection() * desiredMovementSpeed.Value * 25f, ForceMode.Force);
         }
         else if (GroundCheck())
         {
@@ -145,6 +145,7 @@ public class MovementController : ElympicsMonoBehaviour
             {
                 rb.velocity = rb.velocity.normalized * desiredMovementSpeed.Value;
             }
+            actualMovementSpeed = rb.velocity.magnitude;
         }
         else
         {

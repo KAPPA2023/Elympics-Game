@@ -524,7 +524,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 247
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -860,21 +860,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0433bc0e7c403144cadb0e02ddbdb86c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGrounded: 0
   horizontalInput: 0
   verticalInput: 0
   GroundSpeed: 10
-  WallRunSpeed: 5
-  desiredMovementSpeed:
-    currentValue: 0
+  ClimbingSpeed: 6
+  SlowSpeed: 4
   actualMovementSpeed: 0
   groundDrag: 10
   slowDuration: 4
-  isSlowed:
-    currentValue: 0
   jumpForce: 30
   jumpCooldown: 0.25
   airMultiplier: 0.2
-  boxSize: {x: 1, y: 0.1, z: 1}
+  maxSlopeAngle: 60
+  boxSize: {x: 0.4, y: 0.05, z: 0.4}
   maxDistance: 0.97
   layerMask:
     serializedVersion: 2
@@ -1028,8 +1027,6 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  wallRunForce: 20
-  maxWallRunTime: 1.5
   wallCheckDistance: 0.6
   minJumpHeight: 0.2
   orientation: {fileID: 3137473124097492630}
