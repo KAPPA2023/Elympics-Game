@@ -62,8 +62,7 @@ public class StartGameController : ElympicsMonoBehaviour
                 areaWithHolesRoot.SetActive(true);
                 break;
             case 2:
-                //TODO: fix it xdd
-                //movingPlatformsRoot.SetActive(true);
+                movingPlatformsRoot.SetActive(true);
                 break;
         }
     }

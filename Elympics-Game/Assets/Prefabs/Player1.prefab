@@ -667,7 +667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 194
+  networkId: 217
   predictableFor:
     playerIndex: 1
   isUpdatableForNonOwners: 0
@@ -717,7 +717,7 @@ MonoBehaviour:
     synchronizationEnabled: 0
     tolerance: 0.01
   useGravityConfig:
-    synchronizationEnabled: 0
+    synchronizationEnabled: 1
     tolerance: 0
   isKinematicConfig:
     synchronizationEnabled: 0
@@ -1049,7 +1049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 193
+  networkId: 216
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0

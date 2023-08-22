@@ -181,7 +181,7 @@ public class MovementController : ElympicsMonoBehaviour
     }
     public void Move(Vector3 direction)
     {
-        rb.position += direction; //* Elympics.TickDuration;
+        rb.position += direction;
     }
     #endregion
 
