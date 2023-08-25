@@ -1,9 +1,6 @@
+using System;
 using Elympics;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Experimental.XR.Interaction;
 
 public class MovementController : ElympicsMonoBehaviour
 {
@@ -56,6 +53,9 @@ public class MovementController : ElympicsMonoBehaviour
 
     public bool isClimbing = false;
     private Climbing climbing;
+    
+    public event Action<Vector3> MovementValuesChanged;
+    public ElympicsBool IsJumping = new ElympicsBool(false);
 
     private void Awake()
     {
@@ -140,6 +140,8 @@ public class MovementController : ElympicsMonoBehaviour
         }
 
         rb.useGravity= !OnSlope();
+        //TODO: check what values should use
+        MovementValuesChanged?.Invoke(movementDirection);
     }
 
     private void SpeedControl()
@@ -172,6 +174,7 @@ public class MovementController : ElympicsMonoBehaviour
         if (Physics.BoxCast(transform.position, boxSize, -transform.up, transform.rotation, maxDistance, layerMask))
         {
             isGrounded = true;
+            IsJumping.Value = false;
             return true;
         } else 
         {
@@ -188,6 +191,8 @@ public class MovementController : ElympicsMonoBehaviour
     #region Jump Functions
     private void ApplyJump()
     {
+        IsJumping.Value = true;
+        
         exitingSlope = true;
 
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
