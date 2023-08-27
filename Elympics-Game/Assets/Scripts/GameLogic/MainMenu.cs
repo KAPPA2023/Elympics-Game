@@ -21,6 +21,11 @@ public class MainMenu : MonoBehaviour
         matchmakingManager.PlayOnline();
     }
 
+    public void PlayTutorial()
+    {
+        SceneManager.LoadScene("TutorialLevel");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
