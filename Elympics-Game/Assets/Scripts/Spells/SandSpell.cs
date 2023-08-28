@@ -6,10 +6,9 @@ using UnityEngine;
 
 public class SandSpell : Spell
 {
+    [SerializeField] private float LifeTime = 4f;
     [SerializeField] private GameObject sandstorm;
     private ElympicsBool spawned = new ElympicsBool(false);
-    private ElympicsBool isModified = new ElympicsBool(false);
-    private ElympicsFloat LifeTime = new ElympicsFloat(4);
     protected override void OnTriggerEnter(Collider other)
     {
         
@@ -47,6 +46,6 @@ public class SandSpell : Spell
     public override void ApplyModifier()
     {
         base.ApplyModifier();
-        this.LifeTime.Value = 8;
+        this.LifeTime = LifeTime * 2f;
     }
 }

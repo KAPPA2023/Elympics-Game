@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class IceScript : Spell
 {
-    private ElympicsFloat slowValue = new ElympicsFloat(5);
+    [SerializeField] private float slowValue = 5.0f;
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
@@ -13,13 +13,12 @@ public class IceScript : Spell
         if (playerData == null) return;
         if (playerData.PlayerId == caster) return;
         playerData.GetComponent<MovementController>().Slow();
-        playerData.GetComponent<MovementController>().slowValue.Value=this.slowValue.Value;
-        
+        playerData.GetComponent<MovementController>().slowValue.Value = slowValue;
     }
 
     public override void ApplyModifier()
     {
         base.ApplyModifier();
-        slowValue.Value = 10f;
+        slowValue *= 2f;
     }
 }
