@@ -12,6 +12,18 @@ public class BulletsController : MonoBehaviour
 
     private void Start()
     {
+        if (playersProvider.IsReady)
+        {
+            SubscribeToPlayerProvider();
+        }
+        else
+        {
+            playersProvider.IsReadyChanged += SubscribeToPlayerProvider;
+        }
+    }
+
+    private void SubscribeToPlayerProvider()
+    {
         actionHandler = playersProvider.ClientPlayer.GetComponent<ActionHandler>();
         actionHandler._remainingUses.ValueChanged += ChangeNumberOfBullets;
         image.gameObject.SetActive(false);

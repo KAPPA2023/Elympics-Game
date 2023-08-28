@@ -22,8 +22,8 @@ public class MainMenu : MonoBehaviour
     }
 
     public void PlayTutorial()
-    {
-        SceneManager.LoadScene("TutorialLevel");
+    { 
+        matchmakingManager.Tutorial();
     }
 
     public void QuitGame()

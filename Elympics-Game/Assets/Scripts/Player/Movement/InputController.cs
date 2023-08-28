@@ -11,6 +11,7 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
     [SerializeField] private PlayerData _playerData = null;
     [SerializeField] private InputProvider _inputHandler;
     [SerializeField] private GameManager gameManager;
+    public bool isTutorialLevel = false;
 
     private void Awake()
     {
@@ -20,8 +21,16 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
 
     private void Update()
     {
-        if(Elympics.Player != PredictableFor) return;
-        _inputHandler.UpdateInput();
+        if (!isTutorialLevel)
+        {
+            if(Elympics.Player != PredictableFor) return;
+            _inputHandler.UpdateInput();
+        }
+        else
+        {
+            _inputHandler.UpdateInput();
+        }
+        
     }
 
     public void OnInputForClient(IInputWriter inputSerializer)
