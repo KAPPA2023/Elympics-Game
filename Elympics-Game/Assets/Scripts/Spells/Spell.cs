@@ -19,6 +19,7 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
     {
         rb = GetComponent<Rigidbody>();
         rb.position = position;
+        rb.rotation = Quaternion.LookRotation(direction, Vector3.up);
         spellVelocity = direction.normalized * spellSpeed;
         caster = casterID;
         rb.velocity = spellVelocity;

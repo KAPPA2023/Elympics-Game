@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5608351358128345713}
-  - component: {fileID: 562675043131116652}
   - component: {fileID: 941190195914810259}
   - component: {fileID: 8802700300062305050}
   m_Layer: 0
@@ -26,27 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4937710591654978938}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.009}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 657391628326813244}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &562675043131116652
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4937710591654978938}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.5, y: 1, z: 1}
-  m_Center: {x: 1, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!2083052967 &941190195914810259
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -135,10 +121,10 @@ GameObject:
   - component: {fileID: 657391628326813244}
   - component: {fileID: 6309136655753956528}
   - component: {fileID: 2112768139627387283}
-  - component: {fileID: 6802379047268963380}
   - component: {fileID: 2562298034367758845}
   - component: {fileID: 2884881444969025028}
   - component: {fileID: -7764831913702918450}
+  - component: {fileID: 169108974685921659}
   m_Layer: 10
   m_Name: IceSpike
   m_TagString: Untagged
@@ -203,19 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f422823cf7c74d30b6473ef0e0097292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &6802379047268963380
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8641383612146418019}
-  m_Material: {fileID: 13400000, guid: fd79427c38e5e094f9ab8c922741d071, type: 2}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2562298034367758845
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -286,3 +259,18 @@ MonoBehaviour:
   spellDamage: 20
   spellSpeed: 50
   lifeTime: 5
+  slowValue: 0.5
+  slowDuration: 4
+--- !u!65 &169108974685921659
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8641383612146418019}
+  m_Material: {fileID: 13400000, guid: fd79427c38e5e094f9ab8c922741d071, type: 2}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.2, z: 2.4}
+  m_Center: {x: 0.03, y: 0, z: 0.6}
