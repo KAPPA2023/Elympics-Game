@@ -196,7 +196,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8641383612146418019}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 9d53cbf5d53add5488d0abe4479db2f0, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869681303c06bbe4b8bd4aea52acea1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellDamage: 30
-  spellSpeed: 5
+  spellDamage: 20
+  spellSpeed: 60
   lifeTime: 5
   bounces: 5
   Radius: 7
