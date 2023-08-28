@@ -34,6 +34,7 @@ public class MovementController : ElympicsMonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     private bool readyToJump = true;
+    private bool doubleJump = false;
     #endregion
 
     #region Slope Variables
@@ -52,6 +53,15 @@ public class MovementController : ElympicsMonoBehaviour
     public bool isClimbing = false;
     private Climbing climbing;
     
+    public enum MovementState
+    {
+        walking,
+        climbing,
+        air
+    }
+
+    public MovementState state = MovementState.walking;
+
     public event Action<Vector3> MovementValuesChanged;
     public ElympicsBool IsJumping = new ElympicsBool(false);
 
@@ -71,6 +81,14 @@ public class MovementController : ElympicsMonoBehaviour
         Vector3 inputVector = new Vector3(horizontalInput, 0, verticalInput);
         movementDirection = inputVector != Vector3.zero ? this.transform.TransformDirection(inputVector.normalized) : Vector3.zero;
 
+        if (GroundCheck())
+        {
+            rb.drag = groundDrag;
+        } else
+        {
+            rb.drag = 0;
+        }
+
         if (remainingSlow.Value > 0f)
         {
             remainingSlow.Value -= Elympics.TickDuration;
@@ -78,41 +96,67 @@ public class MovementController : ElympicsMonoBehaviour
         }
 
         climbing.ClimbingElympicsUpdate();
-        if (!isClimbing)
-        {
-            ApplyMovement(movementDirection);
-        }
-        
-        SpeedControl();      
+        StateHandler();
 
-        if (isClimbing)
+        ApplyMovement(movementDirection);
+        
+        SpeedControl();
+
+        switch (state)
         {
-            desiredMovementSpeed.Value = ClimbingSpeed;
-            climbing.WallRunningMovement();
+            case MovementState.walking:
+                if (jump && readyToJump)
+                {
+                    readyToJump = false;
+                    doubleJump = true;
+
+                    ApplyJump();
+
+                    Invoke(nameof(ResetJump), jumpCooldown);
+                }
+                break;
+
+            case MovementState.climbing:
+                climbing.WallRunningMovement();
+                break;
+
+            case MovementState.air:
+                if (jump && doubleJump)
+                {
+                    ApplyJump();
+                    doubleJump = false;
+                }
+                break;
+
+            default: break;
         }
-        else if (GroundCheck())
+    }
+
+    private void StateHandler()
+    {
+        if (GroundCheck())
         {
-            rb.drag = groundDrag;
+            state = MovementState.walking;
             desiredMovementSpeed.Value = GroundSpeed;
+        } 
 
-            if (jump && readyToJump)
-            {
-                readyToJump = false;
-
-                ApplyJump();
-
-                Invoke(nameof(ResetJump), jumpCooldown);
-            }
-        } else
+        else if (isClimbing)
         {
-            rb.drag = 0;
-        }
+            state = MovementState.climbing;
+            desiredMovementSpeed.Value = ClimbingSpeed;
+        } 
         
+        else
+        {
+            state = MovementState.air;
+        }
     }
 
     #region Moving Functions
     private void ApplyMovement(Vector3 movementDirection)
     {
+        if (isClimbing) return;
+
         Vector3 defaultVelocity = movementDirection * desiredMovementSpeed.Value * 25f;
 
         if (OnSlope() && !exitingSlope)
@@ -121,7 +165,7 @@ public class MovementController : ElympicsMonoBehaviour
 
             if (rb.velocity.y > 0)
             {
-                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+                rb.AddForce(Vector3.down * 40f, ForceMode.Force);
             }
         }
         else if (GroundCheck())
@@ -192,6 +236,7 @@ public class MovementController : ElympicsMonoBehaviour
 
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
+
 
     private void ResetJump()
     {
