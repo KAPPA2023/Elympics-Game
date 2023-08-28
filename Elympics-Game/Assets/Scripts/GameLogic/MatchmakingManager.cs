@@ -26,11 +26,13 @@ public class MatchmakingManager : MonoBehaviour
     
     public void PlayOnline()
     {
+        ElympicsConfig.Load().SwitchGame(0);
         ElympicsLobbyClient.Instance.PlayOnlineInRegion(null, null,null, "Default");
     }
 
     public void Tutorial()
     {
+        ElympicsConfig.Load().SwitchGame(1);
         ElympicsLobbyClient.Instance.PlayOffline();
     }
     

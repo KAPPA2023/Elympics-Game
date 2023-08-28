@@ -18,3 +18,4 @@ MonoBehaviour:
   currentGame: 0
   availableGames:
   - {fileID: 11400000, guid: 399b3b84b3d725c44a2ad9e60e2d812e, type: 2}
+  - {fileID: 11400000, guid: f3311176f778cf24080a972079b59aa6, type: 2}
