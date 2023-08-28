@@ -8,6 +8,7 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
     [SerializeField] private float postGameTime = 5.0f;
     [SerializeField] private float preGameTime = 5.0f;
     private ElympicsBool appliedModifiers = new ElympicsBool(false);
+    private bool _modifiersApplie = false;
 
     public ElympicsBool matchTime = new ElympicsBool(false);
     public ElympicsBool gameEnded = new ElympicsBool(false);
@@ -18,7 +19,15 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
     
     public virtual void Initialize()
     {
-        appliedModifiers.ValueChanged += applyModifiers;
+        if (appliedModifiers.Value && !_modifiersApplie)
+        {
+            applyModifiers(false,true);
+        }
+        else
+        {
+            appliedModifiers.ValueChanged += applyModifiers;
+        }
+        
         if (!Elympics.IsServer) return;
         CurrentTimeOfMatchRemaining.Value = matchLength;
         CurrentTimeToStartMatch.Value = preGameTime;
@@ -49,9 +58,8 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
 
     private void applyModifiers(bool oldVal, bool newVal)
     {
-        if (newVal)
-        {
-            GetComponent<StartGameController>().ApplyModifiers();
-        }
+        if (!newVal) return;
+        _modifiersApplie = true;
+        GetComponent<StartGameController>().ApplyModifiers();
     }
 }
