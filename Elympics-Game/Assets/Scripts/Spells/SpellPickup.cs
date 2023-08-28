@@ -15,6 +15,7 @@ public class SpellPickup : ElympicsMonoBehaviour, IUpdatable, IInitializable
     
     public void Initialize()
     {
+        if (!gameObject.activeInHierarchy) return;
         orbs[spellType].SetActive(true);
         empty.ValueChanged += ChangeSpellPickup;
     }
@@ -33,6 +34,7 @@ public class SpellPickup : ElympicsMonoBehaviour, IUpdatable, IInitializable
     }
     public void ElympicsUpdate()
     {
+        if (!gameObject.activeInHierarchy) return;
         if (!empty.Value) return;
         if (timeToSpawn.Value > 0.0f)
         {

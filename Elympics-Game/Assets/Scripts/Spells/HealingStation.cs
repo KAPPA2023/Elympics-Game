@@ -15,6 +15,7 @@ public class HealingStation : ElympicsMonoBehaviour, IUpdatable, IInitializable
     
     public void Initialize()
     {
+        if (!gameObject.activeInHierarchy) return;
         orb.SetActive(true);
         _empty.ValueChanged += ChangeHealPickup;
     }
@@ -34,6 +35,7 @@ public class HealingStation : ElympicsMonoBehaviour, IUpdatable, IInitializable
     }
     public void ElympicsUpdate()
     {
+        if (!gameObject.activeInHierarchy) return;
         if (!_empty.Value) return;
         if (timeToSpawn.Value > 0.0f)
         {
