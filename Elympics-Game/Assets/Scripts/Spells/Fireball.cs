@@ -7,6 +7,7 @@ public class Fireball : Spell
 {
     [SerializeField] private GameObject fireExplosion;
     private ElympicsBool spawned = new ElympicsBool(false);
+    private ElympicsFloat lifeTime = new ElympicsFloat(3f);
 
     protected override void SpawnChild()
     {
@@ -19,5 +20,11 @@ public class Fireball : Spell
             }
             spawned.Value = true;
         }
+    }
+
+    public override void ApplyModifier()
+    {
+        base.ApplyModifier();
+        lifeTime.Value = 6f;
     }
 }

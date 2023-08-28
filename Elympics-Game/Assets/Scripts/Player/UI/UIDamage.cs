@@ -75,10 +75,11 @@ public class UIDamage : MonoBehaviour
     
     private void WaterBlind(bool lastvalue, bool newvalue)
     {
+        var clientPlayerData = playerProvider.ClientPlayer;
         Color overlay;
         if (newvalue == true)
         {
-              overlay = new Color(0f,0.6f,0.8f, 0.8f);
+              overlay = new Color(0f,0.6f,clientPlayerData.GetComponent<StatsController>().blindValue, clientPlayerData.GetComponent<StatsController>().blindValue);
         }
         else
         {

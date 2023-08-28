@@ -21,6 +21,7 @@ public class MovementController : ElympicsMonoBehaviour, IUpdatable
     [SerializeField] private float groundDrag;
     [SerializeField] private float slowDuration = 4.0f;
     private float slowTimer;
+    public ElympicsFloat slowValue = new ElympicsFloat(0);
     public ElympicsBool isSlowed = new ElympicsBool(false);
     #endregion
     
@@ -162,7 +163,7 @@ public class MovementController : ElympicsMonoBehaviour, IUpdatable
     {
         if (newVal)
         {
-            desiredMovementSpeed.Value -= 6;
+            desiredMovementSpeed.Value -= slowValue;
             slowTimer = 0.0f;
         }
         else

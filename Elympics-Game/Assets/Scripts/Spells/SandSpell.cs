@@ -8,7 +8,8 @@ public class SandSpell : Spell
 {
     [SerializeField] private GameObject sandstorm;
     private ElympicsBool spawned = new ElympicsBool(false);
-    
+    private ElympicsBool isModified = new ElympicsBool(false);
+    private ElympicsFloat LifeTime = new ElympicsFloat(4);
     protected override void OnTriggerEnter(Collider other)
     {
         
@@ -36,9 +37,16 @@ public class SandSpell : Spell
             if (Elympics.IsServer)
             {
                 SandStorm ss = ElympicsInstantiate(sandstorm.name, ElympicsPlayer.All).GetComponent<SandStorm>();
+                ss.setLifeTime(lifeTime);
                 ss.SpawnSpell(this.transform.position + new Vector3(0, 0.1f, 0), caster);
                 spawned.Value = true;
             }
         }
+    }
+
+    public override void ApplyModifier()
+    {
+        base.ApplyModifier();
+        this.LifeTime.Value = 8;
     }
 }
