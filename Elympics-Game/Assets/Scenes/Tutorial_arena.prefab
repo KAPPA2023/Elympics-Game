@@ -153,6 +153,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: slup
       objectReference: {fileID: 0}
+    - target: {fileID: 3160251420472884234, guid: 90ce7eef886983c45b82f8c0d4e155b7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3482414704213205604, guid: 90ce7eef886983c45b82f8c0d4e155b7, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -675,6 +679,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: slup (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3160251420472884234, guid: 90ce7eef886983c45b82f8c0d4e155b7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3482414704213205604, guid: 90ce7eef886983c45b82f8c0d4e155b7, type: 3}
       propertyPath: m_RootOrder
       value: 31
@@ -901,6 +909,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wspinaczka (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2862336536654856753, guid: d0806cdbbc799bc4e8a998cb9a061398, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3143373779990669206, guid: d0806cdbbc799bc4e8a998cb9a061398, type: 3}
       propertyPath: m_RootOrder
       value: 39
@@ -1019,8 +1031,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform_hole_1
       objectReference: {fileID: 0}
+    - target: {fileID: 5455433040369884156, guid: 0d29b43cf685148479466e0b33197e31, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d29b43cf685148479466e0b33197e31, type: 3}
+--- !u!1 &6194926115163031716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5455433040369884156, guid: 0d29b43cf685148479466e0b33197e31, type: 3}
+  m_PrefabInstance: {fileID: 2183501488477197144}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1236728832524495332
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6194926115163031716}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1550514412580984892, guid: 58d8bdd195ca1514bbf03a90849ff3bf, type: 3}
 --- !u!4 &6823829567231562270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4683259684165861702, guid: 0d29b43cf685148479466e0b33197e31, type: 3}
@@ -1925,6 +1960,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: kolko
       objectReference: {fileID: 0}
+    - target: {fileID: 7252936871815433265, guid: a93414650ea0a5548ab3b8679e43559e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8140808829175324663, guid: a93414650ea0a5548ab3b8679e43559e, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -2203,6 +2242,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: kocia_chatka
       objectReference: {fileID: 0}
+    - target: {fileID: 9207044739805401862, guid: b69886c23a6a10445b9c9a0469113a5f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b69886c23a6a10445b9c9a0469113a5f, type: 3}
 --- !u!4 &814073508006601809 stripped
@@ -2451,6 +2494,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform_hole_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7056124416151183091, guid: 892af90d970a50f46a084254db545c9c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7685308553104884809, guid: 892af90d970a50f46a084254db545c9c, type: 3}
       propertyPath: m_RootOrder
       value: 38
@@ -2509,6 +2556,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 892af90d970a50f46a084254db545c9c, type: 3}
+--- !u!1 &550926224579000045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7056124416151183091, guid: 892af90d970a50f46a084254db545c9c, type: 3}
+  m_PrefabInstance: {fileID: 7370470364421072926}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &9072470138540639088
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550926224579000045}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -9110627038371529689, guid: 1d48a28b00cc8284c9f27a73de582c43, type: 3}
 --- !u!4 &931850225919339607 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7685308553104884809, guid: 892af90d970a50f46a084254db545c9c, type: 3}
@@ -2524,6 +2590,10 @@ PrefabInstance:
     - target: {fileID: 3160251420472884234, guid: 90ce7eef886983c45b82f8c0d4e155b7, type: 3}
       propertyPath: m_Name
       value: slup (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160251420472884234, guid: 90ce7eef886983c45b82f8c0d4e155b7, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3482414704213205604, guid: 90ce7eef886983c45b82f8c0d4e155b7, type: 3}
       propertyPath: m_RootOrder
@@ -2689,6 +2759,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wspinaczka
       objectReference: {fileID: 0}
+    - target: {fileID: 2862336536654856753, guid: d0806cdbbc799bc4e8a998cb9a061398, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3143373779990669206, guid: d0806cdbbc799bc4e8a998cb9a061398, type: 3}
       propertyPath: m_RootOrder
       value: 36
@@ -2762,6 +2836,10 @@ PrefabInstance:
     - target: {fileID: 7056124416151183091, guid: 892af90d970a50f46a084254db545c9c, type: 3}
       propertyPath: m_Name
       value: Platform_hole_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7056124416151183091, guid: 892af90d970a50f46a084254db545c9c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7685308553104884809, guid: 892af90d970a50f46a084254db545c9c, type: 3}
       propertyPath: m_RootOrder
