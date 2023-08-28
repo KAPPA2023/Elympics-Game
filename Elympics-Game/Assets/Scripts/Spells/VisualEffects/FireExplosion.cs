@@ -9,7 +9,7 @@ public class FireExplosion : ElympicsMonoBehaviour, IUpdatable
     private SphereCollider sphere;
     private ElympicsFloat deathTimer = new ElympicsFloat(0.0f);
     private int owner;
-    [SerializeField] private float burnDuration = 3f;
+    [SerializeField] private ElympicsFloat burnDuration = new ElympicsFloat(3f);
     
 
     public void ElympicsUpdate()
@@ -35,6 +35,11 @@ public class FireExplosion : ElympicsMonoBehaviour, IUpdatable
     {
         transform.position = position;
         owner = client;
+    }
+
+    public void setDuration(float value)
+    {
+        burnDuration.Value = value;
     }
 }
 

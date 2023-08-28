@@ -24,10 +24,8 @@ public class MovementController : ElympicsMonoBehaviour
     #endregion
 
     #region Slow Variables
-    [Header("Slows")]
-    [SerializeField] private float slowDuration = 4.0f;
-    private float slowTimer;
-    private ElympicsBool isSlowed = new ElympicsBool(false);
+    public ElympicsFloat slowValue = new ElympicsFloat();
+    public ElympicsFloat remainingSlow = new ElympicsFloat();
     #endregion
 
     #region Jumping Variables
@@ -62,7 +60,6 @@ public class MovementController : ElympicsMonoBehaviour
         rb = GetComponent<Rigidbody>();
         climbing = GetComponent<Climbing>();
         desiredMovementSpeed.Value = GroundSpeed;
-        isSlowed.ValueChanged += OnSlow;
     }
 
     // Movement Elympics Update
@@ -74,13 +71,10 @@ public class MovementController : ElympicsMonoBehaviour
         Vector3 inputVector = new Vector3(horizontalInput, 0, verticalInput);
         movementDirection = inputVector != Vector3.zero ? this.transform.TransformDirection(inputVector.normalized) : Vector3.zero;
 
-        if (isSlowed.Value)
+        if (remainingSlow.Value > 0f)
         {
-            slowTimer += Elympics.TickDuration;
-            if (slowTimer >= slowDuration)
-            {
-                isSlowed.Value = false;
-            }
+            remainingSlow.Value -= Elympics.TickDuration;
+            desiredMovementSpeed.Value *= slowValue.Value;
         }
 
         climbing.ClimbingElympicsUpdate();
@@ -166,7 +160,6 @@ public class MovementController : ElympicsMonoBehaviour
             flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             actualMovementSpeed = flatVel.magnitude;
         }
-        
     }
 
     private bool GroundCheck()
@@ -226,27 +219,16 @@ public class MovementController : ElympicsMonoBehaviour
 
     #region Slow Functions
 
-    public void Slow()
+    public void Slow(float value, float duration)
     {
-        isSlowed.Value = true;
+        slowValue.Value = value;
+        remainingSlow.Value = duration;
     }
-
-    private void OnSlow(bool oldVal, bool newVal)
-    {
-        if (newVal)
-        {
-            desiredMovementSpeed.Value = SlowSpeed;
-            slowTimer = 0.0f;
-        }
-        else
-        {
-            desiredMovementSpeed.Value = GroundSpeed;
-            slowTimer = 0f;
-        }
-    }
+    
     public void ResetMovement()
     {
-        isSlowed.Value = false;
+        slowValue.Value = 0f;
+        remainingSlow.Value = 0f;
     }
     #endregion
 

@@ -12,6 +12,8 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
     [SerializeField] private DeathController deathController;
     public ElympicsFloat blindPower= new ElympicsFloat(0.0f);
     public ElympicsBool isBlind = new ElympicsBool(false);
+    public ElympicsFloat blindValue = new ElympicsFloat(0.8f);
+    
     private ElympicsFloat _blindTimer = new ElympicsFloat(0.0f);
     private ElympicsFloat _burningTimer = new ElympicsFloat(0.0f);
 

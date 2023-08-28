@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Fireball : Spell
 {
+    [SerializeField] private float burnTime = 3;
     [SerializeField] private GameObject fireExplosion;
     private ElympicsBool spawned = new ElympicsBool(false);
 
@@ -16,8 +17,15 @@ public class Fireball : Spell
             {
                 FireExplosion ss = ElympicsInstantiate(fireExplosion.name, ElympicsPlayer.World).GetComponent<FireExplosion>();
                 ss.SpawnSpell(this.transform.position + new Vector3(0, 0.1f, 0), caster);
+                ss.setDuration(burnTime);
             }
             spawned.Value = true;
         }
+    }
+
+    public override void ApplyModifier()
+    {
+        base.ApplyModifier();
+        burnTime *= 2.0f;
     }
 }

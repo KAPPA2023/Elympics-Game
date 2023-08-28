@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Elympics;
 using UnityEngine;
 
 public class TornadoSpell : Spell
 {
-    public float bulletSpeed = 10f;
-    public float knockbackForce = 20f;
+    [SerializeField] float knockbackForce = 5f;
 
     // Start is called before the first frame update
     protected override void OnTriggerEnter(Collider other)
@@ -20,9 +20,14 @@ public class TornadoSpell : Spell
 
             Vector3 knockbackDirection = spellVelocity;
             knockbackDirection.y = 0.1f;
-
-
-            playerRigidbody.AddForce(knockbackDirection * 15, ForceMode.Impulse);
+            
+            playerRigidbody.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
         }
+    }
+
+    public override void ApplyModifier()
+    {
+        base.ApplyModifier();
+        knockbackForce *= 3f;
     }
 }

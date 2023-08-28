@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellDamage: 5
-  spellSpeed: 80
+  spellSpeed: 50
   lifeTime: 5
   bounces: 0
   Radius: 0

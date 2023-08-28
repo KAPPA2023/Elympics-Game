@@ -52,4 +52,10 @@ public class Lightbolt : Spell
             }
         }
     }
+
+    public override void ApplyModifier()
+    {
+        base.ApplyModifier();
+        bounces += 2;
+    }
 }
