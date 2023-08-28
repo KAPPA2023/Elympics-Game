@@ -15004,7 +15004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1837207756449600532, guid: 555abb6af068e5e4c91a2d9179327fc8, type: 3}
       propertyPath: isUpdatableForNonOwners
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1837207756449600535, guid: 555abb6af068e5e4c91a2d9179327fc8, type: 3}
       propertyPath: m_RootOrder

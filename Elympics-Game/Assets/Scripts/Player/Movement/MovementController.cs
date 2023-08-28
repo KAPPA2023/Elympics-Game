@@ -2,6 +2,12 @@ using System;
 using Elympics;
 using UnityEngine;
 
+public enum MovementState
+{
+    walking,
+    climbing,
+    air
+}
 public class MovementController : ElympicsMonoBehaviour
 {
     private Rigidbody rb = null;
@@ -16,7 +22,6 @@ public class MovementController : ElympicsMonoBehaviour
     [Header("Speeds")]
     [SerializeField] private float GroundSpeed;
     [SerializeField] private float ClimbingSpeed;
-    [SerializeField] private float SlowSpeed;
     private ElympicsFloat desiredMovementSpeed = new ElympicsFloat(0);
 
     [SerializeField] public float actualMovementSpeed;
@@ -52,18 +57,10 @@ public class MovementController : ElympicsMonoBehaviour
 
     public bool isClimbing = false;
     private Climbing climbing;
-    
-    public enum MovementState
-    {
-        walking,
-        climbing,
-        air
-    }
 
     public MovementState state = MovementState.walking;
 
-    public event Action<Vector3> MovementValuesChanged;
-    public ElympicsBool IsJumping = new ElympicsBool(false);
+    public event Action<MovementState,Vector3> MovementValuesChanged;
 
     private void Awake()
     {
@@ -87,12 +84,6 @@ public class MovementController : ElympicsMonoBehaviour
         } else
         {
             rb.drag = 0;
-        }
-
-        if (remainingSlow.Value > 0f)
-        {
-            remainingSlow.Value -= Elympics.TickDuration;
-            desiredMovementSpeed.Value *= slowValue.Value;
         }
 
         climbing.ClimbingElympicsUpdate();
@@ -137,18 +128,27 @@ public class MovementController : ElympicsMonoBehaviour
         if (GroundCheck())
         {
             state = MovementState.walking;
+            MovementValuesChanged?.Invoke(state,movementDirection);
             desiredMovementSpeed.Value = GroundSpeed;
         } 
 
         else if (isClimbing)
         {
             state = MovementState.climbing;
+            MovementValuesChanged?.Invoke(state,movementDirection);
             desiredMovementSpeed.Value = ClimbingSpeed;
         } 
         
         else
         {
             state = MovementState.air;
+            MovementValuesChanged?.Invoke(state,movementDirection);
+        }
+        
+        if (remainingSlow.Value > 0f)
+        {
+            remainingSlow.Value -= Elympics.TickDuration;
+            desiredMovementSpeed.Value *= slowValue.Value;
         }
     }
 
@@ -178,8 +178,6 @@ public class MovementController : ElympicsMonoBehaviour
         }
 
         rb.useGravity= !OnSlope();
-        //TODO: check what values should use
-        MovementValuesChanged?.Invoke(movementDirection);
     }
 
     private void SpeedControl()
@@ -211,7 +209,6 @@ public class MovementController : ElympicsMonoBehaviour
         if (Physics.BoxCast(transform.position, boxSize, -transform.up, transform.rotation, maxDistance, layerMask))
         {
             isGrounded = true;
-            IsJumping.Value = false;
             return true;
         } else 
         {
@@ -228,16 +225,13 @@ public class MovementController : ElympicsMonoBehaviour
     #region Jump Functions
     private void ApplyJump()
     {
-        IsJumping.Value = true;
-        
         exitingSlope = true;
 
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
-
-
+    
     private void ResetJump()
     {
         exitingSlope = false;
