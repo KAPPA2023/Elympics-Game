@@ -28,6 +28,11 @@ public class MatchmakingManager : MonoBehaviour
     {
         ElympicsLobbyClient.Instance.PlayOnlineInRegion(null, null,null, "Default");
     }
+
+    public void Tutorial()
+    {
+        ElympicsLobbyClient.Instance.PlayOffline();
+    }
     
     private void DisplayMatchmakingStarted()
     {

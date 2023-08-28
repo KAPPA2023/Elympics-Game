@@ -21,6 +21,11 @@ public class MainMenu : MonoBehaviour
         matchmakingManager.PlayOnline();
     }
 
+    public void PlayTutorial()
+    { 
+        matchmakingManager.Tutorial();
+    }
+
     public void QuitGame()
     {
         Application.Quit();

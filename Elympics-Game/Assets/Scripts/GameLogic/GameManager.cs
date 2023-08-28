@@ -16,7 +16,7 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
     public ElympicsFloat PostGameTime { get; } = new ElympicsFloat(0.0f);
     public bool IsReady { get; private set; } = false;
     
-    public void Initialize()
+    public virtual void Initialize()
     {
         appliedModifiers.ValueChanged += applyModifiers;
         if (!Elympics.IsServer) return;
@@ -29,7 +29,7 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
         IsReady = true;
     }
     
-    public void ElympicsUpdate()
+    public virtual void ElympicsUpdate()
     {
         CurrentTimeToStartMatch.Value -= Elympics.TickDuration;
         if (!(CurrentTimeToStartMatch.Value < 0.0f)) return;

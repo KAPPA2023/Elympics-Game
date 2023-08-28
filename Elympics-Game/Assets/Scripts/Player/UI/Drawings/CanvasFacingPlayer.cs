@@ -10,11 +10,24 @@ public class CanvasFacingPlayer : MonoBehaviour
 
     public void Awake()
     {
+        if (playerProvider.IsReady)
+        {
+            HideCanvasOfOtherPlayers();
+        }
+        else
+        {
+            playerProvider.IsReadyChanged += HideCanvasOfOtherPlayers;
+        }
+    }
+
+    private void HideCanvasOfOtherPlayers()
+    {
         if (GetComponentInParent<PlayerData>().PlayerId != playerProvider.ClientPlayer.PlayerId)
         {
             this.gameObject.SetActive(false);
         }
     }
+    
 
     void Update()
     {

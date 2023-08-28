@@ -108,7 +108,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
             case Spells.Empty: return 0;
             case Spells.Fireball: return 3;
             case Spells.Lightbolt: return 2;
-            case Spells.SandGranade: return 2;
+            case Spells.SandGranade: return 1;
             case Spells.WaterBlast: return 2;
             case Spells.Tornado: return 2;
             case Spells.IceSpike: return 2;
