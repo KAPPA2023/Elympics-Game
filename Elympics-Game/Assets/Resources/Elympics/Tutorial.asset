@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3718fdc79f884b648722df4e56317063, type: 3}
-  m_Name: ElympicsGameConfig
+  m_Name: Tutorial
   m_EditorClassIdentifier: 
   gameName: KAPPA-Game
   gameId: 431964a5-45bf-41c2-8bb8-329369aa978a
-  gameVersion: 16
+  gameVersion: 15
   players: 2
-  gameplayScene: Assets/Scenes/GameplayScene.unity
-  gameplaySceneAsset: {fileID: 102900000, guid: 96a5c199042c94a4ab41883ae7452d8c, type: 3}
+  gameplayScene: Assets/Scenes/TutorialLevel.unity
+  gameplaySceneAsset: {fileID: 102900000, guid: 6c6ff607230970f4593cf83479283e99, type: 3}
   botsInServer: 1
   useWeb: 0
   legacyMatchmakingClient: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
   prediction: 1
   predictionLimitInTicks: 8
   detailedNetworkLog: 0
-  mode: 1
+  mode: 0
   halfRemoteMode: 0
   useWebInHalfRemote: 0
   ipForHalfRemoteMode: 127.0.0.1
