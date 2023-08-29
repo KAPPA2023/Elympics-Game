@@ -24,10 +24,10 @@ public class MatchmakingManager : MonoBehaviour
         ElympicsLobbyClient.Instance.Matchmaker.MatchmakingFailed -= DisplayMatchmakingError;
     }
     
-    public void PlayOnline()
+    public void PlayOnline(string queue)
     {
         ElympicsConfig.Load().SwitchGame(0);
-        ElympicsLobbyClient.Instance.PlayOnlineInRegion(null, null,null, "Default");
+        ElympicsLobbyClient.Instance.PlayOnlineInRegion(null, null,null, queue);
     }
 
     public void Tutorial()
