@@ -12,7 +12,7 @@ public class PlayerData : ElympicsMonoBehaviour
     
     public int PlayerId => playerId;
     public ElympicsInt Score { get; } = new ElympicsInt();
-    public void ApplyModifier(int id)
+    public void ApplyModifier(int id, int spell)
     {
         switch (id)
         {
@@ -25,9 +25,14 @@ public class PlayerData : ElympicsMonoBehaviour
                 break;
 
             case 2:
-                GetComponent<ActionHandler>().modified = true;
+                GetComponent<ActionHandler>().modified = spell;
                 break;
         }
+    }
+
+    public void SetMagician()
+    {
+        GetComponent<ActionHandler>().theMagician = true;
     }
 
     #region ScoreLogic

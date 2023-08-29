@@ -30,12 +30,12 @@ public class UITarot : MonoBehaviour
     
     private void DisplayCards(bool oldVal, bool newVal)
     {
-        SetupPlayerCard(startGameController.playerModifier.Value);
+        SetupPlayerCard(startGameController.playerModifier.Value, startGameController.enchancedSpell.Value);
         SetupStaticCard(startGameController.staticGameModifier.Value);
         SetupDynamicCard(startGameController.dynamicGameModifier.Value);
     }
 
-    private void SetupPlayerCard(int modifier)
+    private void SetupPlayerCard(int modifier, int spell)
     {
         Sprite sprite = sprites[0];
         switch (modifier)
@@ -50,7 +50,7 @@ public class UITarot : MonoBehaviour
                 break;
             case 2:
                 sprite = GetSprite("The_Justice");
-                texts[0].text = "{} spell is enhanced (TBA)";
+                texts[0].text = $"{(Spells)spell} is enhanced";
                 break;
         }
         slots[0].sprite = sprite;
@@ -82,7 +82,7 @@ public class UITarot : MonoBehaviour
         {
             case 0:
                 sprite = GetSprite("The_Wheel_of_Fortune");
-                texts[2].text = "Gambling (TBA)";
+                texts[2].text = "Mystery spell pickups";
                 break;
             case 1:
                 sprite = GetSprite("The_Ace_of_Wands");
@@ -90,7 +90,7 @@ public class UITarot : MonoBehaviour
                 break;
             case 2:
                 sprite = GetSprite("The_Magician");
-                texts[2].text = "(TBA)";
+                texts[2].text = "Cast whatever you want";
                 break;
         }
         slots[2].sprite = sprite;
