@@ -13,8 +13,7 @@ public class MovementController : ElympicsMonoBehaviour
     private Rigidbody rb = null;
     private float playerHeight = 2.0f;
     private Vector3 movementDirection;
-    public bool isGrounded = false;
-
+    
     [HideInInspector] public float horizontalInput;
     [HideInInspector] public float verticalInput;
 
@@ -29,8 +28,8 @@ public class MovementController : ElympicsMonoBehaviour
     #endregion
 
     #region Slow Variables
-    public ElympicsFloat slowValue = new ElympicsFloat();
-    public ElympicsFloat remainingSlow = new ElympicsFloat();
+    private ElympicsFloat slowValue = new ElympicsFloat();
+    private ElympicsFloat remainingSlow = new ElympicsFloat();
     #endregion
 
     #region Jumping Variables
@@ -38,7 +37,7 @@ public class MovementController : ElympicsMonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
-    private bool readyToJump = true;
+    //private bool readyToJump = true;
     private bool doubleJump = false;
     #endregion
 
@@ -50,17 +49,21 @@ public class MovementController : ElympicsMonoBehaviour
     #endregion
 
     #region Is Player On Ground Variables
+    [Header("Groundcheck Variables")]
     public Vector3 boxSize;
     public float maxDistance;
     public LayerMask layerMask;
     #endregion
 
+    public bool isGrounded = false;
     public bool isClimbing = false;
     private Climbing climbing;
 
     public MovementState state = MovementState.walking;
 
-    public event Action<MovementState,Vector3> MovementValuesChanged;
+    [HideInInspector] public event Action<MovementState,Vector3> MovementValuesChanged;
+    [HideInInspector] public ElympicsBool IsJumping = new ElympicsBool(false);
+    
 
     private void Awake()
     {
@@ -70,7 +73,7 @@ public class MovementController : ElympicsMonoBehaviour
     }
 
     // Movement Elympics Update
-    public void ProcessMovement(Vector2 inputMovement, bool jump)
+    public void ProcessMovement(Vector2 inputMovement, bool jumpPressed, bool jumpReleased)
     {
         horizontalInput = inputMovement.x;
         verticalInput = inputMovement.y;
@@ -96,9 +99,9 @@ public class MovementController : ElympicsMonoBehaviour
         switch (state)
         {
             case MovementState.walking:
-                if (jump && readyToJump)
+                if (jumpPressed /*&& readyToJump*/)
                 {
-                    readyToJump = false;
+                    //readyToJump = false;
                     doubleJump = true;
 
                     ApplyJump();
@@ -112,7 +115,12 @@ public class MovementController : ElympicsMonoBehaviour
                 break;
 
             case MovementState.air:
-                if (jump && doubleJump)
+                if (jumpReleased && rb.velocity.y > 0)
+                {
+                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0.5f, rb.velocity.z);
+                }
+
+                if (jumpPressed && doubleJump)
                 {
                     ApplyJump();
                     doubleJump = false;
@@ -236,7 +244,7 @@ public class MovementController : ElympicsMonoBehaviour
     {
         exitingSlope = false;
 
-        readyToJump = true;
+        //readyToJump = true;
     }
     #endregion
 

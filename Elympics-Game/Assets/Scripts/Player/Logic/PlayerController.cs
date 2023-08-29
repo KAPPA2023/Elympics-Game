@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     public Quaternion mouseRotation;
     public bool isDrawingPressed = false;
     public Vector2 movementInput;
-    public bool isJump;
+    public bool isJumpPressed, isJumpReleased;
     public bool attackTriggered;
 
     #endregion
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
     public void MoveAround()
     {
-        movementController.ProcessMovement(movementInput, isJump);
+        movementController.ProcessMovement(movementInput, isJumpPressed, isJumpReleased);
     }
 
     #endregion

@@ -33,8 +33,12 @@ public class InputProvider : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _gatheredInput.jumpInput = true;
+            _gatheredInput.jumpPressed = true;
+        } else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            _gatheredInput.jumpReleased = true;
         }
+
         HandleSpellDrawing();
         
         if (!Input.GetKey(KeyCode.Mouse1))
@@ -86,7 +90,8 @@ public class InputProvider : MonoBehaviour
     {
         GatheredInput returnedInput = _gatheredInput;
         _gatheredInput.movementInput = Vector2.zero;
-        _gatheredInput.jumpInput = false;
+        _gatheredInput.jumpPressed = false;
+        _gatheredInput.jumpReleased = false;
         _gatheredInput.shape = (int)Spells.Empty;
         _gatheredInput.attack_triggered = false;
         _gatheredInput.isDrawing = false;
@@ -98,7 +103,8 @@ public class InputProvider : MonoBehaviour
 public struct GatheredInput
 {
     public Vector2 movementInput;
-    public bool jumpInput;
+    public bool jumpPressed;
+    public bool jumpReleased;
     public bool isDrawing;
     public bool isDrawingReleased;
     public int shape;
