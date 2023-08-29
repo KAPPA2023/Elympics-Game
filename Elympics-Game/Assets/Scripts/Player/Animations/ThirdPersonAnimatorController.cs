@@ -19,7 +19,6 @@ public class ThirdPersonAnimatorController : MonoBehaviour
    {
       thirdPersonAnimator = GetComponent<Animator>();
       movementController.MovementValuesChanged += ProcessMovementValues;
-      movementController.IsJumping.ValueChanged += ProcessJumping;
       deathController.IsDead.ValueChanged += ProcessDeathState;
    }
    
@@ -35,23 +34,30 @@ public class ThirdPersonAnimatorController : MonoBehaviour
       }
    }
 
-   private void ProcessJumping(bool oldVal, bool newVal)
+   private void ProcessMovementValues(MovementState state,Vector3 movementDirection)
    {
-      if (newVal)
+      if (state != MovementState.air)
       {
-         thirdPersonAnimator.SetTrigger(jumpingTriggerParameterHash);
-         thirdPersonAnimator.SetBool(isGroundedParameterHash, false);
-      }
-      else
-      {
-         thirdPersonAnimator.SetBool(isGroundedParameterHash, true);
+         if (!thirdPersonAnimator.GetBool(isGroundedParameterHash))
+         {
+            thirdPersonAnimator.SetBool(isGroundedParameterHash, true);
+         }
       }
       
-   }
-
-   private void ProcessMovementValues(Vector3 movementDirection)
-   {
-      var localMovementDirection = movementDirection.magnitude;
-      thirdPersonAnimator.SetFloat(movementForwardParameterHash, localMovementDirection);
+      switch (state)
+      {
+         case MovementState.walking: 
+            var localMovementDirection = movementDirection.magnitude;
+            thirdPersonAnimator.SetFloat(movementForwardParameterHash, localMovementDirection);
+            break;
+         case MovementState.climbing: break;
+         case MovementState.air: 
+            thirdPersonAnimator.SetTrigger(jumpingTriggerParameterHash);
+            thirdPersonAnimator.SetBool(isGroundedParameterHash, false); 
+            break;
+         default:
+            throw new ArgumentOutOfRangeException(nameof(state), state, null);
+      }
+      
    }
 }

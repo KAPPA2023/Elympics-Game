@@ -6,6 +6,7 @@ using Elympics;
 
 public class PlayerSpawner : ElympicsMonoBehaviour, IInitializable
 {
+    [SerializeField] private float safeRadius = 3f;
     [SerializeField] private Transform[] spawnPoints;
     
     private System.Random random = null;
@@ -42,7 +43,7 @@ public class PlayerSpawner : ElympicsMonoBehaviour, IInitializable
         {
             chosenSpawnPoint = spawnPoint;
 
-            Collider[] objectsInRange = Physics.OverlapSphere(chosenSpawnPoint.position, 3.0f);
+            Collider[] objectsInRange = Physics.OverlapSphere(chosenSpawnPoint.position, safeRadius);
 
             if (!objectsInRange.Any(x => x.transform.root.gameObject.TryGetComponent<PlayerData>(out _)))
                 break;

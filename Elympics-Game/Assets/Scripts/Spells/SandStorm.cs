@@ -52,7 +52,11 @@ public class SandStorm : ElympicsMonoBehaviour, IUpdatable
             {
                 v.GetComponent<StatsController>().blindPower.Value = 300;
             }
-            ElympicsDestroy(gameObject);
+
+            if (Elympics.IsServer)
+            {
+                ElympicsDestroy(gameObject);
+            }
         }
     }
 

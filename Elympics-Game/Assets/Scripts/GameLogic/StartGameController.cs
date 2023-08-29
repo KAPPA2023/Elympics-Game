@@ -14,6 +14,7 @@ public class StartGameController : ElympicsMonoBehaviour
     public ElympicsInt staticGameModifier = new ElympicsInt(-1);
     public ElympicsInt dynamicGameModifier = new ElympicsInt(-1);
     public ElympicsInt playerModifier = new ElympicsInt(-1);
+    public ElympicsInt enchancedSpell = new ElympicsInt(-1);
     public ElympicsBool IsReady = new ElympicsBool(false);
     [SerializeField] private PlayerProvider playerProvider;
 
@@ -23,6 +24,12 @@ public class StartGameController : ElympicsMonoBehaviour
         staticGameModifier.Value = UnityEngine.Random.Range(0, 3);
         dynamicGameModifier.Value = UnityEngine.Random.Range(0, 3);
         playerModifier.Value = UnityEngine.Random.Range(0, 3);
+
+        if (playerModifier.Value == 2)
+        {
+            enchancedSpell.Value = UnityEngine.Random.Range(0, 6);
+        }
+        
         IsReady.Value = true;
     }
 
@@ -43,10 +50,13 @@ public class StartGameController : ElympicsMonoBehaviour
     private void ApplyPlayerModifiers()
     {
         var players = playerProvider.AllPlayersInScene;
-
         foreach (var player in players)
         {
-            player.ApplyModifier(playerModifier.Value);
+            player.ApplyModifier(playerModifier.Value, enchancedSpell.Value);
+            if (dynamicGameModifier.Value == 2)
+            {
+                player.SetMagician();
+            }
         }
     }
 

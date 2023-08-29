@@ -16,9 +16,14 @@ public class MainMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
     }
 
-    public void PlayGame()
+    public void Play1V1()
     {
-        matchmakingManager.PlayOnline();
+        matchmakingManager.PlayOnline("Default");
+    }
+    
+    public void Play1V3()
+    {
+        matchmakingManager.PlayOnline("1v3");
     }
 
     public void PlayTutorial()

@@ -18,7 +18,8 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     [SerializeField] private SpellSpawner spellSpawner;
     [SerializeField] private GameObject viewController;
     [SerializeField] private float spellCooldown = 0.8f;
-    public bool modified = false;
+    public int modified = -1;
+    public bool theMagician = false;
     public static event Action OnBadSpell = null;
     public static event Action OnGoodSpell = null;
 
@@ -41,7 +42,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     {
         if (_selectedSpell != Spells.Empty && _remainingUses.Value > 0)
         {
-            spellSpawner.TrySpawningSpell(_selectedSpell,direction, GetComponent<PlayerData>().PlayerId, modified);
+            spellSpawner.TrySpawningSpell(_selectedSpell,direction, GetComponent<PlayerData>().PlayerId, _selectedSpell == (Spells)modified);
             _remainingUses.Value--;
         }
         else 
@@ -63,7 +64,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
         {
             for (int i = 0; i < 3; i++)
             {
-                if (stashedSpells.Values[i].Value == (int)drawnSpell)
+                if (stashedSpells.Values[i].Value == (int)drawnSpell || (theMagician && stashedSpells.Values[i].Value != -1))
                 {
                     OnGoodSpell?.Invoke();
                     _selectedSpell = drawnSpell;
@@ -84,7 +85,6 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
         Debug.Log(spellType);
         for (int i = 0; i < 3; i++)
         {
-            Debug.Log(stashedSpells.Values[i].Value);
             if (stashedSpells.Values[i].Value == (int)Spells.Empty)
             {
                 stashedSpells.Values[i].Value = (int)spellType;
