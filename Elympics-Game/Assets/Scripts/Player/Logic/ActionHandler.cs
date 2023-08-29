@@ -84,7 +84,6 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
         Debug.Log(spellType);
         for (int i = 0; i < 3; i++)
         {
-            Debug.Log(stashedSpells.Values[i].Value);
             if (stashedSpells.Values[i].Value == (int)Spells.Empty)
             {
                 stashedSpells.Values[i].Value = (int)spellType;
