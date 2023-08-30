@@ -10,7 +10,7 @@ public enum MovementState
 }
 public class MovementController : ElympicsMonoBehaviour
 {
-    private Rigidbody rb = null;
+    public Rigidbody rb = null;
     private float playerHeight = 2.0f;
     private Vector3 movementDirection;
     
@@ -117,7 +117,7 @@ public class MovementController : ElympicsMonoBehaviour
             case MovementState.air:
                 if (jumpReleased && rb.velocity.y > 0)
                 {
-                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0.5f, rb.velocity.z);
+                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0.6f, rb.velocity.z);
                 }
 
                 if (jumpPressed && doubleJump)
@@ -151,6 +151,7 @@ public class MovementController : ElympicsMonoBehaviour
         {
             state = MovementState.air;
             MovementValuesChanged?.Invoke(state,movementDirection);
+            desiredMovementSpeed.Value = GroundSpeed;
         }
         
         if (remainingSlow.Value > 0f)
