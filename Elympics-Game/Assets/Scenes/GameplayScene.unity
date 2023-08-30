@@ -1796,6 +1796,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5289584868639212899, guid: 8a378dc322bee2448b76bfd7ae155663, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5329677194325705098, guid: 8a378dc322bee2448b76bfd7ae155663, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -11436,6 +11440,14 @@ PrefabInstance:
       propertyPath: playerProvider
       value: 
       objectReference: {fileID: 508643193}
+    - target: {fileID: 3137473124097492648, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: jumpForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137473124097492648, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: ClimbingSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3137473124097492651, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: positionConfig.tolerance
       value: 0.005
@@ -11448,6 +11460,14 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 544778521}
+    - target: {fileID: 4538622832906622208, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: climbSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538622832906622208, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: maxWallLookAngle
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
 --- !u!1001 &1505222555

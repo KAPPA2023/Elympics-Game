@@ -6,10 +6,8 @@ using UnityEngine;
 public class Climbing : ElympicsMonoBehaviour
 {
     [Header("Climbing")]
-    public LayerMask whatIsWall;
-    public LayerMask whatIsGround;
-    //public float maxWallRunTime;
-    //private float wallRunTimer;
+    public float climbSpeed;
+
 
     [Header("Input")]
     private float horizontalInput;
@@ -17,14 +15,17 @@ public class Climbing : ElympicsMonoBehaviour
 
     [Header("Detection")]
     public float wallCheckDistance;
-    public float minJumpHeight;
-    private RaycastHit forwardWallHit;
-    private bool wallForward;
+    public float maxWallLookAngle;
+    private float wallLookAngle;
+
+    private RaycastHit frontWallHit;
+    private bool wallFront;
 
     [Header("References")]
     public Transform orientation;
     private MovementController movementController;
     private Rigidbody rb;
+    public LayerMask whatIsWall;
 
     private void Start()
     {
@@ -46,47 +47,46 @@ public class Climbing : ElympicsMonoBehaviour
         Vector3 rayPos = transform.position;
         rayPos.y -= 0.9f;
 
-        wallForward = Physics.Raycast(rayPos, orientation.forward, out forwardWallHit, wallCheckDistance, whatIsWall);
+        wallFront = Physics.Raycast(transform.position, orientation.forward, out frontWallHit, wallCheckDistance, whatIsWall);
+        wallLookAngle = Vector3.Angle(orientation.forward, -frontWallHit.normal);
     }
 
-    private bool AboveGround()
+    /*private bool AboveGround()
     {
         return !Physics.Raycast(transform.position, Vector3.down, minJumpHeight, whatIsGround);
-    }
+    }*/
 
     private void StateMachine()
     {
-        if (wallForward && verticalInput > 0 && AboveGround())
+        if (wallFront && verticalInput > 0 && wallLookAngle < maxWallLookAngle)
         {
             if (!movementController.isClimbing)
             {
-                StartWallRun();
+                StartClimbing();
             } 
         }
-        else if (!wallForward || !AboveGround() || verticalInput <= 0)
+        else if (!wallFront || verticalInput <= 0)
         {
             if (movementController.isClimbing)
             {
-                StopWallRun();
+                StopClimbing();
             }
         }
-
-
     }
 
-    private void StartWallRun()
+    private void StartClimbing()
     {
         movementController.isClimbing = true;
         rb.useGravity = false;
         rb.velocity = new Vector3(0f, 0f, 0f);
     }
 
-    public void WallRunningMovement()
+    public void ClimbingMovement()
     {
-        rb.velocity = new Vector3(rb.velocity.x, movementController.getDesiredMovementSpeed(), rb.velocity.z);
+        rb.velocity = new Vector3(rb.velocity.x, climbSpeed, rb.velocity.z);
     }
 
-    private void StopWallRun()
+    private void StopClimbing()
     {
         movementController.isClimbing = false;
         rb.useGravity = true;

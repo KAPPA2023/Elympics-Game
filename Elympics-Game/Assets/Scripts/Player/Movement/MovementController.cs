@@ -111,7 +111,7 @@ public class MovementController : ElympicsMonoBehaviour
                 break;
 
             case MovementState.climbing:
-                climbing.WallRunningMovement();
+                climbing.ClimbingMovement();
                 break;
 
             case MovementState.air:
@@ -133,20 +133,20 @@ public class MovementController : ElympicsMonoBehaviour
 
     private void StateHandler()
     {
-        if (GroundCheck())
+        if (isClimbing)
+        {
+            state = MovementState.climbing;
+            MovementValuesChanged?.Invoke(state,movementDirection);
+            desiredMovementSpeed.Value = ClimbingSpeed;
+        } 
+
+        else if (GroundCheck())
         {
             state = MovementState.walking;
             MovementValuesChanged?.Invoke(state,movementDirection);
             desiredMovementSpeed.Value = GroundSpeed;
         } 
 
-        else if (isClimbing)
-        {
-            state = MovementState.climbing;
-            MovementValuesChanged?.Invoke(state,movementDirection);
-            desiredMovementSpeed.Value = ClimbingSpeed;
-        } 
-        
         else
         {
             state = MovementState.air;
@@ -163,8 +163,6 @@ public class MovementController : ElympicsMonoBehaviour
     #region Moving Functions
     private void ApplyMovement(Vector3 movementDirection)
     {
-        if (isClimbing) return;
-
         Vector3 defaultVelocity = movementDirection * desiredMovementSpeed.Value * 25f;
 
         if (OnSlope() && !exitingSlope)
@@ -176,10 +174,10 @@ public class MovementController : ElympicsMonoBehaviour
                 rb.AddForce(Vector3.down * 40f, ForceMode.Force);
             }
         }
-        else if (GroundCheck())
+        else if (GroundCheck() || isClimbing)
         {
             rb.AddForce(defaultVelocity, ForceMode.Force);
-        }
+        } 
         else
         {
             rb.AddForce(defaultVelocity * airMultiplier, ForceMode.Force);
