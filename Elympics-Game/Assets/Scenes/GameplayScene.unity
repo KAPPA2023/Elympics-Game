@@ -3771,6 +3771,10 @@ PrefabInstance:
       propertyPath: networkId
       value: 397
       objectReference: {fileID: 0}
+    - target: {fileID: 1011625580, guid: 568020c0755fff348b965cab65602285, type: 3}
+      propertyPath: jumpForce
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 727281011572866375, guid: 568020c0755fff348b965cab65602285, type: 3}
       propertyPath: m_Name
       value: Jumppad (11)
@@ -4785,6 +4789,10 @@ PrefabInstance:
       propertyPath: networkId
       value: 393
       objectReference: {fileID: 0}
+    - target: {fileID: 1011625580, guid: 568020c0755fff348b965cab65602285, type: 3}
+      propertyPath: jumpForce
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 727281011572866375, guid: 568020c0755fff348b965cab65602285, type: 3}
       propertyPath: m_Name
       value: Jumppad (7)
@@ -5169,6 +5177,10 @@ PrefabInstance:
     - target: {fileID: 1011625579, guid: 568020c0755fff348b965cab65602285, type: 3}
       propertyPath: networkId
       value: 395
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011625580, guid: 568020c0755fff348b965cab65602285, type: 3}
+      propertyPath: jumpForce
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 727281011572866375, guid: 568020c0755fff348b965cab65602285, type: 3}
       propertyPath: m_Name
@@ -9644,6 +9656,10 @@ PrefabInstance:
     - target: {fileID: 1011625579, guid: 568020c0755fff348b965cab65602285, type: 3}
       propertyPath: networkId
       value: 394
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011625580, guid: 568020c0755fff348b965cab65602285, type: 3}
+      propertyPath: jumpForce
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 727281011572866375, guid: 568020c0755fff348b965cab65602285, type: 3}
       propertyPath: m_Name
@@ -15342,6 +15358,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 301914043}
     m_Modifications:
+    - target: {fileID: 1011625580, guid: 568020c0755fff348b965cab65602285, type: 3}
+      propertyPath: jumpForce
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 727281011572866375, guid: 568020c0755fff348b965cab65602285, type: 3}
       propertyPath: m_Name
       value: Jumppad (6)
