@@ -28,6 +28,10 @@ public class SpellPickup : ElympicsMonoBehaviour, IUpdatable, IInitializable
                 startGameController.IsReady.ValueChanged += SpellsHidden;
             }
         }
+        else
+        {
+            orbs[spellType].SetActive(true);
+        }
         empty.ValueChanged += ChangeSpellPickup;
     }
 
