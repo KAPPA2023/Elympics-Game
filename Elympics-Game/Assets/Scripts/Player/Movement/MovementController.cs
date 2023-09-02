@@ -10,7 +10,7 @@ public enum MovementState
 }
 public class MovementController : ElympicsMonoBehaviour
 {
-    public Rigidbody rb = null;
+    [HideInInspector] public Rigidbody rb = null;
     private float playerHeight = 2.0f;
     private Vector3 movementDirection;
     
@@ -23,7 +23,7 @@ public class MovementController : ElympicsMonoBehaviour
     [SerializeField] private float ClimbingSpeed;
     private ElympicsFloat desiredMovementSpeed = new ElympicsFloat(0);
 
-    [SerializeField] public float actualMovementSpeed;
+    [SerializeField] public float actualSpeed;
     [SerializeField] private float groundDrag;
     #endregion
 
@@ -73,7 +73,7 @@ public class MovementController : ElympicsMonoBehaviour
     }
 
     // Movement Elympics Update
-    public void ProcessMovement(Vector2 inputMovement, bool jumpPressed, bool jumpReleased)
+    public void ProcessMovement(Vector2 inputMovement, bool jumpPressed, bool jumpReleased, bool shiftPressed, bool shiftReleased)
     {
         horizontalInput = inputMovement.x;
         verticalInput = inputMovement.y;
@@ -89,7 +89,7 @@ public class MovementController : ElympicsMonoBehaviour
             rb.drag = 0;
         }
 
-        climbing.ClimbingElympicsUpdate();
+        climbing.ClimbingElympicsUpdate(jumpPressed, shiftPressed, shiftReleased);
         StateHandler();
 
         ApplyMovement(movementDirection);
@@ -111,6 +111,7 @@ public class MovementController : ElympicsMonoBehaviour
                 break;
 
             case MovementState.climbing:
+                doubleJump = false;
                 climbing.ClimbingMovement();
                 break;
 
@@ -164,6 +165,7 @@ public class MovementController : ElympicsMonoBehaviour
     #region Moving Functions
     private void ApplyMovement(Vector3 movementDirection)
     {
+        if (climbing.getIsHolding()) return;
         Vector3 defaultVelocity = movementDirection * desiredMovementSpeed.Value * 25f;
 
         if (OnSlope() && !exitingSlope)
@@ -184,7 +186,11 @@ public class MovementController : ElympicsMonoBehaviour
             rb.AddForce(defaultVelocity * airMultiplier, ForceMode.Force);
         }
 
-        rb.useGravity= !OnSlope();
+        if (!isClimbing)
+        {
+            rb.useGravity= !OnSlope();
+        }
+        
     }
 
     private void SpeedControl()
@@ -195,7 +201,7 @@ public class MovementController : ElympicsMonoBehaviour
             {
                 rb.velocity = rb.velocity.normalized * desiredMovementSpeed.Value;
             }
-            actualMovementSpeed = rb.velocity.magnitude;
+            actualSpeed = rb.velocity.magnitude;
         }
         else
         {
@@ -207,7 +213,7 @@ public class MovementController : ElympicsMonoBehaviour
                 rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
             }
             flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-            actualMovementSpeed = flatVel.magnitude;
+            actualSpeed = flatVel.magnitude;
         }
     }
 
