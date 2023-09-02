@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public bool isDrawingPressed = false;
     public Vector2 movementInput;
     public bool isJumpPressed, isJumpReleased;
+    public bool isShiftPressed, isShiftReleased;
     public bool attackTriggered;
 
     #endregion
@@ -76,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
     public void MoveAround()
     {
-        movementController.ProcessMovement(movementInput, isJumpPressed, isJumpReleased);
+        movementController.ProcessMovement(movementInput, isJumpPressed, isJumpReleased, isShiftPressed, isShiftReleased);
     }
 
     #endregion
