@@ -15240,8 +15240,16 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4538622832906622208, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: climbJumpUpForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538622832906622208, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: maxWallLookAngle
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538622832906622208, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: climbJumpBackForce
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
