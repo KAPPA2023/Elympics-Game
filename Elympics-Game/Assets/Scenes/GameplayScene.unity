@@ -2769,6 +2769,10 @@ PrefabInstance:
       propertyPath: playerProvider
       value: 
       objectReference: {fileID: 508643193}
+    - target: {fileID: 2438685598099525384, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: networkId
+      value: 410
+      objectReference: {fileID: 0}
     - target: {fileID: 3137473122721184451, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: networkId
       value: 356
@@ -5439,6 +5443,10 @@ PrefabInstance:
       propertyPath: playerProvider
       value: 
       objectReference: {fileID: 508643193}
+    - target: {fileID: 2438685598099525384, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: networkId
+      value: 408
+      objectReference: {fileID: 0}
     - target: {fileID: 3137473122721184451, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: networkId
       value: 348
@@ -12210,6 +12218,10 @@ PrefabInstance:
       propertyPath: playerProvider
       value: 
       objectReference: {fileID: 508643193}
+    - target: {fileID: 2438685598099525384, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: networkId
+      value: 409
+      objectReference: {fileID: 0}
     - target: {fileID: 2625358936754478547, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: m_Volume
       value: 1
