@@ -7,11 +7,15 @@ public class Climbing : ElympicsMonoBehaviour
 {
     [Header("Climbing")]
     public float climbSpeed;
+    [SerializeField] private bool isHolding;
 
-
-    [Header("Input")]
+    //[Header("Input")]
     private float horizontalInput;
     private float verticalInput;
+    [Header("ClimbJumping")]
+    public float climbJumpUpForce;
+    public float climbJumpBackForce;
+
 
     [Header("Detection")]
     public float wallCheckDistance;
@@ -19,7 +23,11 @@ public class Climbing : ElympicsMonoBehaviour
     private float wallLookAngle;
 
     private RaycastHit frontWallHit;
+    private RaycastHit lastFrontWallHit;
     private bool wallFront;
+
+    private Transform lastWall;
+    private Vector3 lastWallNormal;
 
     [Header("References")]
     public Transform orientation;
@@ -31,15 +39,16 @@ public class Climbing : ElympicsMonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         movementController = GetComponent<MovementController>();
+        isHolding = false;
     }
 
-    public void ClimbingElympicsUpdate()
+    public void ClimbingElympicsUpdate(bool isJump, bool shiftPressed, bool shiftReleased)
     {
         horizontalInput = movementController.horizontalInput; 
         verticalInput = movementController.verticalInput;
 
         CheckForWall();
-        StateMachine();
+        StateMachine(isJump, shiftPressed, shiftReleased);
     }
 
     private void CheckForWall()
@@ -48,6 +57,10 @@ public class Climbing : ElympicsMonoBehaviour
         rayPos.y -= 0.9f;
 
         wallFront = Physics.Raycast(transform.position, orientation.forward, out frontWallHit, wallCheckDistance, whatIsWall);
+        if (wallFront)
+        {
+            lastFrontWallHit = frontWallHit;
+        }
         wallLookAngle = Vector3.Angle(orientation.forward, -frontWallHit.normal);
     }
 
@@ -56,8 +69,19 @@ public class Climbing : ElympicsMonoBehaviour
         return !Physics.Raycast(transform.position, Vector3.down, minJumpHeight, whatIsGround);
     }*/
 
-    private void StateMachine()
+    private void StateMachine(bool isJump, bool shiftPressed, bool shiftReleased)
     {
+        if (movementController.isClimbing && shiftPressed)
+        {
+            isHolding = true;
+            rb.velocity = new Vector3(0, 0, 0);
+        } 
+
+        if (isHolding && shiftReleased) 
+        {
+            isHolding = false;
+        }
+
         if (wallFront && verticalInput > 0 && wallLookAngle < maxWallLookAngle)
         {
             if (!movementController.isClimbing)
@@ -65,12 +89,17 @@ public class Climbing : ElympicsMonoBehaviour
                 StartClimbing();
             } 
         }
-        else if (!wallFront || verticalInput <= 0)
+        else if (!isHolding)
         {
             if (movementController.isClimbing)
             {
                 StopClimbing();
             }
+        }
+
+        if ((wallFront && isJump) || (isJump && isHolding))
+        {
+            ClimbJump();
         }
     }
 
@@ -83,13 +112,31 @@ public class Climbing : ElympicsMonoBehaviour
 
     public void ClimbingMovement()
     {
-        rb.velocity = new Vector3(rb.velocity.x, climbSpeed, rb.velocity.z);
+        if (!isHolding)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, climbSpeed, rb.velocity.z);
+        }
+        
+    }
+
+    private void ClimbJump()
+    {
+        Vector3 forceToApply = transform.up * climbJumpUpForce + lastFrontWallHit.normal * climbJumpBackForce;
+        isHolding = false;
+
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.AddForce(forceToApply, ForceMode.Impulse);
     }
 
     private void StopClimbing()
     {
         movementController.isClimbing = false;
         rb.useGravity = true;
+    }
+
+    public bool getIsHolding()
+    {
+        return isHolding;
     }
 
 

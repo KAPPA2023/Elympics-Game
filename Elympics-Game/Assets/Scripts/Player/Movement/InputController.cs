@@ -43,6 +43,8 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
         inputSerializer.Write(currentInput.mouseAxis.z);
         inputSerializer.Write(currentInput.jumpPressed);
         inputSerializer.Write(currentInput.jumpReleased);
+        inputSerializer.Write(currentInput.shiftPressed);
+        inputSerializer.Write(currentInput.shiftReleased);
         inputSerializer.Write(currentInput.attack_triggered);
         inputSerializer.Write(currentInput.isDrawing);
         inputSerializer.Write(currentInput.isDrawingReleased);
@@ -62,6 +64,8 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
         currentInput.movementInput = Vector2.zero;
         currentInput.jumpPressed = false;
         currentInput.jumpReleased = false;
+        currentInput.shiftPressed = false;
+        currentInput.shiftReleased = false;
         currentInput.attack_triggered = false;
         currentInput.shape = -1;
         currentInput.isDrawing = false;
@@ -70,10 +74,12 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
         {
             float x1, y1;
             bool spaceClicked, spaceReleased;
+            bool shiftPressed, shiftReleased;
             bool attack_triggered;
             bool isDrawing, isDrawingReleased;
             int shape;
             float xRotation, yRotation, zRotation;
+
             inputReader.Read(out x1);
             inputReader.Read(out y1);
             inputReader.Read(out xRotation);
@@ -81,13 +87,18 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
             inputReader.Read(out zRotation);
             inputReader.Read(out spaceClicked);
             inputReader.Read(out spaceReleased);
+            inputReader.Read(out shiftPressed);
+            inputReader.Read(out shiftReleased);
             inputReader.Read(out attack_triggered);
             inputReader.Read(out isDrawing);
             inputReader.Read(out isDrawingReleased);
             inputReader.Read(out shape);
+
             currentInput.movementInput = new Vector2(x1, y1);
             currentInput.jumpPressed = spaceClicked;
             currentInput.jumpReleased = spaceReleased;
+            currentInput.shiftPressed = shiftPressed;
+            currentInput.shiftReleased = shiftReleased;
             currentInput.shape = shape;
             currentInput.attack_triggered = attack_triggered;
             currentInput.isDrawing = isDrawing;
@@ -98,6 +109,8 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
             player.movementInput = currentInput.movementInput;
             player.isJumpPressed = currentInput.jumpPressed;
             player.isJumpReleased = currentInput.jumpReleased;
+            player.isShiftPressed = currentInput.shiftPressed;
+            player.isShiftReleased = currentInput.shiftReleased;
             player.attackTriggered = attack_triggered;
             player.shape = (Spells)shape;
 
