@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 393
+  networkId: 404
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -894,7 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 394
+  networkId: 405
   predictableFor:
     playerIndex: 0
   isUpdatableForNonOwners: 0
@@ -997,7 +997,7 @@ MonoBehaviour:
   verticalInput: 0
   GroundSpeed: 10
   ClimbingSpeed: 6
-  actualMovementSpeed: 0
+  actualSpeed: 0
   groundDrag: 10
   jumpForce: 30
   jumpCooldown: 0.25
@@ -1110,6 +1110,8 @@ MonoBehaviour:
   movementInput: {x: 0, y: 0}
   isJumpPressed: 0
   isJumpReleased: 0
+  isShiftPressed: 0
+  isShiftReleased: 0
   attackTriggered: 0
 --- !u!114 &8666594125141729840
 MonoBehaviour:
@@ -1160,6 +1162,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   climbSpeed: 0
+  isHolding: 0
+  climbJumpUpForce: 0
+  climbJumpBackForce: 0
   wallCheckDistance: 0.6
   maxWallLookAngle: 0
   orientation: {fileID: 3137473124097492630}
@@ -1342,7 +1347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 396
+  networkId: 406
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -1386,7 +1391,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7261433095512158615}
+  - {fileID: 7461537473973195586}
   m_Father: {fileID: 8438434591297149939}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1461,7 +1466,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4020895652875389103, guid: 0cbdc7adea809d54d9cf281bd19670e5, type: 3}
   m_PrefabInstance: {fileID: 1782825633}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &7156065395310925436
+--- !u!1001 &6919232934730626217
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1532,30 +1537,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nekomancer
       objectReference: {fileID: 0}
-    - target: {fileID: 8952350450108434459, guid: bb93d208689041b4d819faf3edc1f954, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1445895879689641486, guid: bb93d208689041b4d819faf3edc1f954, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb93d208689041b4d819faf3edc1f954, type: 3}
---- !u!4 &7261433095512158615 stripped
+--- !u!4 &7461537473973195586 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bb93d208689041b4d819faf3edc1f954, type: 3}
-  m_PrefabInstance: {fileID: 7156065395310925436}
+  m_PrefabInstance: {fileID: 6919232934730626217}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8038391255152208685 stripped
+--- !u!1 &7838344040692075000 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bb93d208689041b4d819faf3edc1f954, type: 3}
-  m_PrefabInstance: {fileID: 7156065395310925436}
+  m_PrefabInstance: {fileID: 6919232934730626217}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1447742056887274725
+--- !u!95 &6894936684025734451
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8038391255152208685}
+  m_GameObject: {fileID: 7838344040692075000}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 29a25fb1f0b055548b915941a53e4527, type: 2}
@@ -1569,48 +1570,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4572732647357231346
+--- !u!114 &2438685598099525384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8038391255152208685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb626bba4c63ef54fb314cfab4220d44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disabledParameters: []
-  disabledLayers: []
---- !u!114 &5570144192853890842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8038391255152208685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbfc66ac5d30a7a41902439a8312419b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementController: {fileID: 3137473124097492648}
-  deathController: {fileID: 1321588518}
---- !u!114 &6742347755127074062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8038391255152208685}
+  m_GameObject: {fileID: 7838344040692075000}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 334c2a3facb248ac8c1a599797c52dae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 411
+  networkId: 407
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -1626,3 +1599,31 @@ MonoBehaviour:
   - stageDurationInMiliseconds: 1000
     frequencyInMiliseconds: 1000
     maxStageDurationInMiliseconds: 5000
+--- !u!114 &6984042895995252533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7838344040692075000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb626bba4c63ef54fb314cfab4220d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabledParameters: []
+  disabledLayers: []
+--- !u!114 &1793183349774123729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7838344040692075000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbfc66ac5d30a7a41902439a8312419b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementController: {fileID: 3137473124097492648}
+  deathController: {fileID: 1321588518}

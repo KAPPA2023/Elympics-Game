@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 4
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.12795559, g: 0.15853101, b: 0.20982656, a: 1}
+  m_IndirectSpecularColor: {r: 262.1853, g: 324.85815, b: 429.9668, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2769,6 +2769,10 @@ PrefabInstance:
       propertyPath: playerProvider
       value: 
       objectReference: {fileID: 508643193}
+    - target: {fileID: 2438685598099525384, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: networkId
+      value: 410
+      objectReference: {fileID: 0}
     - target: {fileID: 3137473122721184451, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: networkId
       value: 356
@@ -2864,10 +2868,6 @@ PrefabInstance:
     - target: {fileID: 6219591525258734665, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: networkId
       value: 354
-      objectReference: {fileID: 0}
-    - target: {fileID: 6742347755127074062, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-      propertyPath: networkId
-      value: 390
       objectReference: {fileID: 0}
     - target: {fileID: 7074634776962812467, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5443,10 +5443,10 @@ PrefabInstance:
       propertyPath: playerProvider
       value: 
       objectReference: {fileID: 508643193}
-    - target: {fileID: 2265962474911866471, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0ed6379c7fcb52647a32dda5a31fb6bc, type: 2}
+    - target: {fileID: 2438685598099525384, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: networkId
+      value: 408
+      objectReference: {fileID: 0}
     - target: {fileID: 3137473122721184451, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: networkId
       value: 348
@@ -5542,10 +5542,6 @@ PrefabInstance:
     - target: {fileID: 6219591525258734665, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: networkId
       value: 346
-      objectReference: {fileID: 0}
-    - target: {fileID: 6742347755127074062, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-      propertyPath: networkId
-      value: 392
       objectReference: {fileID: 0}
     - target: {fileID: 7074634776962812467, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -7645,10 +7641,6 @@ PrefabInstance:
     - target: {fileID: 6219591525258734665, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: networkId
       value: 353
-      objectReference: {fileID: 0}
-    - target: {fileID: 6742347755127074062, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
-      propertyPath: networkId
-      value: 391
       objectReference: {fileID: 0}
     - target: {fileID: 7074634776962812467, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -12226,6 +12218,10 @@ PrefabInstance:
       propertyPath: playerProvider
       value: 
       objectReference: {fileID: 508643193}
+    - target: {fileID: 2438685598099525384, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: networkId
+      value: 409
+      objectReference: {fileID: 0}
     - target: {fileID: 2625358936754478547, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: m_Volume
       value: 1
