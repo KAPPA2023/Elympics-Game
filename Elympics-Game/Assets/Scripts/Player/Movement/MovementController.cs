@@ -136,21 +136,21 @@ public class MovementController : ElympicsMonoBehaviour
         if (isClimbing)
         {
             state = MovementState.climbing;
-            MovementValuesChanged?.Invoke(state,movementDirection);
+            MovementValuesChanged?.Invoke(state,rb.velocity);
             desiredMovementSpeed.Value = ClimbingSpeed;
         } 
 
         else if (GroundCheck())
         {
             state = MovementState.walking;
-            MovementValuesChanged?.Invoke(state,movementDirection);
+            MovementValuesChanged?.Invoke(state,rb.velocity);
             desiredMovementSpeed.Value = GroundSpeed;
         } 
 
         else
         {
             state = MovementState.air;
-            MovementValuesChanged?.Invoke(state,movementDirection);
+            MovementValuesChanged?.Invoke(state,rb.velocity);
             desiredMovementSpeed.Value = GroundSpeed;
         }
         

@@ -9,6 +9,7 @@ public class ThirdPersonAnimatorController : MonoBehaviour
    [SerializeField] private DeathController deathController;
    
    private readonly int movementForwardParameterHash = Animator.StringToHash("MovementForward");
+   private readonly int movementRightParameterHash = Animator.StringToHash("MovementRight");
    private readonly int deathTriggerParameterHash = Animator.StringToHash("DeathTrigger");
    private readonly int resetTriggerParameterHash = Animator.StringToHash("ResetTrigger");
    private readonly int jumpingTriggerParameterHash = Animator.StringToHash("JumpTrigger");
@@ -36,6 +37,7 @@ public class ThirdPersonAnimatorController : MonoBehaviour
 
    private void ProcessMovementValues(MovementState state,Vector3 movementDirection)
    {
+      var localMovementDirection = movementController.transform.InverseTransformDirection(movementDirection);
       if (state != MovementState.air)
       {
          if (!thirdPersonAnimator.GetBool(isGroundedParameterHash))
@@ -47,8 +49,10 @@ public class ThirdPersonAnimatorController : MonoBehaviour
       switch (state)
       {
          case MovementState.walking: 
-            var localMovementDirection = movementDirection.magnitude;
-            thirdPersonAnimator.SetFloat(movementForwardParameterHash, localMovementDirection);
+            
+            Debug.Log(localMovementDirection);
+            thirdPersonAnimator.SetFloat(movementForwardParameterHash, localMovementDirection.z);
+            thirdPersonAnimator.SetFloat(movementRightParameterHash, localMovementDirection.x);
             break;
          case MovementState.climbing: break;
          case MovementState.air: 
