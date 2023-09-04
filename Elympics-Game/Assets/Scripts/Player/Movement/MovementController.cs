@@ -38,7 +38,7 @@ public class MovementController : ElympicsMonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     //private bool readyToJump = true;
-    private bool doubleJump = false;
+    [SerializeField] private bool doubleJump = false;
     #endregion
 
     #region Slope Variables
@@ -116,7 +116,7 @@ public class MovementController : ElympicsMonoBehaviour
                 break;
 
             case MovementState.air:
-                if (jumpReleased && rb.velocity.y > 0)
+                if (jumpReleased && rb.velocity.y > 0 && doubleJump)
                 {
                     rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0.6f, rb.velocity.z);
                 }
@@ -292,6 +292,11 @@ public class MovementController : ElympicsMonoBehaviour
     }
 
     #endregion
+
+    public void OffDoubleJump()
+    {
+        doubleJump = false;
+    }
 
     public void OnDrawGizmos()
     {
