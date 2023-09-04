@@ -5,16 +5,17 @@ using UnityEngine;
 
 public class JumpPad : ElympicsMonoBehaviour
 {
-    Rigidbody rb;
+    MovementController mc;
     public float jumpForce;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            rb = other.GetComponent<Rigidbody>();
-            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            mc = other.GetComponent<MovementController>();
+            mc.OffDoubleJump();
+            mc.rb.velocity = new Vector3(mc.rb.velocity.x, 0, mc.rb.velocity.z);
+            mc.rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 

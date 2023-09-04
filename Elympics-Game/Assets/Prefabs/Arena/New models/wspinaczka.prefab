@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3143373779990669206}
   - component: {fileID: -5754084199372789682}
   - component: {fileID: -7511558181221131132}
-  - component: {fileID: -7582303687773322100}
-  m_Layer: 0
+  - component: {fileID: 1166364796358533871}
+  m_Layer: 7
   m_Name: wspinaczka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-7582303687773322100
-MeshCollider:
+--- !u!65 &1166364796358533871
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1559343679723820286, guid: 4b4e38fb012476d4a98d86d874eb58be, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.0054894183, y: 0.005489425, z: 0.036697797}
+  m_Center: {x: -0.000025553163, y: 0.000288372, z: -0.0020672982}

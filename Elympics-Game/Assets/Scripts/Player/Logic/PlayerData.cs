@@ -21,7 +21,7 @@ public class PlayerData : ElympicsMonoBehaviour
                 break;
 
             case 1:
-                GetComponent<MovementController>().jumpForce = 40; 
+                GetComponent<MovementController>().jumpForce = 32; 
                 break;
 
             case 2:

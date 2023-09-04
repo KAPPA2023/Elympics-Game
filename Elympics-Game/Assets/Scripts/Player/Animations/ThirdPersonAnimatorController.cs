@@ -49,8 +49,6 @@ public class ThirdPersonAnimatorController : MonoBehaviour
       switch (state)
       {
          case MovementState.walking: 
-            
-            Debug.Log(localMovementDirection);
             thirdPersonAnimator.SetFloat(movementForwardParameterHash, localMovementDirection.z);
             thirdPersonAnimator.SetFloat(movementRightParameterHash, localMovementDirection.x);
             break;

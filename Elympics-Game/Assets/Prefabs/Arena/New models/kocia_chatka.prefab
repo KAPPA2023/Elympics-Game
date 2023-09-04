@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -5754084199372789682}
   - component: {fileID: -7511558181221131132}
   - component: {fileID: -5381567024582221569}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: kocia_chatka
   m_TagString: Untagged
   m_Icon: {fileID: 0}

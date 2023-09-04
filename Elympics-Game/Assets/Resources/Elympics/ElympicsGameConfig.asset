@@ -17,7 +17,7 @@ MonoBehaviour:
   gameVersion: 20
   players: 4
   gameplayScene: Assets/Scenes/GameplayScene.unity
-  gameplaySceneAsset: {fileID: 102900000, guid: 96a5c199042c94a4ab41883ae7452d8c, type: 3}
+  gameplaySceneAsset: {fileID: 102900000, guid: 1f78e613bb0bf7f43b682b6a68911851, type: 3}
   botsInServer: 1
   useWeb: 0
   legacyMatchmakingClient: 0
