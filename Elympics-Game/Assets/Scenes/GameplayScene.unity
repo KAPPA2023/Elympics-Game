@@ -721,6 +721,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 69dc3fbed81603e48880224a7cfd0312, type: 2}
+    - target: {fileID: 5623605398389208695, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: networkId
+      value: 504
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623605398389208695, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: forceNetworkId
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6219591525258734665, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: networkId
       value: 354
@@ -2014,6 +2022,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 869361cb94c1b2d4fbb4a75a5b5a296a, type: 2}
+    - target: {fileID: 5623605398389208695, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: networkId
+      value: 502
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623605398389208695, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: forceNetworkId
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6219591525258734665, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: networkId
       value: 346
@@ -3302,6 +3318,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 597417d448b747445934bed391d47c01, type: 2}
+    - target: {fileID: 5623605398389208695, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: networkId
+      value: 503
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623605398389208695, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: forceNetworkId
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6219591525258734665, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: networkId
       value: 353
@@ -5806,6 +5830,14 @@ PrefabInstance:
     - target: {fileID: 4538622832906622208, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: climbJumpBackForce
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623605398389208695, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: networkId
+      value: 501
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623605398389208695, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: forceNetworkId
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
