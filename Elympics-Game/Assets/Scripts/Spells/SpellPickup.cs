@@ -9,6 +9,7 @@ public class SpellPickup : ElympicsMonoBehaviour, IUpdatable, IInitializable
     [SerializeField] private List<GameObject> orbs;
     [SerializeField] private int spellType = 0;
     [SerializeField] private float respawnTime = 5.0f;
+    [SerializeField] private AudioSource audioSource;
     
     private ElympicsFloat timeToSpawn = new ElympicsFloat();
     private ElympicsBool empty = new ElympicsBool(false);
@@ -62,6 +63,7 @@ public class SpellPickup : ElympicsMonoBehaviour, IUpdatable, IInitializable
             {
                 timeToSpawn.Value = respawnTime;
                 empty.Value = true;
+                audioSource.Play();
             }
         }
     }

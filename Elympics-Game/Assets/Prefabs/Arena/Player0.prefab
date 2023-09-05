@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 573
+  networkId: 597
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -843,7 +843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 574
+  networkId: 598
   predictableFor:
     playerIndex: 0
   isUpdatableForNonOwners: 0
@@ -1283,7 +1283,7 @@ MonoBehaviour:
   playerData: {fileID: 3137473124097492647}
   clips:
   - {fileID: 8300000, guid: bb6cdd13aeb95f743847b1cd460889bc, type: 3}
-  - {fileID: 8300000, guid: a37f44cbf8c2a7443a3c361efa2f233a, type: 3}
+  - {fileID: 8300000, guid: 7ba1c845a85f9454ab1db7db59845c59, type: 3}
 --- !u!114 &8230384152248345368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1297,7 +1297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 575
+  networkId: 599
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
