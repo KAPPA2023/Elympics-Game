@@ -40,7 +40,7 @@ MonoBehaviour:
   prediction: 1
   predictionLimitInTicks: 8
   detailedNetworkLog: 0
-  mode: 1
+  mode: 0
   halfRemoteMode: 0
   useWebInHalfRemote: 0
   ipForHalfRemoteMode: 127.0.0.1
@@ -52,6 +52,16 @@ MonoBehaviour:
     regionName: 
   testPlayers:
   - userId: 0
+    isBot: 0
+    botDifficulty: 0
+    gameEngineData: 
+    matchmakerData: []
+  - userId: 1
+    isBot: 0
+    botDifficulty: 0
+    gameEngineData: 
+    matchmakerData: []
+  - userId: 1
     isBot: 0
     botDifficulty: 0
     gameEngineData: 
