@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 8307770773954939494}
   - component: {fileID: -5754084199372789682}
   - component: {fileID: -7511558181221131132}
-  - component: {fileID: -4933325730920206858}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: kocia_chatka_srednia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,9 +25,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892875866571202866}
-  m_LocalRotation: {x: 0.5, y: -0.49999997, z: -0.5, w: -0.5}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 199.22467, y: 134.62947, z: 134.62947}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -41,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892875866571202866}
-  m_Mesh: {fileID: -4911361834480297450, guid: 5828ffa46e149534fb049bbd9b0c32c6, type: 3}
+  m_Mesh: {fileID: -3264061638631387394, guid: ed6eeeb2487c94c42961a50da9f8ba77, type: 3}
 --- !u!23 &-7511558181221131132
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -62,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6809805306223338296, guid: 5828ffa46e149534fb049bbd9b0c32c6, type: 3}
+  - {fileID: -6809805306223338296, guid: ed6eeeb2487c94c42961a50da9f8ba77, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,17 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-4933325730920206858
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892875866571202866}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4911361834480297450, guid: 5828ffa46e149534fb049bbd9b0c32c6, type: 3}
