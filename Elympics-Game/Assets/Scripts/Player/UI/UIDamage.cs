@@ -9,10 +9,12 @@ public class UIDamage : MonoBehaviour
 {
     [SerializeField] private GameObject hitmark;
     [SerializeField] private GameObject deathScreen;
+    [SerializeField] private GameObject damagedScreen;
     [SerializeField] private PlayerProvider playerProvider;
     [SerializeField] private Image smokeEffectsOverlay;
 
     private float _remainingHitmarkTime = 0.0f;
+    private float _remainingDamagedTime = 0.0f;
     
     private void Start()
     {
@@ -33,15 +35,34 @@ public class UIDamage : MonoBehaviour
         {
             hitmark.SetActive(false);
         }
+        
+        if (_remainingDamagedTime > 0.0f)
+        {
+            _remainingDamagedTime -= Time.deltaTime;
+        }
+        else if (damagedScreen.activeInHierarchy)
+        {
+            damagedScreen.SetActive(false);
+        }
     }
 
     private void SubscribeToStatsController()
     {
         var clientPlayerData = playerProvider.ClientPlayer;
+        clientPlayerData.GetComponent<StatsController>()._health.ValueChanged += OnDamaged;
         clientPlayerData.GetComponent<DeathController>().IsDead.ValueChanged += OnDeath;
         clientPlayerData.GetComponentInChildren<SpellSpawner>().SpellHit += OnEnemyDamaged;
         clientPlayerData.GetComponent<StatsController>().blindPower.ValueChanged += OnBlind;
         clientPlayerData.GetComponent<StatsController>().isBlind.ValueChanged += WaterBlind;
+    }
+    
+    private void OnDamaged(float oldVal, float newVal)
+    {
+        if (newVal < oldVal)
+        {
+            damagedScreen.SetActive(true);
+            _remainingDamagedTime = 0.2f;
+        }
     }
     
     private void OnEnemyDamaged()
@@ -49,6 +70,7 @@ public class UIDamage : MonoBehaviour
         hitmark.SetActive(true); 
         _remainingHitmarkTime = 0.2f;
     }
+    
     private void OnDeath(bool oldVal, bool newVal)
     {
         deathScreen.SetActive(newVal);
@@ -60,14 +82,10 @@ public class UIDamage : MonoBehaviour
         if (newValue < 2f)
         {
             overlay = new Color(0.6f,0.6f,0.6f, 2f-newValue);
-            
-            
             if (newValue < 0.5f )
             {
                 overlay = new Color(0.6f,0.6f,0.6f, 1);
             }
-
-            
         }
         smokeEffectsOverlay.color = overlay;
       
