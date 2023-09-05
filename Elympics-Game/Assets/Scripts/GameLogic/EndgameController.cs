@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Elympics;
-using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class EndgameController : MonoBehaviour
 {
@@ -27,6 +27,8 @@ public class EndgameController : MonoBehaviour
         if (newState)
         {
             screen.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
 
             TextMeshProUGUI text = screen.GetComponentInChildren<TextMeshProUGUI>();
             var winners = GetWinner();
@@ -66,5 +68,10 @@ public class EndgameController : MonoBehaviour
             }
         }
         return winners;
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
