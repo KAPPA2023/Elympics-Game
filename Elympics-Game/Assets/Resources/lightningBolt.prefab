@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869681303c06bbe4b8bd4aea52acea1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellDamage: 20
+  spellDamage: 40
   spellSpeed: 60
   lifeTime: 5
   bounces: 5

@@ -28,6 +28,6 @@ public class TornadoSpell : Spell
     public override void ApplyModifier()
     {
         base.ApplyModifier();
-        knockbackForce *= 3f;
+        knockbackForce *= 2f;
     }
 }
