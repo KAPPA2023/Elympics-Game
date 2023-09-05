@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 597
+  networkId: 600
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -843,7 +843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 598
+  networkId: 601
   predictableFor:
     playerIndex: 0
   isUpdatableForNonOwners: 0
@@ -1297,7 +1297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 599
+  networkId: 602
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -1483,6 +1483,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -2560972870453784174, guid: e2a4980b0980cfd4e861f88076842b81, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f0694e53ced529f4886a1028f587f001, type: 2}
     - target: {fileID: 919132149155446097, guid: e2a4980b0980cfd4e861f88076842b81, type: 3}
       propertyPath: m_Name
       value: NekomantaRece
@@ -1605,6 +1609,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nekomancer
       objectReference: {fileID: 0}
+    - target: {fileID: 2389543253283562115, guid: bb93d208689041b4d819faf3edc1f954, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f0694e53ced529f4886a1028f587f001, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb93d208689041b4d819faf3edc1f954, type: 3}
 --- !u!4 &7461537473973195586 stripped
