@@ -22,6 +22,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     public bool theMagician = false;
     public static event Action OnBadSpell = null;
     public static event Action OnGoodSpell = null;
+    public static event Action SpellCasted = null;
 
 
     protected ElympicsFloat currentTimeBetweenShoots = new ElympicsFloat();
@@ -44,10 +45,12 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
         {
             spellSpawner.TrySpawningSpell(_selectedSpell,direction, GetComponent<PlayerData>().PlayerId, _selectedSpell == (Spells)modified);
             _remainingUses.Value--;
+            SpellCasted?.Invoke();
         }
         else 
         {
             CastBasicAttack(direction);
+            SpellCasted?.Invoke();
         }
 
         currentTimeBetweenShoots.Value = 0.0f;
