@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 607
+  networkId: 616
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -843,7 +843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 608
+  networkId: 617
   predictableFor:
     playerIndex: 0
   isUpdatableForNonOwners: 0
@@ -1298,7 +1298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 609
+  networkId: 618
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -1533,7 +1533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 610
+  networkId: 615
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -1594,16 +1594,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2d859fdde2694e4aa817bf04620cb52, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c2d859fdde2694e4aa817bf04620cb52, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c2d859fdde2694e4aa817bf04620cb52, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c2d859fdde2694e4aa817bf04620cb52, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.158
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2d859fdde2694e4aa817bf04620cb52, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.483
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2d859fdde2694e4aa817bf04620cb52, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.399
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2d859fdde2694e4aa817bf04620cb52, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1633,6 +1645,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c2d859fdde2694e4aa817bf04620cb52, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6769349466047048602, guid: c2d859fdde2694e4aa817bf04620cb52, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7dc6ea185d8698d449cecb61e4074773, type: 2}
     - target: {fileID: 919132149155446097, guid: c2d859fdde2694e4aa817bf04620cb52, type: 3}
       propertyPath: m_Name
       value: udonista_lapki_animacje
