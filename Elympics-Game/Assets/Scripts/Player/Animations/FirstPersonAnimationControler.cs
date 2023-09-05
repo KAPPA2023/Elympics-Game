@@ -7,6 +7,7 @@ public class FirstPersonAnimationControler : MonoBehaviour
 {
    [SerializeField] private MovementController movementController;
    [SerializeField] private DeathController deathController;
+   [SerializeField] private ActionHandler actionController;
    
    private readonly int movementForwardParameterHash = Animator.StringToHash("VelocityZ");
    private readonly int movementRightParameterHash = Animator.StringToHash("VelocityX");
@@ -24,8 +25,13 @@ public class FirstPersonAnimationControler : MonoBehaviour
       thirdPersonAnimator = GetComponent<Animator>();
       movementController.MovementValuesChanged += ProcessMovementValues;
       deathController.IsDead.ValueChanged += ProcessDeathState;
+      actionController.SpellCasted += castState;
    }
-   
+
+   private void castState()
+   {
+      thirdPersonAnimator.SetTrigger(castTriggerParameterHash);
+   }
    private void ProcessDeathState(bool lastValue, bool newValue)
    {
       if (newValue)

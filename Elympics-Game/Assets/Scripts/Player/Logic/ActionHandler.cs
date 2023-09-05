@@ -22,7 +22,7 @@ public class ActionHandler : ElympicsMonoBehaviour, IUpdatable
     public bool theMagician = false;
     public static event Action OnBadSpell = null;
     public static event Action OnGoodSpell = null;
-    public static event Action SpellCasted = null;
+    public  event Action SpellCasted = null;
 
 
     protected ElympicsFloat currentTimeBetweenShoots = new ElympicsFloat();

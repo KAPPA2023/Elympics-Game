@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 600
+  networkId: 603
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -843,7 +843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 601
+  networkId: 604
   predictableFor:
     playerIndex: 0
   isUpdatableForNonOwners: 0
@@ -911,6 +911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shapeInput: {fileID: 3137473124097492654}
+  enabled: 1
   mouseSensivity: 2.1
   verticalAngleLimits: {x: -90, y: 90}
 --- !u!114 &3137473124097492655
@@ -1297,7 +1298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 602
+  networkId: 605
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -1533,6 +1534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementController: {fileID: 3137473124097492648}
   deathController: {fileID: 1321588518}
+  actionController: {fileID: 3137473124097492642}
 --- !u!4 &6659801045521362251 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e2a4980b0980cfd4e861f88076842b81, type: 3}
