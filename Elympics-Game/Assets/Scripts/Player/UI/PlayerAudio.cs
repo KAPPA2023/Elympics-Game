@@ -12,17 +12,20 @@ public class PlayerAudio : ElympicsMonoBehaviour
 
     private void Awake()
     {
-        playerData.GetComponent<DeathController>().IsDead.ValueChanged += OnDeath;
+        playerData.GetComponent<DeathController>().GetComponent<StatsController>()._health.ValueChanged += OnDamaged;
         if ((int)Elympics.Player == playerData.PlayerId)
         {
             playerData.GetComponentInChildren<SpellSpawner>().SpellHit += OnEnemyDamaged;
         }
     }
 
-    private void OnDeath(bool oldVal, bool newVal)
+    private void OnDamaged(float oldVal, float newVal)
     {
-        audioSource.spatialBlend = 1f;
-        audioSource.PlayOneShot(clips[1]);
+        if (newVal < oldVal)
+        {
+            audioSource.spatialBlend = 1f;
+            audioSource.PlayOneShot(clips[1]);
+        }
     }
     
     private void OnEnemyDamaged()

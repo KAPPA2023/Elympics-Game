@@ -9,6 +9,7 @@ public class HealingStation : ElympicsMonoBehaviour, IUpdatable, IInitializable
     [SerializeField] private GameObject orb;
     [SerializeField] private float respawnTime = 5.0f;
     [SerializeField] private float healingValue = 50.0f;
+    [SerializeField] private AudioSource audioSource;
     
     private ElympicsFloat timeToSpawn = new ElympicsFloat();
     private ElympicsBool _empty = new ElympicsBool(false);
@@ -30,6 +31,7 @@ public class HealingStation : ElympicsMonoBehaviour, IUpdatable, IInitializable
                 player.ChangeHealth(-healingValue,player.GetComponent<PlayerData>().PlayerId);
                 timeToSpawn.Value = respawnTime; 
                 _empty.Value = true;
+                audioSource.Play();
             }
         }
     }
