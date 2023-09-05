@@ -17,6 +17,7 @@ public class FirstPersonAnimationControler : MonoBehaviour
    private readonly int climbingTriggerParameterHash = Animator.StringToHash("ClimbTrigger");
    private readonly int isClimbing = Animator.StringToHash("IsClimbing");
    private readonly int isGroundedParameterHash = Animator.StringToHash("IsGrounded");
+   private bool canClimb = true;
    
 
    private Animator thirdPersonAnimator = null;
@@ -47,7 +48,7 @@ public class FirstPersonAnimationControler : MonoBehaviour
    private void ProcessMovementValues(MovementState state,Vector3 movementDirection)
    {
       var localMovementDirection = movementController.transform.InverseTransformDirection(movementDirection);
-      
+      if(localMovementDirection.y > 1)canClimb = true;
      
       
       switch (state)
@@ -56,16 +57,23 @@ public class FirstPersonAnimationControler : MonoBehaviour
             thirdPersonAnimator.SetBool(isClimbing, false);
             thirdPersonAnimator.SetFloat(movementForwardParameterHash,  localMovementDirection.z );
             thirdPersonAnimator.SetFloat(movementRightParameterHash,  localMovementDirection.x );
+            
             break;
          case MovementState.climbing:
+            if (canClimb)
+            {
                thirdPersonAnimator.SetTrigger(climbingTriggerParameterHash);
-               thirdPersonAnimator.SetFloat(movementUpParameterHash, localMovementDirection.normalized.y);
-               thirdPersonAnimator.SetBool(isClimbing, true); 
+               thirdPersonAnimator.SetBool(isClimbing, true);
+               canClimb = false;
+            }
+            thirdPersonAnimator.SetFloat(movementUpParameterHash, localMovementDirection.normalized.y);
+               
             
   
             break;
          case MovementState.air: 
             thirdPersonAnimator.SetBool(isClimbing, false);
+            
 
             break;
             
