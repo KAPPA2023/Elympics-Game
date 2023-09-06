@@ -49,6 +49,8 @@ public class StartGameController : ElympicsMonoBehaviour
 
     private void ApplyPlayerModifiers()
     {
+        playerProvider.UpdatePlayerProvider();
+        
         var players = playerProvider.AllPlayersInScene;
         foreach (var player in players)
         {
