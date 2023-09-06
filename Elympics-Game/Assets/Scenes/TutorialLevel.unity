@@ -524,7 +524,7 @@ MonoBehaviour:
     Each one require to draw  the symbol of spell before using it. To do that you
     must hold right mouse button (RMB), atempt to draw it corectly, and realase button
     when you're done. Healnip allows you to heal yourself. Try using the new spells
-    against the enemies on the next platforms.
+    here. You can also press ESC if you want to return to menu.
 --- !u!1 &104508771
 GameObject:
   m_ObjectHideFlags: 0
@@ -3876,6 +3876,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 787f02b3d717dd64299f32a2b692a0f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerCount:
+    currentValue: 0
 --- !u!114 &1570133326
 MonoBehaviour:
   m_ObjectHideFlags: 0
