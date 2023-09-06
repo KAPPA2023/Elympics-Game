@@ -48,7 +48,7 @@ public class FirstPersonAnimationControler : MonoBehaviour
    private void ProcessMovementValues(MovementState state,Vector3 movementDirection)
    {
       var localMovementDirection = movementController.transform.InverseTransformDirection(movementDirection);
-      if(localMovementDirection.y > 1)canClimb = true;
+      if(localMovementDirection.y < 1)canClimb = true;
      
       
       switch (state)
