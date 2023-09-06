@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 632
+  networkId: 640
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -774,6 +774,7 @@ GameObject:
   - component: {fileID: 1321588518}
   - component: {fileID: 4538622832906622208}
   - component: {fileID: 4240076674685522278}
+  - component: {fileID: 5979362533156674169}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -843,7 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 633
+  networkId: 641
   predictableFor:
     playerIndex: 0
   isUpdatableForNonOwners: 0
@@ -1138,6 +1139,18 @@ MonoBehaviour:
   - {fileID: 849967897157127096}
   thirdPersonRendererRoots:
   - {fileID: 9176284654384917235}
+--- !u!114 &5979362533156674169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3137473124097492626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f422823cf7c74d30b6473ef0e0097292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4119903121104878163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,7 +1311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 634
+  networkId: 642
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
@@ -1533,7 +1546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 631
+  networkId: 639
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
