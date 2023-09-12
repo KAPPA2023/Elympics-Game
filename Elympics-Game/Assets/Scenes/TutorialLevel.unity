@@ -4331,6 +4331,42 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3001714924917078022, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
+      propertyPath: m_RootOrder
+      value: 56
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085692753768999497, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
+      propertyPath: m_RootOrder
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3148774547973692388, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
+      propertyPath: m_RootOrder
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212618773535830735, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
+      propertyPath: m_RootOrder
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646774259271735274, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
+      propertyPath: m_RootOrder
+      value: 57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686923776344991734, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
+      propertyPath: m_RootOrder
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 5561507383913156522, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
+      propertyPath: m_RootOrder
+      value: 54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6800911628627230849, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
+      propertyPath: m_RootOrder
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824085584213744722, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
+      propertyPath: m_RootOrder
+      value: 47
+      objectReference: {fileID: 0}
     - target: {fileID: 8112076936712819021, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4378,6 +4414,14 @@ PrefabInstance:
     - target: {fileID: 8237902994491656543, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
       propertyPath: m_Name
       value: Tutorial_arena
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397298821497130943, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
+      propertyPath: m_RootOrder
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032713886832510236, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
+      propertyPath: m_RootOrder
+      value: 51
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
