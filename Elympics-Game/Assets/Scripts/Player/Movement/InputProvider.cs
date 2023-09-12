@@ -7,6 +7,7 @@ using PDollarGestureRecognizer;
 public class InputProvider : MonoBehaviour
 {
     [SerializeField] private ShapeInput _shapeInput;
+    [HideInInspector] public bool enabled = true;
     private List<Point> _points = new List<Point>();
     private GatheredInput _gatheredInput;
     Vector2 _position;
@@ -25,6 +26,7 @@ public class InputProvider : MonoBehaviour
 
     public void UpdateInput()
     {
+        if(!enabled) return;
         _gatheredInput.movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {

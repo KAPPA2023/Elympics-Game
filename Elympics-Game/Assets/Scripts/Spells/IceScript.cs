@@ -19,6 +19,6 @@ public class IceScript : Spell
     public override void ApplyModifier()
     {
         base.ApplyModifier();
-        slowValue = 0.1f;
+        slowValue = 0.2f;
     }
 }

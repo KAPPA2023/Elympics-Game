@@ -19,6 +19,7 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
 
     public ElympicsFloat _health = new ElympicsFloat(0);
     public event Action<float, float> HealthValueChanged = null;
+    private int fireDamage = 2;
    
     public void Initialize()
     {
@@ -104,7 +105,7 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
     {
         for (;;)
         {
-            ChangeHealth(3f, caster);
+            ChangeHealth(fireDamage, caster);
             yield return new WaitForSeconds(0.2f);
         }
     }

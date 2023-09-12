@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   burnDuration:
-    currentValue: 3
+    currentValue: 2
 --- !u!82 &5004281430705327244
 AudioSource:
   m_ObjectHideFlags: 0

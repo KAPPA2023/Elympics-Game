@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Elympics;
-using UnityEngine.SceneManagement;
+
 
 public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
 {
@@ -16,7 +16,6 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
     private void Awake()
     {
         player = GetComponent<PlayerController>();
-        gameManager.PostGameTime.ValueChanged += BacktoMenu;
     }
 
     private void Update()
@@ -118,15 +117,4 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
         }
         
     }
-    
-    //TODO: remove this
-    private void BacktoMenu(float oldVal, float newValue)
-    {
-        if(Elympics.IsServer) return;
-        if (newValue < 0.1f)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        }
-    }
-    
 }
