@@ -3,16 +3,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class StartGameController : ElympicsMonoBehaviour
 {
     [SerializeField] private GameObject basicAreaRoot;
     [SerializeField] private GameObject additionalPlatformsRoot;
-    [SerializeField] private GameObject movingPlatformsRoot;
+    [SerializeField] private GameObject additionalJumpPadsRoot;
     [SerializeField] private GameObject areaWithHolesRoot;
     [SerializeField] private GameObject additionalSpellPickupsRoot;
     public ElympicsInt staticGameModifier = new ElympicsInt(-1);
-    public ElympicsInt dynamicGameModifier = new ElympicsInt(-1);
     public ElympicsInt playerModifier = new ElympicsInt(-1);
     public ElympicsInt enchancedSpell = new ElympicsInt(-1);
     public ElympicsBool IsReady = new ElympicsBool(false);
@@ -21,15 +21,9 @@ public class StartGameController : ElympicsMonoBehaviour
 
     public void drawTarotCards()
     {
-        staticGameModifier.Value = UnityEngine.Random.Range(0, 3);
-        dynamicGameModifier.Value = UnityEngine.Random.Range(0, 3);
+        enchancedSpell.Value = UnityEngine.Random.Range(0, 6);
         playerModifier.Value = UnityEngine.Random.Range(0, 3);
-
-        if (playerModifier.Value == 2)
-        {
-            enchancedSpell.Value = UnityEngine.Random.Range(0, 6);
-        }
-        
+        staticGameModifier.Value = UnityEngine.Random.Range(0, 4);
         IsReady.Value = true;
     }
 
@@ -55,10 +49,6 @@ public class StartGameController : ElympicsMonoBehaviour
         foreach (var player in players)
         {
             player.ApplyModifier(playerModifier.Value, enchancedSpell.Value);
-            if (dynamicGameModifier.Value == 2)
-            {
-                player.SetMagician();
-            }
         }
     }
 
@@ -67,16 +57,25 @@ public class StartGameController : ElympicsMonoBehaviour
         switch (staticGameModifier.Value)
         {
             case 0:
-                additionalPlatformsRoot.SetActive(true); 
+                //mystery spell pickups
                 break;
             case 1:
+                //more spell pickups
+                additionalSpellPickupsRoot.SetActive(true);
+                break;
+            case 2:
+                //More platforms
+                additionalPlatformsRoot.SetActive(true); 
+                break;
+            case 3:
+                //map with holes
                 basicAreaRoot.SetActive(false);
                 areaWithHolesRoot.SetActive(true);
                 break;
-            case 2:
-                movingPlatformsRoot.SetActive(true);
+            case 4:
+                //more jump pads
+                additionalJumpPadsRoot.SetActive(true);
                 break;
         }
     }
-
 }
