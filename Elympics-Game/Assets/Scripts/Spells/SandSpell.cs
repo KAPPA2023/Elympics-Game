@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SandSpell : Spell
 {
-    [SerializeField] private float LifeTime = 4f;
+    [SerializeField] private float smokeLifeTime;
     [SerializeField] private GameObject sandstorm;
     private ElympicsBool spawned = new ElympicsBool(false);
     protected override void OnTriggerEnter(Collider other)
@@ -35,8 +35,8 @@ public class SandSpell : Spell
         {
             if (Elympics.IsServer)
             {
-                SandStorm ss = ElympicsInstantiate(sandstorm.name, ElympicsPlayer.All).GetComponent<SandStorm>();
-                ss.setLifeTime(lifeTime);
+                SandStorm ss = ElympicsInstantiate("Spells/" + sandstorm.name, ElympicsPlayer.All).GetComponent<SandStorm>();
+                ss.setLifeTime(smokeLifeTime);
                 ss.SpawnSpell(this.transform.position + new Vector3(0, 0.1f, 0), caster);
                 spawned.Value = true;
             }
@@ -46,6 +46,6 @@ public class SandSpell : Spell
     public override void ApplyModifier()
     {
         base.ApplyModifier();
-        this.LifeTime = LifeTime * 2f;
+        this.smokeLifeTime = smokeLifeTime * 2f;
     }
 }

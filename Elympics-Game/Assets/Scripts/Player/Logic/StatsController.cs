@@ -8,19 +8,22 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
 {
     [Header("Parameters:")]
     [SerializeField] private float maxHealth = 100.0f;
-    [SerializeField] private PlayerData playerData;
-    [SerializeField] private DeathController deathController;
-    public ElympicsFloat blindPower= new ElympicsFloat(0.0f);
-    public ElympicsBool isBlind = new ElympicsBool(false);
-    public ElympicsFloat blindValue = new ElympicsFloat(0.8f);
-    
-    private ElympicsFloat _blindTimer = new ElympicsFloat(0.0f);
-    private ElympicsFloat _burningTimer = new ElympicsFloat(0.0f);
-
     public ElympicsFloat _health = new ElympicsFloat(0);
     public event Action<float, float> HealthValueChanged = null;
-    private int fireDamage = 2;
-   
+
+    [SerializeField] private PlayerData playerData;
+    [SerializeField] private DeathController deathController;
+
+    #region Player states
+    public ElympicsFloat blindPower = new ElympicsFloat(0f);
+    public ElympicsBool isBlind = new ElympicsBool(false);
+    public ElympicsFloat blindValue = new ElympicsFloat(0f);
+
+    public float blindTime;
+    private ElympicsFloat _blindTimer = new ElympicsFloat(0f);
+    private ElympicsFloat _burningTimer = new ElympicsFloat(0f);
+    #endregion
+    
     public void Initialize()
     {
         _health.Value = maxHealth;
@@ -63,24 +66,10 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
         return Math.Abs(_health.Value - maxHealth) < 0.1;
     }
 
-    public void InitializeFire(int caster, float duration)
-    {
-        if (_burningTimer.Value <= 0f)
-        {
-            _burningTimer.Value = duration;
-            StartCoroutine(PlayerBurning(caster));
-        }
-        else
-        {
-            StopAllCoroutines();
-            _burningTimer.Value = duration;
-            StartCoroutine(PlayerBurning(caster));
-        }
-    }
+    
     
     public void ElympicsUpdate()
     {
-
         if (_burningTimer.Value > 0f)
         {
             _burningTimer.Value -= Elympics.TickDuration;
@@ -93,7 +82,7 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
         if (isBlind.Value)
         {
             _blindTimer.Value += Elympics.TickDuration;
-            if (_blindTimer.Value >= 2f)
+            if (_blindTimer.Value >= blindTime)
             {
                 isBlind.Value = false;
                 _blindTimer.Value = 0.0f;
@@ -101,12 +90,29 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
         }
     }
 
-    IEnumerator PlayerBurning(int caster)
+    #region Burning
+    public void InitializeFire(int caster, float duration, float damagePerSecond)
+    {
+        if (_burningTimer.Value <= 0f)
+        {
+            _burningTimer.Value = duration;
+            StartCoroutine(PlayerBurning(caster, damagePerSecond));
+        }
+        else
+        {
+            StopAllCoroutines();
+            _burningTimer.Value = duration;
+            StartCoroutine(PlayerBurning(caster, damagePerSecond));
+        }
+    }
+
+    IEnumerator PlayerBurning(int caster, float damagePerSecond)
     {
         for (;;)
         {
-            ChangeHealth(fireDamage, caster);
+            ChangeHealth(damagePerSecond / 5, caster);
             yield return new WaitForSeconds(0.2f);
         }
     }
+    #endregion
 }

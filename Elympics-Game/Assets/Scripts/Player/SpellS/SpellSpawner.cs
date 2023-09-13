@@ -6,7 +6,7 @@ using Elympics;
 
 public class SpellSpawner : ElympicsMonoBehaviour
 {
-    [SerializeField] private List<GameObject> spellList;          // TODO zmienic i podstawic gameobjecty spelli
+    [SerializeField] private List<GameObject> spellList;
     public Action SpellHit = null;
     private AudioSource _audioSource;
 
@@ -19,7 +19,7 @@ public class SpellSpawner : ElympicsMonoBehaviour
     {
         _audioSource.PlayOneShot(_audioSource.clip);
         GameObject spellObject = spellList[(int)selectedSpell + 1];
-        Spell spawnedSpell =  ElympicsInstantiate(spellObject.name,ElympicsPlayer.FromIndex(caster_id)).GetComponent<Spell>();
+        Spell spawnedSpell =  ElympicsInstantiate("Spells/" + spellObject.name,ElympicsPlayer.FromIndex(caster_id)).GetComponent<Spell>();
         spawnedSpell.SpawnSpell(transform.position, forward, caster_id, modified);
         spawnedSpell.SetSpellHitCallback(SpellHit);
     }

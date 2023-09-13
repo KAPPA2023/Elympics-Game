@@ -163,6 +163,7 @@ MonoBehaviour:
   spellSpeed: 60
   lifeTime: 4
   burnTime: 2
+  damagePerSecond: 10
   fireExplosion: {fileID: 8437392693171119185, guid: 97196b88b0df3bb478c4edb490225646, type: 3}
 --- !u!1 &8904864873731072335
 GameObject:
