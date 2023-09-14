@@ -15,6 +15,7 @@ public class UITarot : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private PlayerProvider playerProvider;
     [SerializeField] private GameObject voteImage;
+    [SerializeField] private TextMeshProUGUI votingInfo;
 
     private void Start()
     {
@@ -128,5 +129,6 @@ public class UITarot : MonoBehaviour
     private void UpdateVoteDisplay(bool oldVal, bool newVal)
     {
         voteImage.SetActive(newVal);
+        votingInfo.text = newVal ? "PRESS [SPACE] TO ACCEPT CARDS " : "PRESS [SPACE] TO REJECT CARDS ";
     }
 }

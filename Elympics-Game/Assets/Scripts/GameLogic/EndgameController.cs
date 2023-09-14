@@ -32,11 +32,12 @@ public class EndgameController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
-            TextMeshProUGUI text = screen.GetComponentInChildren<TextMeshProUGUI>();
+            TextMeshProUGUI[] texts = screen.GetComponentsInChildren<TextMeshProUGUI>();
+            
             var winners = GetWinner();
             if (winners.Count == 1)
             {
-                text.SetText($"Player {winners[0].playerName} won \n Points: {winners[0].Score.Value}");
+                texts[0].SetText($"Player {winners[0].playerName} won \n Points: {winners[0].Score.Value}");
             }
             else
             {
@@ -45,8 +46,10 @@ public class EndgameController : MonoBehaviour
                 {
                     players += player.playerName + " ";
                 }
-                text.SetText($"DRAW \n {players} \n SCORE: {winners[0].Score.Value}");
+                texts[0].SetText($"DRAW \n {players} \n SCORE: {winners[0].Score.Value}");
             }
+            var clientPlayer = playerProvider.ClientPlayer;
+            texts[1].text = $"Your ({clientPlayer.playerName}) score: {clientPlayer.Score}" ;
         }
     }
 
