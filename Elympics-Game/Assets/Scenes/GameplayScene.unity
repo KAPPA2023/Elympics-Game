@@ -2072,6 +2072,14 @@ PrefabInstance:
       propertyPath: networkId
       value: 576
       objectReference: {fileID: 0}
+    - target: {fileID: 8386635941718786672, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: networkId
+      value: 757
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386635941718786672, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: forceNetworkId
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8546234156541727789, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: networkId
       value: 745
@@ -2171,7 +2179,7 @@ PrefabInstance:
       objectReference: {fileID: 508643193}
     - target: {fileID: 2475895128338236017, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: networkId
-      value: 747
+      value: 758
       objectReference: {fileID: 0}
     - target: {fileID: 2475895128338236017, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: forceNetworkId
@@ -5636,6 +5644,14 @@ PrefabInstance:
       propertyPath: networkId
       value: 584
       objectReference: {fileID: 0}
+    - target: {fileID: 8386635941718786672, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: networkId
+      value: 756
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386635941718786672, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: forceNetworkId
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8546234156541727789, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: networkId
       value: 746
@@ -5964,7 +5980,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1a2f36ebeda9ede49bf68a6ba6f9a888, type: 2}
     - target: {fileID: 2475895128338236017, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: networkId
-      value: 748
+      value: 759
       objectReference: {fileID: 0}
     - target: {fileID: 2475895128338236017, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: forceNetworkId
