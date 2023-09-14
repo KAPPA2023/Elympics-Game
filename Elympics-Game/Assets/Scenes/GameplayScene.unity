@@ -2072,6 +2072,14 @@ PrefabInstance:
       propertyPath: networkId
       value: 576
       objectReference: {fileID: 0}
+    - target: {fileID: 8546234156541727789, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: networkId
+      value: 745
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546234156541727789, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: forceNetworkId
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
 --- !u!1 &508643192
@@ -2163,7 +2171,11 @@ PrefabInstance:
       objectReference: {fileID: 508643193}
     - target: {fileID: 2475895128338236017, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: networkId
-      value: 724
+      value: 747
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475895128338236017, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
+      propertyPath: forceNetworkId
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3137473124097492626, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: m_Name
@@ -5624,6 +5636,14 @@ PrefabInstance:
       propertyPath: networkId
       value: 584
       objectReference: {fileID: 0}
+    - target: {fileID: 8546234156541727789, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: networkId
+      value: 746
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546234156541727789, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: forceNetworkId
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8549017230458125468, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5942,6 +5962,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1a2f36ebeda9ede49bf68a6ba6f9a888, type: 2}
+    - target: {fileID: 2475895128338236017, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
+      propertyPath: networkId
+      value: 748
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475895128338236017, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
+      propertyPath: forceNetworkId
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3137473122721184451, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: networkId
       value: 636
