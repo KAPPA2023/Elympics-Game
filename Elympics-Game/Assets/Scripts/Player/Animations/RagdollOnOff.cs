@@ -10,7 +10,7 @@ public class RagdollOnOff : MonoBehaviour
     public GameObject thisRig;
     public Animator thisAnimator = null;
     private Collider[] ragdollColliders;
-    //private readonly int resetTriggerParameterHash = Animator.StringToHash("ResetTrigger");
+   
     private Rigidbody[] limbsRigidbodies;
     [SerializeField] private DeathController deathController;
     Rigidbody rbRoot;
@@ -34,11 +34,6 @@ public class RagdollOnOff : MonoBehaviour
         Transform mt = transform;
         Transform root = mt.root;
         rbRoot=root.GetComponent<Rigidbody>();
-
-        GetRagdollBits();
-        limbsRigidbodiescopy = limbsRigidbodies;
-        ragdollColliderscopy = ragdollColliders;
-        ragdollModeOff();
         thisAnimator = GetComponent<Animator>();
         deathController.IsDead.ValueChanged += ProcessDeathState;
     }
@@ -105,15 +100,10 @@ public class RagdollOnOff : MonoBehaviour
         Transform root = mt.root;
         Rigidbody rbRoot=root.GetComponent<Rigidbody>();
         rbRoot.isKinematic = false;
-        for(int i=0; i< limbsRigidbodiescopy.Length;i++)
-        {
-            limbsRigidbodies[i].rotation = limbsRigidbodiescopy[i].rotation;
-            limbsRigidbodies[i].position = limbsRigidbodiescopy[i].position;
-            limbsRigidbodies[i].velocity = limbsRigidbodiescopy[i].velocity;
-        }
+        
        
        
-        // thisAnimator.ResetTrigger(resetTriggerParameterHash);
+      
         
 
     }
