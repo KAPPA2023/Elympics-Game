@@ -11,6 +11,7 @@ public class EndgameController : MonoBehaviour
     [SerializeField] private PlayerProvider playerProvider = null;
     [SerializeField] private GameManager gameManager = null;
     [SerializeField] private GameObject screen;
+    private bool gameEnded = false;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class EndgameController : MonoBehaviour
     {
         if (newState)
         {
+            gameEnded = true;
             screen.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -45,6 +47,16 @@ public class EndgameController : MonoBehaviour
                 }
                 text.SetText($"DRAW \n {players} \n SCORE: {winners[0].Score.Value}");
             }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (!gameEnded) return;
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 

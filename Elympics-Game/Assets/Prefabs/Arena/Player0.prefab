@@ -775,6 +775,7 @@ GameObject:
   - component: {fileID: 4538622832906622208}
   - component: {fileID: 4240076674685522278}
   - component: {fileID: 172681372750581780}
+  - component: {fileID: 1624501189458738407}
   m_Layer: 0
   m_Name: Player0
   m_TagString: Player
@@ -928,6 +929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerData: {fileID: 3137473124097492647}
+  playerVote: {fileID: 1624501189458738407}
   _inputHandler: {fileID: 3137473124097492649}
   gameManager: {fileID: 0}
   isTutorialLevel: 0
@@ -1152,6 +1154,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f422823cf7c74d30b6473ef0e0097292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1624501189458738407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3137473124097492626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd8a1c9ef42a85409d173ee2b451c77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vote:
+    currentValue: 0
 --- !u!1 &4119903121104878163
 GameObject:
   m_ObjectHideFlags: 0

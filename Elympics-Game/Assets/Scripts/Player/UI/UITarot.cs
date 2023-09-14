@@ -13,6 +13,8 @@ public class UITarot : MonoBehaviour
     [SerializeField] private Sprite[] sprites;
     [SerializeField] private StartGameController startGameController;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private PlayerProvider playerProvider;
+    [SerializeField] private GameObject voteImage;
 
     private void Start()
     {
@@ -23,6 +25,15 @@ public class UITarot : MonoBehaviour
         else
         {
             startGameController.IsReady.ValueChanged += DisplayCards;
+        }
+
+        if (playerProvider.IsReady)
+        {
+            SubscribeToPlayerVote();
+        }
+        else
+        {
+            playerProvider.IsReadyChanged += SubscribeToPlayerVote;
         }
 
         gameManager.CurrentTimeToStartMatch.ValueChanged += OnMatchStart;
@@ -107,5 +118,15 @@ public class UITarot : MonoBehaviour
         if (newVal >= 0) return;
         gameManager.CurrentTimeToStartMatch.ValueChanged -= OnMatchStart;
         this.GameObject().SetActive(false);
+    }
+
+    private void SubscribeToPlayerVote()
+    {
+        playerProvider.ClientPlayer.GetComponent<PlayerVote>().vote.ValueChanged += UpdateVoteDisplay;
+    }
+
+    private void UpdateVoteDisplay(bool oldVal, bool newVal)
+    {
+        voteImage.SetActive(newVal);
     }
 }

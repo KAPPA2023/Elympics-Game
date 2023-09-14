@@ -9,6 +9,7 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
 {
     private PlayerController player = null;
     [SerializeField] private PlayerData _playerData = null;
+    [SerializeField] private PlayerVote playerVote = null;
     [SerializeField] private InputProvider _inputHandler;
     [SerializeField] private GameManager gameManager;
     public bool isTutorialLevel = false;
@@ -57,8 +58,7 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
 
     public void ElympicsUpdate()
     {
-        if (!gameManager.matchTime.Value) return;
-        
+
         GatheredInput currentInput;
         currentInput.movementInput = Vector2.zero;
         currentInput.jumpPressed = false;
@@ -101,6 +101,12 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
             currentInput.shape = shape;
             currentInput.attack_triggered = attack_triggered;
             currentInput.isDrawing = isDrawing;
+
+            if (!gameManager.matchTime.Value)
+            {
+                playerVote.HandleInput(spaceClicked);
+                return;
+            }
 
             player.mouseRotation = Quaternion.Euler(new Vector3(xRotation, yRotation, zRotation));
             player.isDrawingReleased = isDrawingReleased;
