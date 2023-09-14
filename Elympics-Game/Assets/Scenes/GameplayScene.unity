@@ -2217,6 +2217,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 544778521}
+    - target: {fileID: 6435254353202913979, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
+      propertyPath: networkId
+      value: 703
+      objectReference: {fileID: 0}
     - target: {fileID: 7038007027319545779, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: networkId
       value: 695
@@ -5902,6 +5906,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 544778521}
+    - target: {fileID: 6435254353202913979, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
+      propertyPath: networkId
+      value: 704
+      objectReference: {fileID: 0}
     - target: {fileID: 7038007027319545779, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: networkId
       value: 694
