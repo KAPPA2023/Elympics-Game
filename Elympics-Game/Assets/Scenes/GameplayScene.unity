@@ -2219,7 +2219,7 @@ PrefabInstance:
       objectReference: {fileID: 544778521}
     - target: {fileID: 7038007027319545779, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: networkId
-      value: 689
+      value: 695
       objectReference: {fileID: 0}
     - target: {fileID: 7038007027319545779, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: forceNetworkId
@@ -5904,7 +5904,7 @@ PrefabInstance:
       objectReference: {fileID: 544778521}
     - target: {fileID: 7038007027319545779, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: networkId
-      value: 690
+      value: 694
       objectReference: {fileID: 0}
     - target: {fileID: 7038007027319545779, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: forceNetworkId
