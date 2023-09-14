@@ -134,7 +134,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Mesh, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":-2432090755550338912,"guid":"c865b1c39fb35ed41ba088a2e78e145b","type":3}}'
+      m_SerializableObject: '{"obj":{"fileID":3188565249588753130,"guid":"d9f91b0992831b040ac4f9fdada2463e","type":3}}'
     m_Space: 2147483647
   m_Property:
     name: mesh
@@ -171,7 +171,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Transform, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"position":{"x":0.0,"y":0.0,"z":0.0},"angles":{"x":0.0,"y":0.0,"z":90.0},"scale":{"x":0.800000011920929,"y":1.0,"z":0.699999988079071}}'
+      m_SerializableObject: '{"position":{"x":0.0,"y":0.0,"z":0.0},"angles":{"x":0.0,"y":-90.0,"z":90.0},"scale":{"x":70.0,"y":70.0,"z":120.0}}'
     m_Space: 0
   m_Property:
     name: transform
@@ -1456,7 +1456,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Mesh, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":-2432090755550338912,"guid":"c865b1c39fb35ed41ba088a2e78e145b","type":3}}'
+      m_SerializableObject: '{"obj":{"fileID":3188565249588753130,"guid":"d9f91b0992831b040ac4f9fdada2463e","type":3}}'
     m_Space: 2147483647
   m_Property:
     name: mesh
@@ -1493,7 +1493,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Transform, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"position":{"x":0.0,"y":0.0,"z":0.0},"angles":{"x":0.0,"y":0.0,"z":90.0},"scale":{"x":0.8999999761581421,"y":1.100000023841858,"z":0.75}}'
+      m_SerializableObject: '{"position":{"x":0.0,"y":0.0,"z":0.0},"angles":{"x":0.0,"y":-90.0,"z":90.0},"scale":{"x":70.0,"y":70.0,"z":120.0}}'
     m_Space: 0
   m_Property:
     name: transform
