@@ -162,7 +162,7 @@ MonoBehaviour:
   spellDamage: 30
   spellSpeed: 50
   lifeTime: 5
-  LifeTime: 4
+  smokeLifeTime: 4
   sandstorm: {fileID: 8437392693171119185, guid: c98cab512bd98f047aee61bce6a03cc7, type: 3}
 --- !u!1 &8916941836228933865
 GameObject:

@@ -122,8 +122,8 @@ GameObject:
   - component: {fileID: 7777808137474915554}
   - component: {fileID: 2838023422718773770}
   - component: {fileID: 7575047413114315203}
-  - component: {fileID: 8242874914952308246}
   - component: {fileID: 5362514275492757495}
+  - component: {fileID: 8242874914952308246}
   m_Layer: 10
   m_Name: WaterBlast
   m_TagString: Untagged
@@ -231,22 +231,6 @@ MonoBehaviour:
   isKinematicConfig:
     synchronizationEnabled: 0
     tolerance: 0
---- !u!114 &8242874914952308246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8437392693171119185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cb491d8f06fd648bb97c3e259676ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spellDamage: 50
-  spellSpeed: 50
-  lifeTime: 5
-  blindValue: 0.8
 --- !u!136 &5362514275492757495
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -261,3 +245,23 @@ CapsuleCollider:
   m_Height: 2.77
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 1.88}
+--- !u!114 &8242874914952308246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8437392693171119185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cb491d8f06fd648bb97c3e259676ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellDamage: 20
+  spellSpeed: 50
+  lifeTime: 5
+  blindValue: 0.6
+  modifiedBlindValue: 0.8
+  effectTime: 4
+  weakenedJumpForce: 15
+  modifiedWeakenedJumpForce: 0

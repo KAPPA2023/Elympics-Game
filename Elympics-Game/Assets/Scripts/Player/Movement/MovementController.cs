@@ -34,11 +34,14 @@ public class MovementController : ElympicsMonoBehaviour
 
     #region Jumping Variables
     [Header("Jump")]
-    public float jumpForce;
+    [SerializeField] private float jumpForce;
+    private float desiredJumpForce;
     public float jumpCooldown;
     public float airMultiplier;
     //private bool readyToJump = true;
     [SerializeField] private bool doubleJump = false;
+
+    private ElympicsFloat _weakenedJumpTimer = new ElympicsFloat(0f);
     #endregion
 
     #region Slope Variables
@@ -70,6 +73,7 @@ public class MovementController : ElympicsMonoBehaviour
         rb = GetComponent<Rigidbody>();
         climbing = GetComponent<Climbing>();
         desiredMovementSpeed.Value = GroundSpeed;
+        desiredJumpForce = jumpForce;
     }
 
     // Movement Elympics Update
@@ -80,6 +84,8 @@ public class MovementController : ElympicsMonoBehaviour
 
         Vector3 inputVector = new Vector3(horizontalInput, 0, verticalInput);
         movementDirection = inputVector != Vector3.zero ? this.transform.TransformDirection(inputVector.normalized) : Vector3.zero;
+
+        ProccesWeakenedJump();
 
         if (GroundCheck())
         {
@@ -242,7 +248,7 @@ public class MovementController : ElympicsMonoBehaviour
 
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * desiredJumpForce, ForceMode.Impulse);
     }
     
     private void ResetJump()
@@ -250,6 +256,18 @@ public class MovementController : ElympicsMonoBehaviour
         exitingSlope = false;
 
         //readyToJump = true;
+    }
+
+    private void ProccesWeakenedJump()
+    {
+        if (_weakenedJumpTimer.Value > 0f)
+        {
+            _weakenedJumpTimer.Value -= Elympics.TickDuration;
+        }
+        else
+        {
+            desiredJumpForce = jumpForce;
+        }
     }
     #endregion
 
@@ -304,4 +322,14 @@ public class MovementController : ElympicsMonoBehaviour
         Gizmos.DrawCube(transform.position - transform.up * maxDistance, boxSize);
     }
 
+    public void SetJumpForce(float jumpForce)
+    {
+        desiredJumpForce = jumpForce;
+    }
+
+    public void StartWeakenedJump(float time, float weakenedJumpForce)
+    {
+        _weakenedJumpTimer.Value = time;
+        desiredJumpForce = weakenedJumpForce;
+    }
 }

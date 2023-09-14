@@ -30,52 +30,38 @@ public class UITarot : MonoBehaviour
     
     private void DisplayCards(bool oldVal, bool newVal)
     {
-        SetupPlayerCard(startGameController.playerModifier.Value, startGameController.enchancedSpell.Value);
-        SetupStaticCard(startGameController.staticGameModifier.Value);
-        SetupDynamicCard(startGameController.dynamicGameModifier.Value);
+        SetupFirstCard(startGameController.enchancedSpell.Value);
+        SetupSecondCard(startGameController.playerModifier.Value);
+        SetupThirdCard(startGameController.staticGameModifier.Value);
     }
 
-    private void SetupPlayerCard(int modifier, int spell)
+    private void SetupFirstCard(int spell)
+    {
+        Sprite sprite = GetSprite("The_Justice");
+        texts[0].text = $"{(Spells)spell} is enhanced";
+        slots[0].sprite = sprite;
+    }
+    private void SetupSecondCard(int modifier)
     {
         Sprite sprite = sprites[0];
         switch (modifier)
         {
             case 0:
                 sprite = GetSprite("The_Death");
-                texts[0].text = "Cats ran out of lives \n 1KOT1KILL";
+                texts[1].text = "Cats ran out of lives \n 1KOT1KILL";
                 break;
             case 1:
                 sprite = GetSprite("The_Moon");
-                texts[0].text = "Jump higher";
+                texts[1].text = "Jump higher";
                 break;
             case 2:
-                sprite = GetSprite("The_Justice");
-                texts[0].text = $"{(Spells)spell} is enhanced";
-                break;
-        }
-        slots[0].sprite = sprite;
-    }
-    private void SetupStaticCard(int modifier)
-    {
-        Sprite sprite = sprites[0];
-        switch (modifier)
-        {
-            case 0:
-                sprite = GetSprite("The_Tower");
-                texts[1].text = "More platforms to jump on :3";
-                break;
-            case 1:
-                sprite = GetSprite("The_Fool");
-                texts[1].text = "Better don't fall :3";
-                break;
-            case 2:
-                sprite = GetSprite("The_Chariot");
-                texts[1].text = "More JUMP PADS";
+                sprite = GetSprite("The_Magician");
+                texts[1].text = "Cast whatever you want";
                 break;
         }
         slots[1].sprite = sprite;
     }
-    private void SetupDynamicCard(int modifier)
+    private void SetupThirdCard(int modifier)
     {
         Sprite sprite = sprites[0];
         switch (modifier)
@@ -89,8 +75,16 @@ public class UITarot : MonoBehaviour
                 texts[2].text = "More spells pickups";
                 break;
             case 2:
-                sprite = GetSprite("The_Magician");
-                texts[2].text = "Cast whatever you want";
+                sprite = GetSprite("The_Tower");
+                texts[2].text = "More platforms to jump on :3";
+                break;
+            case 3:
+                sprite = GetSprite("The_Fool");
+                texts[2].text = "Better don't fall :3";
+                break;
+            case 4:
+                sprite = GetSprite("The_Chariot");
+                texts[2].text = "More JUMP PADS";
                 break;
         }
         slots[2].sprite = sprite;

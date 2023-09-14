@@ -9,7 +9,7 @@ public class SandStorm : ElympicsMonoBehaviour, IUpdatable
 {
     private int owner;
     [SerializeField] private float damage;
-    [SerializeField] private float lifeTime = 4f;
+    private float lifeTime;
     private List<PlayerData> players = new List<PlayerData>();
     private ElympicsFloat deathTimer = new ElympicsFloat(0.0f);
     private ElympicsFloat damageTimer = new ElympicsFloat(0.0f);

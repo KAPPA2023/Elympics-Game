@@ -38,7 +38,7 @@ public class SpellPickup : ElympicsMonoBehaviour, IUpdatable, IInitializable
 
     private void SpellsHidden(bool oldVal, bool newVal)
     {
-        var modifier = GameObject.Find("GameController").GetComponent<StartGameController>().dynamicGameModifier.Value;
+        var modifier = GameObject.Find("GameController").GetComponent<StartGameController>().staticGameModifier.Value;
         if (modifier == 0)
         {
             hidden = true;
