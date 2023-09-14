@@ -1,30 +1,59 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks.Triggers;
 using UnityEngine;
 
 public class RagdollOnOff : MonoBehaviour
 {
     public CapsuleCollider mainCollider;
     public GameObject thisRig;
-    public Animator thisAnimator;
-
+    public Animator thisAnimator = null;
     private Collider[] ragdollColliders;
-
+    //private readonly int resetTriggerParameterHash = Animator.StringToHash("ResetTrigger");
     private Rigidbody[] limbsRigidbodies;
+    [SerializeField] private DeathController deathController;
+    Rigidbody rbRoot;
+    private Rigidbody[] limbsRigidbodiescopy;
+    private Collider[] ragdollColliderscopy;
+    
     // Start is called before the first frame update
     void Start()
     {
-        Transform mt = transform;
-        Transform root = mt.root;
-        Rigidbody rbRoot=root.GetComponent<Rigidbody>();;
-
+        
         GetRagdollBits();
+        limbsRigidbodiescopy = limbsRigidbodies;
+        ragdollColliderscopy = ragdollColliders;
         ragdollModeOff();
-     
 
     }
+    
+    
+    private void Awake()
+    {
+        Transform mt = transform;
+        Transform root = mt.root;
+        rbRoot=root.GetComponent<Rigidbody>();
 
+        GetRagdollBits();
+        limbsRigidbodiescopy = limbsRigidbodies;
+        ragdollColliderscopy = ragdollColliders;
+        ragdollModeOff();
+        thisAnimator = GetComponent<Animator>();
+        deathController.IsDead.ValueChanged += ProcessDeathState;
+    }
+    private void ProcessDeathState(bool lastValue, bool newValue)
+    {
+        if (newValue)
+        {
+            ragdollModeOn();
+        }
+        else
+        {
+            ragdollModeOff();
+        }
+    }
+   
     // Update is called once per frame
     void Update()
     {
@@ -33,7 +62,7 @@ public class RagdollOnOff : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        throw new NotImplementedException();
+       
     }
 
     void GetRagdollBits()
@@ -42,8 +71,9 @@ public class RagdollOnOff : MonoBehaviour
         limbsRigidbodies = thisRig.GetComponentsInChildren<Rigidbody>();
     }
     
-    void ragdollModeOn()
+  public  void ragdollModeOn()
     {
+        thisAnimator.enabled = false;
         foreach (Collider col in ragdollColliders)
         {
             col.enabled = true;
@@ -54,12 +84,11 @@ public class RagdollOnOff : MonoBehaviour
         }
 
         mainCollider.enabled = false;
-        thisAnimator.enabled = false;
-        GetComponent<Rigidbody>().isKinematic = true;
+        rbRoot.isKinematic = true;
 
     }
     
-    void ragdollModeOff()
+   public void ragdollModeOff()
     {
         foreach (Collider col in ragdollColliders)
         {
@@ -70,10 +99,22 @@ public class RagdollOnOff : MonoBehaviour
             rigid.isKinematic = true;
         }
 
-        
         thisAnimator.enabled = true;
         mainCollider.enabled = true;
-        GetComponent<Rigidbody>().isKinematic = false;
+        Transform mt = transform;
+        Transform root = mt.root;
+        Rigidbody rbRoot=root.GetComponent<Rigidbody>();
+        rbRoot.isKinematic = false;
+        for(int i=0; i< limbsRigidbodiescopy.Length;i++)
+        {
+            limbsRigidbodies[i].rotation = limbsRigidbodiescopy[i].rotation;
+            limbsRigidbodies[i].position = limbsRigidbodiescopy[i].position;
+            limbsRigidbodies[i].velocity = limbsRigidbodiescopy[i].velocity;
+        }
+       
+       
+        // thisAnimator.ResetTrigger(resetTriggerParameterHash);
+        
 
     }
 }
