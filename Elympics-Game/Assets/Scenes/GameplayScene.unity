@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 262.1853, g: 324.85815, b: 429.9668, a: 1}
+  m_IndirectSpecularColor: {r: 262.05304, g: 324.6715, b: 429.7248, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2063,6 +2063,10 @@ PrefabInstance:
     - target: {fileID: 5623605398389208695, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: forceNetworkId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270978190091071755, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: networkId
+      value: 709
       objectReference: {fileID: 0}
     - target: {fileID: 8230384152248345368, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: networkId
@@ -5520,10 +5524,26 @@ PrefabInstance:
       propertyPath: forceNetworkId
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7270978190091071755, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: networkId
+      value: 713
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270978190091071755, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: forceNetworkId
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641266361961621075, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bf7d5524114d23f4d821a0054191b06b, type: 2}
     - target: {fileID: 8230384152248345368, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: networkId
       value: 584
       objectReference: {fileID: 0}
+    - target: {fileID: 8549017230458125468, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bf7d5524114d23f4d821a0054191b06b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
 --- !u!1 &1337363543
@@ -5834,6 +5854,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1a2f36ebeda9ede49bf68a6ba6f9a888, type: 2}
+    - target: {fileID: 2190774225603715230, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1a2f36ebeda9ede49bf68a6ba6f9a888, type: 2}
     - target: {fileID: 3137473122721184451, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: networkId
       value: 636
@@ -5918,6 +5942,10 @@ PrefabInstance:
       propertyPath: forceNetworkId
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7283668392818962766, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1a2f36ebeda9ede49bf68a6ba6f9a888, type: 2}
     - target: {fileID: 8058164895166754028, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
