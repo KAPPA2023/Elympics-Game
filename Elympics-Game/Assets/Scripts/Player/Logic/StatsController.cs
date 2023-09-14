@@ -59,6 +59,7 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
     {
         maxHealth = value;
         _health.Value = maxHealth;
+        HealthValueChanged?.Invoke(_health.Value, maxHealth);
     }
 
     public bool IsFullHp()
