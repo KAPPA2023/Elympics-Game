@@ -7,6 +7,7 @@ using Elympics;
 public class SpellSpawner : ElympicsMonoBehaviour
 {
     [SerializeField] private List<GameObject> spellList;
+    public bool inTutorial = false;
     private Action SpellHit = null;
     public Action RegisteredHit = null;
     private AudioSource _audioSource;
@@ -28,7 +29,16 @@ public class SpellSpawner : ElympicsMonoBehaviour
     {
         _audioSource.PlayOneShot(_audioSource.clip);
         GameObject spellObject = spellList[(int)selectedSpell + 1];
-        Spell spawnedSpell =  ElympicsInstantiate("Spells/" + spellObject.name,ElympicsPlayer.FromIndex(caster_id)).GetComponent<Spell>();
+        Spell spawnedSpell;
+        if (!inTutorial)
+        {
+            spawnedSpell =  ElympicsInstantiate("Spells/" + spellObject.name,ElympicsPlayer.FromIndex(caster_id)).GetComponent<Spell>();
+        }
+        else
+        {
+            spawnedSpell =  ElympicsInstantiate("Spells/" + spellObject.name,ElympicsPlayer.All).GetComponent<Spell>();
+        }
+        
         spawnedSpell.SpawnSpell(transform.position, forward, caster_id, modified);
         spawnedSpell.SetSpellHitCallback(SpellHit);
     }
