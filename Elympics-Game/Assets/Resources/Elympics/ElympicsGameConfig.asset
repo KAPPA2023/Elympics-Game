@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameName: KAPPA-Game
   gameId: 431964a5-45bf-41c2-8bb8-329369aa978a
-  gameVersion: 26
+  gameVersion: 27
   players: 4
   gameplayScene: Assets/Scenes/GameplayScene.unity
   gameplaySceneAsset: {fileID: 102900000, guid: 1f78e613bb0bf7f43b682b6a68911851, type: 3}
