@@ -9,9 +9,8 @@ public class SandStorm : ElympicsMonoBehaviour, IUpdatable
 {
     private int owner;
     [SerializeField] private float damage;
-    private float lifeTime;
     private List<PlayerData> players = new List<PlayerData>();
-    private ElympicsFloat deathTimer = new ElympicsFloat(0.0f);
+    public ElympicsFloat deathTimer = new ElympicsFloat(0.0f);
     private ElympicsFloat damageTimer = new ElympicsFloat(0.0f);
     // Start is called before the first frame update
   
@@ -45,12 +44,12 @@ public class SandStorm : ElympicsMonoBehaviour, IUpdatable
     public void ElympicsUpdate()
     {
         HandlePlayersInSandstorm();
-        deathTimer.Value += Elympics.TickDuration;
-        if (deathTimer.Value >= lifeTime)
+        deathTimer.Value -= Elympics.TickDuration;
+        if (deathTimer.Value < 0)
         {
             foreach (var v in players)
             {
-                v.GetComponent<StatsController>().blindPower.Value = 300;
+                v.GetComponent<StatsController>().blindPower.Value = 400;
             }
 
             if (Elympics.IsServer)
@@ -73,17 +72,12 @@ public class SandStorm : ElympicsMonoBehaviour, IUpdatable
             Vector3 distancetoCenter = transform.position - data.GetComponent<Rigidbody>().position;
             float accDistance = new Vector3(distancetoCenter.x, 0.0f, distancetoCenter.z).magnitude;
             data.GetComponent<StatsController>().blindPower.Value = accDistance;
-            if (deathTimer.Value >= lifeTime)
+            if (deathTimer.Value <= 0)
             {
-                data.GetComponent<StatsController>().blindPower.Value = 300;
+                data.GetComponent<StatsController>().blindPower.Value = 500;
             }
         }
         
-    }
-
-    public void setLifeTime(float value)
-    {
-        lifeTime = value;
     }
 }
 

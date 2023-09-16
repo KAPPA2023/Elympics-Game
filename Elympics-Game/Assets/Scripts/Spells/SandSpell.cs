@@ -36,8 +36,8 @@ public class SandSpell : Spell
             if (Elympics.IsServer)
             {
                 SandStorm ss = ElympicsInstantiate("Spells/" + sandstorm.name, ElympicsPlayer.All).GetComponent<SandStorm>();
-                ss.setLifeTime(smokeLifeTime);
                 ss.SpawnSpell(this.transform.position + new Vector3(0, 0.1f, 0), caster);
+                ss.deathTimer.Value = smokeLifeTime;
                 spawned.Value = true;
             }
         }

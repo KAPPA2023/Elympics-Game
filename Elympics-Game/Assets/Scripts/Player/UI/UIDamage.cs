@@ -79,6 +79,7 @@ public class UIDamage : MonoBehaviour
     private void OnBlind(float oldValue, float newValue)
     {
         Color  overlay = new Color(0f,0f,0f, 0);
+        Debug.Log(newValue);
         if (newValue < 2f)
         {
             overlay = new Color(0.6f,0.6f,0.6f, 2f-newValue);
