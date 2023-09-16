@@ -2690,7 +2690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerProvider: {fileID: 508643193}
-  matchLength: 10
+  matchLength: 200
   postGameTime: 5
   preGameTime: 10
   matchTime:
