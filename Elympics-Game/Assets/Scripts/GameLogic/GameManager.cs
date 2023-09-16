@@ -77,7 +77,7 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
         {
             if (votes[i] >= 2)
             {
-                results[i] = false;
+                results[i] = true;
             }
         }
         
@@ -89,15 +89,15 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
         if (!newVal) return;
         var startGameController = GetComponent<StartGameController>();
         var results = GetVotingResults();
-        if (results[0])
+        if (!results[0])
         {
             startGameController.ApplyFirstModifier();
         }
-        if (results[1])
+        if (!results[1])
         {
             startGameController.ApplySecondModifier();
         }
-        if (results[2])
+        if (!results[2])
         {
             startGameController.ApplyThirdModifier();
         }
