@@ -11,13 +11,19 @@ public class UITarot : MonoBehaviour
     [SerializeField] private Image[] slots;
     [SerializeField] private GameObject[] voteMarks;
     [SerializeField] private TextMeshProUGUI[] texts;
+    [SerializeField] private TextMeshProUGUI[] voteCounters;
     [SerializeField] private Sprite[] sprites;
     [SerializeField] private StartGameController startGameController;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private PlayerProvider playerProvider;
     [SerializeField] private GameObject selectionImage;
+
+    private Action _votesChanged;
+    private int[] _voteCounters;
     private void Start()
     {
+        _voteCounters = new int[3];
+        _votesChanged += UpdateVotes;
         if (startGameController.IsReady.Value)
         {
             DisplayCards(false, true);
@@ -128,8 +134,25 @@ public class UITarot : MonoBehaviour
         votes.Values[0].ValueChanged += UpdateVoteDisplay1;
         votes.Values[1].ValueChanged += UpdateVoteDisplay2;
         votes.Values[2].ValueChanged += UpdateVoteDisplay3;
+
+        var players = playerProvider.AllPlayersInScene;
+        foreach (var player in players)
+        {
+            var playerVote = player.GetComponent<PlayerVote>().votes;
+            playerVote.Values[0].ValueChanged += UpdateVote1;
+            playerVote.Values[1].ValueChanged += UpdateVote2;
+            playerVote.Values[2].ValueChanged += UpdateVote3;
+        }
     }
-    
+
+    private void UpdateVotes()
+    {
+        for (var i = 0; i < 3; i++)
+        {
+            voteCounters[i].text = $"{_voteCounters[i]}/2";
+        };
+    }
+
     private void UpdateSelectedCard(int oldVal, int newVal)
     {
         var position = selectionImage.transform.position;
@@ -147,5 +170,41 @@ public class UITarot : MonoBehaviour
     private void UpdateVoteDisplay3(bool oldVal, bool newVal)
     {
         voteMarks[2].SetActive(newVal);
+    }
+    private void UpdateVote1(bool oldVal, bool newVal)
+    {
+        if (newVal)
+        {
+            _voteCounters[0] += 1;
+        }
+        else
+        {
+            _voteCounters[0] -= 1;
+        }
+        _votesChanged?.Invoke();
+    }
+    private void UpdateVote2(bool oldVal, bool newVal)
+    {
+        if (newVal)
+        {
+            _voteCounters[1] += 1;
+        }
+        else
+        {
+            _voteCounters[1] -= 1;
+        }
+        _votesChanged?.Invoke();
+    }
+    private void UpdateVote3(bool oldVal, bool newVal)
+    {
+        if (newVal)
+        {
+            _voteCounters[2] += 1;
+        }
+        else
+        {
+            _voteCounters[2] -= 1;
+        }
+        _votesChanged?.Invoke();
     }
 }
