@@ -24,14 +24,21 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
             appliedModifiers.ValueChanged += ApplyModifiers;
         }
 
+        if (playerProvider.IsReady)
+        {
+            playerProvider.UpdatePlayerProvider();
+        }
+        else
+        {
+            playerProvider.IsReadyChanged += playerProvider.UpdatePlayerProvider;
+        }
+
         if (!Elympics.IsServer) return;
         CurrentTimeOfMatchRemaining.Value = matchLength;
         CurrentTimeToStartMatch.Value = preGameTime;
         PostGameTime.Value = postGameTime;
         GetComponent<StartGameController>().drawTarotCards();
         IsReady = true;
-        
-        
     }
     
     public virtual void ElympicsUpdate()

@@ -18,6 +18,7 @@ public class PlayerProvider : ElympicsMonoBehaviour, IInitializable, IServerHand
     public void OnServerInit(InitialMatchPlayerDatasGuid initialMatchPlayerDatas)
     {
         _playerCount.Value = initialMatchPlayerDatas.Count;
+        Debug.Log(_playerCount.Value);
     }
 
     public void OnPlayerDisconnected(ElympicsPlayer player) { }
