@@ -2071,6 +2071,10 @@ PrefabInstance:
       propertyPath: playerProvider
       value: 
       objectReference: {fileID: 508643193}
+    - target: {fileID: 236190091, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 544778521}
     - target: {fileID: 2438685598099525384, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: networkId
       value: 577
@@ -2316,6 +2320,10 @@ PrefabInstance:
       propertyPath: playerProvider
       value: 
       objectReference: {fileID: 508643193}
+    - target: {fileID: 236190091, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 544778521}
     - target: {fileID: 2475895128338236017, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: networkId
       value: 758
@@ -2682,7 +2690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerProvider: {fileID: 508643193}
-  matchLength: 200
+  matchLength: 10
   postGameTime: 5
   preGameTime: 10
   matchTime:
@@ -5857,6 +5865,10 @@ PrefabInstance:
       propertyPath: playerProvider
       value: 
       objectReference: {fileID: 508643193}
+    - target: {fileID: 236190091, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 544778521}
     - target: {fileID: 545916350533376818, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6474,6 +6486,10 @@ PrefabInstance:
       propertyPath: playerProvider
       value: 
       objectReference: {fileID: 508643193}
+    - target: {fileID: 236190091, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 544778521}
     - target: {fileID: 1003918620356547248, guid: 88a2e26dc2abd904399297fd04bac6df, type: 3}
       propertyPath: networkId
       value: 637

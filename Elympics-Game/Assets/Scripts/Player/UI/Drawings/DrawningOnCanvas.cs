@@ -9,6 +9,7 @@ public class DrawningOnCanvas : MonoBehaviour
     
     [SerializeField] private Canvas canvas;
     [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private GameManager gameManager;
     private Vector3[] linePoints;
     private int pointCount = 0;
     private bool isDrawing = false;
@@ -43,6 +44,8 @@ public class DrawningOnCanvas : MonoBehaviour
 
     void Update()
     {
+        if (!gameManager.matchTime.Value) return;
+            
         if (Input.GetMouseButtonDown(1))
         {
             Cursor.visible = false;
