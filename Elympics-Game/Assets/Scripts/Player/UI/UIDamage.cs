@@ -53,7 +53,7 @@ public class UIDamage : MonoBehaviour
         clientPlayerData.GetComponent<DeathController>().IsDead.ValueChanged += OnDeath;
         clientPlayerData.GetComponentInChildren<SpellSpawner>().SpellHit += OnEnemyDamaged;
         clientPlayerData.GetComponent<StatsController>().blindPower.ValueChanged += OnBlind;
-        clientPlayerData.GetComponent<StatsController>().isBlind.ValueChanged += WaterBlind;
+        clientPlayerData.GetComponent<StatsController>().blindTimer.ValueChanged += WaterBlind;
     }
     
     private void OnDamaged(float oldVal, float newVal)
@@ -91,11 +91,11 @@ public class UIDamage : MonoBehaviour
       
     }
     
-    private void WaterBlind(bool lastvalue, bool newvalue)
+    private void WaterBlind(float lastvalue, float newvalue)
     {
         var clientPlayerData = playerProvider.ClientPlayer;
         Color overlay;
-        if (newvalue == true)
+        if (newvalue > 0)
         {
             float blindValue = clientPlayerData.GetComponent<StatsController>().blindValue;
             overlay = new Color(0f, 0.6f, blindValue, blindValue);

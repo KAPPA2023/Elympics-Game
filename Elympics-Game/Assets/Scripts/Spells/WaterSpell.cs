@@ -16,12 +16,10 @@ public class WaterSpell : Spell
         if (playerInfo == null) return;
         if (playerInfo.PlayerId == caster) return;
         base.OnTriggerEnter(other);
-        if (playerInfo != null)
-        {
-            playerInfo.GetComponent<StatsController>().blindTime = effectTime;
-            playerInfo.GetComponent<StatsController>().isBlind.Value = true;
-            playerInfo.GetComponent<StatsController>().blindValue.Value = blindValue;
-        }
+        
+        playerInfo.GetComponent<StatsController>().blindTimer.Value = effectTime;
+        playerInfo.GetComponent<StatsController>().blindValue.Value = blindValue;
+        
 
         var playerMC = other.GetComponent<MovementController>();
         playerMC.StartWeakenedJump(effectTime, weakenedJumpForce);

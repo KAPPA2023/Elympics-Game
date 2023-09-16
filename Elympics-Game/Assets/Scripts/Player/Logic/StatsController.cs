@@ -16,11 +16,9 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
 
     #region Player states
     public ElympicsFloat blindPower = new ElympicsFloat(0f);
-    public ElympicsBool isBlind = new ElympicsBool(false);
     public ElympicsFloat blindValue = new ElympicsFloat(0f);
 
-    public float blindTime;
-    private ElympicsFloat _blindTimer = new ElympicsFloat(0f);
+    public ElympicsFloat blindTimer = new ElympicsFloat(0f);
     private ElympicsFloat _burningTimer = new ElympicsFloat(0f);
     #endregion
     
@@ -33,8 +31,7 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
     public void ResetPlayerStats()
     {
         StopAllCoroutines();
-        _blindTimer.Value = 0f;
-        isBlind.Value = false;
+        blindTimer.Value = 0f;
         _health.Value = maxHealth;
     }
 
@@ -80,14 +77,9 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
             }
         }
         
-        if (isBlind.Value)
+        if (blindTimer.Value > 0f)
         {
-            _blindTimer.Value += Elympics.TickDuration;
-            if (_blindTimer.Value >= blindTime)
-            {
-                isBlind.Value = false;
-                _blindTimer.Value = 0.0f;
-            }
+            blindTimer.Value -= Elympics.TickDuration;
         }
     }
 
