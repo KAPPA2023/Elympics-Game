@@ -7,12 +7,21 @@ using Elympics;
 public class SpellSpawner : ElympicsMonoBehaviour
 {
     [SerializeField] private List<GameObject> spellList;
-    public Action SpellHit = null;
+    private Action SpellHit = null;
+    public Action RegisteredHit = null;
     private AudioSource _audioSource;
 
     public void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
+        SpellHit += HitRegistered;
+    }
+    
+    [ElympicsRpc(ElympicsRpcDirection.ServerToPlayers)]  // specifying the direction
+    private void HitRegistered()
+    {
+        // the contents of this method will be run on client instances
+        RegisteredHit?.Invoke();
     }
 
     public void TrySpawningSpell(Spells selectedSpell, Vector3 forward, int caster_id, bool modified)

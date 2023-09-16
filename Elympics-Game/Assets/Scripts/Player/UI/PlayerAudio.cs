@@ -15,7 +15,7 @@ public class PlayerAudio : ElympicsMonoBehaviour
         playerData.GetComponent<DeathController>().GetComponent<StatsController>()._health.ValueChanged += OnDamaged;
         if ((int)Elympics.Player == playerData.PlayerId)
         {
-            playerData.GetComponentInChildren<SpellSpawner>().SpellHit += OnEnemyDamaged;
+            playerData.GetComponentInChildren<SpellSpawner>().RegisteredHit += OnEnemyDamaged;
         }
     }
 

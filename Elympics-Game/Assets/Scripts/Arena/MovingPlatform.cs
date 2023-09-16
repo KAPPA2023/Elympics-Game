@@ -23,14 +23,14 @@ public class MovingPlatform : ElympicsMonoBehaviour, IUpdatable, IInitializable
     {
         if (!gameObject.activeInHierarchy) return;
         var currentPos = transform.position;
-        var nextPatrolPoint = points[_currentPoint].position;
+        var nextPatrolPoint = points[_currentPoint.Value].position;
         if (Vector3.Distance(currentPos, nextPatrolPoint) > 0.1f)
         {
-            MoveTowardsPoint(points[_currentPoint].position);
+            MoveTowardsPoint(points[_currentPoint.Value].position);
         }
         else
         {
-            _currentPoint.Value = (_currentPoint + 1) % points.Length;
+            _currentPoint.Value = (_currentPoint.Value + 1) % points.Length;
         }
         HandlePlayers();
     }

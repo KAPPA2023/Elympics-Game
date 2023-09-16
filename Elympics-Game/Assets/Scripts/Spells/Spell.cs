@@ -40,7 +40,10 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
         if (playerInfo != null)
         {
             if (playerInfo.PlayerId == caster) return;
-            SpellHit?.Invoke();
+            if (Elympics.IsServer)
+            {
+                SpellHit?.Invoke();
+            }
             playerInfo.DealDamage(spellDamage, caster);
         }
         DetonateProjectile();
@@ -55,7 +58,7 @@ public abstract class Spell : ElympicsMonoBehaviour, IUpdatable
             DetonateProjectile();
         }
     }
-    
+
     public virtual void ApplyModifier()
     {
         Debug.Log("spell modified");

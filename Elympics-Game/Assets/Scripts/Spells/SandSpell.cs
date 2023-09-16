@@ -20,7 +20,10 @@ public class SandSpell : Spell
         if (playerInfo != null)
         {
             if (playerInfo.PlayerId == caster) return;
-            SpellHit?.Invoke();
+            if (Elympics.IsServer)
+            {
+                SpellHit?.Invoke();
+            }
             playerInfo.DealDamage(spellDamage, caster);
             DetonateProjectile();
         } else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))

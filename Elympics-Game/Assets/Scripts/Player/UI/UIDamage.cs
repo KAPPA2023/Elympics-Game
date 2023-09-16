@@ -51,7 +51,7 @@ public class UIDamage : MonoBehaviour
         var clientPlayerData = playerProvider.ClientPlayer;
         clientPlayerData.GetComponent<StatsController>()._health.ValueChanged += OnDamaged;
         clientPlayerData.GetComponent<DeathController>().IsDead.ValueChanged += OnDeath;
-        clientPlayerData.GetComponentInChildren<SpellSpawner>().SpellHit += OnEnemyDamaged;
+        clientPlayerData.GetComponentInChildren<SpellSpawner>().RegisteredHit += OnEnemyDamaged;
         clientPlayerData.GetComponent<StatsController>().blindPower.ValueChanged += OnBlind;
         clientPlayerData.GetComponent<StatsController>().blindTimer.ValueChanged += WaterBlind;
     }
@@ -97,7 +97,7 @@ public class UIDamage : MonoBehaviour
         Color overlay;
         if (newvalue > 0)
         {
-            float blindValue = clientPlayerData.GetComponent<StatsController>().blindValue;
+            float blindValue = clientPlayerData.GetComponent<StatsController>().blindValue.Value;
             overlay = new Color(0f, 0.6f, blindValue, blindValue);
         }
         else

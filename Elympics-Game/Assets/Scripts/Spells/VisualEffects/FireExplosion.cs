@@ -26,7 +26,7 @@ public class FireExplosion : ElympicsMonoBehaviour, IUpdatable
         var playerInfo = other.GetComponent<PlayerData>();
         if (playerInfo != null)
         {
-            playerInfo.GetComponent<StatsController>().InitializeFire(owner, burnDuration, damagePerSecond);
+            playerInfo.GetComponent<StatsController>().InitializeFire(owner, burnDuration.Value, damagePerSecond);
         }
     }
 
