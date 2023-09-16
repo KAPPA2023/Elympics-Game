@@ -104,7 +104,7 @@ public class InputController : ElympicsMonoBehaviour, IInputHandler, IUpdatable
 
             if (!gameManager.matchTime.Value)
             {
-                playerVote.HandleInput(spaceClicked);
+                playerVote.HandleInput(spaceClicked, x1);
                 return;
             }
 

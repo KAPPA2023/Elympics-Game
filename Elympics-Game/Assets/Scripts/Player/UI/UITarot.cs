@@ -9,14 +9,13 @@ using UnityEngine.UI;
 public class UITarot : MonoBehaviour
 {
     [SerializeField] private Image[] slots;
+    [SerializeField] private GameObject[] voteMarks;
     [SerializeField] private TextMeshProUGUI[] texts;
     [SerializeField] private Sprite[] sprites;
     [SerializeField] private StartGameController startGameController;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private PlayerProvider playerProvider;
-    [SerializeField] private GameObject voteImage;
-    [SerializeField] private TextMeshProUGUI votingInfo;
-
+    [SerializeField] private GameObject selectionImage;
     private void Start()
     {
         if (startGameController.IsReady.Value)
@@ -123,12 +122,30 @@ public class UITarot : MonoBehaviour
 
     private void SubscribeToPlayerVote()
     {
-        playerProvider.ClientPlayer.GetComponent<PlayerVote>().vote.ValueChanged += UpdateVoteDisplay;
+        playerProvider.ClientPlayer.GetComponent<PlayerVote>().selectedCard.ValueChanged += UpdateSelectedCard;
+        
+        var votes = playerProvider.ClientPlayer.GetComponent<PlayerVote>().votes;
+        votes.Values[0].ValueChanged += UpdateVoteDisplay1;
+        votes.Values[1].ValueChanged += UpdateVoteDisplay2;
+        votes.Values[2].ValueChanged += UpdateVoteDisplay3;
+    }
+    
+    private void UpdateSelectedCard(int oldVal, int newVal)
+    {
+        var position = selectionImage.transform.position;
+        selectionImage.transform.position = new Vector3(slots[newVal].transform.position.x,position.y,position.z); 
     }
 
-    private void UpdateVoteDisplay(bool oldVal, bool newVal)
+    private void UpdateVoteDisplay1(bool oldVal, bool newVal)
     {
-        voteImage.SetActive(newVal);
-        votingInfo.text = newVal ? "PRESS [SPACE] TO ACCEPT CARDS " : "PRESS [SPACE] TO REJECT CARDS ";
+        voteMarks[0].SetActive(newVal);
+    }
+    private void UpdateVoteDisplay2(bool oldVal, bool newVal)
+    {
+        voteMarks[1].SetActive(newVal);
+    }
+    private void UpdateVoteDisplay3(bool oldVal, bool newVal)
+    {
+        voteMarks[2].SetActive(newVal);
     }
 }

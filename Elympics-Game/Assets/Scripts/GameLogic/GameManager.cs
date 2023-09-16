@@ -57,27 +57,49 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
         }
     }
 
-    private bool GetVotingResults()
+    private bool[] GetVotingResults()
     {
         var players = playerProvider.AllPlayersInScene;
-        int votes = 0;
-        foreach (var player in players)
+        var votes = new int[3];
+;        foreach (var player in players)
         {
-            if (player.GetComponent<PlayerVote>().vote.Value)
+            for (var i = 0; i < 3; i++)
             {
-                votes++;
+                if (player.GetComponent<PlayerVote>().votes.Values[i].Value)
+                {
+                    votes[i] += 1;
+                }
             }
         }
-        Debug.Log($"VOTES: {votes}");
-        return votes >= 2;
+
+        var results = new bool[3];
+        for (var i = 0; i < 3; i++)
+        {
+            if (votes[i] >= 2)
+            {
+                results[i] = false;
+            }
+        }
+        
+        return results;
     }
 
     private void ApplyModifiers(bool oldVal, bool newVal)
     {
         if (!newVal) return;
-        if (!GetVotingResults())
+        var startGameController = GetComponent<StartGameController>();
+        var results = GetVotingResults();
+        if (results[0])
         {
-            GetComponent<StartGameController>().ApplyModifiers();
+            startGameController.ApplyFirstModifier();
+        }
+        if (results[1])
+        {
+            startGameController.ApplySecondModifier();
+        }
+        if (results[2])
+        {
+            startGameController.ApplyThirdModifier();
         }
     }
 }

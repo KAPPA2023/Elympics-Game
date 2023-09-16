@@ -27,32 +27,28 @@ public class StartGameController : ElympicsMonoBehaviour
         IsReady.Value = true;
     }
 
-    public void ApplyModifiers()
-    {
-        if (playerProvider.IsReady)
-        {
-            ApplyPlayerModifiers();
-        }
-        else
-        {
-            playerProvider.IsReadyChanged += ApplyPlayerModifiers;
-        }
-
-        ApplyArenaModifiers();
-    }
-
-    private void ApplyPlayerModifiers()
+    public void ApplyFirstModifier()
     {
         playerProvider.UpdatePlayerProvider();
         
         var players = playerProvider.AllPlayersInScene;
         foreach (var player in players)
         {
-            player.ApplyModifier(playerModifier.Value, enchancedSpell.Value);
+            player.ApplySpellEnhance(enchancedSpell.Value);
         }
     }
 
-    private void ApplyArenaModifiers()
+    public void ApplySecondModifier()
+    {
+        playerProvider.UpdatePlayerProvider();
+        
+        var players = playerProvider.AllPlayersInScene;
+        foreach (var player in players)
+        {
+            player.ApplyModifier(playerModifier.Value);
+        }
+    }
+    public void ApplyThirdModifier()
     {
         switch (staticGameModifier.Value)
         {
