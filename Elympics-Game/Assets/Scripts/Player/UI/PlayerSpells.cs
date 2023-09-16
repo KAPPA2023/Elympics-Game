@@ -8,6 +8,7 @@ public class PlayerSpells : MonoBehaviour
     [SerializeField] private PlayerProvider playersProvider = null;
     [SerializeField] private Image[] spells;
     [SerializeField] private Sprite[] sprites;
+    private bool _modifier;
 
     private void Start()
     {
@@ -28,7 +29,7 @@ public class PlayerSpells : MonoBehaviour
     private void SubscribeToActionHandler()
     {
         var clientPlayerData = playersProvider.ClientPlayer;
-        
+        clientPlayerData.TheMagician += SetModifier;
         clientPlayerData.GetComponent<ActionHandler>().stashedSpells.Values[0].ValueChanged += ChangeSlot0;
         clientPlayerData.GetComponent<ActionHandler>().stashedSpells.Values[1].ValueChanged += ChangeSlot1;
         clientPlayerData.GetComponent<ActionHandler>().stashedSpells.Values[2].ValueChanged += ChangeSlot2;
@@ -40,31 +41,18 @@ public class PlayerSpells : MonoBehaviour
 
     private void ChangeSlot(int index, int newVal)
     {
-        //This will work as long as you setup sprites in order of spells in enum
-        spells[index].sprite = sprites[newVal + 1]; 
-        // switch ((Spells)newVal)
-        // {
-        //     case Spells.Empty:
-        //         spells[index].sprite = sprites[0]; 
-        //         break;
-        //     case Spells.Fireball:
-        //         spells[index].sprite = sprites[1];
-        //         break;
-        //     case Spells.Lightbolt:
-        //         spells[index].sprite = sprites[2];
-        //         break;
-        //     case Spells.WaterBlast:
-        //         spells[index].sprite = sprites[3];
-        //         break;
-        //     case Spells.SandGranade:
-        //         spells[index].sprite = sprites[4];
-        //         break;
-        //     case Spells.Tornado:
-        //         spells[index].sprite = sprites[5];
-        //         break;
-        //     case Spells.IceSpike:
-        //         spells[index].sprite = sprites[6];
-        //         break;
-        // }
+        if (!_modifier)
+        {
+            spells[index].sprite = sprites[newVal + 1]; 
+        }
+        else
+        {
+            spells[index].sprite = sprites[7]; 
+        }
+    }
+
+    private void SetModifier()
+    {
+        _modifier = true;
     }
 }

@@ -12,6 +12,8 @@ public class PlayerData : ElympicsMonoBehaviour
     
     public int PlayerId => playerId;
     public ElympicsInt Score { get; } = new ElympicsInt();
+
+    public Action TheMagician = null;
     public void ApplyModifier(int id)
     {
         switch (id)
@@ -26,6 +28,7 @@ public class PlayerData : ElympicsMonoBehaviour
 
             case 2:
                 GetComponent<ActionHandler>().theMagician = true;
+                TheMagician?.Invoke();
                 break;
         }
     }
