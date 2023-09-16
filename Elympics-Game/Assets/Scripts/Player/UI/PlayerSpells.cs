@@ -47,7 +47,15 @@ public class PlayerSpells : MonoBehaviour
         }
         else
         {
-            spells[index].sprite = sprites[7]; 
+            if (newVal != -1)
+            {
+                spells[index].sprite = sprites[7]; 
+            }
+            else
+            {
+                spells[index].sprite = sprites[0]; 
+            }
+            
         }
     }
 
