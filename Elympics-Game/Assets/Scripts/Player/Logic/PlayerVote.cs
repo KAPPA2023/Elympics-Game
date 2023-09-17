@@ -4,26 +4,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using Elympics;
 
-public class PlayerVote : ElympicsMonoBehaviour
+public class PlayerVote : ElympicsMonoBehaviour, IUpdatable
 {
     public ElympicsArray<ElympicsBool> votes = new ElympicsArray<ElympicsBool>(3, () => new ElympicsBool());
     public ElympicsInt selectedCard = new ElympicsInt(0);
-    private float previousDir = 0;
+    
+    protected ElympicsFloat currentTime = new ElympicsFloat();
+    protected bool canSwitch => currentTime.Value <= 0.0f;
+    
+    
+    public void ElympicsUpdate()
+    {
+        if (!canSwitch)
+        {
+            currentTime.Value -= Elympics.TickDuration;
+        }    
+    }
+    
+    
     public void HandleInput(bool spacePressed, float x)
     {
-        if (previousDir != x)
+        if (canSwitch)
         {
             switch (x)
             {
                 case >= 1f:
                     ChangeSelect(1);
+                    currentTime.Value = 0.2f;
                     break;
                 case <= -1:
                     ChangeSelect(-1);
+                    currentTime.Value = 0.2f;
                     break;
             }
         }
-        previousDir = x;
 
         if (spacePressed)
         {
