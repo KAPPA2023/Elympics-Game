@@ -571,8 +571,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 184932756}
-  triggerMessage: Try to jump to the big pink platform. You can press 'SPACE' once
-    again while jump. DO NOT FALL!
+  textSize: 80
+  triggerMessage: TRY TO JUMP TO THE BIG PINK PLATFORM. YOU CAN PRESS 'SPACE' ONCE
+    AGAIN WHILE JUMP. DO NOT FALL!
   image: {fileID: 1355541728}
 --- !u!1 &53205041
 GameObject:
@@ -633,8 +634,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 184932756}
-  triggerMessage: 'Now the spells and Healnip. There is five type of spells in game.
-    Each one require to draw the symbol of spell after pickup, before using it. '
+  textSize: 70
+  triggerMessage: 'NOW THE SPELLS AND HEALNIP. THERE IS FIVE TYPE OF SPELLS IN GAME.
+    EACH ONE REQUIRE TO DRAW THE SYMBOL OF SPELL AFTER PICKUP, BEFORE USING IT. '
   image: {fileID: 1355541728}
 --- !u!1001 &121863927
 PrefabInstance:
@@ -814,7 +816,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.000061, y: 5}
+  m_AnchoredPosition: {x: -5, y: 5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &182703966
@@ -978,7 +980,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -427.80243, y: -51.24977, z: -83.20941, w: -230.12457}
+  m_margin: {x: -427.80243, y: -73.52646, z: -93.651886, w: -224.92258}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1070,7 +1072,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 184932756}
-  triggerMessage: You can use jump-pads to get higher.
+  textSize: 90
+  triggerMessage: YOU CAN USE JUMP-PADS TO GET HIGHER.
   image: {fileID: 1355541728}
 --- !u!1 &374226614
 GameObject:
@@ -1294,7 +1297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 184932756}
-  triggerMessage: Press ESC to return to menu.
+  textSize: 90
+  triggerMessage: PRESS ESC TO RETURN TO MENU.
   image: {fileID: 1355541728}
 --- !u!135 &825860856
 SphereCollider:
@@ -1355,7 +1359,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 184932756}
-  triggerMessage: This type of wall allows you to climb on it.
+  textSize: 90
+  triggerMessage: THIS TYPE OF WALL ALLOWS YOU TO CLIMB ON IT.
   image: {fileID: 1355541728}
 --- !u!135 &850986504
 SphereCollider:
@@ -1948,8 +1953,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 184932756}
-  triggerMessage: 'To do that you must hold right mouse button (RMB), atempt to draw
-    it corectly, and realase button when you''re done. '
+  textSize: 80
+  triggerMessage: 'TO DO THAT YOU MUST HOLD RIGHT MOUSE BUTTON ''RMB'', ATEMPT TO
+    DRAW IT CORECTLY, AND REALASE BUTTON WHEN YOU''RE DONE. '
   image: {fileID: 1355541728}
 --- !u!135 &1036076746
 SphereCollider:
@@ -2380,7 +2386,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 184932756}
-  triggerMessage: Healnip allows you to heal yourself.
+  textSize: 80
+  triggerMessage: HEALNIP ALLOWS YOU TO HEAL YOURSELF.
   image: {fileID: 1355541728}
 --- !u!135 &1210744163
 SphereCollider:
@@ -2777,9 +2784,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 184932756}
-  triggerMessage: Welcome in MeowMancers, there is some tips for you. Use 'WSAD'
-    to move around and 'SPACE' (Press and hold) to jump (jump higher). Press the
-    left mouse button (LMB) to shoot
+  textSize: 70
+  triggerMessage: WELCOME IN MEOWMANCERS, THERE IS SOME TIPS FOR YOU. USE 'WSAD'
+    TO MOVE AROUND AND 'SPACE' {PRESS AND HOLD} TO JUMP {JUMP HIGHER}. PRESS THE
+    LEFT MOUSE BUTTON 'LMB' TO SHOOT
   image: {fileID: 1355541728}
 --- !u!1 &1355236850
 GameObject:
@@ -3134,7 +3142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 184932756}
-  triggerMessage: Now, try to reach the large purple platform.
+  textSize: 90
+  triggerMessage: NOW, TRY TO REACH THE LARGE PURPLE PLATFORM.
   image: {fileID: 1355541728}
 --- !u!1001 &1463333190
 PrefabInstance:
@@ -3488,7 +3497,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 184932756}
-  triggerMessage: In game you will see some various thigs you can jump on. WATCH
+  textSize: 80
+  triggerMessage: IN GAME YOU WILL SEE SOME VARIOUS THIGS YOU CAN JUMP ON. WATCH
     YOUR HEAD AND DON'T FALL!
   image: {fileID: 1355541728}
 --- !u!1 &1748191580
@@ -4301,7 +4311,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 184932756}
-  triggerMessage: WOW! How did you do that? You're a real kitty-cat!
+  textSize: 90
+  triggerMessage: WOW! HOW DID YOU DO THAT? YOU'RE A REAL KITTY-CAT!
   image: {fileID: 1355541728}
 --- !u!1 &1930901728
 GameObject:

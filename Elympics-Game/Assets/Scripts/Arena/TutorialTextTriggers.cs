@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class TutorialTextTriggers : MonoBehaviour
 {
     public TMP_Text tutorialText;
+    public float textSize;
     public string triggerMessage;
     public GameObject image;
 
@@ -15,6 +16,7 @@ public class TutorialTextTriggers : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            tutorialText.fontSize = textSize;
             tutorialText.text = triggerMessage;
             image.SetActive(true);
             tutorialText.gameObject.SetActive(true);
