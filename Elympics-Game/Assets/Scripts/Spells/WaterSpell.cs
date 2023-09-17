@@ -9,7 +9,9 @@ public class WaterSpell : Spell
     [SerializeField] private float modifiedBlindValue;
     [SerializeField] private float effectTime;
     [SerializeField] private float weakenedJumpForce;
-    [SerializeField] private float modifiedWeakenedJumpForce;
+    [SerializeField] private float weakenedClimbJumpUpForce;
+    [SerializeField] private float weakenedClimbJumpBackForce;
+
     protected override void OnTriggerEnter(Collider other)
     {
         var playerInfo = other.GetComponent<PlayerData>();
@@ -22,14 +24,16 @@ public class WaterSpell : Spell
         
 
         var playerMC = other.GetComponent<MovementController>();
-        playerMC.StartWeakenedJump(effectTime, weakenedJumpForce);
+        playerMC.StartWeakenedJump(effectTime, weakenedJumpForce, weakenedClimbJumpUpForce, weakenedClimbJumpBackForce);
     }
 
     public override void ApplyModifier()
     {
         base.ApplyModifier();
         blindValue = modifiedBlindValue;
-        weakenedJumpForce = modifiedWeakenedJumpForce;
+        weakenedJumpForce = 0;
+        weakenedClimbJumpUpForce = 0;
+        weakenedClimbJumpBackForce = 0;
     }
 
 }

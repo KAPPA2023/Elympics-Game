@@ -7,15 +7,18 @@ public class Climbing : ElympicsMonoBehaviour
 {
     [Header("Climbing")]
     public float climbSpeed;
+    private float desiredClimbSpeed;
     [SerializeField] private bool isHolding;
 
     //[Header("Input")]
     private float horizontalInput;
     private float verticalInput;
     [Header("ClimbJumping")]
+
     public float climbJumpUpForce;
     public float climbJumpBackForce;
-
+    private ElympicsFloat desiredClimbJumpUpForce = new ElympicsFloat(0);
+    private ElympicsFloat desiredClimbJumpBackForce = new ElympicsFloat(0);
 
     [Header("Detection")]
     public float wallCheckDistance;
@@ -40,6 +43,10 @@ public class Climbing : ElympicsMonoBehaviour
         rb = GetComponent<Rigidbody>();
         movementController = GetComponent<MovementController>();
         isHolding = false;
+
+        desiredClimbJumpUpForce.Value = climbJumpUpForce;
+        desiredClimbJumpBackForce.Value = climbJumpBackForce;
+        desiredClimbSpeed = climbSpeed;
     }
 
     public void ClimbingElympicsUpdate(bool isJump, bool shiftPressed, bool shiftReleased)
@@ -114,18 +121,35 @@ public class Climbing : ElympicsMonoBehaviour
     {
         if (!isHolding)
         {
-            rb.velocity = new Vector3(rb.velocity.x, climbSpeed, rb.velocity.z);
+            rb.velocity = new Vector3(rb.velocity.x, desiredClimbSpeed, rb.velocity.z);
         }
         
     }
 
     private void ClimbJump()
     {
-        Vector3 forceToApply = transform.up * climbJumpUpForce + lastFrontWallHit.normal * climbJumpBackForce;
+        Vector3 forceToApply = transform.up * desiredClimbJumpUpForce.Value + lastFrontWallHit.normal * desiredClimbJumpBackForce.Value;
         isHolding = false;
 
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         rb.AddForce(forceToApply, ForceMode.Impulse);
+    }
+
+    public void SetClimbJumpForces(float climbUpForce, float climbBackForce)
+    {
+        desiredClimbJumpUpForce.Value = climbUpForce;
+        desiredClimbJumpBackForce.Value = climbBackForce;
+    }
+
+    public void SetClimbSpeed(float speed)
+    {
+        desiredClimbSpeed = speed;
+    }
+
+    public void ResetClimbJumpForces()
+    {
+        desiredClimbJumpUpForce.Value = climbJumpUpForce;
+        desiredClimbJumpBackForce.Value = climbJumpBackForce;
     }
 
     private void StopClimbing()

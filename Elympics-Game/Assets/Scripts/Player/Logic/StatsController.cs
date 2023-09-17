@@ -63,8 +63,6 @@ public class StatsController : ElympicsMonoBehaviour, IInitializable, IUpdatable
     {
         return Math.Abs(_health.Value - maxHealth) < 0.1;
     }
-
-    
     
     public void ElympicsUpdate()
     {

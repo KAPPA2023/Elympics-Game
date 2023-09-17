@@ -30,12 +30,13 @@ public class MovementController : ElympicsMonoBehaviour
     #region Slow Variables
     private ElympicsFloat slowValue = new ElympicsFloat();
     private ElympicsFloat remainingSlow = new ElympicsFloat();
+    private float slowedClimbSpeed = 4f;
     #endregion
 
     #region Jumping Variables
     [Header("Jump")]
     [SerializeField] private float jumpForce;
-    private float desiredJumpForce;
+    private ElympicsFloat desiredJumpForce = new ElympicsFloat(0f);
     public float jumpCooldown;
     public float airMultiplier;
     //private bool readyToJump = true;
@@ -73,7 +74,7 @@ public class MovementController : ElympicsMonoBehaviour
         rb = GetComponent<Rigidbody>();
         climbing = GetComponent<Climbing>();
         desiredMovementSpeed.Value = GroundSpeed;
-        desiredJumpForce = jumpForce;
+        desiredJumpForce.Value = jumpForce;
     }
 
     // Movement Elympics Update
@@ -140,6 +141,7 @@ public class MovementController : ElympicsMonoBehaviour
 
     private void StateHandler()
     {
+        climbing.SetClimbSpeed(climbing.climbSpeed);
         if (isClimbing)
         {
             state = MovementState.climbing;
@@ -165,6 +167,7 @@ public class MovementController : ElympicsMonoBehaviour
         {
             remainingSlow.Value -= Elympics.TickDuration;
             desiredMovementSpeed.Value *= slowValue.Value;
+            climbing.SetClimbSpeed(climbing.climbSpeed * slowValue.Value);
         }
     }
 
@@ -244,11 +247,15 @@ public class MovementController : ElympicsMonoBehaviour
     #region Jump Functions
     private void ApplyJump()
     {
-        exitingSlope = true;
+        if (desiredJumpForce.Value != 0)
+        {
+            exitingSlope = true;
 
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        rb.AddForce(Vector3.up * desiredJumpForce, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * desiredJumpForce.Value, ForceMode.Impulse);
+        }
+        
     }
     
     private void ResetJump()
@@ -266,9 +273,20 @@ public class MovementController : ElympicsMonoBehaviour
         }
         else
         {
-            desiredJumpForce = jumpForce;
+            desiredJumpForce.Value = jumpForce;
+            climbing.ResetClimbJumpForces();
         }
     }
+
+    public void StartWeakenedJump(float time, float weakenedJumpForce, 
+        float weakenedClimbJumpUpForce, float weakenedClimbJumpBackForce)
+    {
+        _weakenedJumpTimer.Value = time;
+        desiredJumpForce.Value = weakenedJumpForce;
+
+        climbing.SetClimbJumpForces(weakenedClimbJumpUpForce, weakenedClimbJumpBackForce);
+    }
+
     #endregion
 
     private bool OnSlope()
@@ -324,12 +342,8 @@ public class MovementController : ElympicsMonoBehaviour
 
     public void SetJumpForce(float jumpForce)
     {
-        desiredJumpForce = jumpForce;
+        desiredJumpForce.Value = jumpForce;
     }
 
-    public void StartWeakenedJump(float time, float weakenedJumpForce)
-    {
-        _weakenedJumpTimer.Value = time;
-        desiredJumpForce = weakenedJumpForce;
-    }
+    
 }

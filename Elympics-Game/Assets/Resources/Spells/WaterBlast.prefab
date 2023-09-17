@@ -264,4 +264,5 @@ MonoBehaviour:
   modifiedBlindValue: 0.8
   effectTime: 4
   weakenedJumpForce: 15
-  modifiedWeakenedJumpForce: 0
+  weakenedClimbJumpUpForce: 15
+  weakenedClimbJumpBackForce: 10
