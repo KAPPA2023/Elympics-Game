@@ -61,3 +61,13 @@ MonoBehaviour:
     botDifficulty: 0
     gameEngineData: 
     matchmakerData: []
+  - userId: 1
+    isBot: 0
+    botDifficulty: 0
+    gameEngineData: 
+    matchmakerData: []
+  - userId: 1
+    isBot: 0
+    botDifficulty: 0
+    gameEngineData: 
+    matchmakerData: []
