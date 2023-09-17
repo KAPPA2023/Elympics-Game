@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceNetworkId: 0
-  networkId: 758
+  networkId: 759
   predictableFor:
     playerIndex: -2
   isUpdatableForNonOwners: 0
