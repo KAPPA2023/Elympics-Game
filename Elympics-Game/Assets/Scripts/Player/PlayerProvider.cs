@@ -18,7 +18,6 @@ public class PlayerProvider : ElympicsMonoBehaviour, IInitializable, IServerHand
     public void OnServerInit(InitialMatchPlayerDatasGuid initialMatchPlayerDatas)
     {
         _playerCount.Value = initialMatchPlayerDatas.Count;
-        Debug.Log(_playerCount.Value);
     }
 
     public void OnPlayerDisconnected(ElympicsPlayer player) { }
@@ -60,11 +59,14 @@ public class PlayerProvider : ElympicsMonoBehaviour, IInitializable, IServerHand
 
     public void UpdatePlayerProvider()
     {
-        if (_playerCount.Value == 2)
+        
+        Debug.Log($"Player: {_playerCount.Value}");
+        if (_playerCount.Value <= 2)
         {
             AllPlayersInScene[3].gameObject.SetActive(false);
             AllPlayersInScene[2].gameObject.SetActive(false);
         }
+
         this.AllPlayersInScene = FindObjectsOfType<PlayerData>().OrderBy(x => x.PlayerId).ToArray();
     }
     

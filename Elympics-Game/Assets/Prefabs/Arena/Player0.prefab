@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 236190090}
   lineRenderer: {fileID: 981317425137629977}
+  gameManager: {fileID: 0}
   mousePadding: {x: 0, y: 20}
   canvasImage: {fileID: 1682347989}
   drawingBackgroundColor: {r: 0, g: 0, b: 0, a: 0.68235296}
@@ -285,9 +286,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849967897157127096}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: -0.489, z: 0.135}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5411974367356225908}
   m_Father: {fileID: 3137473123422059862}
@@ -379,6 +380,7 @@ MonoBehaviour:
   - {fileID: 8641383612146418019, guid: 4d6f7a76a934ff74aa0c3c855cc7b510, type: 3}
   - {fileID: 6518260732727185738, guid: 5e3ad43db101335428413fe04910ccda, type: 3}
   - {fileID: 8641383612146418019, guid: 3bd95db394331b240a2c1c35d7ef363f, type: 3}
+  inTutorial: 0
 --- !u!114 &3137473122721184451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1086,11 +1088,10 @@ MonoBehaviour:
   deathController: {fileID: 1321588518}
   blindPower:
     currentValue: 0
-  isBlind:
-    currentValue: 0
   blindValue:
     currentValue: 0.8
-  blindTime: 0
+  blindTimer:
+    currentValue: 0
 --- !u!114 &1321588518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1166,7 +1167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd8a1c9ef42a85409d173ee2b451c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vote:
+  votes:
+    values:
+    - currentValue: 0
+    - currentValue: 0
+    - currentValue: 0
+  selectedCard:
     currentValue: 0
 --- !u!1 &4119903121104878163
 GameObject:

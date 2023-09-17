@@ -17,17 +17,13 @@ public class SpellPickup : ElympicsMonoBehaviour, IUpdatable, IInitializable
     
     public void Initialize()
     {
+        
         var startGameController = GameObject.Find("GameController").GetComponent<StartGameController>();
+        
         if (startGameController != null)
         {
-            if (startGameController.IsReady.Value)
-            {
-                SpellsHidden(false, true);
-            }
-            else
-            {
-                startGameController.IsReady.ValueChanged += SpellsHidden;
-            }
+            var gameManager = GameObject.Find("GameController").GetComponent<GameManager>();
+            gameManager.matchTime.ValueChanged += SetupPickups;
         }
         else
         {
@@ -36,10 +32,10 @@ public class SpellPickup : ElympicsMonoBehaviour, IUpdatable, IInitializable
         empty.ValueChanged += ChangeSpellPickup;
     }
 
-    private void SpellsHidden(bool oldVal, bool newVal)
+    private void SpellsHidden()
     {
-        var modifier = GameObject.Find("GameController").GetComponent<StartGameController>().staticGameModifier.Value;
-        if (modifier == 0)
+        var modifier = GameObject.Find("GameController").GetComponent<StartGameController>().spellsHidden;
+        if (modifier)
         {
             hidden = true;
             foreach (var orb in orbs)
@@ -82,6 +78,15 @@ public class SpellPickup : ElympicsMonoBehaviour, IUpdatable, IInitializable
                 empty.Value = false;
             }
         }
+    }
+
+    private void SetupPickups(bool oldVal, bool newVal)
+    {
+        if (newVal)
+        {
+            SpellsHidden();
+        }
+        
     }
 
     private void ChangeSpellPickup(bool oldVal, bool newVal)
