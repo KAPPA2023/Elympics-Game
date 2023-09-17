@@ -1807,7 +1807,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Transform, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"position":{"x":0.0,"y":-0.699999988079071,"z":0.0},"angles":{"x":90.0,"y":0.0,"z":0.0},"scale":{"x":75.0,"y":75.0,"z":75.0}}'
+      m_SerializableObject: '{"position":{"x":0.0,"y":-0.20000000298023225,"z":0.0},"angles":{"x":90.0,"y":0.0,"z":0.0},"scale":{"x":75.0,"y":75.0,"z":75.0}}'
     m_Space: 0
   m_Property:
     name: transform
@@ -3209,7 +3209,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 500
+      m_SerializableObject: 50
     m_Space: 2147483647
   m_Property:
     name: Rate
@@ -4239,7 +4239,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614905}
   - {fileID: 8926484042661614946}
   dataType: 0
-  capacity: 500
+  capacity: 100
   stripCapacity: 16
   particlePerStripCount: 16
   needsComputeBounds: 0
