@@ -917,8 +917,8 @@ MonoBehaviour:
     around and 'SPACE' (Press and hold) to jump (jump higher). Press the left mouse
     button (LMB) to shoot
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d51c2f01b3a0c8a45b7325d95b58982e, type: 2}
+  m_sharedMaterial: {fileID: 5754438572586134323, guid: d51c2f01b3a0c8a45b7325d95b58982e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -942,8 +942,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3860,6 +3860,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: adb1d85cf92932f4786a84ab18737c15, type: 2}
+    - target: {fileID: 7641736181142342707, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641736181142342707, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7740317854498177090, guid: 4e4d52977c6e4b245b30f29f962b7361, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
