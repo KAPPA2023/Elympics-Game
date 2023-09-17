@@ -195,6 +195,10 @@ PrefabInstance:
       propertyPath: playerProvider
       value: 
       objectReference: {fileID: 1570133325}
+    - target: {fileID: 236190091, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1395084371}
     - target: {fileID: 2438685598099525384, guid: 895e5e3cc065f9a4ca6326c475953d18, type: 3}
       propertyPath: networkId
       value: 409
@@ -667,7 +671,6 @@ MonoBehaviour:
   safeRadius: 3
   spawnPoints:
   - {fileID: 1014256314}
-  - {fileID: 0}
 --- !u!114 &153227091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3314,7 +3317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cde9ff8abc8b8f4a95266d0bbb02b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerProvider: {fileID: 0}
+  playerProvider: {fileID: 1570133325}
   matchLength: 120
   postGameTime: 5
   preGameTime: 5

@@ -16,6 +16,7 @@ public class StartGameController : ElympicsMonoBehaviour
     public ElympicsInt playerModifier = new ElympicsInt(-1);
     public ElympicsInt enchancedSpell = new ElympicsInt(-1);
     public ElympicsBool IsReady = new ElympicsBool(false);
+    public bool spellsHidden = false;
     [SerializeField] private PlayerProvider playerProvider;
 
 
@@ -50,6 +51,7 @@ public class StartGameController : ElympicsMonoBehaviour
         {
             case 0:
                 //mystery spell pickups
+                spellsHidden = true;
                 break;
             case 1:
                 //more spell pickups

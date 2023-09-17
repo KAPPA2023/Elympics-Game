@@ -24,15 +24,6 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
             appliedModifiers.ValueChanged += ApplyModifiers;
         }
 
-        if (playerProvider.IsReady)
-        {
-            playerProvider.UpdatePlayerProvider();
-        }
-        else
-        {
-            playerProvider.IsReadyChanged += playerProvider.UpdatePlayerProvider;
-        }
-
         if (!Elympics.IsServer) return;
         CurrentTimeOfMatchRemaining.Value = matchLength;
         CurrentTimeToStartMatch.Value = preGameTime;
@@ -47,6 +38,7 @@ public class GameManager : ElympicsMonoBehaviour, IInitializable, IUpdatable
         if (!(CurrentTimeToStartMatch.Value < 0.0f)) return;
         if (!appliedModifiers.Value)
         {
+            playerProvider.UpdatePlayerProvider();
             ApplyModifiers(false,true);
             appliedModifiers.Value = true;
         }
